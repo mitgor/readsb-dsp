@@ -1,0 +1,34 @@
+{
+  "mode": "paced UC8 file shadow, clean RTL-SDR-enabled build",
+  "rf_seconds": 10,
+  "wall_s": 15.288954542018473,
+  "exit": 1,
+  "records": 6272,
+  "summary": {
+    "buffers": 367,
+    "work_us": 910184,
+    "backlog_skips": 0,
+    "deadline_buffers": 168,
+    "discontinuities": 1,
+    "pending_overflow": 0,
+    "pending_tail": 0,
+    "peaks": 177304,
+    "retry_budget_skips": 417,
+    "duplicates": 1145,
+    "unknown_identity": 17,
+    "conflicts": 0,
+    "raw": [
+      1108,
+      81,
+      28,
+      6
+    ],
+    "extras": [
+      33,
+      13,
+      13,
+      2
+    ],
+    "forwarded": 0
+  }
+}

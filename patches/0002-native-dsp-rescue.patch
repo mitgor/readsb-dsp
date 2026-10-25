@@ -1,0 +1,1127 @@
+From 07598dfeac252be7c383650da775eca0058994bc Mon Sep 17 00:00:00 2001
+From: mitgor <mitgor@gmail.com>
+Date: Sun, 25 Oct 2026 22:06:19 +0100
+Subject: [PATCH] Add opt-in bounded native UC8 energy and DSP rescue with
+ shadow mode
+
+---
+ Makefile                    |  17 +-
+ NATIVE_DSP_RESCUE.md        | 149 ++++++++++++++++
+ demod_2400.c                |   5 +
+ dsp_rescue.c                | 327 ++++++++++++++++++++++++++++++++++++
+ dsp_rescue.h                |  12 ++
+ dsp_rescue_coeffs.h         |  34 ++++
+ help.h                      |   4 +
+ readsb.c                    |  31 ++++
+ readsb.h                    |   9 +
+ sdr_ifile.c                 |   7 +
+ sdr_rtlsdr.c                |   3 +
+ tests/dsp-rescue/.gitignore |   2 +
+ tests/dsp-rescue/README.md  |  41 +++++
+ tests/dsp-rescue/replay.py  | 126 ++++++++++++++
+ tests/dsp-rescue/unit.c     | 104 ++++++++++++
+ 15 files changed, 869 insertions(+), 2 deletions(-)
+ create mode 100644 NATIVE_DSP_RESCUE.md
+ create mode 100644 dsp_rescue.c
+ create mode 100644 dsp_rescue.h
+ create mode 100644 dsp_rescue_coeffs.h
+ create mode 100644 tests/dsp-rescue/.gitignore
+ create mode 100644 tests/dsp-rescue/README.md
+ create mode 100644 tests/dsp-rescue/replay.py
+ create mode 100644 tests/dsp-rescue/unit.c
+
+diff --git a/Makefile b/Makefile
+index 1219e7b..9b60820 100644
+--- a/Makefile
++++ b/Makefile
+@@ -188,7 +188,7 @@ readsb.o: readsb.c *.h .version
+ %.o: %.c *.h
+ 	$(CC) $(CFLAGS) -c $< -o $@
+ 
+-readsb: readsb.o argp.o anet.o interactive.o mode_ac.o mode_s.o comm_b.o json_out.o net_io.o crc.o demod_2400.o \
++readsb: readsb.o argp.o anet.o interactive.o mode_ac.o mode_s.o comm_b.o json_out.o net_io.o crc.o demod_2400.o dsp_rescue.o contrib/dsp-rescue/dsp_rescue/frontend.o \
+ 	uat2esnt/uat2esnt.o uat2esnt/uat_decode.o \
+ 	stats.o cpr.o icao_filter.o track.o util.o fasthash.o convert.o sdr_ifile.o sdr_beast.o sdr.o ais_charset.o \
+ 	globe_index.o geomag.o receiver.o aircraft.o api.o threadpool.o \
+@@ -200,7 +200,7 @@ viewadsb: readsb
+ 	cp readsb viewadsb
+ 
+ clean:
+-	rm -f *.o uat2esnt/*.o oneoff/*.o compat/clock_gettime/*.o compat/clock_nanosleep/*.o compat/apple/*.o readsb viewadsb cprtests crctests oneoff/convert_benchmark
++	rm -f tests/dsp-rescue/unit contrib/dsp-rescue/dsp_rescue/*.o *.o uat2esnt/*.o oneoff/*.o compat/clock_gettime/*.o compat/clock_nanosleep/*.o compat/apple/*.o readsb viewadsb cprtests crctests oneoff/convert_benchmark
+ 
+ .PHONY: test cprtest crctest
+ 
+@@ -226,3 +226,16 @@ oneoff/convert_benchmark: oneoff/convert_benchmark.o convert.o util.o threadpool
+ 
+ oneoff/decode_comm_b: oneoff/decode_comm_b.o comm_b.o ais_charset.o
+ 	$(CC) $(CFLAGS) -o $@ $^ -lm
++
++# Keep rescue kernels numerically comparable to the contrib reference.
++dsp_rescue.o contrib/dsp-rescue/dsp_rescue/frontend.o: CFLAGS += -ffp-contract=off
++
++.PHONY: dsp-rescue-test dsp-rescue-test-sanitize
++dsp-rescue-test:
++	$(CC) $(CFLAGS) -ffp-contract=off -I. tests/dsp-rescue/unit.c contrib/dsp-rescue/dsp_rescue/frontend.c -lm -o tests/dsp-rescue/unit
++	./tests/dsp-rescue/unit
++
++# Supported by GCC/Clang; this does not replace the normal build flags.
++dsp-rescue-test-sanitize:
++	$(CC) $(CFLAGS) -O1 -ffp-contract=off -I. -fsanitize=address,undefined -fno-omit-frame-pointer tests/dsp-rescue/unit.c contrib/dsp-rescue/dsp_rescue/frontend.c -lm -o tests/dsp-rescue/unit
++	./tests/dsp-rescue/unit
+diff --git a/NATIVE_DSP_RESCUE.md b/NATIVE_DSP_RESCUE.md
+new file mode 100644
+index 0000000..00573c5
+--- /dev/null
++++ b/NATIVE_DSP_RESCUE.md
+@@ -0,0 +1,149 @@
++# Experimental native realtime DSP rescue
++
++This branch integrates the DSP-only contrib reference into readsb's native sample
++processing path. It is **off by default**, needs no Python/runtime dependencies,
++and contains no neural inference, weights or training code. The existing receiver
++was not modified or restarted. This is a separate follow-up to the offline
++contribution in PR #163, not an update to that PR.
++
++## Operating modes
++
++- No extra flags: stock decoding/output; no extra I/Q allocations or copies.
++- `--dsp-rescue`: **shadow mode**. Stock messages alone reach tracking, stdout and
++  network outputs. Rescue candidates are counted separately.
++- `--dsp-rescue --dsp-rescue-output`: explicitly permits guarded additions through
++  the usual `decodeModesMessage` / `netUseMessage` path. Existing network settings
++  determine their destinations. This is not enabled on the working receiver.
++- `--dsp-rescue-budget-us N`: 100–50000 microseconds per input buffer; default
++  min(5000 microseconds, 10% of the buffer's RF duration). A cooperative wall-time
++  budget, not a hard realtime deadline or an OS CPU quota.
++- `--dsp-rescue-log FILE`: buffered candidate audit JSONL, for offline validation.
++  It contains timestamps, payloads, method and guard result. Disk I/O can block;
++  leave unset for live use. Summary counters go to stderr on exit.
++
++Only 2.4MS/s RTL-SDR UC8 and UC8 `ifile` input are supported. Other SDRs,
++network-only mode, SC16/SC16Q11 files and dependent options without `--dsp-rescue`
++are rejected. No new ports, feeder changes or service modifications are made.
++
++A local-file shadow run in this separate build directory:
++
++```sh
++make -j2                         # no SDR library needed for ifile
++./readsb --device-type ifile --ifile capture.uc8 --iformat UC8 \
++  --raw --mlat --dsp-rescue > stock-only.txt 2> shadow-summary.txt
++```
++
++Add `--throttle` to pace the file at its original RF rate. Add
++`--dsp-rescue-output` only for a separate local-file output comparison. Without
++network flags, these runs have no network outputs. Do not replace the installed
++binary or open the SDR already owned by the working receiver for these tests.
++RTL-SDR builds require a clean build: `make clean && make RTLSDR=yes -j2`.
++
++## Native pipeline and bounded scheduling
++
++An optional reader-side UC8 copy travels in the existing magnitude-buffer FIFO,
++including 326 input samples of history at the current sample rate. The reader
++publishes both buffers together; the decode thread never reads an SDR callback's
++transient pointer. Memory is allocated once at startup, not per candidate.
++
++Stock Mode S demodulation runs first. Rescue runs cooperatively on the same
++thread, so no worker mutates tracking/network state concurrently. It skips live
++rescue when more than two SDR buffers are queued, discarding rescue work instead
++of queuing it. The ifile path intentionally permits unthrottled replay. There
++are no new worker threads; this does not promise unchanged stock latency on
++arbitrary hardware.
++
++The FIR uses absolute sample positions, preserving 5/3 interpolation phase even
++when input buffer lengths are not divisible by three. Half-open start ownership
++crosses chunks and SDR buffers. Scratch chunks contain complete packet/FIR/timing
++context. Artificial initial history and context after sample loss are excluded.
++Discontinuities reset pending, duplicate and stock identity state; no packet is
++assembled across a known sample gap.
++
++All four methods are native C:
++
++1. Clipped-energy PPM slicing on the shared normalized-preamble/FIR front end.
++2. Six fractional timing retries using the existing C sinc interpolation kernel.
++3. Unique one/two-bit repair from at most six weak bits; confidence <=0.35,
++   at most 21 hypotheses; bits 0–31 (DF, CA, ICAO) remain protected.
++   `--no-fix` disables this method. Otherwise its explicit DSP limit is two
++   weak bits; the existing stock single-bit correction limit is unchanged.
++4. Preamble-derived carrier estimate and complex matched filtering.
++
++No relaxed-header search, interference cancellation or broad CRC search is added.
++Expensive retries are capped at 32 failed header-screened windows per 50ms RF and
++8 per scratch chunk. Windows are visited chronologically, unlike the offline
++tool's strongest-first selection. Deadlines are checked between small work units;
++one FIR chunk, hypothesis, guard scan, scheduler pause or I/O call can overshoot
++the cooperative budget. Counts can vary when deadlines expire.
++
++Scratch is fixed (8192+504 complex samples). Stock history holds at most 16384
++DF17 records; pending/accepted caches each hold 2048 events. Full pending queues
++drop candidates, not stock. The module has roughly 1MiB of static state, plus two
++UC8 bytes/sample in each of the existing 12 SDR buffers when enabled. No
++capture-sized candidate list or unbounded worker queue exists.
++
++## Acceptance, timestamps and statistics
++
++Candidates wait until the next buffer's stock pass, allowing stock to decode
++boundary-spanning frames before duplicate decisions. Guards require valid DF17
++CRC and a prior **uncorrected stock DF17** sighting of the same ICAO within 30s.
++Same payloads within +/-120us and different same-ICAO payloads within +/-4us are
++rejected against stock and previously accepted additions. Additional messages
++never establish identity. Cache eviction can reject useful candidates
++conservatively; stock identity and CRC are not independent RF truth.
++
++UC8 and magnitude buffers share the reader sample clock. Rescue timestamps use
++stock's end-of-bit-56 convention, including its historical-buffer offset; no TCP
++arrival-time fit or offline clock offset is needed. The file tests preserve every
++stock `(timestamp,payload)` record. Additional latency is one input buffer
++(about 27.3ms for 65536 samples). Final pending candidates are discarded without
++a following stock pass; a short/empty final buffer also discards them.
++
++Counters `raw` / `extras` are ordered energy, timing, soft, matched. `extras` is
++the guarded, deduplicated union; `forwarded` counts actual native submissions
++after decoder checks. JSONL includes released candidates and duplicate rejects;
++pre-release drops appear only in counters. The initial stream start counts as a
++discontinuity. Shadow processing does not mutate tracking or CRC identity state.
++
++RF signal/noise/gain counters stay stock-only in shadow mode. With output enabled,
++accepted rescue packets increment `demod_accepted` by repaired bit count; they do
++not contribute another RF noise/signal estimate or preamble/phase count.
++Downstream tracking sees the union. RF graphs are therefore not per-method
++rescue statistics; consult the rescue summary separately.
++
++## Validation and limits
++
++Commands are in `tests/dsp-rescue/README.md`. On macOS arm64:
++
++- Normal and clean RTL-SDR-enabled builds succeed.
++- Standard CRC/CPR tests and all 14 contrib reference tests pass.
++- Native guards, weak-bit, capture/history and streaming tests pass ASan/UBSan.
++- Eleven synthetic packets across five subphases and six buffer boundaries are
++  recovered once, with zero extras and no missing stock records.
++- The paired 10-second capture has 6272 stock records / 1403 DF17. Disabled and
++  shadow output preserve every stock timestamp/payload. Explicit local-file
++  output adds **70 DF17**: 34 energy + 17 timing + 16 soft + 3 matched, with no
++  missing stock. This is about 5% additional DF17 on this single interval.
++- Shadow rescue work is about 0.565 seconds / 10 RF seconds on this Mac. A 100us
++  budget discards most rescue work while preserving all stock records.
++- A separate paced-file shadow run preserved all 6272 stock records and counted
++  61 extras; it spent about 0.910s in rescue and hit the cooperative deadline in
++  168 buffers. This illustrates the recovery/budget tradeoff and hot-cache vs
++  paced scheduling differences, rather than a hardware RTL-SDR benchmark.
++- Generated uniform noise (0.2s) and shuffled I/Q (10s) yield zero raw rescue
++  candidates. These controls do not establish an operational false-positive rate.
++
++The offline reference counted 75 additions on this recording. Native scheduling,
++retry order, edge ownership and final-buffer conservatism differ; exact candidate
++parity with the offline scheduler is not claimed. There is no independent RF truth.
++The private recording is excluded; SHA-256:
++`0bd2525ea34e40ffd8c06973986110bcf609b1e55adfe4c5491cff499a9d8576`.
++
++**Before live deployment:** shadow profiling of a separate Pi 4 build on the
++actual RTL-SDR path; sustained overload/sample-drop/temperature checks; longer
++receiver/noise controls; and review of timestamp, scheduling, statistics and
++acceptance semantics. No Pi hardware performance result is claimed here. The
++working receiver remains unchanged.
++
++SPDX-License-Identifier: GPL-3.0-or-later.
+diff --git a/demod_2400.c b/demod_2400.c
+index 765328d..da1e677 100644
+--- a/demod_2400.c
++++ b/demod_2400.c
+@@ -22,6 +22,7 @@
+ // along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ #include "readsb.h"
++#include "dsp_rescue.h"
+ #include <assert.h>
+ 
+ #ifdef MODEAC_DEBUG
+@@ -262,6 +263,7 @@ static void score_phase(int try_phase, uint16_t *pa, unsigned char **bestmsg, in
+ // try to demodulate some Mode S messages.
+ //
+ void demodulate2400(struct mag_buf *mag) {
++    dspRescueBegin(mag);
+     unsigned char msg1[MODES_LONG_MSG_BYTES], msg2[MODES_LONG_MSG_BYTES], *msg;
+ 
+     unsigned char *bestmsg = NULL;
+@@ -489,6 +491,9 @@ after_pre:
+         // let's test something, only jump part of the message and let the preamble detection handle the rest.
+         pa += msglen * 8 / 4;
+ 
++        // Only stock messages establish rescue identity and duplicate guards.
++        dspRescueStock(mm);
++
+         // Pass data to the next layer
+         netUseMessage(mm);
+     }
+diff --git a/dsp_rescue.c b/dsp_rescue.c
+new file mode 100644
+index 0000000..900ed22
+--- /dev/null
++++ b/dsp_rescue.c
+@@ -0,0 +1,327 @@
++/* SPDX-License-Identifier: GPL-3.0-or-later */
++/* Experimental bounded UC8 rescue. All decoding/state mutation runs on the
++ * existing decode thread, after stock demodulation. No new threads or sockets. */
++#include "readsb.h"
++#include "dsp_rescue.h"
++#include "dsp_rescue_coeffs.h"
++
++void rescue_scores(const float *, int64_t, float *, double *);
++int64_t rescue_header_ids(const float *, int64_t, const int64_t *, int64_t, int64_t *);
++void rescue_baseline(const float *, int64_t, const int64_t *, int64_t, uint8_t *, uint8_t *);
++int64_t rescue_dsp(const float *, int64_t, const int64_t *, int64_t,
++                   const int64_t *, const float *, int, int, int64_t *, int64_t *, uint8_t *);
++
++#define CHUNK 8192 /* 2.048ms at 4MS/s; bounded scratch and deadline checks */
++#define CONTEXT 504
++#define HISTORY 16384
++#define PENDING 2048
++#define CANDIDATES 2048
++#define RETRIES 32 /* per 50ms of RF, no carry-over burst */
++
++struct rescue_event {
++    int64_t ticks, sys;
++    double signal;
++    uint8_t msg[14], method, corrected;
++};
++static struct {
++    struct rescue_event stock[HISTORY], pending[PENDING], accepted[PENDING];
++    unsigned stock_at, stock_count, pending_count, accepted_at, accepted_count;
++    int64_t expected, epoch, valid_from;
++    unsigned retries;
++    float iq[2 * (CHUNK + CONTEXT)], power[CHUNK + CONTEXT];
++    double scores[CHUNK + CONTEXT];
++    FILE *log;
++    uint64_t buffers, backlog, deadlines, gaps, overflow, peaks, raw[4], extras[4];
++    uint64_t duplicates, unknown, conflicts, budget_drops, forwarded;
++    uint64_t cpu_us;
++} R;
++
++static int64_t monotonic_us(void) {
++    struct timespec ts;
++    clock_gettime(CLOCK_MONOTONIC, &ts);
++    return (int64_t) ts.tv_sec * 1000000 + ts.tv_nsec / 1000;
++}
++
++static uint32_t checksum(const uint8_t *msg) {
++    uint32_t crc = 0;
++    for (int b = 0; b < 112; b++) {
++        unsigned top = (crc >> 23) ^ ((msg[b / 8] >> (7 - b % 8)) & 1);
++        crc = (crc << 1) & 0xffffff;
++        if (top) crc ^= 0xfff409;
++    }
++    return crc;
++}
++
++static uint32_t address(const struct rescue_event *e) {
++    return (e->msg[1] << 16) | (e->msg[2] << 8) | e->msg[3];
++}
++
++void dspRescueInit(void) {
++    if (!Modes.dsp_rescue && (Modes.dsp_rescue_output || Modes.dsp_rescue_log || Modes.dsp_rescue_budget_us)) {
++        fprintf(stderr, "DSP rescue options require --dsp-rescue\n");
++        exit(1);
++    }
++    if (!Modes.dsp_rescue) return;
++    if (Modes.net_only || (Modes.sdr_type != SDR_IFILE && Modes.sdr_type != SDR_RTLSDR)) {
++        fprintf(stderr, "DSP rescue requires RTL-SDR or UC8 ifile input\n");
++        exit(1);
++    }
++    if (Modes.dsp_rescue_log) {
++        R.log = fopen(Modes.dsp_rescue_log, "w");
++        if (!R.log) { perror("DSP audit log"); exit(1); }
++        setvbuf(R.log, NULL, _IOFBF, 65536);
++    }
++    R.expected = -1;
++    R.epoch = -1;
++    fprintf(stderr, "DSP rescue: %s, native bounded energy/timing/soft/matched; no learned components\n",
++            Modes.dsp_rescue_output ? "OUTPUT ENABLED (experimental)" : "shadow (no extra output)");
++}
++
++/* Called on the producer before it publishes out. The extra copy is absent
++ * when disabled. Last buffer is immutable under the same SDR FIFO protocol. */
++void dspRescueCapture(struct mag_buf *out, const struct mag_buf *last, const unsigned char *raw, unsigned n) {
++    if (!Modes.dsp_rescue || !out->rescue_iq) return;
++    unsigned h = Modes.trailing_samples;
++    if (!out->dropped && last->rescue_iq && last->length >= h &&
++            out->sampleTimestamp == last->sampleTimestamp + (int64_t) last->length * 5)
++        memcpy(out->rescue_iq, last->rescue_iq + 2 * last->length, 2 * h);
++    else
++        memset(out->rescue_iq, 127, 2 * h);
++    memcpy(out->rescue_iq + 2 * h, raw, 2 * n);
++}
++
++void dspRescueBegin(const struct mag_buf *mag) {
++    if (!Modes.dsp_rescue) return;
++    if (mag->dropped || mag->sampleTimestamp != R.expected) {
++        R.stock_count = R.pending_count = R.accepted_count = 0;
++        R.stock_at = R.accepted_at = 0;
++        R.epoch = -1;
++        R.valid_from = mag->sampleTimestamp / 5;
++        R.gaps++;
++    }
++    R.expected = mag->sampleTimestamp + (int64_t) mag->length * 5;
++}
++
++void dspRescueStock(const struct modesMessage *mm) {
++    if (!Modes.dsp_rescue || mm->msgtype != 17 || checksum(mm->msg)) return;
++    struct rescue_event *e = &R.stock[R.stock_at++ % HISTORY];
++    *e = (struct rescue_event) {.ticks = mm->timestamp, .corrected = mm->correctedbits};
++    memcpy(e->msg, mm->msg, 14);
++    if (R.stock_count < HISTORY) R.stock_count++;
++}
++
++/* A shared RF sample clock replaces the offline clock fit. Timestamp convention
++ * is identical to stock (end bit 56, including its historical-buffer offset).
++ * One buffer of deferral lets stock see packets spanning a buffer boundary. */
++static int guarded(const struct rescue_event *e) {
++    int identity = 0;
++    uint32_t addr = address(e);
++    for (unsigned i = 0; i < R.stock_count; i++) {
++        const struct rescue_event *s = &R.stock[(R.stock_at - 1 - i) % HISTORY];
++        int64_t dt = e->ticks - s->ticks;
++        if (llabs(dt) <= 1440 && !memcmp(e->msg, s->msg, 14)) {
++            R.duplicates++; return 0;
++        }
++        if (address(s) != addr) continue;
++        if (llabs(dt) <= 48 && memcmp(e->msg, s->msg, 14)) {
++            R.conflicts++; return 0;
++        }
++        if (!s->corrected && dt > 0 && dt <= 30 * 12000000LL) identity = 1;
++    }
++    for (unsigned i = 0; i < R.accepted_count; i++) {
++        const struct rescue_event *s = &R.accepted[(R.accepted_at - 1 - i) % PENDING];
++        if (llabs(e->ticks - s->ticks) <= 1440 && !memcmp(e->msg, s->msg, 14)) {
++            R.duplicates++; return 0;
++        }
++        if (address(s) == addr && llabs(e->ticks - s->ticks) <= 48 && memcmp(e->msg, s->msg, 14)) {
++            R.conflicts++; return 0;
++        }
++    }
++    if (!identity) { R.unknown++; return 0; }
++    return 1;
++}
++
++static void release_pending(int64_t deadline) {
++    for (unsigned i = 0; i < R.pending_count; i++) {
++        if (monotonic_us() >= deadline) { R.budget_drops += R.pending_count-i; break; }
++        const struct rescue_event *e = &R.pending[i];
++        int accept = guarded(e);
++        if (accept) {
++            R.extras[e->method]++;
++            R.accepted[R.accepted_at++ % PENDING] = *e;
++            if (R.accepted_count < PENDING) R.accepted_count++;
++        }
++        if (R.log) {
++            fprintf(R.log, "{\"ticks\":%lld,\"method\":%u,\"corrected_bits\":%u,\"guarded\":%s,\"message\":\"",
++                    (long long)e->ticks, e->method, e->corrected, accept ? "true" : "false");
++            for (int b = 0; b < 14; b++) fprintf(R.log, "%02x", e->msg[b]);
++            fputs("\"}\n", R.log);
++        }
++        if (!accept || !Modes.dsp_rescue_output) continue;
++        struct modesMessage *mm = netGetMM(&Modes.netMessageBuffer[0]);
++        memcpy(mm->msg, e->msg, 14);
++        mm->timestamp = e->ticks;
++        mm->sysTimestamp = e->sys;
++        mm->signalLevel = e->signal;
++        if (decodeModesMessage(mm) < 0) continue;
++        mm->correctedbits = e->corrected;
++        Modes.stats_current.demod_accepted[e->corrected]++;
++        netUseMessage(mm);
++        R.forwarded++;
++    }
++    R.pending_count = 0;
++    if (Modes.dsp_rescue_output) netDrainMessageBuffers();
++}
++
++static void candidate(const uint8_t *row, int method, unsigned corrected,
++                      int64_t k, const struct mag_buf *mag, double signal) {
++    R.raw[method]++;
++    if (R.pending_count == PENDING) { R.overflow++; return; }
++    struct rescue_event *e = &R.pending[R.pending_count++];
++    /* k is the absolute 4MS/s start; all supported SDR paths use 12MHz ticks. */
++    *e = (struct rescue_event) {
++        .ticks = k * 3 + (int64_t)Modes.trailing_samples * 5 + 768,
++        .method = method, .corrected = corrected, .signal = signal
++    };
++    e->sys = mag->sysTimestamp + (e->ticks - mag->sampleTimestamp) / 12000;
++    memcpy(e->msg, row, 14);
++}
++
++/* Unique one/two-bit syndrome solution over <=6 weakest payload/parity bits.
++ * DF, CA and ICAO remain untouched. Bounded 21 hypotheses. */
++static unsigned soft(const float *iq, int s, uint8_t *row) {
++    if (!Modes.nfix_crc) return 0; // Respect --no-fix.
++    float confidence[6] = {1, 1, 1, 1, 1, 1};
++    int weak[6] = {-1, -1, -1, -1, -1, -1};
++    memset(row, 0, 14);
++    for (int b = 0; b < 112; b++) {
++        int j = 2 * (s + 32 + 4 * b);
++        float v[4];
++        for (int q = 0; q < 4; q++)
++            v[q] = iq[j + 2*q] * iq[j + 2*q] + iq[j + 2*q + 1] * iq[j + 2*q + 1];
++        float a = v[0] + v[1], z = v[2] + v[3];
++        row[b/8] |= (a > z) << (7 - b%8);
++        if (b < 32) continue;
++        float c = fabsf(a-z) / (a+z+1.e-9f);
++        if (c > .35f) continue;
++        for (int q = 0; q < 6; q++) if (c < confidence[q]) {
++            for (int r = 5; r > q; r--) { confidence[r] = confidence[r-1]; weak[r] = weak[r-1]; }
++            confidence[q] = c; weak[q] = b; break;
++        }
++    }
++    if ((row[0] >> 3) != 17 || !checksum(row)) return 0;
++    uint8_t solution[14];
++    unsigned found = 0, bits = 0;
++    for (int a = 0; a < 6 && weak[a] >= 0; a++) {
++        row[weak[a]/8] ^= 1 << (7-weak[a]%8);
++        if (!checksum(row)) { memcpy(solution, row, 14); found++; bits=1; }
++        for (int b = a+1; b < 6 && weak[b] >= 0; b++) {
++            row[weak[b]/8] ^= 1 << (7-weak[b]%8);
++            if (!checksum(row)) { memcpy(solution, row, 14); found++; bits=2; }
++            row[weak[b]/8] ^= 1 << (7-weak[b]%8);
++        }
++        row[weak[a]/8] ^= 1 << (7-weak[a]%8);
++    }
++    if (found != 1) return 0;
++    memcpy(row, solution, 14);
++    return bits;
++}
++
++/* Global phase is essential: RTL blocks need not be multiples of three samples.
++ * Process only real captured context; no synthetic edge padding is decoded. */
++static void resample(const struct mag_buf *mag, int64_t first, int n, int64_t base) {
++    for (int k = 0; k < n; k++) {
++        int64_t time = (first+k)*3 + 51 - base*5;
++        int phase = time % 5;
++        float re=0, im=0;
++        for (int j=phase; j<102; j+=5) {
++            int64_t index=(time-j)/5;
++            re += fir[j] * ((float)mag->rescue_iq[2*index]-127.5f);
++            im += fir[j] * ((float)mag->rescue_iq[2*index+1]-127.5f);
++        }
++        R.iq[2*k] = re/128.f; R.iq[2*k+1] = im/128.f;
++    }
++}
++
++void dspRescueProcess(const struct mag_buf *mag) {
++    if (!Modes.dsp_rescue) return;
++    R.buffers++;
++    if (!mag->rescue_iq || mag->length < 64) { R.pending_count = 0; return; }
++    lockReader();
++    unsigned queued = (Modes.first_free_buffer - Modes.first_filled_buffer + MODES_MAG_BUFFERS) % MODES_MAG_BUFFERS;
++    unlockReader();
++    /* ifile is deliberately unthrottled; live backpressure discards rescue,
++     * never waits or queues extra work ahead of stock. */
++    if (Modes.sdr_type != SDR_IFILE && queued > 2) { R.backlog++; R.pending_count = 0; return; }
++    int64_t began = monotonic_us();
++    unsigned budget = Modes.dsp_rescue_budget_us;
++    if (!budget) { budget = mag->length / 24; if (budget > 5000) budget = 5000; }
++    int64_t deadline = began + budget;
++    release_pending(deadline);
++    int64_t base = mag->sampleTimestamp / 5 - Modes.trailing_samples;
++    int64_t end = base + mag->length + Modes.trailing_samples;
++    /* Own starts [base+32, base+length+32); > packet+FIR right context remains.
++     * Skip artificial initial history and sample gaps. */
++    int64_t first = (5*(base+32)+2)/3;
++    int64_t valid_start = (5*(R.valid_from+32)+2)/3;
++    if (first < valid_start) first = valid_start;
++    int64_t stop = (5*(base+mag->length+32)+2)/3;
++    int64_t safe_stop = (5*end-51)/3 - CONTEXT;
++    if (stop > safe_stop) stop = safe_stop;
++    for (int64_t at = first; at < stop; ) {
++        if (monotonic_us() >= deadline) { R.deadlines++; break; }
++        int core = (stop-at > CHUNK ? CHUNK : stop-at);
++        int n = core+CONTEXT;
++        resample(mag, at-8, n, base);
++        rescue_scores(R.iq, n, R.power, R.scores);
++        unsigned tried = 0;
++        for (int s=8; s<core+8; s++) {
++            if ((s & 63) == 0 && monotonic_us() >= deadline) break;
++            if (R.scores[s] < .4 || R.scores[s] <= R.scores[s-1] || R.scores[s] < R.scores[s+1]) continue;
++            R.peaks++;
++            int64_t start=s, id;
++            if (!rescue_header_ids(R.iq, n, &start, 1, &id)) continue;
++            uint8_t row[14], valid;
++            rescue_baseline(R.iq, n, &start, 1, row, &valid);
++            int64_t k=at-8+s;
++            double signal=0;
++            for (int j=32; j<480; j++) signal+=R.power[s+j];
++            /* Approximate normalized power, consistent with the UC8 full-scale
++             * convention; interpolation can otherwise overshoot 1. */
++            signal=fmin(signal/448 * (128.0/127.5) * (128.0/127.5), 1.0);
++            if (valid) { candidate(row, 0, 0, k, mag, signal); s+=2; continue; }
++            int64_t epoch=k/200000;
++            if (epoch != R.epoch) { R.epoch=epoch; R.retries=0; }
++            if (R.retries >= RETRIES || tried >= 8) { R.budget_drops++; continue; }
++            R.retries++; tried++;
++            int64_t ids[7], methods[7]; uint8_t rows[7*14];
++            int64_t count = rescue_dsp(R.iq, n, &start, 1, shifts, weights, 1, 0, ids, methods, rows);
++            if (count) {
++                candidate(rows, 1, 0, k, mag, signal);
++                s+=2; continue;
++            }
++            unsigned corrected = soft(R.iq, s, row);
++            if (corrected) { candidate(row, 2, corrected, k, mag, signal); s+=2; continue; }
++            count = rescue_dsp(R.iq, n, &start, 1, shifts, weights, 0, 1, ids, methods, rows);
++            if (count) { candidate(rows, 3, 0, k, mag, signal); s+=2; }
++        }
++        at += core;
++    }
++    R.cpu_us += monotonic_us()-began;
++}
++
++void dspRescueCleanup(void) {
++    if (!Modes.dsp_rescue) return;
++    /* Do not release the last pending block without a following stock pass. */
++    fprintf(stderr, "DSP rescue summary: {\"buffers\":%llu,\"work_us\":%llu,\"backlog_skips\":%llu,\"deadline_buffers\":%llu,\"discontinuities\":%llu,\"pending_overflow\":%llu,\"pending_tail\":%u,\"peaks\":%llu,\"retry_budget_skips\":%llu,\"duplicates\":%llu,\"unknown_identity\":%llu,\"conflicts\":%llu,\"raw\":[%llu,%llu,%llu,%llu],\"extras\":[%llu,%llu,%llu,%llu],\"forwarded\":%llu}\n",
++        (unsigned long long)R.buffers, (unsigned long long)R.cpu_us,
++        (unsigned long long)R.backlog, (unsigned long long)R.deadlines,
++        (unsigned long long)R.gaps, (unsigned long long)R.overflow, R.pending_count,
++        (unsigned long long)R.peaks, (unsigned long long)R.budget_drops,
++        (unsigned long long)R.duplicates, (unsigned long long)R.unknown, (unsigned long long)R.conflicts,
++        (unsigned long long)R.raw[0], (unsigned long long)R.raw[1], (unsigned long long)R.raw[2], (unsigned long long)R.raw[3],
++        (unsigned long long)R.extras[0], (unsigned long long)R.extras[1], (unsigned long long)R.extras[2], (unsigned long long)R.extras[3],
++        (unsigned long long)R.forwarded);
++    if (R.log && fclose(R.log)) perror("DSP audit log close");
++    R.log=NULL;
++}
+diff --git a/dsp_rescue.h b/dsp_rescue.h
+new file mode 100644
+index 0000000..6f5393f
+--- /dev/null
++++ b/dsp_rescue.h
+@@ -0,0 +1,12 @@
++/* SPDX-License-Identifier: GPL-3.0-or-later */
++#ifndef READSB_DSP_RESCUE_H
++#define READSB_DSP_RESCUE_H
++struct mag_buf;
++struct modesMessage;
++void dspRescueInit(void);
++void dspRescueBegin(const struct mag_buf *mag);
++void dspRescueCapture(struct mag_buf *out, const struct mag_buf *last, const unsigned char *raw, unsigned n);
++void dspRescueStock(const struct modesMessage *mm);
++void dspRescueProcess(const struct mag_buf *mag);
++void dspRescueCleanup(void);
++#endif
+diff --git a/dsp_rescue_coeffs.h b/dsp_rescue_coeffs.h
+new file mode 100644
+index 0000000..c1e5f52
+--- /dev/null
++++ b/dsp_rescue_coeffs.h
+@@ -0,0 +1,34 @@
++/* SPDX-License-Identifier: GPL-3.0-or-later */
++/* Generated from the contrib reference FIR and Kaiser/sinc timing weights. */
++static const float fir[102] = {
++    0x0.0p+0f, -0x1.a6a5b20000000p-60f, -0x1.d07d780000000p-11f, -0x1.d7b85c0000000p-10f, -0x1.22212e0000000p-9f, -0x1.b213f40000000p-10f,
++0x1.11aec80000000p-58f, 0x1.324ec00000000p-9f, 0x1.2209340000000p-8f, 0x1.50b7920000000p-8f, 0x1.dfc7660000000p-9f, -0x1.01db500000000p-57f,
++-0x1.390e820000000p-8f, -0x1.1f15cc0000000p-7f, -0x1.43f5880000000p-7f, -0x1.c209940000000p-8f, 0x1.9dbcf40000000p-57f, 0x1.1930900000000p-7f,
++0x1.fa35680000000p-7f, 0x1.18d4040000000p-6f, 0x1.802dd00000000p-7f, -0x1.2a8ba00000000p-56f, -0x1.d37d580000000p-7f, -0x1.a004120000000p-6f,
++-0x1.c8dd580000000p-6f, -0x1.35a5600000000p-6f, 0x1.8dce740000000p-56f, 0x1.73212c0000000p-6f, 0x1.484bc80000000p-5f, 0x1.66c4d60000000p-5f,
++0x1.e47bee0000000p-6f, -0x1.f0a3f60000000p-56f, -0x1.2130f60000000p-5f, -0x1.ffa03c0000000p-5f, -0x1.17f8fa0000000p-4f, -0x1.7b44840000000p-5f,
++0x1.250ee20000000p-55f, 0x1.ca58520000000p-5f, 0x1.9969740000000p-4f, 0x1.c5d5d00000000p-4f, 0x1.387d780000000p-4f, -0x1.48c4bc0000000p-55f,
++-0x1.8c15580000000p-4f, -0x1.6e14ce0000000p-3f, -0x1.a814640000000p-3f, -0x1.35608c0000000p-3f, 0x1.5fd02e0000000p-55f, 0x1.d878700000000p-3f,
++0x1.006d300000000p-1f, 0x1.825d1c0000000p-1f, 0x1.dedaa40000000p-1f, 0x1.002aa20000000p+0f, 0x1.dedaa40000000p-1f, 0x1.825d1c0000000p-1f,
++0x1.006d300000000p-1f, 0x1.d878700000000p-3f, 0x1.5fd02e0000000p-55f, -0x1.35608c0000000p-3f, -0x1.a814640000000p-3f, -0x1.6e14ce0000000p-3f,
++-0x1.8c15580000000p-4f, -0x1.48c4bc0000000p-55f, 0x1.387d780000000p-4f, 0x1.c5d5d00000000p-4f, 0x1.9969740000000p-4f, 0x1.ca58520000000p-5f,
++0x1.250ee20000000p-55f, -0x1.7b44840000000p-5f, -0x1.17f8fa0000000p-4f, -0x1.ffa03c0000000p-5f, -0x1.2130f60000000p-5f, -0x1.f0a3f60000000p-56f,
++0x1.e47bee0000000p-6f, 0x1.66c4d60000000p-5f, 0x1.484bc80000000p-5f, 0x1.73212c0000000p-6f, 0x1.8dce740000000p-56f, -0x1.35a5600000000p-6f,
++-0x1.c8dd580000000p-6f, -0x1.a004120000000p-6f, -0x1.d37d580000000p-7f, -0x1.2a8ba00000000p-56f, 0x1.802dd00000000p-7f, 0x1.18d4040000000p-6f,
++0x1.fa35680000000p-7f, 0x1.1930900000000p-7f, 0x1.9dbcf40000000p-57f, -0x1.c209940000000p-8f, -0x1.43f5880000000p-7f, -0x1.1f15cc0000000p-7f,
++-0x1.390e820000000p-8f, -0x1.01db500000000p-57f, 0x1.dfc7660000000p-9f, 0x1.50b7920000000p-8f, 0x1.2209340000000p-8f, 0x1.324ec00000000p-9f,
++0x1.11aec80000000p-58f, -0x1.b213f40000000p-10f, -0x1.22212e0000000p-9f, -0x1.d7b85c0000000p-10f, -0x1.d07d780000000p-11f, -0x1.a6a5b20000000p-60f
++};
++static const int64_t shifts[6] = {
++    -1, -1, -1, 0, 0, 1
++};
++static const float weights[48] = {
++    0x1.ba290c0000000p-60f, -0x1.978b300000000p-57f, 0x1.ea9ca60000000p-56f, 0x1.0000000000000p+0f, 0x1.678afa0000000p-55f, -0x1.ea9ca60000000p-56f,
++0x1.978b300000000p-57f, -0x1.ba290c0000000p-60f, -0x1.b4c6e20000000p-9f, 0x1.19cea40000000p-5f, -0x1.1ab4b00000000p-3f, 0x1.36c5080000000p-1f,
++0x1.36c5080000000p-1f, -0x1.1ab4b00000000p-3f, 0x1.19cea40000000p-5f, -0x1.b4c6e20000000p-9f, -0x1.23b8d80000000p-9f, 0x1.6ea8aa0000000p-6f,
++-0x1.5acf2e0000000p-4f, 0x1.2884740000000p-2f, 0x1.bcc6ac0000000p-1f, -0x1.e588740000000p-4f, 0x1.c0237c0000000p-6f, -0x1.509a340000000p-9f,
++-0x1.509a340000000p-9f, 0x1.c0237c0000000p-6f, -0x1.e588740000000p-4f, 0x1.bcc6ac0000000p-1f, 0x1.2884740000000p-2f, -0x1.5acf2e0000000p-4f,
++0x1.6ea8aa0000000p-6f, -0x1.23b8d80000000p-9f, -0x1.b4c6e20000000p-9f, 0x1.19cea40000000p-5f, -0x1.1ab4b00000000p-3f, 0x1.36c5080000000p-1f,
++0x1.36c5080000000p-1f, -0x1.1ab4b00000000p-3f, 0x1.19cea40000000p-5f, -0x1.b4c6e20000000p-9f, 0x1.ba290c0000000p-60f, -0x1.978b300000000p-57f,
++0x1.ea9ca60000000p-56f, 0x1.0000000000000p+0f, 0x1.678afa0000000p-55f, -0x1.ea9ca60000000p-56f, 0x1.978b300000000p-57f, -0x1.ba290c0000000p-60f
++};
+diff --git a/help.h b/help.h
+index 3845f04..b9ef605 100644
+--- a/help.h
++++ b/help.h
+@@ -80,6 +80,10 @@ static struct argp_option optionsReadsb[] = {
+     {"freq", OptFreq, "<hz>", 0, "Set frequency (default: 1090 MHz)", 1},
+     {"interactive", OptInteractive, 0, 0, "Interactive mode refreshing data on screen. Implies --throttle", 1},
+     {"raw", OptRaw, 0, 0, "Show only messages hex values", 1},
++    {"dsp-rescue", OptDspRescue, 0, 0, "Experimental native DSP rescue in shadow mode (RTL-SDR / UC8 ifile only)", 1},
++    {"dsp-rescue-output", OptDspRescueOutput, 0, 0, "Opt in to forwarding guarded DSP additions; requires --dsp-rescue", 1},
++    {"dsp-rescue-log", OptDspRescueLog, "FILE", 0, "Optional candidate audit JSONL (offline validation; may block on disk)", 1},
++    {"dsp-rescue-budget-us", OptDspRescueBudget, "100-50000", 0, "Rescue wall-time budget per input buffer (default: min(5000us, 10% RF duration))", 1},
+     {"preamble-threshold", OptPreambleThreshold, "<"stringize(PREAMBLE_THRESHOLD_MIN)"-"stringize(PREAMBLE_THRESHOLD_MAX)">", 0, "lower threshold --> more CPU usage (default: "stringize(PREAMBLE_THRESHOLD_DEFAULT)", pi zero / pi 1: "stringize(PREAMBLE_THRESHOLD_PIZERO)", hot CPU "stringize(PREAMBLE_THRESHOLD_HOT)")", 1},
+     {"forward-mlat", OptForwardMlat, 0, 0, "Forward received beast mlat results to beast output ports", 1},
+     {"forward-mlat-sbs", OptForwardMlatSbs, 0, 0, "Forward received mlat results to sbs output ports", 1},
+diff --git a/readsb.c b/readsb.c
+index 596093a..21a2946 100644
+--- a/readsb.c
++++ b/readsb.c
+@@ -53,6 +53,7 @@
+ 
+ #include <sched.h>
+ #include "readsb.h"
++#include "dsp_rescue.h"
+ #include "help.h"
+ 
+ #include <sys/time.h>
+@@ -349,6 +350,8 @@ static void modesInit(void) {
+ 
+     Modes.sample_rate = (double)2400000.0;
+ 
++    dspRescueInit();
++
+     // Allocate the various buffers used by Modes
+     Modes.trailing_samples = (unsigned)((MODES_PREAMBLE_US + MODES_LONG_MSG_BITS + 16) * 1e-6 * Modes.sample_rate);
+ 
+@@ -361,6 +364,9 @@ static void modesInit(void) {
+             }
+             memset(Modes.mag_buffers[i].data, 0, alloc);
+ 
++            if (Modes.dsp_rescue)
++                Modes.mag_buffers[i].rescue_iq = cmalloc(alloc); // UC8: two bytes/sample
++
+             Modes.mag_buffers[i].length = 0;
+             Modes.mag_buffers[i].dropped = 0;
+             Modes.mag_buffers[i].sampleTimestamp = 0;
+@@ -1057,6 +1063,7 @@ static void *decodeEntryPoint(void *arg) {
+                 if (Modes.mode_ac) {
+                     demodulate2400AC(buf);
+                 }
++                dspRescueProcess(buf);
+ 
+                 gainStatistics(buf);
+                 timingStatistics(buf);
+@@ -1471,7 +1478,10 @@ static void cleanup_and_exit(int code) {
+     int i;
+     for (i = 0; i < MODES_MAG_BUFFERS; ++i) {
+         sfree(Modes.mag_buffers[i].data);
++        sfree(Modes.mag_buffers[i].rescue_iq);
+     }
++    dspRescueCleanup();
++    sfree(Modes.dsp_rescue_log);
+     crcCleanupTables();
+ 
+     receiverCleanup();
+@@ -1711,6 +1721,27 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
+         case OptRaw:
+             Modes.raw = 1;
+             break;
++        case OptDspRescue:
++            Modes.dsp_rescue = 1;
++            break;
++        case OptDspRescueOutput:
++            Modes.dsp_rescue_output = 1;
++            break;
++        case OptDspRescueLog:
++            free(Modes.dsp_rescue_log);
++            Modes.dsp_rescue_log = strdup(arg);
++            break;
++        case OptDspRescueBudget: {
++            char *end;
++            errno = 0;
++            long value = strtol(arg, &end, 10);
++            if (errno || *end || value < 100 || value > 50000) {
++                fprintf(stderr, "DSP budget must be an integer from 100 to 50000 us\n");
++                return ARGP_ERR_UNKNOWN;
++            }
++            Modes.dsp_rescue_budget_us = value;
++            break;
++        }
+         case OptPreambleThreshold:
+             Modes.preambleThreshold = (uint32_t) (imax(imin(strtoll(arg, NULL, 10), PREAMBLE_THRESHOLD_MAX), PREAMBLE_THRESHOLD_MIN));
+             break;
+diff --git a/readsb.h b/readsb.h
+index de8b120..ca4eac3 100644
+--- a/readsb.h
++++ b/readsb.h
+@@ -518,6 +518,7 @@ struct mag_buf
+     uint32_t noiseLowSamples;
+     uint32_t noiseHighSamples;
+     uint32_t padding2;
++    uint8_t *rescue_iq; // Optional UC8 history + samples; reader-owned until publication.
+     uint16_t *data; // Magnitude data. Starts with Modes.trailing_samples worth of overlap from the previous block
+ #if defined(__arm__)
+     /*padding 4 bytes*/
+@@ -830,6 +831,10 @@ struct _Modes
+     uint32_t process_only; // Only process messages from this ICAO
+     uint64_t receiver_focus;
+ 
++    int dsp_rescue;
++    int dsp_rescue_output;
++    unsigned dsp_rescue_budget_us;
++    char *dsp_rescue_log;
+     uint32_t preambleThreshold;
+     uint32_t net_forward_min_messages;
+     int net_output_flush_size; // Minimum Size of output data
+@@ -1266,6 +1271,10 @@ enum {
+     OptNoInteractive,
+     OptInteractiveTTL,
+     OptRaw,
++    OptDspRescue,
++    OptDspRescueOutput,
++    OptDspRescueLog,
++    OptDspRescueBudget,
+     OptPreambleThreshold,
+     OptModeAc,
+     OptModeAcAuto,
+diff --git a/sdr_ifile.c b/sdr_ifile.c
+index 36feb9e..02d4319 100644
+--- a/sdr_ifile.c
++++ b/sdr_ifile.c
+@@ -53,6 +53,7 @@
+ // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
+ #include "readsb.h"
++#include "dsp_rescue.h"
+ #include "sdr_ifile.h"
+ 
+ static struct {
+@@ -115,6 +116,10 @@ bool ifileHandleOption(int key, char *arg) {
+ //
+ 
+ bool ifileOpen(void) {
++    if (Modes.dsp_rescue && ifile.input_format != INPUT_UC8) {
++        fprintf(stderr, "DSP rescue supports UC8 ifile input only\n");
++        return false;
++    }
+     if (!ifile.filename) {
+         fprintf(stderr, "SDR type 'ifile' requires an --ifile argument\n");
+         return false;
+@@ -238,6 +243,8 @@ void ifileRun() {
+         slen = outbuf->length = Modes.sdr_buf_samples - toread / ifile.bytes_per_sample;
+         sampleCounter += slen;
+ 
++        dspRescueCapture(outbuf, lastbuf, ifile.readbuf, slen);
++
+         // Convert the new data
+         ifile.converter(ifile.readbuf, &outbuf->data[Modes.trailing_samples], slen, ifile.converter_state, &outbuf->mean_level, &outbuf->mean_power);
+ 
+diff --git a/sdr_rtlsdr.c b/sdr_rtlsdr.c
+index fa7ba28..6f4edba 100644
+--- a/sdr_rtlsdr.c
++++ b/sdr_rtlsdr.c
+@@ -53,6 +53,7 @@
+ // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
+ #include "readsb.h"
++#include "dsp_rescue.h"
+ #include "sdr_rtlsdr.h"
+ 
+ #include <rtl-sdr.h>
+@@ -459,6 +460,8 @@ void rtlsdrCallback(unsigned char *buf, uint32_t len, void *ctx) {
+     buf = RTLSDR.bounce_buffer;
+ #endif
+ 
++    dspRescueCapture(outbuf, lastbuf, buf, slen);
++
+     // Convert the new data
+     outbuf->length = slen;
+     RTLSDR.converter(buf, &outbuf->data[Modes.trailing_samples], slen, RTLSDR.converter_state, &outbuf->mean_level, &outbuf->mean_power);
+diff --git a/tests/dsp-rescue/.gitignore b/tests/dsp-rescue/.gitignore
+new file mode 100644
+index 0000000..94ef915
+--- /dev/null
++++ b/tests/dsp-rescue/.gitignore
+@@ -0,0 +1,2 @@
++/unit
++/unit.dSYM/
+diff --git a/tests/dsp-rescue/README.md b/tests/dsp-rescue/README.md
+new file mode 100644
+index 0000000..1e4560e
+--- /dev/null
++++ b/tests/dsp-rescue/README.md
+@@ -0,0 +1,41 @@
++# Native DSP integration checks
++
++Run from the readsb checkout. No tests access SDR hardware, feeder services or
++network outputs. ASan/UBSan need GCC/Clang support. The replay harness uses NumPy
++only to generate fixtures; readsb itself has no Python dependency.
++
++```sh
++make -j2
++make test
++make dsp-rescue-test
++make dsp-rescue-test-sanitize
++make -C contrib/dsp-rescue test PYTHON=/path/to/python-with-numpy-scipy
++```
++
++Build a separate untouched stock checkout at
++`9460652952a62fcfd9bf11a2664d737147f266a5`. Then:
++
++```sh
++python3 tests/dsp-rescue/replay.py \
++  --readsb ./readsb --stock-readsb /path/to/stock/readsb \
++  --capture /path/to/private-2.4MSps.uc8 --output /tmp/native-validation.json
++```
++
++Omit `--capture` for generated fixtures alone. The harness checks every stock
++(timestamp,payload) record against disabled, shadow, output-enabled and 100us
++budget modes. Stock must be preserved in each, with no non-stock output in
++shadow/disabled modes. Explicit output's added count must match `forwarded`.
++It also tests eleven synthetic packets (five sample subphases and six buffer
++boundaries), uniform noise, shuffled real I/Q and six invalid configurations.
++
++`unit.c` tests prior-stock-only identity (including future/expired/repaired stock
++rejection), duplicates, conflicting messages, shadow isolation, explicit output,
++wall-budget discard, discontinuity reset, live backlog skip, one/two-bit header
++protection, UC8 history copying, short-buffer native bounds and global FIR phase.
++It includes the private implementation to inspect caches without exposing a test
++API in readsb. The normal network/decoder functions are stubbed in that test only.
++
++The standalone unit executable is ignored by Git. Never commit private UC8,
++per-aircraft audit logs or timestamped receiver output. Aggregate validation
++results can be shared separately. Upstream ifile currently exits 1 at EOF; the
++harness checks actual records and rescue summaries in addition to the exit code.
+diff --git a/tests/dsp-rescue/replay.py b/tests/dsp-rescue/replay.py
+new file mode 100644
+index 0000000..c3ae431
+--- /dev/null
++++ b/tests/dsp-rescue/replay.py
+@@ -0,0 +1,126 @@
++#!/usr/bin/env python3
++# SPDX-License-Identifier: GPL-3.0-or-later
++"""Local-file integration controls; never opens a receiver or network port.
++
++Requires NumPy for generated fixtures only. Optional --capture is UC8 at 2.4MS/s.
++Raw inputs/output stay in the caller's temporary directory, not source control.
++"""
++import argparse
++from collections import Counter
++import hashlib
++import json
++from pathlib import Path
++import re
++import subprocess
++import tempfile
++import time
++
++import numpy as np
++
++PATTERN = re.compile(rb'@([0-9a-fA-F]{12})([0-9a-fA-F]+);')
++EXAMPLE = bytes.fromhex('8d40621d58c382d690c8ac2863a7')
++
++
++def run(exe, path, options):
++    start = time.monotonic()
++    proc = subprocess.run([str(exe), '--device-type', 'ifile', '--ifile', str(path),
++                           '--iformat', 'UC8', '--raw', '--mlat', *options],
++                          capture_output=True, timeout=60)
++    records = Counter((int(t, 16), m.lower()) for t, m in PATTERN.findall(proc.stdout))
++    summary = re.search(rb'DSP rescue summary: (.*)', proc.stderr)
++    # Upstream ifile currently exits 1 at EOF. Require actual records/summary below.
++    assert proc.returncode in (0, 1), proc.stderr.decode(errors='replace')
++    result = {'exit': proc.returncode, 'wall_s': time.monotonic()-start,
++              'records': sum(records.values()),
++              'df17': sum(n for (_, m), n in records.items() if int(m[:2], 16) >> 3 == 17)}
++    if summary:
++        result['rescue'] = json.loads(summary[1])
++    return records, result
++
++
++def compare(exe, stock_exe, path):
++    stock, baseline = run(stock_exe, path, [])
++    report = {'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'stock': baseline}
++    for name, options in [('disabled', []), ('shadow', ['--dsp-rescue']),
++                          ('output', ['--dsp-rescue', '--dsp-rescue-output']),
++                          ('tight_budget', ['--dsp-rescue', '--dsp-rescue-budget-us', '100'])]:
++        received, r = run(exe, path, options)
++        r['missing_stock_records'] = sum((stock-received).values())
++        r['extra_records'] = sum((received-stock).values())
++        assert not r['missing_stock_records'], (name, r)
++        if name != 'output':
++            assert received == stock, (name, r)
++        if name != 'disabled':
++            assert r['rescue']['forwarded'] == (r['extra_records'] if name == 'output' else 0)
++        report[name] = r
++    return report
++
++
++def fixture(path):
++    rng = np.random.default_rng(251025)
++    raw = np.clip(np.rint(rng.normal(127.5, 1, (480000, 2))), 0, 255).astype(np.uint8)
++    # Include every 12MHz subphase and starts on both sides of 65536-sample
++    # SDR buffer boundaries, including packets extending across them.
++    # Avoid mutual overlaps; individual boundary offsets tested across blocks.
++    starts = [2000 + p*12000 + p/5 for p in range(5)] + [65536*b+(-200,-40,2,50,-120,10)[b-1] for b in range(1,7)]
++    bits = np.unpackbits(np.frombuffer(EXAMPLE, np.uint8))
++    for start in starts:
++        lo, hi = int(start)-4, int(start)+300
++        t = (np.arange(lo, hi)-start)/2.4 # microseconds
++        on = np.zeros(len(t), bool)
++        for pulse in (0, 1, 3.5, 4.5):
++            on |= (t >= pulse) & (t < pulse+.5)
++        b = np.floor(t-8).astype(int)
++        valid = (b >= 0) & (b < 112)
++        phase = t[valid]-8-b[valid]
++        on[valid] |= np.where(bits[b[valid]], phase < .5, phase >= .5)
++        raw[lo:hi, 0] = np.where(on, 210, 128).astype(np.uint8)
++        raw[lo:hi, 1] = 128
++    path.write_bytes(raw.tobytes())
++    return len(starts)
++
++
++def main():
++    p = argparse.ArgumentParser(description=__doc__)
++    p.add_argument('--readsb', type=Path, default=Path('./readsb'))
++    p.add_argument('--stock-readsb', type=Path, required=True)
++    p.add_argument('--capture', type=Path)
++    p.add_argument('--output', type=Path, required=True)
++    a = p.parse_args()
++    exe, stock = a.readsb.resolve(), a.stock_readsb.resolve()
++    report = {}
++    with tempfile.TemporaryDirectory(prefix='readsb-native-dsp-') as tmp:
++        tmp = Path(tmp)
++        raw = tmp/'synthetic.uc8'
++        report['synthetic_packets'] = fixture(raw)
++        report['synthetic_boundaries'] = compare(exe, stock, raw)
++        assert report['synthetic_boundaries']['stock']['df17'] == report['synthetic_packets']
++        # Pure noise and shuffled real I/Q pairs are false-positive controls,
++        # not proof that CRC-valid rescue candidates are independently true.
++        noise = np.random.default_rng(251025).integers(0,256,(480000,2),dtype=np.uint8)
++        path=tmp/'noise.uc8'; path.write_bytes(noise.tobytes())
++        _, r = run(exe, path, ['--dsp-rescue', '--dsp-rescue-budget-us', '50000'])
++        assert sum(r['rescue']['raw']) == 0, r
++        report['noise'] = r
++        if a.capture:
++            report['recorded'] = compare(exe, stock, a.capture)
++            pairs=np.fromfile(a.capture,dtype=np.uint8).reshape(-1,2).copy()
++            np.random.default_rng(251025).shuffle(pairs)
++            path=tmp/'shuffled.uc8';path.write_bytes(pairs.tobytes())
++            _, r=run(exe,path,['--dsp-rescue','--dsp-rescue-budget-us','50000'])
++            assert sum(r['rescue']['raw']) == 0, r
++            report['shuffled'] = r
++        # Reject configuration mistakes before reading from SDR/input.
++        for opts in (['--dsp-rescue-output'], ['--dsp-rescue-budget-us','oops'],
++                     ['--dsp-rescue-budget-us','0'], ['--dsp-rescue-budget-us','50001'],
++                     ['--net-only','--dsp-rescue'],
++                     ['--device-type','ifile','--ifile',str(raw),'--iformat','SC16','--dsp-rescue']):
++            proc=subprocess.run([str(exe),*opts],capture_output=True,timeout=10)
++            assert proc.returncode != 0, opts
++        report['invalid_configurations_rejected']=6
++    a.output.write_text(json.dumps(report,indent=2)+'\n')
++    print(json.dumps(report,indent=2))
++
++
++if __name__ == '__main__':
++    main()
+diff --git a/tests/dsp-rescue/unit.c b/tests/dsp-rescue/unit.c
+new file mode 100644
+index 0000000..f266a15
+--- /dev/null
++++ b/tests/dsp-rescue/unit.c
+@@ -0,0 +1,104 @@
++/* SPDX-License-Identifier: GPL-3.0-or-later */
++/* Include the implementation to test private, bounded streaming/guard state. */
++#include "../../dsp_rescue.c"
++#include <assert.h>
++struct _Modes Modes;
++static struct modesMessage test_mm;
++static unsigned sends;
++void lockReader(void) {}
++void unlockReader(void) {}
++struct modesMessage *netGetMM(struct messageBuffer *b) { (void)b; memset(&test_mm, 0, sizeof(test_mm)); return &test_mm; }
++int decodeModesMessage(struct modesMessage *mm) { return checksum(mm->msg) ? -2 : 0; }
++void netUseMessage(struct modesMessage *mm) { (void)mm; sends++; }
++void netDrainMessageBuffers(void) {}
++
++static const uint8_t example[14] = {0x8d,0x40,0x62,0x1d,0x58,0xc3,0x82,0xd6,0x90,0xc8,0xac,0x28,0x63,0xa7};
++static struct rescue_event event(int64_t t) {
++    struct rescue_event e = {.ticks=t, .sys=1000}; memcpy(e.msg, example, 14); return e;
++}
++static void reset(void) { memset(&R,0,sizeof(R)); memset(&Modes,0,sizeof(Modes)); Modes.dsp_rescue=1; Modes.nfix_crc=1; sends=0; }
++static void stock(int64_t t) {
++    struct modesMessage mm={.timestamp=t,.msgtype=17}; memcpy(mm.msg,example,14); dspRescueStock(&mm);
++}
++static void guards(void) {
++    reset(); struct rescue_event e=event(24000000);
++    assert(!checksum(example));
++    assert(!guarded(&e)); // no stock identity
++    stock(e.ticks+2000); assert(!guarded(&e)); // future identity cannot seed
++    stock(e.ticks-12000000); assert(guarded(&e));
++    stock(e.ticks-1); assert(!guarded(&e)); // duplicate of stock
++    reset(); stock(e.ticks-31*12000000LL); assert(!guarded(&e)); // expired
++    reset(); stock(e.ticks-12000000);
++    R.accepted[0]=e; R.accepted_count=1; R.accepted_at=1;
++    assert(!guarded(&e)); // cross-method duplicate
++    R.accepted[0].msg[5]^=1; assert(!guarded(&e)); // same-time conflict
++    reset(); stock(e.ticks-12000000); R.stock[0].corrected=1;
++    assert(!guarded(&e)); // repaired stock cannot establish identity
++    reset(); stock(e.ticks-12000000); R.pending[0]=e; R.pending_count=1;
++    release_pending(monotonic_us()+1000000); assert(R.extras[0]==1 && sends==0);
++    reset(); stock(e.ticks-12000000); R.pending[0]=e; R.pending_count=1; Modes.dsp_rescue_output=1;
++    release_pending(monotonic_us()+1000000); assert(sends==1 && R.forwarded==1);
++    reset(); stock(e.ticks-12000000); R.pending[0]=e; R.pending_count=1;
++    release_pending(0); assert(!R.pending_count && !sends && R.budget_drops==1);
++    struct mag_buf mag={.sampleTimestamp=2000,.length=100,.dropped=1};
++    dspRescueBegin(&mag); assert(!R.stock_count && !R.accepted_count && !R.pending_count);
++    assert(R.expected==2500 && R.valid_from==400);
++    reset(); Modes.sdr_type=SDR_RTLSDR; Modes.first_free_buffer=3;
++    uint8_t iq[200]={0}; mag.rescue_iq=iq; R.pending_count=1;
++    dspRescueProcess(&mag);
++    assert(R.backlog==1 && !R.pending_count && !R.cpu_us);
++}
++static void weak_bits(void) {
++    float iq[2*504]={0}; uint8_t row[14];
++    for (int b=0;b<112;b++) {
++        int bit=(example[b/8]>>(7-b%8))&1;
++        int at=32+4*b+(bit?0:2);
++        iq[2*at]=iq[2*(at+1)]=1;
++    }
++    for (int b=65;b<=66;b++) {
++        int at=32+4*b, bit=(example[b/8]>>(7-b%8))&1;
++        for(int q=0;q<4;q++) iq[2*(at+q)]=((q<2)==bit)?.65f:.7f;
++    }
++    assert(soft(iq,0,row)==2 && !memcmp(row,example,14));
++    Modes.nfix_crc=0; assert(!soft(iq,0,row)); Modes.nfix_crc=1;
++    /* A third weak error in the protected header must never be guessed. */
++    int at=32+4*8, bit=(example[1]>>7)&1;
++    for(int q=0;q<4;q++) iq[2*(at+q)]=((q<2)==bit)?.65f:.7f;
++    assert(!soft(iq,0,row));
++}
++static void buffers(void) {
++    reset(); Modes.trailing_samples=326; Modes.sdr_type=SDR_IFILE;
++    Modes.dsp_rescue_budget_us=50000;
++    unsigned capacity=16384;
++    uint8_t *raw=malloc(2*capacity), *prev=malloc(2*(capacity+326));
++    uint8_t *next=malloc(2*(capacity+326));
++    assert(raw && prev && next);
++    for (unsigned i=0;i<2*capacity;i++) raw[i]=(i*17+11)%256;
++    struct mag_buf last={.rescue_iq=prev,.sampleTimestamp=0,.length=capacity};
++    struct mag_buf out={.rescue_iq=next,.sampleTimestamp=capacity*5,.length=capacity};
++    memset(prev,44,2*(capacity+326));
++    dspRescueCapture(&out,&last,raw,capacity);
++    assert(!memcmp(next,prev+2*capacity,652));
++    assert(!memcmp(next+652,raw,2*capacity));
++    out.dropped=1; dspRescueCapture(&out,&last,raw,capacity);
++    for(int i=0;i<652;i++) assert(next[i]==127);
++    /* Short chunks, all three resampling phases and continuous boundaries. */
++    for (unsigned phase=0;phase<3;phase++) for(unsigned n=64;n<16000;n=n*2+1) {
++        out.sampleTimestamp=(capacity+phase)*5; out.length=n;
++        dspRescueBegin(&out); dspRescueProcess(&out);
++    }
++    /* Global-phase resampling agrees when one physical window is described
++     * using different input origins. This catches block-length modulo-3 drift. */
++    out.length=capacity; out.dropped=0;
++    for (int phase=0;phase<3;phase++) {
++        int64_t base=123456+phase, first=(base+100)*5/3;
++        resample(&out,first,100,base);
++        float reference[200]; memcpy(reference,R.iq,sizeof(reference));
++        /* Shift the origin and data pointer by 3 input samples (5 outputs). */
++        struct mag_buf shifted=out; shifted.rescue_iq+=6;
++        resample(&shifted,first,100,base+3);
++        for(int k=0;k<200;k++) assert(reference[k]==R.iq[k]);
++    }
++    free(raw); free(prev); free(next);
++}
++int main(void) { guards(); weak_bits(); buffers(); puts("native DSP guards, weak bits, capture, streaming bounds: OK"); }
+-- 
+2.56.0
+

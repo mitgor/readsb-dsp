@@ -1,0 +1,1596 @@
+From 0bcfeca441a011e84b8823522cdda31a0e3d158d Mon Sep 17 00:00:00 2001
+From: mitgor <mitgor@gmail.com>
+Date: Sun, 25 Oct 2026 21:45:45 +0100
+Subject: [PATCH] contrib: add a bounded DSP-only DF17 rescue replay prototype
+
+Add an opt-in reference tool for comparing clipped energy slicing,
+fractional timing retries, bounded weak-bit correction and preamble-derived
+matched filtering against a paired readsb replay.
+
+Keep native kernels isolated from the normal readsb build. Require a verified
+shared RF clock, stock-only prior identity, CRC validity and conservative
+transmission deduplication before counting provisional additions. The tool
+writes local JSON only; no SDR ownership, feeder output, learned components
+or service configuration is included.
+
+Include independent numerical references, guard/boundary tests, a native
+ASan/UBSan harness and limited paired replay results. This proposal is an
+offline contrib prototype; native live-demodulator integration remains a
+separate design/review step.
+---
+ contrib/dsp-rescue/.gitignore                 |   9 +
+ contrib/dsp-rescue/Makefile                   |  24 ++
+ contrib/dsp-rescue/README.md                  | 141 +++++++++
+ contrib/dsp-rescue/VALIDATION.md              |  69 +++++
+ contrib/dsp-rescue/dsp_rescue/__init__.py     |   1 +
+ contrib/dsp-rescue/dsp_rescue/__main__.py     | 101 +++++++
+ contrib/dsp-rescue/dsp_rescue/compare.py      | 102 +++++++
+ contrib/dsp-rescue/dsp_rescue/decode.py       | 104 +++++++
+ contrib/dsp-rescue/dsp_rescue/dsp.py          | 103 +++++++
+ contrib/dsp-rescue/dsp_rescue/frontend.c      | 280 ++++++++++++++++++
+ contrib/dsp-rescue/dsp_rescue/native.py       | 167 +++++++++++
+ contrib/dsp-rescue/dsp_rescue/soft.py         |  77 +++++
+ contrib/dsp-rescue/requirements.txt           |   2 +
+ contrib/dsp-rescue/tests/bounds.c             |  23 ++
+ contrib/dsp-rescue/tests/reference_matched.py |  31 ++
+ contrib/dsp-rescue/tests/test_compare.py      |  67 +++++
+ contrib/dsp-rescue/tests/test_dsp.py          | 134 +++++++++
+ 17 files changed, 1435 insertions(+)
+ create mode 100644 contrib/dsp-rescue/.gitignore
+ create mode 100644 contrib/dsp-rescue/Makefile
+ create mode 100644 contrib/dsp-rescue/README.md
+ create mode 100644 contrib/dsp-rescue/VALIDATION.md
+ create mode 100644 contrib/dsp-rescue/dsp_rescue/__init__.py
+ create mode 100644 contrib/dsp-rescue/dsp_rescue/__main__.py
+ create mode 100644 contrib/dsp-rescue/dsp_rescue/compare.py
+ create mode 100644 contrib/dsp-rescue/dsp_rescue/decode.py
+ create mode 100644 contrib/dsp-rescue/dsp_rescue/dsp.py
+ create mode 100644 contrib/dsp-rescue/dsp_rescue/frontend.c
+ create mode 100644 contrib/dsp-rescue/dsp_rescue/native.py
+ create mode 100644 contrib/dsp-rescue/dsp_rescue/soft.py
+ create mode 100644 contrib/dsp-rescue/requirements.txt
+ create mode 100644 contrib/dsp-rescue/tests/bounds.c
+ create mode 100644 contrib/dsp-rescue/tests/reference_matched.py
+ create mode 100644 contrib/dsp-rescue/tests/test_compare.py
+ create mode 100644 contrib/dsp-rescue/tests/test_dsp.py
+
+diff --git a/contrib/dsp-rescue/.gitignore b/contrib/dsp-rescue/.gitignore
+new file mode 100644
+index 0000000..fb3d36f
+--- /dev/null
++++ b/contrib/dsp-rescue/.gitignore
+@@ -0,0 +1,9 @@
++.venv/
++__pycache__/
++*.so
++*.dylib
++*.uc8
++*.jsonl
++
++.bounds-test
++*.dSYM/
+diff --git a/contrib/dsp-rescue/Makefile b/contrib/dsp-rescue/Makefile
+new file mode 100644
+index 0000000..050f550
+--- /dev/null
++++ b/contrib/dsp-rescue/Makefile
+@@ -0,0 +1,24 @@
++PYTHON ?= python3
++CC ?= cc
++CFLAGS ?= -O3
++# Reproducible comparisons require normal IEEE arithmetic (no fast-math).
++DSP_CFLAGS = -std=c11 -Wall -Wextra -Werror -ffp-contract=off -fPIC
++
++.PHONY: all test clean
++all: dsp_rescue/_frontend.so
++
++dsp_rescue/_frontend.so: dsp_rescue/frontend.c
++	$(CC) $(CFLAGS) $(DSP_CFLAGS) -shared $< -lm -o $@
++
++test: all
++	OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 $(PYTHON) -m unittest discover -s tests -v
++
++clean:
++	rm -f dsp_rescue/_frontend.so
++
++.PHONY: test-bounds
++test-bounds:
++	$(CC) -O1 -g -std=c11 -ffp-contract=off -fsanitize=address,undefined -fno-omit-frame-pointer tests/bounds.c -lm -o .bounds-test
++	./.bounds-test
++	$(RM) .bounds-test
++	$(RM) -r .bounds-test.dSYM
+diff --git a/contrib/dsp-rescue/README.md b/contrib/dsp-rescue/README.md
+new file mode 100644
+index 0000000..4fe834b
+--- /dev/null
++++ b/contrib/dsp-rescue/README.md
+@@ -0,0 +1,141 @@
++# Experimental energy and DSP rescue replay
++
++This opt-in `contrib` tool evaluates additional DF17 recovery from 2.4 MS/s UC8
++recordings. It contains a native C front end and a small NumPy/SciPy replay driver.
++It does not change readsb's demodulator, default build, SDR handling, tracking,
++network output or service configuration. No inference engine, learned weights,
++training code or external decoder service is needed.
++
++This is a reference implementation for algorithm and false-positive review,
++**not an integrated readsb demodulator replacement or a production feeder**.
++The only outputs are local JSON files. None of the candidates is independent
++RF ground truth; CRC and track identity guards do not prove correctness.
++
++## Build and test
++
++Python 3.10+, a C11 compiler and libm are required. The optional Python packages
++are isolated from the readsb executable and its normal build dependencies.
++
++```sh
++cd contrib/dsp-rescue
++python3 -m venv .venv
++.venv/bin/pip install -r requirements.txt
++make
++make test PYTHON=.venv/bin/python
++make test-bounds             # optional ASan/UBSan build, supported compiler needed
++```
++
++The tests use generated signals and public Mode S example payloads. They compare
++energy slicing, fractional timing and matched filtering with independent NumPy
++references; check FIR phase and overlap; exercise bounded weak-bit correction;
++and verify clock, deduplication and prior-stock-identity guards.
++`test-bounds` sweeps empty/short buffers, extreme start offsets and native window
++boundaries under AddressSanitizer and UndefinedBehaviorSanitizer.
++
++## Paired replay
++
++Record interleaved unsigned I/Q at **exactly 2,400,000 complex samples/second**.
++The input file has I,Q byte pairs, centered at 127.5. Other sample rates and sample
++formats are not supported. A replay without `--stock` reports raw candidates,
++not improvements over readsb:
++
++```sh
++OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
++  .venv/bin/python -m dsp_rescue capture.uc8 --output report.json
++```
++
++To measure additions, pass a stock replay of the **same complete capture**, with
++sample-clock-relative preamble timestamps in seconds. JSON input is a list like:
++
++```json
++[{"seconds": 0.002887416666666667,
++  "message_hex": "8d40621d58c382d690c8ac2863a7", "source": "stock"}]
++```
++
++Alternatively, use readsb's timestamped raw output (`@<12 hex ticks><payload>;`):
++
++```sh
++../../readsb --device-type ifile --ifile capture.uc8 --iformat UC8 \
++  --raw --mlat > stock.txt
++
++OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
++  .venv/bin/python -m dsp_rescue capture.uc8 --stock stock.txt \
++  --stock-offset-us 199.83333333333334 --output comparison.json
++```
++
++**The example offset is specific to the tested 3.16.18 ifile path:** 64 µs for
++readsb's end-of-bit-56 timestamp plus 326 history samples / 2.4 MS/s. Verify the
++history and timestamp convention for the version/path being tested; a live tap
++or another SDR path can have a different origin. Do not infer RF time from TCP
++arrival timestamps. Timestamped text requires an explicit offset. The tool then
++requires at least 20 distinct stock transmission matches from the energy slicer,
++with median absolute residual ≤2 µs. A failed clock audit produces no guarded
++additions and exits with status 2. Empty or failed stock replays cannot pass it.
++Some readsb ifile builds exit nonzero at EOF; inspect the replay output and audit
++rather than treating that exit code alone as a successful paired test.
++
++Use `--methods energy` for the energy-only counterfactual; add `timing`, `soft`
++and `matched` individually. `--budget` limits failed windows retried per 50 ms,
++default 32 and maximum 128. `--events` optionally writes raw candidate metadata;
++it never publishes or forwards messages. Reports include input/stock SHA-256,
++method counts, work budgets, RF duration, wall time and clock audit.
++
++## Algorithms
++
++The shared front end resamples 2.4 to 4 MS/s with a centered, 101-tap Kaiser FIR.
++Four-sample PPM symbols then permit simple integrated-energy comparisons. This
++interpolation does not create RF bandwidth. Native 50 ms blocks use 600-sample
++context on each side; ownership of candidate starts is half-open, so complete
++120 µs packets and FIR context cross block boundaries without double ownership.
++The preamble score is normalized energy correlation, threshold 0.4 by default.
++
++1. **Energy:** integrate the two samples in each PPM half-symbol, with per-packet
++   preamble-power normalization and clipping at 12 times that scale. Keep the
++   received DF bits, require DF17 and an unchanged zero-CRC payload.
++2. **Timing:** retry six offsets (-1, -0.5, -0.25, +0.25, +0.5, +1 samples at
++   4 MS/s) using eight-tap windowed-sinc interpolation of complex I/Q. Each
++   hypothesis must pass DF17 and CRC independently.
++3. **Soft decisions:** use the raw half-symbol energy margin to select at most
++   six weak payload/parity bits with confidence ≤0.35. Test at most 21 one-/two-bit
++   hypotheses and accept only a unique CRC solution. DF, CA and ICAO bits 0..31
++   are never repaired. This is not an unrestricted all-bit CRC search.
++4. **Matched filtering:** estimate coarse carrier offset from known preamble
++   pulses over ±100 kHz in 5 kHz increments; derive a short complex pulse shape
++   from the preamble and compare matched half-symbol responses. Require DF17/CRC.
++
++Energy checks are batched over all header-screened candidates. The more expensive
++retries use only the strongest failed energy windows within the per-block budget.
++Work outside that budget is counted, not queued indefinitely. The prototype is
++serial; it does not add background workers or claim a live CPU scheduling budget.
++Work buffers are bounded per block, but candidate lists and the paired stock
++comparison accumulate per recording; split long recordings into matched chunks.
++The C accumulation order is kept comparable to the reference implementation;
++fast-math is deliberately not enabled. AArch64 has an optional NEON FIR path;
++other architectures use the scalar implementation.
++
++## Guarded counting
++
++Method attribution is energy, timing, soft, then matched. Preserve every stock
++record, including non-DF17 traffic. Guarded additions must:
++
++- have valid DF17 CRC and a verified shared RF clock;
++- be absent from stock and earlier accepted methods within ±120 µs;
++- have a CRC-valid **stock** ICAO sighting in the preceding 30 seconds;
++- not conflict with a different stock payload for that ICAO within ±4 µs.
++
++Additional candidates never establish identity for later candidates. The guarded
++union is a count of additional transmissions, not globally distinct payloads or
++additional aircraft. This prototype intentionally excludes broad CRC hypotheses,
++relaxed header retries and interference cancellation.
++
++## Before live integration
++
++Review needs include longer independent receiver/noise/overload controls,
++adversarial false-positive tests, timing-origin verification for every input
++path, and profiling on slower supported platforms. A production implementation
++would also need an agreed location in readsb's native sample-processing pipeline,
++bounded asynchronous scheduling, stock-priority backpressure and end-to-end
++packet timestamp/duplicate handling. The tool does not implement those hooks or
++change live feed behavior. See `VALIDATION.md` for the limited paired replay.
++
++SPDX-License-Identifier: GPL-3.0-or-later. The parent readsb license applies.
+diff --git a/contrib/dsp-rescue/VALIDATION.md b/contrib/dsp-rescue/VALIDATION.md
+new file mode 100644
+index 0000000..954fa4e
+--- /dev/null
++++ b/contrib/dsp-rescue/VALIDATION.md
+@@ -0,0 +1,69 @@
++# Initial validation (25 October 2026)
++
++This is one recorded 10-second RF interval, not a representative performance or
++false-positive study. The original capture and receiver-specific logs are not
++included in this contribution. Unit tests use synthetic signals; external replay
++numbers are identified by content hashes for later reproduction if data is shared.
++
++## Capture and comparison
++
++- Input: 48,000,000 bytes, UC8 at 2.4 MS/s.
++- I/Q SHA-256: `0bd2525ea34e40ffd8c06973986110bcf609b1e55adfe4c5491cff499a9d8576`.
++- Default methods: energy, timing, soft, matched; retry budget 32 per 50 ms.
++- 200 RF blocks; 205,628 preamble candidates; 197,678 header rejections.
++- 5,977 retried windows; 664 outside the retry budget; 123,159 soft hypotheses.
++- Raw, cross-method-deduplicated candidates: energy 1,308; timing 104; soft 39;
++  matched 8. These raw totals include stock transmissions and are not additions.
++
++| Paired stock baseline | Stock DF17 | Energy additions | Timing | Soft | Matched | Guarded union |
++|---|---:|---:|---:|---:|---:|---:|
++| readsb 3.16.18, fresh macOS replay | 1,403 | 34 | 21 | 16 | 4 | 75 |
++| readsb 3.16.17, earlier pinned replay | 1,404 | 35 | 22 | 16 | 4 | 77 |
++
++The 3.16.18 replay used unmodified upstream commit
++`9460652952a62fcfd9bf11a2664d737147f266a5` built with the repository's normal
++`make -j2` on macOS arm64. The stock text had 6,272 total Mode S records,
++SHA-256 `7ce6609d1286a0cbe0f7383a9852360ac1714fab68fab6fd07fe82d0af2b50b9`.
++Its explicit stock timestamp offset was 199.83333333333334 µs.
++The earlier normalized DF17-only stock JSON had SHA-256
++`60e96b1b8958a94e2fb9c59362f2198a1d418e5cc8ef116225567b54b2392712`.
++Do not attribute the baseline difference solely to decoder version: replay
++platform/build also differs.
++
++Both audits found 1,271 distinct energy/stock transmission matches, with median
++absolute clock residual 0.083333 µs. The guarded unions are 5.35% and 5.48% of the
++respective stock DF17 totals. They are additional CRC/identity-consistent
++transmissions, **not independently verified correct messages**. No range or
++long-term reception improvement is inferred from this interval.
++
++## Port/extraction parity and controls
++
++The standalone extraction and the earlier deployed DSP-only algorithms produced
++identical `(sample position, payload, method)` sets for all 1,459 raw candidates
++on this capture. AArch64 Pi replay produced the same raw counts and the same
++77 guarded additions when using the same earlier pinned stock JSON.
++
++A negative control shuffled original I/Q *pairs* in time, preserving the sample
++value distribution while destroying packet structure (seed 251025, 10 RF seconds).
++It produced zero raw candidates, despite 1,320,212 preamble peaks and hitting the
++32-window retry cap in many blocks. This small control does not bound the false
++positive rate; independent RF/noise/overload and adversarial controls remain needed.
++
++## Tests and runtime
++
++- 14 Python tests passed on macOS arm64 and Raspberry Pi 4 / Linux aarch64.
++- Native energy and timing outputs match independent NumPy references; matched
++  output matches the independent vectorized carrier/pulse-shape reference.
++- FIR phase/boundary checks, weak-bit/header/address restrictions, baseline
++  preservation, stock-only prior identity, conflicts, duplicate and clock guards pass.
++- Native ASan/UBSan bounds sweep passed on macOS, including zero/short buffers
++  and `INT64_MAX` candidate offsets.
++- The unmodified upstream readsb default macOS build completed successfully.
++
++The 10 RF seconds took 0.633 s on the development macOS arm64 host in one replay.
++A Pi 4 validation deliberately limited to **0.25 CPU core** took 36.413 s for
++that decode; it ran at nice 19 on CPUs 0–1 while the receiver and feeder kept
++running. This is a throttled isolation check, not an unrestricted Pi real-time
++benchmark or proof of live schedulability. The Pi validation compiled the native
++kernel and passed all tests, and confirmed receiver, DSP, relay and FR24 PIDs
++were unchanged. No packets from this replay were forwarded.
+diff --git a/contrib/dsp-rescue/dsp_rescue/__init__.py b/contrib/dsp-rescue/dsp_rescue/__init__.py
+new file mode 100644
+index 0000000..31d49ed
+--- /dev/null
++++ b/contrib/dsp-rescue/dsp_rescue/__init__.py
+@@ -0,0 +1 @@
++# SPDX-License-Identifier: GPL-3.0-or-later
+diff --git a/contrib/dsp-rescue/dsp_rescue/__main__.py b/contrib/dsp-rescue/dsp_rescue/__main__.py
+new file mode 100644
+index 0000000..3253ad8
+--- /dev/null
++++ b/contrib/dsp-rescue/dsp_rescue/__main__.py
+@@ -0,0 +1,101 @@
++# SPDX-License-Identifier: GPL-3.0-or-later
++import argparse, hashlib, json, re, sys, time
++from collections import Counter
++from pathlib import Path
++from .decode import Decoder, METHODS
++from .compare import evaluate
++
++
++def sha256(path):
++    h = hashlib.sha256()
++    with path.open("rb") as f:
++        for block in iter(lambda: f.read(1048576), b""):
++            h.update(block)
++    return h.hexdigest()
++
++
++def main():
++    p = argparse.ArgumentParser(
++        description="Experimental DSP-only UC8 replay; never opens SDRs or feeder sockets."
++    )
++    p.add_argument("iq", type=Path, help="Interleaved unsigned I/Q at exactly 2.4 MS/s")
++    p.add_argument(
++        "--stock",
++        type=Path,
++        help="Paired normalized JSON event list, or timestamped @...; readsb text",
++    )
++    p.add_argument(
++        "--stock-offset-us",
++        type=float,
++        help="Subtract this from stock seconds; required for timestamped text",
++    )
++    p.add_argument("--methods", nargs="+", choices=METHODS, default=METHODS)
++    p.add_argument(
++        "--budget",
++        type=int,
++        default=32,
++        help="Maximum failed energy windows retried per 50 ms (1..128)",
++    )
++    p.add_argument("--threshold", type=float, default=0.4)
++    p.add_argument("--output", type=Path, required=True)
++    p.add_argument(
++        "--events", type=Path, help="Optional raw candidate JSON output, not a feed"
++    )
++    a = p.parse_args()
++    if a.output.resolve() == a.iq.resolve() or (
++        a.stock and a.output.resolve() == a.stock.resolve()
++    ):
++        p.error("Output must not overwrite an input")
++    if a.events and a.events.resolve() in {
++        a.iq.resolve(),
++        a.output.resolve(),
++        *([] if a.stock is None else [a.stock.resolve()]),
++    }:
++        p.error("Events path must differ from inputs and report")
++    events, work = Decoder(a.methods, a.budget, a.threshold).decode(a.iq)
++    duration = a.iq.stat().st_size / 4800000
++    report = dict(
++        scope="offline DSP-only replay",
++        iq_sha256=sha256(a.iq),
++        rf_seconds=duration,
++        real_time_factor=work["wall_s"] / duration,
++        raw_candidates=dict(Counter(r["source"] for r in events)),
++        work=work,
++        forwarding_enabled=False,
++    )
++    verified = True
++    if a.stock:
++        text = a.stock.read_text()
++        if text.lstrip().startswith("["):
++            stock = json.loads(text)
++        else:
++            if a.stock_offset_us is None:
++                p.error(
++                    "Timestamped text requires explicit --stock-offset-us and clock audit"
++                )
++            stock = [
++                dict(seconds=int(t, 16) / 12e6, message_hex=m.lower(), source="stock")
++                for t, m in re.findall(
++                    r"@([0-9a-fA-F]{12})([0-9a-fA-F]{14}(?:[0-9a-fA-F]{14})?);", text
++                )
++            ]
++        if a.stock_offset_us is not None:
++            stock = [
++                {**r, "seconds": r["seconds"] - a.stock_offset_us / 1e6} for r in stock
++            ]
++        result = evaluate(stock, events)
++        report["comparison"] = {
++            k: v for k, v in result.items() if k not in ("added", "merged")
++        }
++        report["stock_sha256"] = sha256(a.stock)
++        verified = result["alignment"]["verified"]
++    a.output.write_text(json.dumps(report, indent=2) + "\n")
++    if a.events:
++        a.events.write_text(json.dumps(events, indent=2) + "\n")
++    print(json.dumps(report, indent=2))
++    if not verified:
++        raise SystemExit(2)
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/contrib/dsp-rescue/dsp_rescue/compare.py b/contrib/dsp-rescue/dsp_rescue/compare.py
+new file mode 100644
+index 0000000..fa34319
+--- /dev/null
++++ b/contrib/dsp-rescue/dsp_rescue/compare.py
+@@ -0,0 +1,102 @@
++# SPDX-License-Identifier: GPL-3.0-or-later
++"""Paired replay audit. Guarded additions are candidates, not ground truth."""
++
++import bisect, math, statistics
++from collections import Counter, defaultdict
++from .decode import METHODS
++from .dsp import crc_batch
++import numpy as np
++
++
++def valid(payload):
++    try:
++        row = bytes.fromhex(payload)
++    except (TypeError, ValueError):
++        return False
++    return (
++        len(row) == 14
++        and row[0] >> 3 == 17
++        and not crc_batch(np.frombuffer(row, np.uint8)[None, :])[0]
++    )
++
++
++def evaluate(stock, events):
++    # Baseline records, including non-DF17 traffic, are copied unchanged.
++    primary = [dict(r) for r in stock]
++    payloads = defaultdict(list)
++    identities = defaultdict(list)
++    for r in primary:
++        if not math.isfinite(r["seconds"]):
++            raise ValueError("Nonfinite stock timestamp")
++        p = r["message_hex"]
++        if valid(p):
++            payloads[p].append(r["seconds"])
++            identities[p[2:8]].append((r["seconds"], p))
++    for rows in (*payloads.values(), *identities.values()):
++        rows.sort()
++    candidates = [
++        r
++        for r in events
++        if r.get("source") in METHODS
++        and valid(r.get("message_hex"))
++        and math.isfinite(r["seconds"])
++        and r["seconds"] >= 0
++    ]
++    errors = []
++    matched = set()
++    for r in candidates:
++        if r["source"] != "energy":
++            continue
++        times = payloads.get(r["message_hex"], ())
++        i = bisect.bisect_left(times, r["seconds"])
++        near = times[max(0, i - 1) : i + 1]
++        if near:
++            closest = min(near, key=lambda t: abs(t - r["seconds"]))
++            key = (r["message_hex"], closest)
++            if key not in matched and abs(closest - r["seconds"]) < 0.001:
++                errors.append(abs(closest - r["seconds"]))
++                matched.add(key)
++    median = statistics.median(errors) if errors else None
++    audit = dict(
++        matches=len(errors),
++        median_abs_error_us=None if median is None else median * 1e6,
++        verified=len(errors) >= 20 and median <= 2e-6,
++    )
++    counts = Counter()
++    extra = []
++    if audit["verified"]:
++        for r in sorted(
++            candidates, key=lambda r: (METHODS.index(r["source"]), r["seconds"])
++        ):
++            p = r["message_hex"]
++            t = r["seconds"]
++            times = payloads.get(p, [])
++            i = bisect.bisect_left(times, t - 120e-6)
++            if i < len(times) and times[i] <= t + 120e-6:
++                counts["duplicate_120us"] += 1
++                continue
++            sightings = identities.get(p[2:8], ())
++            if not any(t - 30 <= s <= t for s, q in sightings):
++                counts["no_prior_stock_icao"] += 1
++                continue
++            if any(abs(s - t) <= 4e-6 and q != p for s, q in sightings):
++                counts["stock_conflict"] += 1
++                continue
++            extra.append(
++                {**r, "validation": "crc_and_prior_stock_icao", "provisional": True}
++            )
++            bisect.insort(payloads[p], t)
++            counts["added_" + r["source"]] += 1
++    else:
++        counts["alignment_unverified"] = len(candidates)
++    merged = sorted(
++        primary + extra, key=lambda r: (r["seconds"], r.get("source", "stock"))
++    )
++    return dict(
++        alignment=audit,
++        counts=dict(counts),
++        stock_records=len(primary),
++        stock_df17=sum(valid(r["message_hex"]) for r in primary),
++        added=extra,
++        merged=merged,
++    )
+diff --git a/contrib/dsp-rescue/dsp_rescue/decode.py b/contrib/dsp-rescue/dsp_rescue/decode.py
+new file mode 100644
+index 0000000..069a4b5
+--- /dev/null
++++ b/contrib/dsp-rescue/dsp_rescue/decode.py
+@@ -0,0 +1,104 @@
++# SPDX-License-Identifier: GPL-3.0-or-later
++"""Opt-in, bounded DSP replay; no SDR ownership or network output."""
++
++import time
++from collections import Counter
++import numpy as np
++from . import native
++from .soft import SHIFTS, window, logits_and_confidence, soft_decode
++
++METHODS = ("energy", "timing", "soft", "matched")
++
++
++class Decoder:
++    def __init__(self, methods=METHODS, budget=32, threshold=0.4):
++        if not set(methods) <= set(METHODS) or "energy" not in methods:
++            raise ValueError("Energy is required; choose energy/timing/soft/matched")
++        if not 1 <= budget <= 128 or not 0 < threshold <= 1:
++            raise ValueError("Invalid candidate budget or threshold")
++        self.methods = tuple(m for m in METHODS if m in methods)
++        self.budget = budget
++        self.threshold = threshold
++
++    def decode(self, path, blocks=None):
++        events = []
++        seen = {}
++        counts = Counter()
++        begin = time.perf_counter()
++
++        def emit(source, sample, row):
++            payload = row.tobytes().hex()
++            if any(abs(sample - t) < 480 for t in seen.get(payload, ())):
++                return
++            seen.setdefault(payload, []).append(sample)
++            events.append(
++                dict(
++                    seconds=float(sample) / 4000000,
++                    sample_4msps=float(sample),
++                    message_hex=payload,
++                    source=source,
++                )
++            )
++            counts["decoded_" + source] += 1
++
++        source = native.iq_blocks(path) if blocks is None else blocks
++        for offset, core, iq in source:
++            starts, scores = native.candidate_scores(iq, core, self.threshold)
++            counts["blocks"] += 1
++            counts["preamble_candidates"] += len(starts)
++            ids = native.header_ids(iq, starts)
++            counts["header_rejected"] += len(starts) - len(ids)
++            pending = []
++            for lo in range(0, len(ids), 128):
++                selected = ids[lo : lo + 128]
++                positions = starts[selected]
++                rows, valid = native.energy_candidates(iq, positions)
++                for j in np.flatnonzero(valid):
++                    emit("energy", offset + int(positions[j]), rows[j])
++                for j in np.flatnonzero(~valid):
++                    i = int(selected[j])
++                    s = int(starts[i])
++                    if s >= 8 and s + 488 < len(iq):
++                        pending.append(i)
++            pending = sorted(pending, key=lambda i: (-scores[i], i))
++            counts["dsp_budget_dropped"] += max(0, len(pending) - self.budget)
++            selected = sorted(pending[: self.budget])
++            positions = starts[selected]
++            counts["dsp_candidates"] += len(positions)
++            # Attribution priority is fixed: energy, timing, soft, matched.
++            matched = []
++            if len(positions) and (
++                "timing" in self.methods or "matched" in self.methods
++            ):
++                indices, methods, rows = native.dsp_candidates(
++                    iq, positions, "timing" in self.methods, "matched" in self.methods
++                )
++                for i, method, row in zip(indices, methods, rows):
++                    if method < 6:
++                        emit(
++                            "timing", offset + float(positions[i]) + SHIFTS[method], row
++                        )
++                    else:
++                        matched.append((int(positions[i]), row.copy()))
++            if len(positions) and "soft" in self.methods:
++                logits, confidence = logits_and_confidence(window(iq, positions))
++                repaired, work = soft_decode(logits, confidence)
++                counts["soft_hypotheses"] += work.get("hypotheses", 0)
++                counts["soft_ambiguous"] += work.get("ambiguous", 0)
++                for j, row, flips in repaired:
++                    emit("soft", offset + int(positions[j]), row)
++            for position, row in matched:
++                emit("matched", offset + position, row)
++            # Retain at most one RF second of cross-block deduplication state.
++            seen = {
++                p: [s for s in times if s > offset + core - 4000000]
++                for p, times in seen.items()
++                if times[-1] > offset + core - 4000000
++            }
++        events.sort(key=lambda r: (r["sample_4msps"], METHODS.index(r["source"])))
++        return events, dict(
++            wall_s=time.perf_counter() - begin,
++            counts=dict(counts),
++            methods=self.methods,
++            budget_per_50ms=self.budget,
++        )
+diff --git a/contrib/dsp-rescue/dsp_rescue/dsp.py b/contrib/dsp-rescue/dsp_rescue/dsp.py
+new file mode 100644
+index 0000000..c61cd78
+--- /dev/null
++++ b/contrib/dsp-rescue/dsp_rescue/dsp.py
+@@ -0,0 +1,103 @@
++# SPDX-License-Identifier: GPL-3.0-or-later
++"""Bounded block I/Q processing and vectorized Mode-S CRC. No SDR/socket access."""
++
++from pathlib import Path
++import numpy as np
++from scipy.signal import firwin, upfirdn, find_peaks
++
++FS = 4_000_000
++SAMPLES = 480
++PREAMBLE = np.zeros(32, dtype=np.float32)
++for i in (0, 4, 14, 18):
++    PREAMBLE[i : i + 2] = 1
++TEMPLATE = PREAMBLE - PREAMBLE.mean()
++# Same Kaiser FIR and centering as scipy resample_poly(5,3), cached once.
++FIR = np.concatenate(
++    (
++        np.zeros(1, np.float32),
++        firwin(101, 0.2, window=("kaiser", 5.0)).astype(np.float32) * 5,
++    )
++)
++
++
++def _crc_table():
++    table = []
++    for b in range(256):
++        r = b << 16
++        for _ in range(8):
++            r = (r << 1) ^ (0x1FFF409 if r & 0x800000 else 0)
++        table.append(r & 0xFFFFFF)
++    return np.array(table, dtype=np.uint32)
++
++
++CRC_TABLE = _crc_table()
++
++
++def crc_batch(data):
++    data = np.asarray(data, dtype=np.uint8)
++    r = np.zeros(len(data), dtype=np.uint32)
++    for i in range(data.shape[1]):
++        r = ((r << 8) & 0xFFFFFF) ^ CRC_TABLE[((r >> 16) ^ data[:, i]) & 255]
++    return r
++
++
++def payloads(logits):
++    # Keep received header bits; do not force the DF or ICAO.
++    return np.packbits(logits > 0, axis=-1)
++
++
++def clipped_power(iq):
++    p = (np.abs(iq) ** 2).astype(np.float32)
++    scale = p[:, :32][:, PREAMBLE.astype(bool)].mean(axis=1, keepdims=True)
++    p /= np.maximum(scale, 1e-5)
++    return np.clip(p, 0, 12).astype(np.float32)
++
++
++def energy_logits(x):
++    p = x[:, 32:].reshape(-1, 112, 4)
++    return (p[:, :, :2].sum(-1) - p[:, :, 2:].sum(-1)) * 3
++
++
++def candidate_scores(iq, core, threshold):
++    p = (np.abs(iq) ** 2).astype(np.float32)
++    corr = np.correlate(p, TEMPLATE, "valid")
++    # Accumulate in float64 to avoid cancellation over long/noisy clips.
++    cs = np.concatenate(([0.0], np.cumsum(p.astype(np.float64) ** 2)))
++    den = np.sqrt(np.maximum(cs[32:] - cs[:-32], 1e-12) * np.sum(TEMPLATE**2))
++    score = corr / den
++    peaks, _ = find_peaks(score, height=threshold, distance=3)
++    peaks = peaks[(peaks < core) & (peaks + SAMPLES <= len(iq))]
++    return peaks, score[peaks]
++
++
++def iq_blocks(path, block_seconds=0.05):
++    """UC8 at exactly 2.4 MS/s; overlapped polyphase resampling to 4 MS/s.
++
++    Each block owns starts in [offset,offset+core). The right halo contains
++    complete messages across boundaries. 600 native halo samples also exceed
++    the resampler FIR support. Block/halo lengths are multiples of 3.
++    """
++    path = Path(path)
++    if path.stat().st_size % 2:
++        raise ValueError("Truncated UC8 I/Q pair")
++    raw = np.memmap(path, dtype=np.uint8, mode="r").reshape(-1, 2)
++    total = len(raw)
++    hop = round(block_seconds * 2_400_000 / 3) * 3
++    if hop < 600:
++        raise ValueError("Block must be at least 250 microseconds")
++    halo = 600
++    for start in range(0, total, hop):
++        end = min(start + hop, total)
++        lo = max(0, start - halo)
++        hi = min(total, end + halo)
++        v = (raw[lo:hi].astype(np.float32) - 127.5) / 128
++        v = np.pad(v, ((max(0, halo - start), max(0, end + halo - total)), (0, 0)))
++        # Filter real I/Q channels with real taps, avoiding complex FIR math.
++        y = upfirdn(FIR, v, up=5, down=3, axis=0)[17 : 17 + (len(v) * 5 + 2) // 3]
++        z = (y[:, 0] + 1j * y[:, 1]).astype(np.complex64)
++        offset = start * 5 // 3
++        core = (end * 5 // 3) - offset
++        # Ignore starts that cannot have a full real captured frame, even if
++        # right padding would make the array long enough.
++        available = max(0, min(core, total * 5 // 3 - offset - SAMPLES + 1))
++        yield offset, available, z[1000 : 1000 + core + SAMPLES]
+diff --git a/contrib/dsp-rescue/dsp_rescue/frontend.c b/contrib/dsp-rescue/dsp_rescue/frontend.c
+new file mode 100644
+index 0000000..466de27
+--- /dev/null
++++ b/contrib/dsp-rescue/dsp_rescue/frontend.c
+@@ -0,0 +1,280 @@
++/* SPDX-License-Identifier: GPL-3.0-or-later */
++/* Fixed 2.4 -> 4 MS/s UC8 FIR and energy preamble score. No device access. */
++#include <math.h>
++#include <stddef.h>
++#include <stdint.h>
++
++void rescue_resample(const uint8_t *raw, int64_t n, int64_t first, int64_t count, const float *h,
++                     float *out) {
++    for (int64_t k = 0; k < count; k++) {
++        int64_t time = (first + k) * 3 + 51;
++        int phase = (int)(time % 5);
++        float real = 0, imag = 0;
++        for (int j = phase; j < 102; j += 5) {
++            int64_t index = (time - j) / 5;
++            if (index >= 0 && index < n) {
++                float tap = h[j];
++                real += tap * ((float)raw[2 * index] - 127.5f);
++                imag += tap * ((float)raw[2 * index + 1] - 127.5f);
++            }
++        }
++        out[2 * k] = real * (1.f / 128.f);
++        out[2 * k + 1] = imag * (1.f / 128.f);
++    }
++}
++
++void rescue_scores(const float *iq, int64_t n, float *power, double *score) {
++    for (int64_t k = 0; k < n; k++)
++        power[k] = iq[2 * k] * iq[2 * k] + iq[2 * k + 1] * iq[2 * k + 1];
++    if (n < 32)
++        return;
++    double sum = 0, squared = 0;
++    for (int k = 0; k < 32; k++) {
++        sum += power[k];
++        squared += (double)power[k] * power[k];
++    }
++    for (int64_t k = 0; k <= n - 32; k++) {
++        double on = power[k] + power[k + 1] + power[k + 4] + power[k + 5] + power[k + 14] +
++                    power[k + 15] + power[k + 18] + power[k + 19];
++        score[k] = (on - .25 * sum) / sqrt(fmax(squared, 1.e-12) * 6.);
++        if (k < n - 32) {
++            sum += (double)power[k + 32] - power[k];
++            squared += (double)power[k + 32] * power[k + 32] - (double)power[k] * power[k];
++        }
++    }
++}
++
++#if defined(__ARM_NEON) && defined(__aarch64__)
++#include <arm_neon.h>
++#endif
++
++/* Padded, normalized float I/Q input; no per-tap bounds/conversion overhead. */
++void rescue_resample_float(const float *src, int64_t n, int64_t first, int64_t count,
++                           const float *h, float *out) {
++    float packed[5][24] = {{0}};
++    for (int p = 0; p < 5; p++)
++        for (int j = p, k = 0; j < 102; j += 5, k++)
++            packed[p][k] = h[j];
++    for (int64_t k = 0; k < count; k++) {
++        int64_t time = (first + k) * 3 + 51;
++        int phase = (int)(time % 5);
++        int64_t index = (time - phase) / 5;
++        /* Python pads 600 samples on both sides. Guard also supports safe
++           standalone use with a different valid input shape. */
++        if (index < 23 || index >= n) {
++            float r = 0, i = 0;
++            for (int j = phase; j < 102; j += 5, index--)
++                if (index >= 0 && index < n) {
++                    r += h[j] * src[2 * index];
++                    i += h[j] * src[2 * index + 1];
++                }
++            out[2 * k] = r;
++            out[2 * k + 1] = i;
++            continue;
++        }
++#if defined(__ARM_NEON) && defined(__aarch64__)
++        float32x4_t ar = vdupq_n_f32(0), ai = vdupq_n_f32(0);
++        for (int j = 0; j < 24; j += 4, index -= 4) {
++            float32x4_t coeff = vld1q_f32(packed[phase] + j);
++            coeff = vrev64q_f32(coeff);
++            coeff = vextq_f32(coeff, coeff, 2);
++            float32x4x2_t iq = vld2q_f32(src + 2 * (index - 3));
++            ar = vmlaq_f32(ar, iq.val[0], coeff);
++            ai = vmlaq_f32(ai, iq.val[1], coeff);
++        }
++        out[2 * k] = vaddvq_f32(ar);
++        out[2 * k + 1] = vaddvq_f32(ai);
++#else
++        float ar[4] = {0}, ai[4] = {0};
++        for (int j = 0; j < 24; j += 4, index -= 4)
++            for (int q = 0; q < 4; q++) {
++                ar[q] += packed[phase][j + q] * src[2 * (index - q)];
++                ai[q] += packed[phase][j + q] * src[2 * (index - q) + 1];
++            }
++        out[2 * k] = (ar[0] + ar[1]) + (ar[2] + ar[3]);
++        out[2 * k + 1] = (ai[0] + ai[1]) + (ai[2] + ai[3]);
++#endif
++    }
++}
++
++static inline float power_at(const float *iq, int64_t k) {
++    return iq[2 * k] * iq[2 * k] + iq[2 * k + 1] * iq[2 * k + 1];
++}
++int64_t rescue_header_ids(const float *iq, int64_t size, const int64_t *starts, int64_t n,
++                          int64_t *ids) {
++    const int on[8] = {0, 1, 4, 5, 14, 15, 18, 19};
++    const int df17[5] = {1, 0, 0, 0, 1};
++    int64_t count = 0;
++    for (int64_t k = 0; k < n; k++) {
++        int64_t s = starts[k];
++        if (s < 0 || size < 52 || s > size - 52)
++            continue;
++        float scale = 0;
++        for (int i = 0; i < 8; i++)
++            scale += power_at(iq, s + on[i]);
++        scale = fmaxf(scale * (1.f / 8.f), 1.e-5f);
++        int valid = 1;
++        for (int b = 0; b < 5; b++) {
++            int64_t j = s + 32 + 4 * b;
++            /* Divide and clip exactly as the Python feature transform. */
++            float left =
++                fminf(power_at(iq, j) / scale, 12.f) + fminf(power_at(iq, j + 1) / scale, 12.f);
++            float right =
++                fminf(power_at(iq, j + 2) / scale, 12.f) + fminf(power_at(iq, j + 3) / scale, 12.f);
++            if ((left > right) != df17[b]) {
++                valid = 0;
++                break;
++            }
++        }
++        if (valid)
++            ids[count++] = k;
++    }
++    return count;
++}
++
++/* Native bounded timing and matched-filter retries; never sends network data.
++ * Outputs have capacity n*7 (six timing shifts and one matched hypothesis).
++ * Interpolation uses the same float32 accumulation order as the reference. */
++#include <complex.h>
++static int rescue_row_ok(const uint8_t *row) {
++    if ((row[0] >> 3) != 17)
++        return 0;
++    uint32_t crc = 0;
++    for (int b = 0; b < 112; b++) {
++        int top = ((crc >> 23) & 1) ^ ((row[b / 8] >> (7 - b % 8)) & 1);
++        crc = (crc << 1) & 0xffffff;
++        if (top)
++            crc ^= 0xfff409;
++    }
++    return crc == 0;
++}
++int64_t rescue_dsp(const float *iq, int64_t size, const int64_t *starts, int64_t n,
++                   const int64_t *integer, const float *weights, int timing, int matched,
++                   int64_t *ids, int64_t *methods, uint8_t *rows) {
++    int64_t count = 0;
++    const int pulses[8] = {0, 1, 4, 5, 14, 15, 18, 19};
++    const double tau = 6.283185307179586476925286766559;
++    for (int64_t k = 0; k < n; k++) {
++        int64_t s = starts[k];
++        if (s < 8 || size <= 488 || s >= size - 488)
++            continue;
++        if (timing)
++            for (int phase = 0; phase < 6; phase++) {
++                uint8_t row[14] = {0};
++                for (int b = 0; b < 112; b++) {
++                    float power[4];
++                    for (int q = 0; q < 4; q++) {
++                        int64_t at = s + 32 + 4 * b + q + integer[phase];
++                        float re = 0, im = 0;
++                        if (phase == 0 || phase == 5) {
++                            re = iq[2 * at];
++                            im = iq[2 * at + 1];
++                        } else
++                            for (int t = 0; t < 8; t++) {
++                                float w = weights[phase * 8 + t];
++                                re += iq[2 * (at + t - 3)] * w;
++                                im += iq[2 * (at + t - 3) + 1] * w;
++                            }
++                        // np.abs(complex64)**2 rounds the magnitude before squaring.
++                        float magnitude = hypotf(re, im);
++                        power[q] = magnitude * magnitude;
++                    }
++                    int bit = (power[0] + power[1]) > (power[2] + power[3]);
++                    row[b / 8] |= bit << (7 - b % 8);
++                    if (b == 4 && (row[0] >> 3) != 17)
++                        break;
++                }
++                if (rescue_row_ok(row)) {
++                    ids[count] = k;
++                    methods[count] = phase;
++                    for (int j = 0; j < 14; j++)
++                        rows[14 * count + j] = row[j];
++                    count++;
++                }
++            }
++        if (matched) {
++            double best = -1, frequency = 0;
++            for (int f = -100000; f <= 100000; f += 5000) {
++                double complex sum = 0;
++                for (int q = 0; q < 8; q++) {
++                    int at = pulses[q];
++                    double angle = -tau * f * at / 4000000.;
++                    sum += (iq[2 * (s + at)] + I * iq[2 * (s + at) + 1]) *
++                           (cos(angle) + I * sin(angle));
++                }
++                double power = creal(sum) * creal(sum) + cimag(sum) * cimag(sum);
++                if (power > best) {
++                    best = power;
++                    frequency = f;
++                }
++            }
++            double angle = -tau * frequency / 4000000.;
++            double complex step = cos(angle) + I * sin(angle);
++            double complex z[488], rotation = cos(-4 * angle) + I * sin(-4 * angle);
++            for (int q = 0; q < 488; q++) {
++                z[q] = (iq[2 * (s + q - 4)] + I * iq[2 * (s + q - 4) + 1]) * rotation;
++                rotation *= step;
++            }
++            double complex shape[4] = {0};
++            int p[4] = {0, 4, 14, 18};
++            for (int q = 0; q < 4; q++)
++                for (int j = 0; j < 4; j++)
++                    shape[q] += z[4 + p[j] + q - 1] / 4.;
++            uint8_t row[14] = {0};
++            for (int b = 0; b < 112; b++) {
++                double complex left = 0, right = 0;
++                int at = 36 + 4 * b;
++                for (int q = 0; q < 4; q++) {
++                    left += z[at + q - 1] * conj(shape[q]);
++                    right += z[at + q + 1] * conj(shape[q]);
++                }
++                double a = creal(left) * creal(left) + cimag(left) * cimag(left),
++                       v = creal(right) * creal(right) + cimag(right) * cimag(right);
++                row[b / 8] |= (a > v) << (7 - b % 8);
++                if (b == 4 && (row[0] >> 3) != 17)
++                    break;
++            }
++            if (rescue_row_ok(row)) {
++                ids[count] = k;
++                methods[count] = 6;
++                for (int j = 0; j < 14; j++)
++                    rows[14 * count + j] = row[j];
++                count++;
++            }
++        }
++    }
++    return count;
++}
++
++/* Clipped-energy slicer. The caller supplies header-screened windows. */
++void rescue_baseline(const float *iq, int64_t size, const int64_t *starts, int64_t n, uint8_t *rows,
++                     uint8_t *valid) {
++    const int on[8] = {0, 1, 4, 5, 14, 15, 18, 19};
++    for (int64_t k = 0; k < n; k++) {
++        int64_t s = starts[k];
++        uint8_t *row = rows + 14 * k;
++        for (int j = 0; j < 14; j++)
++            row[j] = 0;
++        valid[k] = 0;
++        if (s < 0 || size < 480 || s > size - 480)
++            continue;
++        float p[480];
++        for (int q = 0; q < 480; q++) {
++            float v = hypotf(iq[2 * (s + q)], iq[2 * (s + q) + 1]);
++            p[q] = v * v;
++        }
++        float a[8];
++        for (int q = 0; q < 8; q++)
++            a[q] = p[on[q]];
++        // NumPy pairwise eight-element reduction.
++        float scale =
++            fmaxf(((a[0] + a[1]) + (a[2] + a[3]) + (a[4] + a[5]) + (a[6] + a[7])) / 8.f, 1.e-5f);
++        for (int b = 0; b < 112; b++) {
++            int q = 32 + 4 * b;
++            float left = fminf(p[q] / scale, 12.f) + fminf(p[q + 1] / scale, 12.f),
++                  right = fminf(p[q + 2] / scale, 12.f) + fminf(p[q + 3] / scale, 12.f);
++            row[b / 8] |= (left > right) << (7 - b % 8);
++        }
++        valid[k] = rescue_row_ok(row);
++    }
++}
+diff --git a/contrib/dsp-rescue/dsp_rescue/native.py b/contrib/dsp-rescue/dsp_rescue/native.py
+new file mode 100644
+index 0000000..ae254fd
+--- /dev/null
++++ b/contrib/dsp-rescue/dsp_rescue/native.py
+@@ -0,0 +1,167 @@
++# SPDX-License-Identifier: GPL-3.0-or-later
++"""Small optional C front end. Python owns arrays; C only writes bounded outputs."""
++
++import ctypes as c
++from pathlib import Path
++import numpy as np
++from scipy.signal import find_peaks
++from .dsp import FIR, SAMPLES
++
++_LIB = None
++
++
++def library():
++    global _LIB
++    if _LIB is None:
++        path = Path(__file__).with_name("_frontend.so")
++        if not path.exists():
++            raise RuntimeError("Build the native frontend with make first")
++        _LIB = c.CDLL(str(path))
++        floatp = np.ctypeslib.ndpointer(dtype=np.float32, flags="C_CONTIGUOUS")
++        doublep = np.ctypeslib.ndpointer(dtype=np.float64, flags="C_CONTIGUOUS")
++        _LIB.rescue_resample.argtypes = [
++            np.ctypeslib.ndpointer(dtype=np.uint8, flags="C_CONTIGUOUS"),
++            c.c_int64,
++            c.c_int64,
++            c.c_int64,
++            floatp,
++            floatp,
++        ]
++        _LIB.rescue_resample.restype = None
++        _LIB.rescue_resample_float.argtypes = [
++            floatp,
++            c.c_int64,
++            c.c_int64,
++            c.c_int64,
++            floatp,
++            floatp,
++        ]
++        _LIB.rescue_resample_float.restype = None
++        _LIB.rescue_scores.argtypes = [floatp, c.c_int64, floatp, doublep]
++        _LIB.rescue_scores.restype = None
++        intp = np.ctypeslib.ndpointer(dtype=np.int64, flags="C_CONTIGUOUS")
++        _LIB.rescue_header_ids.argtypes = [floatp, c.c_int64, intp, c.c_int64, intp]
++        _LIB.rescue_header_ids.restype = c.c_int64
++    return _LIB
++
++
++def iq_blocks(
++    path, block_seconds=0.05, block_range=None, source_first=0, total_samples=None
++):
++    path = Path(path)
++    if not path.stat().st_size:
++        raise ValueError("Empty UC8 capture")
++    if path.stat().st_size % 2:
++        raise ValueError("Truncated UC8 I/Q pair")
++    raw = np.memmap(path, dtype=np.uint8, mode="r").reshape(-1, 2)
++    total = len(raw) if total_samples is None else total_samples
++    if source_first and block_range is None:
++        raise ValueError("Partial source needs explicit block range")
++    hop = round(block_seconds * 2400000 / 3) * 3
++    if hop < 600:
++        raise ValueError("Block must be at least 250 microseconds")
++    lib = library()
++    for index, start in enumerate(range(0, total, hop)):
++        # Preserve the serial FIR phase and packet halos; skip before resampling.
++        if block_range is not None and not block_range[0] <= index < block_range[1]:
++            continue
++        end = min(start + hop, total)
++        offset = start * 5 // 3
++        core = end * 5 // 3 - offset
++        available = max(0, min(core, total * 5 // 3 - offset - SAMPLES + 1))
++        lo = max(0, start - 600)
++        hi = min(total, end + 600)
++        if lo < source_first or hi > source_first + len(raw):
++            raise ValueError("Missing FIR context in partial source")
++        v = (
++            raw[lo - source_first : hi - source_first].astype(np.float32) - 127.5
++        ) / 128
++        v = np.pad(v, ((max(0, 600 - start), max(0, end + 600 - total)), (0, 0)))
++        out = np.empty((core + SAMPLES) * 2, np.float32)
++        lib.rescue_resample_float(v, len(v), 1000, core + SAMPLES, FIR, out)
++        yield offset, available, out.view(np.complex64)
++
++
++def candidate_scores(iq, core, threshold, with_power=False):
++    iq = np.ascontiguousarray(iq, dtype=np.complex64)
++    power = np.empty(len(iq), np.float32)
++    score = np.empty(len(iq) - 31, np.float64)
++    library().rescue_scores(iq.view(np.float32), len(iq), power, score)
++    peaks, _ = find_peaks(score, height=threshold, distance=3)
++    peaks = peaks[(peaks < core) & (peaks + SAMPLES <= len(iq))]
++    return (peaks, score[peaks], power) if with_power else (peaks, score[peaks])
++
++
++def header_ids(iq, starts):
++    starts = np.ascontiguousarray(starts, dtype=np.int64)
++    ids = np.empty(len(starts), dtype=np.int64)
++    count = library().rescue_header_ids(
++        iq.view(np.float32), len(iq), starts, len(starts), ids
++    )
++    return ids[:count]
++
++
++def dsp_candidates(iq, starts, timing=True, matched=True):
++    from .soft import SHIFTS
++
++    starts = np.ascontiguousarray(starts, np.int64)
++    integers = np.floor(SHIFTS).astype(np.int64)
++    taps = np.arange(-3, 5)
++    weights = []
++    for shift, integer in zip(SHIFTS, integers):
++        w = np.sinc(taps - (shift - integer)) * np.kaiser(8, 5)
++        weights.append((w / w.sum()).astype(np.float32))
++    weights = np.stack(weights)
++    capacity = len(starts) * 7
++    ids = np.empty(capacity, np.int64)
++    methods = np.empty(capacity, np.int64)
++    rows = np.empty((capacity, 14), np.uint8)
++    arr = lambda dtype: np.ctypeslib.ndpointer(dtype=dtype, flags="C_CONTIGUOUS")
++    lib = library()
++    lib.rescue_dsp.argtypes = [
++        arr(np.float32),
++        c.c_int64,
++        arr(np.int64),
++        c.c_int64,
++        arr(np.int64),
++        arr(np.float32),
++        c.c_int,
++        c.c_int,
++        arr(np.int64),
++        arr(np.int64),
++        arr(np.uint8),
++    ]
++    lib.rescue_dsp.restype = c.c_int64
++    count = lib.rescue_dsp(
++        iq.view(np.float32),
++        len(iq),
++        starts,
++        len(starts),
++        integers,
++        weights,
++        int(timing),
++        int(matched),
++        ids,
++        methods,
++        rows,
++    )
++    return ids[:count], methods[:count], rows[:count]
++
++
++def energy_candidates(iq, starts):
++    starts = np.ascontiguousarray(starts, np.int64)
++    rows = np.empty((len(starts), 14), np.uint8)
++    valid = np.empty(len(starts), np.uint8)
++    arr = lambda dtype: np.ctypeslib.ndpointer(dtype=dtype, flags="C_CONTIGUOUS")
++    lib = library()
++    lib.rescue_baseline.argtypes = [
++        arr(np.float32),
++        c.c_int64,
++        arr(np.int64),
++        c.c_int64,
++        arr(np.uint8),
++        arr(np.uint8),
++    ]
++    lib.rescue_baseline.restype = None
++    lib.rescue_baseline(iq.view(np.float32), len(iq), starts, len(starts), rows, valid)
++    return rows, valid.astype(bool)
+diff --git a/contrib/dsp-rescue/dsp_rescue/soft.py b/contrib/dsp-rescue/dsp_rescue/soft.py
+new file mode 100644
+index 0000000..9aec7b3
+--- /dev/null
++++ b/contrib/dsp-rescue/dsp_rescue/soft.py
+@@ -0,0 +1,77 @@
++# SPDX-License-Identifier: GPL-3.0-or-later
++"""Bounded low-confidence correction; never alter DF, CA or ICAO bits."""
++
++import itertools
++from collections import Counter
++import numpy as np
++from .dsp import SAMPLES, payloads, crc_batch
++
++DF17 = np.array([1, 0, 0, 0, 1], bool)
++SHIFTS = (-1.0, -0.5, -0.25, 0.25, 0.5, 1.0)
++# Linear CRC allows cheap syndrome lookup instead of recomputing 21 full frames.
++BIT_SYNDROMES = crc_batch(np.packbits(np.eye(112, dtype=np.uint8), axis=1))
++
++
++def window(iq, starts, shift=0.0, margin=0):
++    """Eight-tap windowed-sinc interpolation of original complex samples."""
++    starts = np.asarray(starts, dtype=np.int64)
++    length = SAMPLES + margin * 2
++    integer = int(np.floor(shift))
++    fraction = shift - integer
++    taps = np.arange(-3, 5)
++    weights = np.sinc(taps - fraction) * np.kaiser(8, 5)
++    weights = (weights / weights.sum()).astype(np.float32)
++    positions = (
++        starts[:, None] + np.arange(-margin, SAMPLES + margin)[None, :] + integer
++    )
++    out = np.zeros((len(starts), length), np.complex64)
++    if fraction == 0:
++        return iq[positions]
++    for tap, weight in zip(taps, weights):
++        out += iq[positions + tap] * weight
++    return out
++
++
++def logits_and_confidence(windows):
++    power = np.abs(windows) ** 2
++    p = power[:, 32:].reshape(-1, 112, 4)
++    left = p[:, :, :2].sum(-1)
++    right = p[:, :, 2:].sum(-1)
++    return left - right, np.abs(left - right) / (left + right + 1e-9)
++
++
++def soft_decode(logits, confidence, limit=0.35, k=6):
++    """Unique CRC solution among <=21 hypotheses. Never alter ICAO bits 8..31.
++    No unrestricted bit guessing, packet synthesis, or future-track imputation.
++    """
++    if not 1 <= k <= 6 or not 0 <= limit <= 0.35:
++        raise ValueError("At most six weak bits with confidence <=0.35")
++    original = payloads(logits)
++    syndromes = crc_batch(original)
++    out = []
++    stats = Counter()
++    for i, syndrome in enumerate(syndromes):
++        if not syndrome:
++            continue
++        eligible = np.arange(32, 112)
++        ids = eligible[np.argsort(confidence[i, eligible], kind="stable")[:k]]
++        ids = ids[confidence[i, ids] <= limit]
++        solutions = []
++        for count in (1, 2):
++            for flipped in itertools.combinations(ids, count):
++                stats["hypotheses"] += 1
++                correction = 0
++                for bit in flipped:
++                    correction ^= int(BIT_SYNDROMES[bit])
++                if correction != int(syndrome):
++                    continue
++                row = original[i].copy()
++                for bit in flipped:
++                    row[bit // 8] ^= 1 << (7 - bit % 8)
++                if row[0] >> 3 == 17:
++                    solutions.append((row, tuple(map(int, flipped))))
++        if len(solutions) == 1:
++            out.append((i, *solutions[0]))
++        elif solutions:
++            stats["ambiguous"] += 1
++    return out, dict(stats)
+diff --git a/contrib/dsp-rescue/requirements.txt b/contrib/dsp-rescue/requirements.txt
+new file mode 100644
+index 0000000..47a2aac
+--- /dev/null
++++ b/contrib/dsp-rescue/requirements.txt
+@@ -0,0 +1,2 @@
++numpy>=1.26,<3
++scipy>=1.11,<2
+diff --git a/contrib/dsp-rescue/tests/bounds.c b/contrib/dsp-rescue/tests/bounds.c
+new file mode 100644
+index 0000000..f36d7de
+--- /dev/null
++++ b/contrib/dsp-rescue/tests/bounds.c
+@@ -0,0 +1,23 @@
++/* SPDX-License-Identifier: GPL-3.0-or-later */
++/* Standalone sanitizer check; no Python interpreter or RF hardware required. */
++#include "../dsp_rescue/frontend.c"
++#include <assert.h>
++#include <limits.h>
++#include <stdint.h>
++int main(void) {
++    float iq[2048] = {0}, power[1024], weights[48] = {0}, taps[102] = {0}, out[128];
++    double scores[1024];
++    int64_t starts[] = {-1, 0, 8, 1020, INT64_MAX}, ids[35], methods[35];
++    int64_t integers[6] = {-1, -1, -1, 0, 0, 1};
++    uint8_t rows[35 * 14], valid[5];
++    for (int64_t n = 0; n <= 1024; n++) {
++        rescue_scores(iq, n, power, scores);
++        int64_t count = rescue_header_ids(iq, n, starts, 5, ids);
++        assert(count >= 0 && count <= 5);
++        rescue_baseline(iq, n, starts, 5, rows, valid);
++        count = rescue_dsp(iq, n, starts, 5, integers, weights, 1, 1, ids, methods, rows);
++        assert(count >= 0 && count <= 35);
++        rescue_resample_float(iq, n, 0, 64, taps, out);
++    }
++    return 0;
++}
+diff --git a/contrib/dsp-rescue/tests/reference_matched.py b/contrib/dsp-rescue/tests/reference_matched.py
+new file mode 100644
+index 0000000..cd307d9
+--- /dev/null
++++ b/contrib/dsp-rescue/tests/reference_matched.py
+@@ -0,0 +1,31 @@
++# SPDX-License-Identifier: GPL-3.0-or-later
++"""Independent vectorized reference for the complex matched-filter kernel."""
++
++import numpy as np
++from dsp_rescue.soft import window
++from dsp_rescue.dsp import payloads, crc_batch
++
++
++def decode(iq, starts):
++    padded = window(iq, starts, margin=4)
++    packet = padded[:, 4:484]
++    positions = np.array([0, 1, 4, 5, 14, 15, 18, 19])
++    frequencies = np.arange(-100000, 100001, 5000)
++    rotation = np.exp(-2j * np.pi * frequencies[:, None] * positions[None, :] / 4000000)
++    coherent = np.abs(packet[:, positions] @ rotation.T) ** 2
++    selected = frequencies[np.argmax(coherent, axis=1)]
++    z = padded * np.exp(
++        -2j * np.pi * selected[:, None] * (np.arange(488) - 4)[None, :] / 4000000
++    )
++    offsets = np.arange(-1, 3)
++    shape = z[:, 4 + np.array([0, 4, 14, 18])[:, None] + offsets[None, :]].mean(axis=1)
++    starts = 4 + 32 + np.arange(112) * 4
++    left = z[:, starts[:, None] + offsets[None, :]]
++    right = z[:, starts[:, None] + 2 + offsets[None, :]]
++    logits = (
++        np.abs(np.einsum("nbt,nt->nb", left, shape.conj())) ** 2
++        - np.abs(np.einsum("nbt,nt->nb", right, shape.conj())) ** 2
++    )
++    pred = payloads(logits)
++    valid = (crc_batch(pred) == 0) & ((pred[:, 0] >> 3) == 17)
++    return {(int(i), pred[i].tobytes().hex()) for i in np.flatnonzero(valid)}
+diff --git a/contrib/dsp-rescue/tests/test_compare.py b/contrib/dsp-rescue/tests/test_compare.py
+new file mode 100644
+index 0000000..0095fdd
+--- /dev/null
++++ b/contrib/dsp-rescue/tests/test_compare.py
+@@ -0,0 +1,67 @@
++# SPDX-License-Identifier: GPL-3.0-or-later
++import unittest
++from dsp_rescue.compare import evaluate
++
++P = "8d40621d58c382d690c8ac2863a7"
++Q = "8d40621d58c386435cc412692ad6"
++
++
++class CompareTests(unittest.TestCase):
++    def setUp(self):
++        self.stock = [
++            dict(seconds=i * 0.001, message_hex=P, source="stock") for i in range(25)
++        ]
++        self.anchors = [
++            dict(seconds=r["seconds"] + 1e-6, message_hex=P, source="energy")
++            for r in self.stock
++        ]
++
++    def event(self, source="timing", t=0.025):
++        return dict(seconds=t, message_hex=Q, source=source)
++
++    def test_clock_guard_and_unchanged_baseline(self):
++        r = evaluate(self.stock, self.anchors + [self.event()])
++        self.assertTrue(r["alignment"]["verified"])
++        self.assertEqual(len(r["added"]), 1)
++        self.assertEqual(
++            [e for e in r["merged"] if e.get("source") == "stock"], self.stock
++        )
++        bad = [{**r, "seconds": r["seconds"] + 0.0001} for r in self.anchors]
++        self.assertFalse(
++            evaluate(self.stock, bad + [self.event()])["alignment"]["verified"]
++        )
++
++    def test_repeated_anchor_does_not_inflate_evidence(self):
++        self.assertFalse(
++            evaluate(self.stock, [self.anchors[0]] * 20)["alignment"]["verified"]
++        )
++
++    def test_stock_and_cross_method_duplicates(self):
++        e = [self.event(source=s) for s in ("energy", "timing", "soft", "matched")]
++        r = evaluate(self.stock, self.anchors + e)
++        self.assertEqual([e["source"] for e in r["added"]], ["energy"])
++
++    def test_future_stock_does_not_supply_prior_identity(self):
++        stock = [{**r, "seconds": r["seconds"] + 0.1} for r in self.stock]
++        anchors = [{**r, "seconds": r["seconds"] + 0.1} for r in self.anchors]
++        r = evaluate(stock, anchors + [self.event(t=0.05)])
++        self.assertFalse(r["added"])
++        r = evaluate(self.stock, self.anchors + [self.event(t=31)])
++        self.assertFalse(r["added"])
++        self.assertEqual(r["counts"]["no_prior_stock_icao"], 1)
++
++    def test_conflicting_stock_rejected(self):
++        r = evaluate(self.stock, self.anchors + [self.event(t=0.010001)])
++        self.assertFalse(r["added"])
++        self.assertEqual(r["counts"]["stock_conflict"], 1)
++
++    def test_unrecognized_source_and_invalid_crc_rejected(self):
++        e = [
++            self.event(source="unsupported"),
++            {**self.event(), "message_hex": Q[:-1] + "0"},
++        ]
++        self.assertFalse(evaluate(self.stock, self.anchors + e)["added"])
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git a/contrib/dsp-rescue/tests/test_dsp.py b/contrib/dsp-rescue/tests/test_dsp.py
+new file mode 100644
+index 0000000..2f43dca
+--- /dev/null
++++ b/contrib/dsp-rescue/tests/test_dsp.py
+@@ -0,0 +1,134 @@
++# SPDX-License-Identifier: GPL-3.0-or-later
++import tempfile, unittest
++from pathlib import Path
++import numpy as np
++from dsp_rescue import native
++from dsp_rescue.dsp import (
++    energy_logits,
++    clipped_power,
++    payloads,
++    crc_batch,
++    iq_blocks as reference_blocks,
++)
++from dsp_rescue.soft import SHIFTS, window, logits_and_confidence, soft_decode
++from dsp_rescue.decode import Decoder
++
++P = "8d40621d58c382d690c8ac2863a7"
++
++
++def pulse():
++    out = np.zeros(480, np.complex64)
++    for t in (0, 4, 14, 18):
++        out[t : t + 2] = 1
++    for b, bit in enumerate(np.unpackbits(np.frombuffer(bytes.fromhex(P), np.uint8))):
++        t = 32 + 4 * b + (0 if bit else 2)
++        out[t : t + 2] = 1
++    return out
++
++
++class DSPTests(unittest.TestCase):
++    def setUp(self):
++        rng = np.random.default_rng(251025)
++        self.iq = (rng.normal(0, 0.005, 8000) + 1j * rng.normal(0, 0.005, 8000)).astype(
++            np.complex64
++        )
++        for at in (100, 1500, 3000):
++            self.iq[at : at + 480] += pulse()
++        self.starts = np.array([100, 1500, 3000, 5000], np.int64)
++
++    def test_energy_matches_reference(self):
++        rows, valid = native.energy_candidates(self.iq, self.starts)
++        reference = payloads(
++            energy_logits(clipped_power(self.iq[self.starts[:, None] + np.arange(480)]))
++        )
++        np.testing.assert_array_equal(rows, reference)
++        np.testing.assert_array_equal(valid, crc_batch(reference) == 0)
++
++    def test_timing_matches_independent_reference(self):
++        ids, methods, rows = native.dsp_candidates(self.iq, self.starts, matched=False)
++        actual = {
++            (int(i), int(m), r.tobytes().hex()) for i, m, r in zip(ids, methods, rows)
++        }
++        expected = set()
++        for method, shift in enumerate(SHIFTS):
++            logits, _ = logits_and_confidence(window(self.iq, self.starts, shift))
++            pred = payloads(logits)
++            expected.update(
++                (int(i), method, pred[i].tobytes().hex())
++                for i in np.flatnonzero(
++                    (crc_batch(pred) == 0) & ((pred[:, 0] >> 3) == 17)
++                )
++            )
++        self.assertEqual(actual, expected)
++
++    def test_matched_known_packet_and_budget(self):
++        ids, methods, rows = native.dsp_candidates(self.iq, self.starts, timing=False)
++        self.assertTrue(len(ids))
++        self.assertTrue(np.all(methods == 6))
++        self.assertTrue(all(r.tobytes().hex() == P for r in rows))
++        with self.assertRaises(ValueError):
++            Decoder(budget=129)
++        with self.assertRaises(ValueError):
++            Decoder(methods=("timing",))
++
++    def test_matched_matches_independent_reference(self):
++        from reference_matched import decode
++
++        ids, methods, rows = native.dsp_candidates(self.iq, self.starts, timing=False)
++        actual = {(int(i), r.tobytes().hex()) for i, r in zip(ids, rows)}
++        self.assertEqual(actual, decode(self.iq, self.starts))
++
++    def test_soft_correction_preserves_header_and_address(self):
++        bits = np.unpackbits(np.frombuffer(bytes.fromhex(P), np.uint8))
++        logits = (bits.astype(float) * 2 - 1)[None, :]
++        confidence = np.ones_like(logits)
++        for b in (40, 70):
++            logits[0, b] *= -1
++            confidence[0, b] = 0.1
++        rows, stats = soft_decode(logits, confidence)
++        self.assertEqual(len(rows), 1)
++        self.assertEqual(rows[0][1].tobytes().hex(), P)
++        self.assertEqual(set(rows[0][2]), {40, 70})
++        self.assertLessEqual(stats["hypotheses"], 21)
++        logits = (bits.astype(float) * 2 - 1)[None, :]
++        logits[0, 20] *= -1
++        confidence = np.ones_like(logits)
++        confidence[0, 20] = 0
++        self.assertEqual(soft_decode(logits, confidence)[0], [])
++
++    def test_native_rejects_out_of_bounds_windows(self):
++        starts = np.array([-1, 2**63 - 1, len(self.iq) - 10], np.int64)
++        self.assertEqual(len(native.header_ids(self.iq, starts)), 0)
++        self.assertFalse(native.energy_candidates(self.iq, starts)[1].any())
++        self.assertEqual(len(native.dsp_candidates(self.iq, starts)[0]), 0)
++
++    def test_resampler_phase_and_boundary_context(self):
++        rng = np.random.default_rng(42)
++        raw = rng.integers(0, 256, 240003 * 2, dtype=np.uint8)
++        with tempfile.TemporaryDirectory() as d:
++            p = Path(d) / "test.uc8"
++            p.write_bytes(raw.tobytes())
++            native_rows = list(native.iq_blocks(p))
++            reference_rows = list(reference_blocks(p))
++            self.assertEqual(len(native_rows), len(reference_rows))
++            for (offset, n, iq), (other, m, ref) in zip(native_rows, reference_rows):
++                self.assertEqual((offset, n), (other, m))
++                np.testing.assert_allclose(iq, ref, atol=2e-6, rtol=2e-6)
++            p.write_bytes(b"1")
++            with self.assertRaises(ValueError):
++                list(native.iq_blocks(p))
++
++    def test_decode_is_self_contained_and_deduplicates(self):
++        import sys
++
++        events, work = Decoder().decode(None, blocks=[(0, 7500, self.iq)])
++        self.assertTrue(events)
++        self.assertEqual({r["source"] for r in events}, {"energy"})
++        self.assertEqual(len([r for r in events if r["message_hex"] == P]), 3)
++        self.assertLessEqual(work["counts"]["dsp_candidates"], 32)
++        self.assertNotIn("onnxruntime", sys.modules)
++        self.assertNotIn("torch", sys.modules)
++
++
++if __name__ == "__main__":
++    unittest.main()
+-- 
+2.56.0
+

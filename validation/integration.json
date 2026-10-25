@@ -1,0 +1,314 @@
+{
+  "synthetic_packets": 11,
+  "synthetic_boundaries": {
+    "sha256": "1b82354924d6983fad96556b895e7b8f721fd159e0d976c5cc8ccfde294e3adb",
+    "stock": {
+      "exit": 1,
+      "wall_s": 5.0119824996218085,
+      "records": 11,
+      "df17": 11
+    },
+    "disabled": {
+      "exit": 1,
+      "wall_s": 5.4921403750777245,
+      "records": 11,
+      "df17": 11,
+      "missing_stock_records": 0,
+      "extra_records": 0
+    },
+    "shadow": {
+      "exit": 1,
+      "wall_s": 5.012395708821714,
+      "records": 11,
+      "df17": 11,
+      "rescue": {
+        "buffers": 8,
+        "work_us": 14173,
+        "backlog_skips": 0,
+        "deadline_buffers": 0,
+        "discontinuities": 1,
+        "pending_overflow": 0,
+        "pending_tail": 0,
+        "peaks": 2429,
+        "retry_budget_skips": 0,
+        "duplicates": 11,
+        "unknown_identity": 0,
+        "conflicts": 0,
+        "raw": [
+          11,
+          0,
+          0,
+          0
+        ],
+        "extras": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "forwarded": 0
+      },
+      "missing_stock_records": 0,
+      "extra_records": 0
+    },
+    "output": {
+      "exit": 1,
+      "wall_s": 5.316251750104129,
+      "records": 11,
+      "df17": 11,
+      "rescue": {
+        "buffers": 8,
+        "work_us": 17655,
+        "backlog_skips": 0,
+        "deadline_buffers": 0,
+        "discontinuities": 1,
+        "pending_overflow": 0,
+        "pending_tail": 0,
+        "peaks": 2422,
+        "retry_budget_skips": 0,
+        "duplicates": 11,
+        "unknown_identity": 0,
+        "conflicts": 0,
+        "raw": [
+          11,
+          0,
+          0,
+          0
+        ],
+        "extras": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "forwarded": 0
+      },
+      "missing_stock_records": 0,
+      "extra_records": 0
+    },
+    "tight_budget": {
+      "exit": 1,
+      "wall_s": 1.01703991740942,
+      "records": 11,
+      "df17": 11,
+      "rescue": {
+        "buffers": 8,
+        "work_us": 1226,
+        "backlog_skips": 0,
+        "deadline_buffers": 8,
+        "discontinuities": 1,
+        "pending_overflow": 0,
+        "pending_tail": 0,
+        "peaks": 0,
+        "retry_budget_skips": 0,
+        "duplicates": 0,
+        "unknown_identity": 0,
+        "conflicts": 0,
+        "raw": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "extras": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "forwarded": 0
+      },
+      "missing_stock_records": 0,
+      "extra_records": 0
+    }
+  },
+  "noise": {
+    "exit": 1,
+    "wall_s": 5.020244624931365,
+    "records": 0,
+    "df17": 0,
+    "rescue": {
+      "buffers": 8,
+      "work_us": 15557,
+      "backlog_skips": 0,
+      "deadline_buffers": 0,
+      "discontinuities": 1,
+      "pending_overflow": 0,
+      "pending_tail": 0,
+      "peaks": 324,
+      "retry_budget_skips": 0,
+      "duplicates": 0,
+      "unknown_identity": 0,
+      "conflicts": 0,
+      "raw": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "extras": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "forwarded": 0
+    }
+  },
+  "recorded": {
+    "sha256": "0bd2525ea34e40ffd8c06973986110bcf609b1e55adfe4c5491cff499a9d8576",
+    "stock": {
+      "exit": 1,
+      "wall_s": 1.0249332496896386,
+      "records": 6272,
+      "df17": 1403
+    },
+    "disabled": {
+      "exit": 1,
+      "wall_s": 1.0207710419781506,
+      "records": 6272,
+      "df17": 1403,
+      "missing_stock_records": 0,
+      "extra_records": 0
+    },
+    "shadow": {
+      "exit": 1,
+      "wall_s": 1.0186731666326523,
+      "records": 6272,
+      "df17": 1403,
+      "rescue": {
+        "buffers": 367,
+        "work_us": 564956,
+        "backlog_skips": 0,
+        "deadline_buffers": 0,
+        "discontinuities": 1,
+        "pending_overflow": 0,
+        "pending_tail": 0,
+        "peaks": 206709,
+        "retry_budget_skips": 683,
+        "duplicates": 1359,
+        "unknown_identity": 19,
+        "conflicts": 0,
+        "raw": [
+          1307,
+          95,
+          38,
+          8
+        ],
+        "extras": [
+          34,
+          17,
+          16,
+          3
+        ],
+        "forwarded": 0
+      },
+      "missing_stock_records": 0,
+      "extra_records": 0
+    },
+    "output": {
+      "exit": 1,
+      "wall_s": 1.0144055830314755,
+      "records": 6342,
+      "df17": 1473,
+      "rescue": {
+        "buffers": 367,
+        "work_us": 575357,
+        "backlog_skips": 0,
+        "deadline_buffers": 2,
+        "discontinuities": 1,
+        "pending_overflow": 0,
+        "pending_tail": 0,
+        "peaks": 206314,
+        "retry_budget_skips": 675,
+        "duplicates": 1359,
+        "unknown_identity": 19,
+        "conflicts": 0,
+        "raw": [
+          1307,
+          95,
+          38,
+          8
+        ],
+        "extras": [
+          34,
+          17,
+          16,
+          3
+        ],
+        "forwarded": 70
+      },
+      "missing_stock_records": 0,
+      "extra_records": 70
+    },
+    "tight_budget": {
+      "exit": 1,
+      "wall_s": 1.0152980000711977,
+      "records": 6272,
+      "df17": 1403,
+      "rescue": {
+        "buffers": 367,
+        "work_us": 39184,
+        "backlog_skips": 0,
+        "deadline_buffers": 367,
+        "discontinuities": 1,
+        "pending_overflow": 0,
+        "pending_tail": 0,
+        "peaks": 4892,
+        "retry_budget_skips": 0,
+        "duplicates": 32,
+        "unknown_identity": 1,
+        "conflicts": 0,
+        "raw": [
+          30,
+          4,
+          0,
+          0
+        ],
+        "extras": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "forwarded": 0
+      },
+      "missing_stock_records": 0,
+      "extra_records": 0
+    }
+  },
+  "shuffled": {
+    "exit": 1,
+    "wall_s": 5.010906583163887,
+    "records": 2,
+    "df17": 0,
+    "rescue": {
+      "buffers": 367,
+      "work_us": 625090,
+      "backlog_skips": 0,
+      "deadline_buffers": 0,
+      "discontinuities": 1,
+      "pending_overflow": 0,
+      "pending_tail": 0,
+      "peaks": 1347640,
+      "retry_budget_skips": 37189,
+      "duplicates": 0,
+      "unknown_identity": 0,
+      "conflicts": 0,
+      "raw": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "extras": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "forwarded": 0
+    }
+  },
+  "invalid_configurations_rejected": 6
+}

@@ -1,0 +1,22 @@
+{
+  "package": "readsb-dsp-rescue",
+  "version": "0.1.0",
+  "upstream": "https://github.com/wiedehopf/readsb.git",
+  "base_commit": "9460652952a62fcfd9bf11a2664d737147f266a5",
+  "base_version": "3.16.18",
+  "result_tree": "7a8e3b2d2d1a03a3943d2fe62a0d83e5c96e5045",
+  "patches": [
+    {
+      "file": "patches/0001-contrib-dsp-rescue.patch",
+      "sha256": "9b5cf5c2ffb2eb238013a057e16737e238f1fa85f9b764280ef235f9b936f134"
+    },
+    {
+      "file": "patches/0002-native-dsp-rescue.patch",
+      "sha256": "66e38289cb14c47af661f1c4c1e60d8a64a9c8de2e46c3daaf705391d654def3"
+    }
+  ],
+  "neural_components": false,
+  "default_mode": "disabled",
+  "enabled_mode": "shadow",
+  "native_pi_hardware_validation": false
+}
