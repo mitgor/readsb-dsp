@@ -5,6 +5,8 @@ rescue ideas. The working Raspberry Pi 5 does **not** install this independent
 `readsb-dsp-rescue` patch package. It runs stock readsb with a separate rescue
 pipeline, and FR24 reads the guarded union stream. The package here remains off
 by default and has its own `--dsp-rescue` shadow and output flags.
+The live receiver dashboards belong to the separate full receiver project;
+this source add-on has no web dashboard or web-server dependency.
 
 | Component | Working receiver setting |
 | --- | --- |
