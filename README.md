@@ -12,6 +12,10 @@ here independently.
 
 ## Status
 
+The [working receiver integration profile](docs/CURRENT_RECEIVER_PROFILE.md)
+records the non-secret readsb/FR24 topology used alongside this research. This
+standalone source add-on is not installed on that receiver.
+
 - Feature **off by default**. `--dsp-rescue` enables **shadow mode**: stock output
   only, with rescue counters. A separate flag opts in to additional output.
 - UC8 at 2.4MS/s, **RTL-SDR and file input only**. Other SDRs/formats are rejected.
