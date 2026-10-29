@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "disk_bytes": 1271951360,
+  "disk_limit_bytes": 5000000000,
+  "ram_bytes": 260046842,
+  "ram_limit_bytes": 268435456,
+  "continuous_ram_bytes": 184687936,
+  "next_flush_unix": 1793314725.0304623,
+  "updated_unix": 1793303070.6926053,
+  "saving": false,
+  "error": null,
+  "pid": 757
+}

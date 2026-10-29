@@ -53,6 +53,8 @@ jobs:
           /tmp/coherent-sort-check
           cc -O1 -g -fsanitize=address,undefined -Isrc/rescue experiments/coherent-sort/check_sort.c -lm -o /tmp/coherent-sort-sanitize
           /tmp/coherent-sort-sanitize
+      - name: Rust release watchdog fault-injection tests
+        run: python experiments/rust-live/test_guard.py
       - name: Controller, dashboard and worker integration
         env:
           OPENBLAS_NUM_THREADS: '1'

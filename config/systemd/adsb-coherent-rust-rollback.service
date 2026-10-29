@@ -1,0 +1,16 @@
+[Unit]
+Description=Restore backed-up C coherent libraries after Rust release failure
+[Service]
+Type=oneshot
+User=root
+ExecStart=/usr/local/sbin/adsb-coherent-rust-mode rollback
+TimeoutStartSec=180
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/pi/adsb-neural-rescue/src/rescue /var/lib/adsb-coherent-rust /run/adsb-coherent-rust
+RuntimeDirectory=adsb-coherent-rust
+RuntimeDirectoryMode=0755
+RuntimeDirectoryPreserve=yes
+StateDirectory=adsb-coherent-rust
+StateDirectoryMode=0700

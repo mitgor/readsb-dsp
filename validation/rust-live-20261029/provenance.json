@@ -1,0 +1,14 @@
+{
+  "sources_sha256": {
+    "src/rescue/coherent_rust.rs": "d010a6ad488ceb332a71fe1a1e68b47db799362e6135bf6989c62865a28a817f",
+    "src/rescue/coherent_peaks.c": "5ee5092cb8d3aae2a6f19068be2d6c9b132ab9bb952c71db9d5b820c89d9291c",
+    "tools/build_coherent_rust.py": "e83151e2aa4ad610c4bb0f32367da10fb3a44160c693cb2b19fc86d2ee26268f",
+    "tools/rust_coherent_mode.py": "ebdc4ee02f536a4e79881e13f756662ed7420c62c607c668bd02d511e0df989d",
+    "experiments/rust-live/validate.py": "883415353c53b56ca69b235323529bcc05ece86a39eb14f76cdf2d813e6f7799"
+  },
+  "proof_sha256": "4279d4f6ed142e652c11781198ffb41cd71154d92a62ce2c453e9c7873a7a6fd",
+  "deployment_sha256": "18b592d8de137dfa8ae2f58b46f74a2f8644b683c4f19a701c57b51ebd87558f",
+  "live_backend": "rust ordinary and pair-lag",
+  "capture_unchanged": true,
+  "automatic_rollback_enabled": true
+}

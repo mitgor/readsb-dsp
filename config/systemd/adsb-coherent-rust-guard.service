@@ -1,0 +1,28 @@
+[Unit]
+Description=Rust coherent health guard with automatic rollback to validated C
+After=readsb.service adsb-rescue-shadow.service adsb-rescue-feed.service
+OnFailure=adsb-coherent-rust-rollback.service
+StartLimitIntervalSec=300
+StartLimitBurst=3
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/sbin/adsb-coherent-rust-mode watch --interval 15 --failures 3
+Restart=on-failure
+RestartSec=5
+Nice=19
+CPUWeight=1
+MemoryMax=96M
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/pi/adsb-neural-rescue/src/rescue /var/lib/adsb-coherent-rust /run/adsb-coherent-rust
+RuntimeDirectory=adsb-coherent-rust
+RuntimeDirectoryMode=0755
+RuntimeDirectoryPreserve=yes
+StateDirectory=adsb-coherent-rust
+StateDirectoryMode=0700
+StandardOutput=null
+StandardError=journal
+[Install]
+WantedBy=multi-user.target

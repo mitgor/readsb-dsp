@@ -18,4 +18,4 @@ deadsb = "deadsb.cli:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-rescue = ["*.c", "*.h"]
+rescue = ["*.c", "*.h", "*.rs"]

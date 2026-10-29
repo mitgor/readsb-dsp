@@ -116,6 +116,12 @@ adapted from Goose, with exact replay parity and **22–24% less coherent-kernel
 on Raspberry Pi 5**. This is a kernel comparison, not a whole-pipeline saving.
 See the [benchmark and live deployment](validation/coherent-sort-20261029/report.md).
 
+The validated Rust coherent backend is available with
+`deadsb build --native-only --coherent-backend rust`. It replaces the ordinary
+and pair-lag window kernels while retaining the C peak-selector ABI. The working
+receiver uses Rust with a persistent health guard and automatic restoration of
+the previous C libraries. See the [Rust live deployment and rollback guide](validation/rust-live-20261029/report.md).
+
 ## Example reception statistics
 
 ![Historical receiver statistics by distance: stock DF17, energy and neural extras, total improvement and DSP attribution](docs/images/reception-statistics-2026-10-25.png)
