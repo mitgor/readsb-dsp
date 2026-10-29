@@ -1,0 +1,17 @@
+{
+  "project": "deadsb dsp",
+  "hardware": "Linux-6.12.109+rpt-rpi-2712-aarch64-with-glibc2.36",
+  "rf_seconds": 0.05461333333333333,
+  "profile": 0,
+  "cpu_seconds": 0.04578451699999997,
+  "wall_seconds": 0.11722657000063919,
+  "input_sha256": "0f1a0074cfd98d86ee30b9aab1ccfea2ece8c60155a3431eab6fcd7bf996d64e",
+  "method_candidate_counts": {
+    "energy": 9
+  },
+  "candidate_digest": "03e3068997c361f8b4a4f503057abb28bea76915ff52a9f11a92e5f3c5c3c55f",
+  "candidate_count": 9,
+  "guards": "Raw candidate replay only; no independent truth, distance or incremental stock/relay comparison supplied.",
+  "live_changes": false,
+  "cpu_seconds_per_rf_second": 0.8383395446777339
+}

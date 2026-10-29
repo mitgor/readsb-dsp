@@ -1,0 +1,1 @@
+{"enabled": true, "target_percent": 55.0, "ceiling_percent": 60.0, "window_seconds": 30.0, "lower_interval_seconds": 5.0, "recovery_seconds": 60.0, "recovery_margin_percent": 5.0, "stop_temperature_c": 75.0}

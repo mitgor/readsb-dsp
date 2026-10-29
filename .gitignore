@@ -3,3 +3,24 @@
 __pycache__/
 *.uc8
 *.jsonl
+
+# Generated builds, RF, private credentials and runtime state
+.venv/
+*.so
+*.dylib
+*.py[cod]
+*.o
+*.d
+*.a
+readsb/readsb
+readsb/viewadsb
+readsb/crctests
+readsb/cprtests
+readsb/.version
+readsb/tests/dsp-rescue/unit
+*.egg-info/
+data/
+results/
+*.log
+.env
+*.dSYM/

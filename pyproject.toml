@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deadsb-dsp"
+version = "0.2.0"
+description = "readsb-dsp: integrated stock-first DSP/neural receiver and adaptive CPU budgeting"
+readme = "README.md"
+license = "GPL-3.0-or-later"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26,<3", "scipy>=1.11,<2", "onnxruntime>=1.20,<2"]
+
+[project.scripts]
+deadsb = "deadsb.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+rescue = ["*.c", "*.h"]

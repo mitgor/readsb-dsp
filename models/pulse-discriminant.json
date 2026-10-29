@@ -1,0 +1,27 @@
+{
+  "schema": "pulse-discriminant-v1",
+  "weights": [
+    -0.09781846317893077,
+    0.41321483874994797,
+    1.4350258652521122,
+    0.2920966484200462,
+    -0.7084594405010465,
+    -0.7180731206902019,
+    -0.2114693637709329,
+    0.12384225943678151
+  ],
+  "bias": -0.5148333990424641,
+  "shrinkage": 0.9,
+  "offsets": [
+    -2,
+    -1,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "label_policy": "stock-confirmed training split only; far windows weighted 3x",
+  "training_eligible_predictions": false
+}

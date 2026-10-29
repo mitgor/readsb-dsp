@@ -1,0 +1,23 @@
+{
+  "project": "deadsb dsp",
+  "mac_builds": [
+    "file-only",
+    "RTLSDR=yes"
+  ],
+  "mac_python_tests": 41,
+  "mac_native_tests": "CRC/CPR, native guards and ASan/UBSan passed",
+  "pi_build": "file-only; 13 native worker libraries and readsb",
+  "pi_governor_dashboard_tests": 10,
+  "pi_native_tests": "CRC/CPR and native guards passed",
+  "mac_pi_output_parity": true,
+  "original_import_output_parity": true,
+  "rf_seconds_check": 0.05461333333333333,
+  "candidate_count_check": 9,
+  "protected_services_changed": [
+    "adsb-rescue-shadow"
+  ],
+  "concurrent_change": "Rescue coordinator PID changed during isolated validation; this task issued no production service operations. Stock readsb, FR24, relay, capture and ADS-B Exchange PIDs remained unchanged.",
+  "live_deployed": false,
+  "cpu_governor": "55%/30s cooperative target, stronger shedding above 60%; simulated overload/recovery tested. Sustained live overload not qualified.",
+  "limitation": "54.6ms consumed RF with nine energy candidates: wiring/digest check, not throughput or reception-gain evidence. No new held-out RF consumed."
+}

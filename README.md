@@ -1,143 +1,132 @@
-# readsb DSP rescue
+# deadsb dsp · readsb-dsp
 
-An independent, experimental **source add-on package** for
-[wiedehopf/readsb](https://github.com/wiedehopf/readsb). It adds native C energy
-slicing, fractional timing retries, bounded weak-bit repair and complex matched
-filtering. **No neural models or inference runtime.**
+An integrated, experimental ADS-B receiver distribution: **readsb + energy/DSP +
+neural rescue + dashboard + offline benchmarks**, with adaptive rescue CPU
+budgeting. This is an independent GPL-3.0-or-later project, not an endorsed
+upstream readsb release.
 
-This is not an upstream readsb release or an endorsed extension. The maintainer
-is not seeking demodulator additions; [PR #163](https://github.com/wiedehopf/readsb/pull/163)
-remains available for discussion/visibility. Development of this add-on continues
-here independently.
+The repository is **[mitgor/readsb-dsp](https://github.com/mitgor/readsb-dsp)**.
+The project/product name is **deadsb dsp**. The original DSP-only patch package,
+release history and reproducible preparation helper are retained; see
+[the legacy guide](docs/LEGACY_PACKAGE.md).
 
-## Status
+## What's included
 
-The [working receiver integration profile](docs/CURRENT_RECEIVER_PROFILE.md)
-records the non-secret readsb/FR24 topology used alongside this research. This
-standalone source add-on is not installed on that receiver.
+| Component | Location | Purpose |
+|---|---|---|
+| Complete pinned readsb fork | `readsb/` | Primary decoder, optional native DSP-only rescue and nonblocking I/Q tap |
+| Native shared frontend and workers | `src/rescue/` | Energy, timing, weak-bit repair, matched/coherent filtering, optional neural cascade |
+| CPU governor | `src/deadsb/governor.py` | Total system utilization feedback; reduce optional work under load |
+| Loopback dashboard | `deadsb dashboard` | CPU target, admission profile, per-method reception/CPU and distance statistics |
+| Offline benchmark | `deadsb benchmark` | Reproducible UC8 replay, packet digest and CPU cost, no network output |
+| Native stock/DSP controls | `readsb/tests/dsp-rescue/` | Stock preservation, boundaries, noise and sanitizer checks |
 
-- Feature **off by default**. `--dsp-rescue` enables **shadow mode**: stock output
-  only, with rescue counters. A separate flag opts in to additional output.
-- UC8 at 2.4MS/s, **RTL-SDR and file input only**. Other SDRs/formats are rejected.
-- Source package pinned to readsb **3.16.18**, commit
-  `9460652952a62fcfd9bf11a2664d737147f266a5`. It is not a universal patch for
-  arbitrary versions. No precompiled binaries or service installer are provided.
-- Native macOS builds/replays pass; actual native Pi 4/RTL-SDR profiling remains
-  outstanding. Existing offline kernels were tested on Pi, which does not validate
-  this native live integration's performance.
+Readsb is based on 3.16.18 / upstream commit `9460652`, plus our prepared native
+integration and nonblocking tap. [Provenance](docs/INTEGRATION_PROVENANCE.json)
+records exact source commits and imported runtime/model hashes. No private RF,
+receiver coordinates, feeder sharing keys or installed configuration are bundled.
 
-## Prepare an isolated build
+## Build locally
 
-On Debian/Raspberry Pi OS, install build dependencies if needed:
-
-```sh
-sudo apt update
-sudo apt install git build-essential pkg-config libncurses-dev zlib1g-dev \
-  libzstd-dev librtlsdr-dev libusb-1.0-0-dev
-```
-
-Python 3 is used by the preparation helper only; the native decoder has no Python
-runtime requirement. On macOS, use Xcode command line tools and Homebrew `zstd`,
-`pkg-config` and `librtlsdr` for the equivalent build.
+Python 3.11+, a C compiler, make, zstd, zlib and ncurses development headers are
+required. RTL-SDR builds also need librtlsdr and libusb development packages.
 
 ```sh
-git clone https://github.com/mitgor/readsb-dsp-rescue.git
-cd readsb-dsp-rescue
-python3 tools/prepare.py build/readsb --build --rtlsdr --jobs 2
+git clone https://github.com/mitgor/readsb-dsp.git
+cd readsb-dsp
+python3 -m venv .venv
+.venv/bin/pip install -e .
+.venv/bin/deadsb build                 # native libraries + file-only readsb
+# .venv/bin/deadsb build --rtlsdr      # helper cleans only its own decoder build first
+PYTHONPATH=src .venv/bin/python -m unittest discover -s tests -v
+make -C readsb test dsp-rescue-test dsp-rescue-test-sanitize
 ```
 
-The helper verifies patch hashes, clones the pinned upstream source into a **new**
-directory, applies both patches, verifies the exact resulting source tree, and
-optionally compiles it. It refuses an existing destination. It leaves the patches
-staged in the new source checkout. It never installs a binary, runs sudo, restarts
-services, changes feeder settings or opens the SDR. `--source /path/to/local/readsb`
-can use an existing clone as a read-only source; its pinned base must be present.
-Omit `--rtlsdr` for a file-only build.
+Builds do not install binaries, open the SDR or change receiver services. The
+existing receiver keeps running its existing installation. Copying these files
+onto a receiver does not enable the new governor.
 
-The same patches can be applied manually to a clean pinned source tree, in order:
+## 60% CPU target
+
+The supplied policy targets **55% total system CPU over 30 seconds**, with a
+**60% ceiling used for stronger shedding**. It samples Linux `/proc/stat`, not
+load average. Four cores at 60% mean 2.4 CPU-seconds per wall second, including
+stock decoding, feeders and unrelated processes.
+
+| Profile | Rescue admission |
+|---|---|
+| Full | Operator-configured methods and existing budgets |
+| Bounded | Halved neural/coherent candidate budgets; pair, sequence and acquisition retries suspended |
+| Cheap | Energy + configured timing/soft/matched; neural/coherent and research work suspended |
+| Energy | Additional energy slicing only |
+| Stock-only | No rescue decoding; primary readsb continues independently |
+
+The governor can only reduce already configured methods. It changes job admission
+at RF-second boundaries; it never changes thresholds, CRC/identity guards, model
+weights, feeder routing, gain or collection limits. It reduces work every five
+seconds under pressure and restores one profile after 60 seconds of cool,
+low-CPU operation. Stale/invalid telemetry, severe backlog or heat suppress rescue.
+The shared frontend producer/consumer lifecycle remains bounded at every level.
+
+**This is a cooperative target, not a guaranteed system-wide cap.** Stock and
+unrelated work are never throttled. Short spikes and a stock-only baseline above
+60% can exceed the target. Shedding work can lose rescue extras; it does not
+replace or discard stock output. Profile ordering is a conservative policy, not
+proof of the most efficient bundle. Independent ablation benchmarks are required
+before claiming optimal recovery per CPU second.
+
+## Full receiver mode
+
+Use one stock-first readsb process with the I/Q tap and separate rescue workers.
+Readsb's optional in-process `--dsp-rescue` must remain **off** in this mode to
+avoid doing the same DSP twice. The native-only mode is an alternative for simpler
+receivers; its cooperative microsecond budget is documented separately in
+[the native guide](docs/NATIVE_DSP_RESCUE.md).
+
+The tap is inactive unless the readsb process is explicitly started with
+`ADSB_RESCUE_SOCKET=/run/deadsb/iq.sock`. Readsb remains the sole SDR owner. Rescue
+input and output use separate sockets; no candidate output is automatically sent
+to a feeder. A manual deployment profile is in [the integration guide](docs/DEADSB.md).
+It deliberately requires the operator's receiver location and established output
+routing. Existing stock-only and guarded-union outputs can serve FR24 and ADS-B
+Exchange; unverified research branches stay quarantined.
 
 ```sh
-git apply --check /path/to/readsb-dsp-rescue/patches/0001-contrib-dsp-rescue.patch
-git apply /path/to/readsb-dsp-rescue/patches/0001-contrib-dsp-rescue.patch
-git apply --check /path/to/readsb-dsp-rescue/patches/0002-native-dsp-rescue.patch
-git apply /path/to/readsb-dsp-rescue/patches/0002-native-dsp-rescue.patch
+# After setting up a dedicated runtime and supplying your own receiver location:
+deadsb shadow --root "$PWD" --runtime /run/deadsb --archive /var/lib/deadsb \
+  --lat YOUR_LAT --lon YOUR_LON --config config/methods.json \
+  --worker-config config/workers.json --cpu-budget-config config/cpu-budget.json \
+  --no-logging
+# Separate terminal; binds only 127.0.0.1, no receiver/service control:
+deadsb dashboard --runtime /run/deadsb --budget-config config/cpu-budget.json
 ```
 
-## Test with a recording first
+The new dashboard is `http://127.0.0.1:8912/`. It distinguishes configured methods
+from current admission and reports CPU cost per attributed additional packet.
+Shared costs and attribution do not establish causal marginal benefit or power.
+This interface changes only budget settings; method configuration is explicit in
+`config/methods.json` and requires a rescue worker restart to reload.
 
-Use a UC8 I/Q recording at exactly 2.4MS/s; no private recordings are distributed.
-These commands have no network outputs and do not access a physical receiver:
+## Benchmark without touching the receiver
 
 ```sh
-cd build/readsb
-# Stock output plus shadow rescue counters on stderr
-./readsb --device-type ifile --ifile /path/to/capture.uc8 --iformat UC8 \
-  --raw --mlat --dsp-rescue > stock.txt 2> rescue-summary.txt
-
-# Explicit experimental union output, still only a local file
-./readsb --device-type ifile --ifile /path/to/capture.uc8 --iformat UC8 \
-  --raw --mlat --dsp-rescue --dsp-rescue-output > union.txt 2> union-summary.txt
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 deadsb benchmark \
+  --iq /path/to/recording.uc8 --output /tmp/deadsb-full.json --profile 0
+# A separate, fresh output for an explicitly reduced policy:
+deadsb benchmark --iq /path/to/recording.uc8 --output /tmp/deadsb-cheap.json --profile 2
 ```
 
-Add `--throttle` to pace file input at its original RF rate. Rescue summary arrays
-`raw` and `extras` are ordered **energy, timing, soft, matched**. `extras` is the
-count of deduplicated guarded additions; `forwarded` is actual native submissions.
-Stock's ifile path currently exits 1 at EOF; inspect the output and summary rather
-than using that exit status alone as a success/failure test.
+UC8 input must be 2.4 MS/s and start at the native resampler's phase-zero origin.
+Use sample-index reservations and aligned crops for RF from a continuous receiver.
+Reports contain aggregate candidate counts, RF hash, packet digest and CPU cost;
+raw candidates are **not** verified additional transmissions. Distance and gains
+beyond stock/actual production require synchronized stock, accepted-DSP and
+position ledgers. Do not tune against held-out RF or train on unverified outputs.
 
-For an eventual live trial, keep the installed receiver configuration backed up,
-profile a separate shadow build first, and never run two processes against the
-same SDR. Merely building this package does not affect the working receiver.
-The native output flag feeds the existing readsb output path, so existing network
-settings would determine where additions go. No live deployment is automated.
+## Status and limits
 
-## Recovery and safeguards
-
-Stock demodulation runs first, then bounded cooperative DSP work on the existing
-decode thread. There are no new worker threads. Live FIFO backlog skips rescue
-work, and default wall budgets cap it at min(5ms, 10% of each buffer's RF duration).
-This is not a hard realtime guarantee; slower hardware can lose rescue coverage.
-
-The UC8 tap preserves shared sample timing and packet/FIR context across buffers.
-Candidates wait for the next stock pass, require valid DF17 CRC and prior
-uncorrected stock ICAO identity within 30 seconds, and pass transmission duplicate
-and same-time conflict checks. Additions cannot establish later identity.
-Weak-bit repair preserves DF/CA/ICAO bits, tests at most 21 hypotheses, and honors
-`--no-fix`. There is no broad CRC search, relaxed header search or interference
-cancellation. See [native design and limits](docs/NATIVE_DSP_RESCUE.md).
-
-## Evidence and limitations
-
-On **one 10-second recording**, local-file output preserved all **6,272 stock
-records** and added **70 guarded DF17** on top of 1,403 stock DF17 (about 5%).
-Disabled/shadow output preserved stock timestamp/payload pairs. A paced shadow
-run found 61 additions under its budget, demonstrating scheduling sensitivity.
-These are CRC/identity-guarded candidates, **not independent RF truth**, a general
-range improvement, or an established false-positive rate.
-
-Eleven synthetic boundary packets were counted once; generated noise (0.2s) and
-shuffled real I/Q (10s) produced zero raw rescue candidates. Standard CRC/CPR,
-14 offline reference tests and native ASan/UBSan tests passed on macOS arm64.
-Aggregate reports are in [validation/](validation/). No receiver coordinates,
-credentials, private captures or per-aircraft candidate logs are included.
-
-```sh
-make -C build/readsb test
-make -C build/readsb dsp-rescue-test
-make -C build/readsb dsp-rescue-test-sanitize
-```
-
-More replay controls and optional NumPy/SciPy reference checks are described in
-[testing notes](docs/TESTING.md). Hardware shadow profiling, sustained overload,
-sample-gap/thermal tests and longer independent noise/receiver controls remain
-necessary before relying on live extra output.
-
-## Package contents and license
-
-`patches/0001-*` contains the optional offline reference; `patches/0002-*` adds
-native integration. `manifest.json` records the base, patch hashes and resulting
-Git tree. `tools/prepare.py` reproduces that tree without modifying the source
-clone or installed receiver.
-
-GPL-3.0-or-later. Upstream copyright/license notices are preserved in the patches,
-[LICENSE](LICENSE) and [COPYING](COPYING). See individual source files for notices.
+This source integration is being validated independently of the working receiver.
+The 60% policy has simulation and isolated replay tests; it does not yet have a
+sustained live overload/thermal qualification. No automatic deployment, new RF
+capture or feeder restart is performed by any build/benchmark command.
+Read [validation](validation/DEADSB.md) for the current evidence and limitations.

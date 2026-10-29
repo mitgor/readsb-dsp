@@ -1,0 +1,14 @@
+{
+  "project": "deadsb dsp",
+  "repository": "https://github.com/mitgor/readsb-dsp",
+  "version": "0.2.0",
+  "readsb_source": "readsb/",
+  "runtime_source": "src/rescue/",
+  "controller_source": "src/deadsb/",
+  "default_cpu_target_percent": 55,
+  "default_cpu_ceiling_percent": 60,
+  "cpu_limit_is_cooperative": true,
+  "default_output_policy": "stock-first; research quarantined; no automatic feeder activation",
+  "auto_deploy": false,
+  "legacy_patch_manifest": "manifest.json"
+}

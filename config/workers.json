@@ -1,0 +1,1 @@
+{"workers":2,"reserve_cores":2,"max_workers":2,"cpus":"2-3","coherent_cpus":"0-1","coherent_threshold":0.35,"coherent_budget":48,"optimized_dsp":true,"sequence_acquisition":true,"sequence_enabled":false,"acquisition_enabled":false,"optimized_v3":true,"optimized_extended":true,"coherent_pair_retry":true,"shared_transport":"ring","cached_fir":true}

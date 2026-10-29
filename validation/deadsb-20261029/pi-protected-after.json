@@ -1,0 +1,8 @@
+{
+  "readsb": "MainPID=4694\nActiveState=active",
+  "fr24feed": "MainPID=1193167\nActiveState=active",
+  "adsb-rescue-shadow": "MainPID=1274914\nActiveState=active",
+  "adsb-rescue-feed": "MainPID=55033\nActiveState=active",
+  "adsb-far-capture": "MainPID=757\nActiveState=active",
+  "adsbexchange-feed": "MainPID=1235929\nActiveState=active"
+}

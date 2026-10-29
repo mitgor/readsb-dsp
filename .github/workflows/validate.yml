@@ -32,3 +32,25 @@ jobs:
         with:
           name: generated-controls
           path: build/generated-controls.json
+
+  integrated:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential pkg-config libncurses-dev zlib1g-dev libzstd-dev
+          python -m pip install -e .
+      - name: Build integrated native frontend and readsb
+        run: deadsb build
+      - name: Controller, dashboard and worker integration
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+          OMP_NUM_THREADS: '1'
+        run: python -m unittest discover -s tests -v
+      - name: Stock and native guards
+        run: make -C readsb test dsp-rescue-test dsp-rescue-test-sanitize
