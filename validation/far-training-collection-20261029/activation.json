@@ -1,0 +1,2725 @@
+{
+  "before": {
+    "unix": 1793313384.9896173,
+    "pids": {
+      "readsb": 4694,
+      "fr24feed": 1193167,
+      "adsb-rescue-feed": 1622165,
+      "adsbexchange-feed": 1235929,
+      "adsb-far-capture": 757
+    },
+    "shadow_pid": 2113770,
+    "started_unix": 1793309667.5144923,
+    "updated_unix": 1793313377.014081,
+    "feed_updated_unix": 1793313384.0094564,
+    "threads_alive": true,
+    "gain_db": 38.6,
+    "methods": {
+      "energy": true,
+      "crc": true,
+      "timing": true,
+      "soft": true,
+      "matched": true,
+      "coherent": true,
+      "header": false,
+      "sic": false,
+      "neural": true,
+      "pulse": false,
+      "stream1090": true,
+      "sequence": false,
+      "acquisition": false
+    },
+    "worker_config": {
+      "workers": 2,
+      "reserve_cores": 2,
+      "max_workers": 2,
+      "cpus": "2-3",
+      "coherent_cpus": "0-1",
+      "coherent_threshold": 0.35,
+      "coherent_budget": 48,
+      "optimized_dsp": true,
+      "sequence_acquisition": true,
+      "sequence_enabled": false,
+      "acquisition_enabled": false,
+      "optimized_v3": true,
+      "optimized_extended": true,
+      "coherent_pair_retry": true,
+      "shared_transport": "ring",
+      "cached_fir": true
+    },
+    "worker_roles": {
+      "2113794": "dsp",
+      "2113798": "coherent",
+      "2113797": "dsp",
+      "2113801": "coherent"
+    },
+    "workers": {
+      "2113794": [
+        2
+      ],
+      "2113798": [
+        0
+      ],
+      "2113797": [
+        3
+      ],
+      "2113801": [
+        1
+      ]
+    },
+    "pending": 0,
+    "mean_latency_s": 0.037521539455434925,
+    "aligned_seconds": 3707,
+    "shed": 1,
+    "samples": {
+      "samples_lost": 0,
+      "samples_dropped": 0
+    },
+    "feed": {
+      "stock_connected": true,
+      "fr24_routed": true,
+      "counts": {
+        "stock_bytes_relayed": 325530726,
+        "dsp_frames_relayed": 553134,
+        "relayed_coherent": 167231
+      },
+      "upstream_error": null
+    },
+    "fr24": {
+      "feed_status": "connected",
+      "rx_connected": "1",
+      "feed_last_ac_sent_time": "1793313372",
+      "feed_num_ac_tracked": "19"
+    },
+    "crc_archive": {
+      "disk_bytes": 120247232,
+      "ram_bytes": 8188766,
+      "error": null,
+      "saved_files": 14
+    },
+    "config_sha256": {
+      "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+      "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+      "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+      "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+    },
+    "temperature_c": 54.0
+  },
+  "capture_before": {
+    "packet_ledger": {
+      "enabled": true,
+      "pre_seconds": 30.0,
+      "tail_seconds": 8.0,
+      "history_bytes": 937801,
+      "history_limit_bytes": 8388608,
+      "ready": true,
+      "streams": {
+        "stock": {
+          "connected": true,
+          "since": 18.419947488,
+          "generation": 2,
+          "connections": 2,
+          "disconnects": 1,
+          "bytes": 1275185501,
+          "latest_tick": 1536625824498,
+          "last_data": 128071.497912995
+        },
+        "unified": {
+          "connected": true,
+          "since": 99674.782905509,
+          "generation": 7,
+          "connections": 7,
+          "disconnects": 6,
+          "bytes": 1321345743,
+          "latest_tick": 1536589466842,
+          "last_data": 128071.494393638
+        }
+      },
+      "counts": {
+        "stock_connect_failures": 2,
+        "clock_epoch_changes": 155,
+        "bursts": 3286,
+        "unified_saved_bytes": 30870416,
+        "unified_saved_chunks": 96837,
+        "stock_saved_bytes": 29761256,
+        "stock_saved_chunks": 103028,
+        "dsp_annotations_saved_bytes": 0,
+        "dsp_annotations_saved_chunks": 47312,
+        "complete_bursts": 2946,
+        "journal_cap_skips": 229197,
+        "incomplete_bursts": 340
+      },
+      "faults": 229359,
+      "recent_bursts": [
+        {
+          "burst_id": "4694-210510705543-651264",
+          "epoch": 4694,
+          "sample_start": 210510705543,
+          "sample_end": 210510706311,
+          "unix_start": 1793273044.8779817,
+          "arrival_start": 87731.992774479,
+          "arrival_end": 87731.992774479,
+          "rf_file": "packets.uc8",
+          "final_at": 87739.992774479,
+          "finalized": true,
+          "streams_complete": false
+        },
+        {
+          "burst_id": "4694-210510726686-652800",
+          "epoch": 4694,
+          "sample_start": 210510726686,
+          "sample_end": 210510727454,
+          "unix_start": 1793273044.8867915,
+          "arrival_start": 87732.007795615,
+          "arrival_end": 87732.007795615,
+          "rf_file": "packets.uc8",
+          "final_at": 87740.007795615,
+          "finalized": true,
+          "streams_complete": false
+        },
+        {
+          "burst_id": "4694-210510748245-654336",
+          "epoch": 4694,
+          "sample_start": 210510748245,
+          "sample_end": 210510749013,
+          "unix_start": 1793273044.8957741,
+          "arrival_start": 87732.019838205,
+          "arrival_end": 87732.019838205,
+          "rf_file": "packets.uc8",
+          "final_at": 87740.019838205,
+          "finalized": true,
+          "streams_complete": false
+        },
+        {
+          "burst_id": "4694-210510769586-655872",
+          "epoch": 4694,
+          "sample_start": 210510769586,
+          "sample_end": 210510770354,
+          "unix_start": 1793273044.9046662,
+          "arrival_start": 87732.033155917,
+          "arrival_end": 87732.033155917,
+          "rf_file": "packets.uc8",
+          "final_at": 87740.033155917,
+          "finalized": true,
+          "streams_complete": false
+        }
+      ],
+      "source_annotation_completeness": "best_effort_IPC; authoritative_actual_output_in_unified_beast"
+    },
+    "capture_triggers": {
+      "policy": {
+        "local_holdover_seconds": 60,
+        "external_poll_seconds": 30,
+        "external_max_age_seconds": 30,
+        "external_radius_nm": 250,
+        "burst_seconds": 2,
+        "burst_interval_seconds": 60
+      },
+      "active": [],
+      "burst_count": 2101,
+      "next_burst_unix": 1793313388.8427634,
+      "external": {
+        "source": "https://opendata.adsb.fi",
+        "attribution": "Aircraft context: adsb.fi \u2014 https://adsb.fi (personal, non-commercial use)",
+        "attempts": 4236,
+        "successes": 4235,
+        "error": null,
+        "updated_unix": 1793313366.3137093
+      },
+      "external_candidate_count": 42
+    },
+    "ram_lock_enabled": true,
+    "locked_page_bytes": 293486592,
+    "enabled": true,
+    "config": {
+      "packet_capture": true,
+      "continuous_capture": true,
+      "threshold_nm": 200.0,
+      "ram_limit_bytes": 268435456,
+      "continuous_ram_bytes": 201326592,
+      "disk_limit_bytes": 5000000000,
+      "flush_seconds": 43200
+    },
+    "counts": {
+      "packet_no_rf_clock": 2023,
+      "context_errors": 21,
+      "readsb_tap_dropped_counter": 274117632,
+      "tap_samples_received": 307021121052,
+      "unrangeable_packets": 3201106,
+      "tap_gap_samples": 317987736,
+      "stock_disconnects": 1,
+      "continuous_samples": 283356576,
+      "continuous_ram_cap_skips": 65135,
+      "far_packets_seen": 11224,
+      "far_packets_saved": 3208,
+      "ram_cap_skips": 866187,
+      "packet_iq_missing": 49,
+      "packet_ledger_unready": 16,
+      "packet_cap_skips": 8016,
+      "saved_batches": 2
+    },
+    "ram_bytes": 260046842,
+    "ram_limit_bytes": 268435456,
+    "ring_bytes": 19267584,
+    "continuous_ram_bytes": 184687936,
+    "disk_bytes": 0,
+    "disk_limit_bytes": 5000000000,
+    "next_flush_unix": 1793314725.0304623,
+    "saving": false,
+    "error": null,
+    "far_aircraft_present": false,
+    "pending_packets": 0,
+    "files": [],
+    "scope": "All ranged stock Mode S/ADS-B and guarded DSP packets; unknown addresses/positions cannot be ranged. Continuous chunks and packet snippets share original UC8 when available. Capture pauses at caps; counters expose gaps/skips.",
+    "updated_unix": 1793313384.4375167
+  },
+  "backup": "/var/backups/adsb-far-training-1793313385056780312",
+  "samples": [
+    {
+      "health": {
+        "unix": 1793313415.419797,
+        "pids": {
+          "readsb": 4694,
+          "fr24feed": 1193167,
+          "adsb-rescue-feed": 1622165,
+          "adsbexchange-feed": 1235929,
+          "adsb-far-capture": 2191342
+        },
+        "shadow_pid": 2113770,
+        "started_unix": 1793309667.5144923,
+        "updated_unix": 1793313407.084094,
+        "feed_updated_unix": 1793313414.4101005,
+        "threads_alive": true,
+        "gain_db": 38.6,
+        "methods": {
+          "energy": true,
+          "crc": true,
+          "timing": true,
+          "soft": true,
+          "matched": true,
+          "coherent": true,
+          "header": false,
+          "sic": false,
+          "neural": true,
+          "pulse": false,
+          "stream1090": true,
+          "sequence": false,
+          "acquisition": false
+        },
+        "worker_config": {
+          "workers": 2,
+          "reserve_cores": 2,
+          "max_workers": 2,
+          "cpus": "2-3",
+          "coherent_cpus": "0-1",
+          "coherent_threshold": 0.35,
+          "coherent_budget": 48,
+          "optimized_dsp": true,
+          "sequence_acquisition": true,
+          "sequence_enabled": false,
+          "acquisition_enabled": false,
+          "optimized_v3": true,
+          "optimized_extended": true,
+          "coherent_pair_retry": true,
+          "shared_transport": "ring",
+          "cached_fir": true
+        },
+        "worker_roles": {
+          "2113794": "dsp",
+          "2113798": "coherent",
+          "2113797": "dsp",
+          "2113801": "coherent"
+        },
+        "workers": {
+          "2113794": [
+            2
+          ],
+          "2113798": [
+            0
+          ],
+          "2113797": [
+            3
+          ],
+          "2113801": [
+            1
+          ]
+        },
+        "pending": 0,
+        "mean_latency_s": 0.03792342774810095,
+        "aligned_seconds": 3737,
+        "shed": 1,
+        "samples": {
+          "samples_lost": 0,
+          "samples_dropped": 0
+        },
+        "feed": {
+          "stock_connected": true,
+          "fr24_routed": true,
+          "counts": {
+            "stock_bytes_relayed": 325667583,
+            "dsp_frames_relayed": 553431,
+            "relayed_coherent": 167297
+          },
+          "upstream_error": null
+        },
+        "fr24": {
+          "feed_status": "connected",
+          "rx_connected": "1",
+          "feed_last_ac_sent_time": "1793313402",
+          "feed_num_ac_tracked": "20"
+        },
+        "crc_archive": {
+          "disk_bytes": 120247232,
+          "ram_bytes": 8194861,
+          "error": null,
+          "saved_files": 14
+        },
+        "config_sha256": {
+          "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+          "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+          "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+          "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+        },
+        "temperature_c": 52.9
+      },
+      "capture": {
+        "far_training": {
+          "enabled": true,
+          "schema": "far-stock-training-v1",
+          "threshold_nm": 180,
+          "ram_limit_bytes": 50331648,
+          "ram_bytes": 0,
+          "hour_bucket": null,
+          "strata_used": {},
+          "minute_used": [],
+          "aircraft_minutes": [],
+          "aircraft_used": {},
+          "counts": {},
+          "pending": 0,
+          "policy": "At most 80 windows/hour per distance band, 2/minute/band, one/aircraft/minute, 24/aircraft/hour; original 2ms RF, same-transmission CRC-valid stock; independent uncorrected replay required. No DSP/neural/external labels."
+        },
+        "capture_schedule": {
+          "enabled": true,
+          "policy": "hourly_3s_rf_plus_bounded_packet_metadata",
+          "hour_seconds": 1.9806435555555553,
+          "max_burst_seconds": 1.9806435555555553,
+          "bucket": null,
+          "used_seconds": 0.0,
+          "burst_used_seconds": 0.0,
+          "not_before_unix": 0.0,
+          "skipped_chunks": 0,
+          "bursts": 0,
+          "packet_bucket": null,
+          "packet_bytes": 0,
+          "packet_cap_bytes_per_hour": 524288,
+          "packet_skipped": 0,
+          "packet_iq_policy": "references_to_scheduled_continuous_RF_only"
+        },
+        "packet_ledger": {
+          "enabled": true,
+          "pre_seconds": 30.0,
+          "tail_seconds": 8.0,
+          "history_bytes": 352,
+          "history_limit_bytes": 8388608,
+          "ready": false,
+          "streams": {
+            "stock": {
+              "connected": true,
+              "since": 128101.578031892,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 0,
+              "latest_tick": null,
+              "last_data": null
+            },
+            "unified": {
+              "connected": true,
+              "since": 128101.578287435,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 0,
+              "latest_tick": null,
+              "last_data": null
+            }
+          },
+          "counts": {},
+          "faults": 0,
+          "recent_bursts": [],
+          "source_annotation_completeness": "best_effort_IPC; authoritative_actual_output_in_unified_beast"
+        },
+        "capture_triggers": {
+          "policy": {
+            "local_holdover_seconds": 60,
+            "external_poll_seconds": 30,
+            "external_max_age_seconds": 30,
+            "external_radius_nm": 250,
+            "burst_seconds": 2,
+            "burst_interval_seconds": 60
+          },
+          "active": [],
+          "burst_count": 0,
+          "next_burst_unix": 0,
+          "external": {
+            "source": "https://opendata.adsb.fi",
+            "attribution": "Aircraft context: adsb.fi \u2014 https://adsb.fi (personal, non-commercial use)",
+            "attempts": 1,
+            "successes": 0,
+            "error": null,
+            "updated_unix": 0
+          },
+          "external_candidate_count": 0
+        },
+        "ram_lock_enabled": true,
+        "locked_page_bytes": 131072,
+        "enabled": true,
+        "config": {
+          "packet_capture": true,
+          "continuous_capture": true,
+          "threshold_nm": 180.0,
+          "ram_limit_bytes": 268435456,
+          "continuous_ram_bytes": 134217728,
+          "disk_limit_bytes": 5000000000,
+          "flush_seconds": 43200
+        },
+        "counts": {
+          "readsb_tap_dropped_counter": 274117632,
+          "tap_samples_received": 30000
+        },
+        "ram_bytes": 0,
+        "ram_limit_bytes": 268435456,
+        "ring_bytes": 60000,
+        "continuous_ram_bytes": 0,
+        "disk_bytes": 260065280,
+        "disk_limit_bytes": 5000000000,
+        "next_flush_unix": 1793314725.0304623,
+        "saving": false,
+        "error": null,
+        "far_aircraft_present": false,
+        "pending_packets": 0,
+        "files": [
+          {
+            "name": "capture-1793313385077339906.tar",
+            "bytes": 260065280
+          }
+        ],
+        "scope": "Hourly sampled far-range RF; packet/context metadata has a separate hourly byte quota. General packet IQ references scheduled RF; separately budgeted stock training snippets do not depend on scheduled RF. All traffic in admitted RF bursts has full stock/actual-relay journals; incomplete coverage is flagged. Capture pauses at caps; counters expose gaps/skips.",
+        "updated_unix": 1793313414.5065384
+      }
+    },
+    {
+      "health": {
+        "unix": 1793313425.4870558,
+        "pids": {
+          "readsb": 4694,
+          "fr24feed": 1193167,
+          "adsb-rescue-feed": 1622165,
+          "adsbexchange-feed": 1235929,
+          "adsb-far-capture": 2191342
+        },
+        "shadow_pid": 2113770,
+        "started_unix": 1793309667.5144923,
+        "updated_unix": 1793313417.104454,
+        "feed_updated_unix": 1793313424.5215364,
+        "threads_alive": true,
+        "gain_db": 38.6,
+        "methods": {
+          "energy": true,
+          "crc": true,
+          "timing": true,
+          "soft": true,
+          "matched": true,
+          "coherent": true,
+          "header": false,
+          "sic": false,
+          "neural": true,
+          "pulse": false,
+          "stream1090": true,
+          "sequence": false,
+          "acquisition": false
+        },
+        "worker_config": {
+          "workers": 2,
+          "reserve_cores": 2,
+          "max_workers": 2,
+          "cpus": "2-3",
+          "coherent_cpus": "0-1",
+          "coherent_threshold": 0.35,
+          "coherent_budget": 48,
+          "optimized_dsp": true,
+          "sequence_acquisition": true,
+          "sequence_enabled": false,
+          "acquisition_enabled": false,
+          "optimized_v3": true,
+          "optimized_extended": true,
+          "coherent_pair_retry": true,
+          "shared_transport": "ring",
+          "cached_fir": true
+        },
+        "worker_roles": {
+          "2113794": "dsp",
+          "2113798": "coherent",
+          "2113797": "dsp",
+          "2113801": "coherent"
+        },
+        "workers": {
+          "2113794": [
+            2
+          ],
+          "2113798": [
+            0
+          ],
+          "2113797": [
+            3
+          ],
+          "2113801": [
+            1
+          ]
+        },
+        "pending": 1,
+        "mean_latency_s": 0.03813076299724344,
+        "aligned_seconds": 3747,
+        "shed": 1,
+        "samples": {
+          "samples_lost": 0,
+          "samples_dropped": 0
+        },
+        "feed": {
+          "stock_connected": true,
+          "fr24_routed": true,
+          "counts": {
+            "stock_bytes_relayed": 325716171,
+            "dsp_frames_relayed": 553532,
+            "relayed_coherent": 167318
+          },
+          "upstream_error": null
+        },
+        "fr24": {
+          "feed_status": "connected",
+          "rx_connected": "1",
+          "feed_last_ac_sent_time": "1793313402",
+          "feed_num_ac_tracked": "20"
+        },
+        "crc_archive": {
+          "disk_bytes": 120247232,
+          "ram_bytes": 8194348,
+          "error": null,
+          "saved_files": 14
+        },
+        "config_sha256": {
+          "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+          "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+          "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+          "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+        },
+        "temperature_c": 52.9
+      },
+      "capture": {
+        "far_training": {
+          "enabled": true,
+          "schema": "far-stock-training-v1",
+          "threshold_nm": 180,
+          "ram_limit_bytes": 50331648,
+          "ram_bytes": 0,
+          "hour_bucket": null,
+          "strata_used": {},
+          "minute_used": [],
+          "aircraft_minutes": [],
+          "aircraft_used": {},
+          "counts": {
+            "position_quality_or_range_rejected": 503
+          },
+          "pending": 0,
+          "policy": "At most 80 windows/hour per distance band, 2/minute/band, one/aircraft/minute, 24/aircraft/hour; original 2ms RF, same-transmission CRC-valid stock; independent uncorrected replay required. No DSP/neural/external labels."
+        },
+        "capture_schedule": {
+          "enabled": true,
+          "policy": "hourly_3s_rf_plus_bounded_packet_metadata",
+          "hour_seconds": 1.9806435555555553,
+          "max_burst_seconds": 1.9806435555555553,
+          "bucket": null,
+          "used_seconds": 0.0,
+          "burst_used_seconds": 0.0,
+          "not_before_unix": 0.0,
+          "skipped_chunks": 0,
+          "bursts": 0,
+          "packet_bucket": 498142,
+          "packet_bytes": 2956,
+          "packet_cap_bytes_per_hour": 524288,
+          "packet_skipped": 0,
+          "packet_iq_policy": "references_to_scheduled_continuous_RF_only"
+        },
+        "packet_ledger": {
+          "enabled": true,
+          "pre_seconds": 30.0,
+          "tail_seconds": 8.0,
+          "history_bytes": 265146,
+          "history_limit_bytes": 8388608,
+          "ready": false,
+          "streams": {
+            "stock": {
+              "connected": true,
+              "since": 128101.578031892,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 46724,
+              "latest_tick": 1537108138639,
+              "last_data": 128111.695943889
+            },
+            "unified": {
+              "connected": true,
+              "since": 128101.578287435,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 50971,
+              "latest_tick": 1537071733996,
+              "last_data": 128111.668257375
+            }
+          },
+          "counts": {},
+          "faults": 0,
+          "recent_bursts": [],
+          "source_annotation_completeness": "best_effort_IPC; authoritative_actual_output_in_unified_beast"
+        },
+        "capture_triggers": {
+          "policy": {
+            "local_holdover_seconds": 60,
+            "external_poll_seconds": 30,
+            "external_max_age_seconds": 30,
+            "external_radius_nm": 250,
+            "burst_seconds": 2,
+            "burst_interval_seconds": 60
+          },
+          "active": [],
+          "burst_count": 1,
+          "next_burst_unix": 1793313475.5151079,
+          "external": {
+            "source": "https://opendata.adsb.fi",
+            "attribution": "Aircraft context: adsb.fi \u2014 https://adsb.fi (personal, non-commercial use)",
+            "attempts": 1,
+            "successes": 1,
+            "error": null,
+            "updated_unix": 1793313414.7091837
+          },
+          "external_candidate_count": 54
+        },
+        "ram_lock_enabled": true,
+        "locked_page_bytes": 20250624,
+        "enabled": true,
+        "config": {
+          "packet_capture": true,
+          "continuous_capture": true,
+          "threshold_nm": 180.0,
+          "ram_limit_bytes": 268435456,
+          "continuous_ram_bytes": 134217728,
+          "disk_limit_bytes": 5000000000,
+          "flush_seconds": 43200
+        },
+        "counts": {
+          "readsb_tap_dropped_counter": 274117632,
+          "tap_samples_received": 24308320,
+          "unrangeable_packets": 68
+        },
+        "ram_bytes": 2956,
+        "ram_limit_bytes": 268435456,
+        "ring_bytes": 19267584,
+        "continuous_ram_bytes": 0,
+        "disk_bytes": 260065280,
+        "disk_limit_bytes": 5000000000,
+        "next_flush_unix": 1793314725.0304623,
+        "saving": false,
+        "error": null,
+        "far_aircraft_present": false,
+        "pending_packets": 0,
+        "files": [
+          {
+            "name": "capture-1793313385077339906.tar",
+            "bytes": 260065280
+          }
+        ],
+        "scope": "Hourly sampled far-range RF; packet/context metadata has a separate hourly byte quota. General packet IQ references scheduled RF; separately budgeted stock training snippets do not depend on scheduled RF. All traffic in admitted RF bursts has full stock/actual-relay journals; incomplete coverage is flagged. Capture pauses at caps; counters expose gaps/skips.",
+        "updated_unix": 1793313424.6154082
+      }
+    },
+    {
+      "health": {
+        "unix": 1793313435.5548816,
+        "pids": {
+          "readsb": 4694,
+          "fr24feed": 1193167,
+          "adsb-rescue-feed": 1622165,
+          "adsbexchange-feed": 1235929,
+          "adsb-far-capture": 2191342
+        },
+        "shadow_pid": 2113770,
+        "started_unix": 1793309667.5144923,
+        "updated_unix": 1793313427.2359278,
+        "feed_updated_unix": 1793313434.6297138,
+        "threads_alive": true,
+        "gain_db": 38.6,
+        "methods": {
+          "energy": true,
+          "crc": true,
+          "timing": true,
+          "soft": true,
+          "matched": true,
+          "coherent": true,
+          "header": false,
+          "sic": false,
+          "neural": true,
+          "pulse": false,
+          "stream1090": true,
+          "sequence": false,
+          "acquisition": false
+        },
+        "worker_config": {
+          "workers": 2,
+          "reserve_cores": 2,
+          "max_workers": 2,
+          "cpus": "2-3",
+          "coherent_cpus": "0-1",
+          "coherent_threshold": 0.35,
+          "coherent_budget": 48,
+          "optimized_dsp": true,
+          "sequence_acquisition": true,
+          "sequence_enabled": false,
+          "acquisition_enabled": false,
+          "optimized_v3": true,
+          "optimized_extended": true,
+          "coherent_pair_retry": true,
+          "shared_transport": "ring",
+          "cached_fir": true
+        },
+        "worker_roles": {
+          "2113794": "dsp",
+          "2113798": "coherent",
+          "2113797": "dsp",
+          "2113801": "coherent"
+        },
+        "workers": {
+          "2113794": [
+            2
+          ],
+          "2113798": [
+            0
+          ],
+          "2113797": [
+            3
+          ],
+          "2113801": [
+            1
+          ]
+        },
+        "pending": 0,
+        "mean_latency_s": 0.03809933864795312,
+        "aligned_seconds": 3758,
+        "shed": 1,
+        "samples": {
+          "samples_lost": 0,
+          "samples_dropped": 0
+        },
+        "feed": {
+          "stock_connected": true,
+          "fr24_routed": true,
+          "counts": {
+            "stock_bytes_relayed": 325759614,
+            "dsp_frames_relayed": 553648,
+            "relayed_coherent": 167343
+          },
+          "upstream_error": null
+        },
+        "fr24": {
+          "feed_status": "connected",
+          "rx_connected": "1",
+          "feed_last_ac_sent_time": "1793313432",
+          "feed_num_ac_tracked": "19"
+        },
+        "crc_archive": {
+          "disk_bytes": 120247232,
+          "ram_bytes": 8193120,
+          "error": null,
+          "saved_files": 14
+        },
+        "config_sha256": {
+          "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+          "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+          "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+          "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+        },
+        "temperature_c": 52.9
+      },
+      "capture": {
+        "far_training": {
+          "enabled": true,
+          "schema": "far-stock-training-v1",
+          "threshold_nm": 180,
+          "ram_limit_bytes": 50331648,
+          "ram_bytes": 0,
+          "hour_bucket": null,
+          "strata_used": {},
+          "minute_used": [],
+          "aircraft_minutes": [],
+          "aircraft_used": {},
+          "counts": {
+            "position_quality_or_range_rejected": 949
+          },
+          "pending": 0,
+          "policy": "At most 80 windows/hour per distance band, 2/minute/band, one/aircraft/minute, 24/aircraft/hour; original 2ms RF, same-transmission CRC-valid stock; independent uncorrected replay required. No DSP/neural/external labels."
+        },
+        "capture_schedule": {
+          "enabled": true,
+          "policy": "hourly_3s_rf_plus_bounded_packet_metadata",
+          "hour_seconds": 1.9806435555555553,
+          "max_burst_seconds": 1.9806435555555553,
+          "bucket": null,
+          "used_seconds": 0.0,
+          "burst_used_seconds": 0.0,
+          "not_before_unix": 0.0,
+          "skipped_chunks": 0,
+          "bursts": 0,
+          "packet_bucket": 498142,
+          "packet_bytes": 2956,
+          "packet_cap_bytes_per_hour": 524288,
+          "packet_skipped": 0,
+          "packet_iq_policy": "references_to_scheduled_continuous_RF_only"
+        },
+        "packet_ledger": {
+          "enabled": true,
+          "pre_seconds": 30.0,
+          "tail_seconds": 8.0,
+          "history_bytes": 515276,
+          "history_limit_bytes": 8388608,
+          "ready": false,
+          "streams": {
+            "stock": {
+              "connected": true,
+              "since": 128101.578031892,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 89103,
+              "latest_tick": 1537229431548,
+              "last_data": 128121.797051166
+            },
+            "unified": {
+              "connected": true,
+              "since": 128101.578287435,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 97012,
+              "latest_tick": 1537192933915,
+              "last_data": 128121.779808092
+            }
+          },
+          "counts": {},
+          "faults": 0,
+          "recent_bursts": [],
+          "source_annotation_completeness": "best_effort_IPC; authoritative_actual_output_in_unified_beast"
+        },
+        "capture_triggers": {
+          "policy": {
+            "local_holdover_seconds": 60,
+            "external_poll_seconds": 30,
+            "external_max_age_seconds": 30,
+            "external_radius_nm": 250,
+            "burst_seconds": 2,
+            "burst_interval_seconds": 60
+          },
+          "active": [],
+          "burst_count": 1,
+          "next_burst_unix": 1793313475.5151079,
+          "external": {
+            "source": "https://opendata.adsb.fi",
+            "attribution": "Aircraft context: adsb.fi \u2014 https://adsb.fi (personal, non-commercial use)",
+            "attempts": 1,
+            "successes": 1,
+            "error": null,
+            "updated_unix": 1793313414.7091837
+          },
+          "external_candidate_count": 54
+        },
+        "ram_lock_enabled": true,
+        "locked_page_bytes": 20611072,
+        "enabled": true,
+        "config": {
+          "packet_capture": true,
+          "continuous_capture": true,
+          "threshold_nm": 180.0,
+          "ram_limit_bytes": 268435456,
+          "continuous_ram_bytes": 134217728,
+          "disk_limit_bytes": 5000000000,
+          "flush_seconds": 43200
+        },
+        "counts": {
+          "readsb_tap_dropped_counter": 274117632,
+          "tap_samples_received": 48526640,
+          "unrangeable_packets": 147
+        },
+        "ram_bytes": 2956,
+        "ram_limit_bytes": 268435456,
+        "ring_bytes": 19267584,
+        "continuous_ram_bytes": 0,
+        "disk_bytes": 260065280,
+        "disk_limit_bytes": 5000000000,
+        "next_flush_unix": 1793314725.0304623,
+        "saving": false,
+        "error": null,
+        "far_aircraft_present": false,
+        "pending_packets": 0,
+        "files": [
+          {
+            "name": "capture-1793313385077339906.tar",
+            "bytes": 260065280
+          }
+        ],
+        "scope": "Hourly sampled far-range RF; packet/context metadata has a separate hourly byte quota. General packet IQ references scheduled RF; separately budgeted stock training snippets do not depend on scheduled RF. All traffic in admitted RF bursts has full stock/actual-relay journals; incomplete coverage is flagged. Capture pauses at caps; counters expose gaps/skips.",
+        "updated_unix": 1793313434.715646
+      }
+    },
+    {
+      "health": {
+        "unix": 1793313445.6118698,
+        "pids": {
+          "readsb": 4694,
+          "fr24feed": 1193167,
+          "adsb-rescue-feed": 1622165,
+          "adsbexchange-feed": 1235929,
+          "adsb-far-capture": 2191342
+        },
+        "shadow_pid": 2113770,
+        "started_unix": 1793309667.5144923,
+        "updated_unix": 1793313437.2529747,
+        "feed_updated_unix": 1793313444.722073,
+        "threads_alive": true,
+        "gain_db": 38.6,
+        "methods": {
+          "energy": true,
+          "crc": true,
+          "timing": true,
+          "soft": true,
+          "matched": true,
+          "coherent": true,
+          "header": false,
+          "sic": false,
+          "neural": true,
+          "pulse": false,
+          "stream1090": true,
+          "sequence": false,
+          "acquisition": false
+        },
+        "worker_config": {
+          "workers": 2,
+          "reserve_cores": 2,
+          "max_workers": 2,
+          "cpus": "2-3",
+          "coherent_cpus": "0-1",
+          "coherent_threshold": 0.35,
+          "coherent_budget": 48,
+          "optimized_dsp": true,
+          "sequence_acquisition": true,
+          "sequence_enabled": false,
+          "acquisition_enabled": false,
+          "optimized_v3": true,
+          "optimized_extended": true,
+          "coherent_pair_retry": true,
+          "shared_transport": "ring",
+          "cached_fir": true
+        },
+        "worker_roles": {
+          "2113794": "dsp",
+          "2113798": "coherent",
+          "2113797": "dsp",
+          "2113801": "coherent"
+        },
+        "workers": {
+          "2113794": [
+            2
+          ],
+          "2113798": [
+            0
+          ],
+          "2113797": [
+            3
+          ],
+          "2113801": [
+            1
+          ]
+        },
+        "pending": 0,
+        "mean_latency_s": 0.03807618445303281,
+        "aligned_seconds": 3768,
+        "shed": 1,
+        "samples": {
+          "samples_lost": 0,
+          "samples_dropped": 0
+        },
+        "feed": {
+          "stock_connected": true,
+          "fr24_routed": true,
+          "counts": {
+            "stock_bytes_relayed": 325801781,
+            "dsp_frames_relayed": 553708,
+            "relayed_coherent": 167363
+          },
+          "upstream_error": null
+        },
+        "fr24": {
+          "feed_status": "connected",
+          "rx_connected": "1",
+          "feed_last_ac_sent_time": "1793313432",
+          "feed_num_ac_tracked": "20"
+        },
+        "crc_archive": {
+          "disk_bytes": 120247232,
+          "ram_bytes": 8192798,
+          "error": null,
+          "saved_files": 14
+        },
+        "config_sha256": {
+          "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+          "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+          "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+          "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+        },
+        "temperature_c": 53.45
+      },
+      "capture": {
+        "far_training": {
+          "enabled": true,
+          "schema": "far-stock-training-v1",
+          "threshold_nm": 180,
+          "ram_limit_bytes": 50331648,
+          "ram_bytes": 0,
+          "hour_bucket": null,
+          "strata_used": {},
+          "minute_used": [],
+          "aircraft_minutes": [],
+          "aircraft_used": {},
+          "counts": {
+            "position_quality_or_range_rejected": 1392
+          },
+          "pending": 0,
+          "policy": "At most 80 windows/hour per distance band, 2/minute/band, one/aircraft/minute, 24/aircraft/hour; original 2ms RF, same-transmission CRC-valid stock; independent uncorrected replay required. No DSP/neural/external labels."
+        },
+        "capture_schedule": {
+          "enabled": true,
+          "policy": "hourly_3s_rf_plus_bounded_packet_metadata",
+          "hour_seconds": 1.9806435555555553,
+          "max_burst_seconds": 1.9806435555555553,
+          "bucket": null,
+          "used_seconds": 0.0,
+          "burst_used_seconds": 0.0,
+          "not_before_unix": 0.0,
+          "skipped_chunks": 0,
+          "bursts": 0,
+          "packet_bucket": 498142,
+          "packet_bytes": 2956,
+          "packet_cap_bytes_per_hour": 524288,
+          "packet_skipped": 0,
+          "packet_iq_policy": "references_to_scheduled_continuous_RF_only"
+        },
+        "packet_ledger": {
+          "enabled": true,
+          "pre_seconds": 30.0,
+          "tail_seconds": 8.0,
+          "history_bytes": 743179,
+          "history_limit_bytes": 8388608,
+          "ready": true,
+          "streams": {
+            "stock": {
+              "connected": true,
+              "since": 128101.578031892,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 130904,
+              "latest_tick": 1537350443611,
+              "last_data": 128131.900127184
+            },
+            "unified": {
+              "connected": true,
+              "since": 128101.578287435,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 140474,
+              "latest_tick": 1537314316469,
+              "last_data": 128131.889740283
+            }
+          },
+          "counts": {},
+          "faults": 0,
+          "recent_bursts": [],
+          "source_annotation_completeness": "best_effort_IPC; authoritative_actual_output_in_unified_beast"
+        },
+        "capture_triggers": {
+          "policy": {
+            "local_holdover_seconds": 60,
+            "external_poll_seconds": 30,
+            "external_max_age_seconds": 30,
+            "external_radius_nm": 250,
+            "burst_seconds": 2,
+            "burst_interval_seconds": 60
+          },
+          "active": [],
+          "burst_count": 1,
+          "next_burst_unix": 1793313475.5151079,
+          "external": {
+            "source": "https://opendata.adsb.fi",
+            "attribution": "Aircraft context: adsb.fi \u2014 https://adsb.fi (personal, non-commercial use)",
+            "attempts": 2,
+            "successes": 1,
+            "error": null,
+            "updated_unix": 1793313414.7091837
+          },
+          "external_candidate_count": 54
+        },
+        "ram_lock_enabled": true,
+        "locked_page_bytes": 20889600,
+        "enabled": true,
+        "config": {
+          "packet_capture": true,
+          "continuous_capture": true,
+          "threshold_nm": 180.0,
+          "ram_limit_bytes": 268435456,
+          "continuous_ram_bytes": 134217728,
+          "disk_limit_bytes": 5000000000,
+          "flush_seconds": 43200
+        },
+        "counts": {
+          "readsb_tap_dropped_counter": 274117632,
+          "tap_samples_received": 72810496,
+          "unrangeable_packets": 162
+        },
+        "ram_bytes": 2956,
+        "ram_limit_bytes": 268435456,
+        "ring_bytes": 19267584,
+        "continuous_ram_bytes": 0,
+        "disk_bytes": 260065280,
+        "disk_limit_bytes": 5000000000,
+        "next_flush_unix": 1793314725.0304623,
+        "saving": false,
+        "error": null,
+        "far_aircraft_present": false,
+        "pending_packets": 0,
+        "files": [
+          {
+            "name": "capture-1793313385077339906.tar",
+            "bytes": 260065280
+          }
+        ],
+        "scope": "Hourly sampled far-range RF; packet/context metadata has a separate hourly byte quota. General packet IQ references scheduled RF; separately budgeted stock training snippets do not depend on scheduled RF. All traffic in admitted RF bursts has full stock/actual-relay journals; incomplete coverage is flagged. Capture pauses at caps; counters expose gaps/skips.",
+        "updated_unix": 1793313444.8210034
+      }
+    },
+    {
+      "health": {
+        "unix": 1793313455.688986,
+        "pids": {
+          "readsb": 4694,
+          "fr24feed": 1193167,
+          "adsb-rescue-feed": 1622165,
+          "adsbexchange-feed": 1235929,
+          "adsb-far-capture": 2191342
+        },
+        "shadow_pid": 2113770,
+        "started_unix": 1793309667.5144923,
+        "updated_unix": 1793313447.2789164,
+        "feed_updated_unix": 1793313454.8391678,
+        "threads_alive": true,
+        "gain_db": 38.6,
+        "methods": {
+          "energy": true,
+          "crc": true,
+          "timing": true,
+          "soft": true,
+          "matched": true,
+          "coherent": true,
+          "header": false,
+          "sic": false,
+          "neural": true,
+          "pulse": false,
+          "stream1090": true,
+          "sequence": false,
+          "acquisition": false
+        },
+        "worker_config": {
+          "workers": 2,
+          "reserve_cores": 2,
+          "max_workers": 2,
+          "cpus": "2-3",
+          "coherent_cpus": "0-1",
+          "coherent_threshold": 0.35,
+          "coherent_budget": 48,
+          "optimized_dsp": true,
+          "sequence_acquisition": true,
+          "sequence_enabled": false,
+          "acquisition_enabled": false,
+          "optimized_v3": true,
+          "optimized_extended": true,
+          "coherent_pair_retry": true,
+          "shared_transport": "ring",
+          "cached_fir": true
+        },
+        "worker_roles": {
+          "2113794": "dsp",
+          "2113798": "coherent",
+          "2113797": "dsp",
+          "2113801": "coherent"
+        },
+        "workers": {
+          "2113794": [
+            2
+          ],
+          "2113798": [
+            0
+          ],
+          "2113797": [
+            3
+          ],
+          "2113801": [
+            1
+          ]
+        },
+        "pending": 1,
+        "mean_latency_s": 0.03793365005391631,
+        "aligned_seconds": 3778,
+        "shed": 1,
+        "samples": {
+          "samples_lost": 0,
+          "samples_dropped": 0
+        },
+        "feed": {
+          "stock_connected": true,
+          "fr24_routed": true,
+          "counts": {
+            "stock_bytes_relayed": 325843608,
+            "dsp_frames_relayed": 553760,
+            "relayed_coherent": 167370
+          },
+          "upstream_error": null
+        },
+        "fr24": {
+          "feed_status": "connected",
+          "rx_connected": "1",
+          "feed_last_ac_sent_time": "1793313432",
+          "feed_num_ac_tracked": "20"
+        },
+        "crc_archive": {
+          "disk_bytes": 120247232,
+          "ram_bytes": 8200029,
+          "error": null,
+          "saved_files": 14
+        },
+        "config_sha256": {
+          "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+          "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+          "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+          "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+        },
+        "temperature_c": 52.35
+      },
+      "capture": {
+        "far_training": {
+          "enabled": true,
+          "schema": "far-stock-training-v1",
+          "threshold_nm": 180,
+          "ram_limit_bytes": 50331648,
+          "ram_bytes": 0,
+          "hour_bucket": null,
+          "strata_used": {},
+          "minute_used": [],
+          "aircraft_minutes": [],
+          "aircraft_used": {},
+          "counts": {
+            "position_quality_or_range_rejected": 1853
+          },
+          "pending": 0,
+          "policy": "At most 80 windows/hour per distance band, 2/minute/band, one/aircraft/minute, 24/aircraft/hour; original 2ms RF, same-transmission CRC-valid stock; independent uncorrected replay required. No DSP/neural/external labels."
+        },
+        "capture_schedule": {
+          "enabled": true,
+          "policy": "hourly_3s_rf_plus_bounded_packet_metadata",
+          "hour_seconds": 1.9806435555555553,
+          "max_burst_seconds": 1.9806435555555553,
+          "bucket": null,
+          "used_seconds": 0.0,
+          "burst_used_seconds": 0.0,
+          "not_before_unix": 0.0,
+          "skipped_chunks": 0,
+          "bursts": 0,
+          "packet_bucket": 498142,
+          "packet_bytes": 2956,
+          "packet_cap_bytes_per_hour": 524288,
+          "packet_skipped": 0,
+          "packet_iq_policy": "references_to_scheduled_continuous_RF_only"
+        },
+        "packet_ledger": {
+          "enabled": true,
+          "pre_seconds": 30.0,
+          "tail_seconds": 8.0,
+          "history_bytes": 837128,
+          "history_limit_bytes": 8388608,
+          "ready": true,
+          "streams": {
+            "stock": {
+              "connected": true,
+              "since": 128101.578031892,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 173936,
+              "latest_tick": 1537471929798,
+              "last_data": 128142.00379945
+            },
+            "unified": {
+              "connected": true,
+              "since": 128101.578287435,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 183685,
+              "latest_tick": 1537435526564,
+              "last_data": 128141.987640974
+            }
+          },
+          "counts": {},
+          "faults": 0,
+          "recent_bursts": [],
+          "source_annotation_completeness": "best_effort_IPC; authoritative_actual_output_in_unified_beast"
+        },
+        "capture_triggers": {
+          "policy": {
+            "local_holdover_seconds": 60,
+            "external_poll_seconds": 30,
+            "external_max_age_seconds": 30,
+            "external_radius_nm": 250,
+            "burst_seconds": 2,
+            "burst_interval_seconds": 60
+          },
+          "active": [],
+          "burst_count": 1,
+          "next_burst_unix": 1793313475.5151079,
+          "external": {
+            "source": "https://opendata.adsb.fi",
+            "attribution": "Aircraft context: adsb.fi \u2014 https://adsb.fi (personal, non-commercial use)",
+            "attempts": 2,
+            "successes": 2,
+            "error": null,
+            "updated_unix": 1793313444.902249
+          },
+          "external_candidate_count": 56
+        },
+        "ram_lock_enabled": true,
+        "locked_page_bytes": 21053440,
+        "enabled": true,
+        "config": {
+          "packet_capture": true,
+          "continuous_capture": true,
+          "threshold_nm": 180.0,
+          "ram_limit_bytes": 268435456,
+          "continuous_ram_bytes": 134217728,
+          "disk_limit_bytes": 5000000000,
+          "flush_seconds": 43200
+        },
+        "counts": {
+          "readsb_tap_dropped_counter": 274117632,
+          "tap_samples_received": 97058816,
+          "unrangeable_packets": 210
+        },
+        "ram_bytes": 2956,
+        "ram_limit_bytes": 268435456,
+        "ring_bytes": 19267584,
+        "continuous_ram_bytes": 0,
+        "disk_bytes": 260065280,
+        "disk_limit_bytes": 5000000000,
+        "next_flush_unix": 1793314725.0304623,
+        "saving": false,
+        "error": null,
+        "far_aircraft_present": false,
+        "pending_packets": 0,
+        "files": [
+          {
+            "name": "capture-1793313385077339906.tar",
+            "bytes": 260065280
+          }
+        ],
+        "scope": "Hourly sampled far-range RF; packet/context metadata has a separate hourly byte quota. General packet IQ references scheduled RF; separately budgeted stock training snippets do not depend on scheduled RF. All traffic in admitted RF bursts has full stock/actual-relay journals; incomplete coverage is flagged. Capture pauses at caps; counters expose gaps/skips.",
+        "updated_unix": 1793313454.9276683
+      }
+    },
+    {
+      "health": {
+        "unix": 1793313465.7659223,
+        "pids": {
+          "readsb": 4694,
+          "fr24feed": 1193167,
+          "adsb-rescue-feed": 1622165,
+          "adsbexchange-feed": 1235929,
+          "adsb-far-capture": 2191342
+        },
+        "shadow_pid": 2113770,
+        "started_unix": 1793309667.5144923,
+        "updated_unix": 1793313457.2996044,
+        "feed_updated_unix": 1793313464.932852,
+        "threads_alive": true,
+        "gain_db": 38.6,
+        "methods": {
+          "energy": true,
+          "crc": true,
+          "timing": true,
+          "soft": true,
+          "matched": true,
+          "coherent": true,
+          "header": false,
+          "sic": false,
+          "neural": true,
+          "pulse": false,
+          "stream1090": true,
+          "sequence": false,
+          "acquisition": false
+        },
+        "worker_config": {
+          "workers": 2,
+          "reserve_cores": 2,
+          "max_workers": 2,
+          "cpus": "2-3",
+          "coherent_cpus": "0-1",
+          "coherent_threshold": 0.35,
+          "coherent_budget": 48,
+          "optimized_dsp": true,
+          "sequence_acquisition": true,
+          "sequence_enabled": false,
+          "acquisition_enabled": false,
+          "optimized_v3": true,
+          "optimized_extended": true,
+          "coherent_pair_retry": true,
+          "shared_transport": "ring",
+          "cached_fir": true
+        },
+        "worker_roles": {
+          "2113794": "dsp",
+          "2113798": "coherent",
+          "2113797": "dsp",
+          "2113801": "coherent"
+        },
+        "workers": {
+          "2113794": [
+            2
+          ],
+          "2113798": [
+            0
+          ],
+          "2113797": [
+            3
+          ],
+          "2113801": [
+            1
+          ]
+        },
+        "pending": 1,
+        "mean_latency_s": 0.03769019483816616,
+        "aligned_seconds": 3788,
+        "shed": 1,
+        "samples": {
+          "samples_lost": 0,
+          "samples_dropped": 0
+        },
+        "feed": {
+          "stock_connected": true,
+          "fr24_routed": true,
+          "counts": {
+            "stock_bytes_relayed": 325889461,
+            "dsp_frames_relayed": 553845,
+            "relayed_coherent": 167387
+          },
+          "upstream_error": null
+        },
+        "fr24": {
+          "feed_status": "connected",
+          "rx_connected": "1",
+          "feed_last_ac_sent_time": "1793313462",
+          "feed_num_ac_tracked": "16"
+        },
+        "crc_archive": {
+          "disk_bytes": 120247232,
+          "ram_bytes": 8199663,
+          "error": null,
+          "saved_files": 14
+        },
+        "config_sha256": {
+          "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+          "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+          "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+          "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+        },
+        "temperature_c": 52.9
+      },
+      "capture": {
+        "far_training": {
+          "enabled": true,
+          "schema": "far-stock-training-v1",
+          "threshold_nm": 180,
+          "ram_limit_bytes": 50331648,
+          "ram_bytes": 0,
+          "hour_bucket": null,
+          "strata_used": {},
+          "minute_used": [],
+          "aircraft_minutes": [],
+          "aircraft_used": {},
+          "counts": {
+            "position_quality_or_range_rejected": 2307
+          },
+          "pending": 0,
+          "policy": "At most 80 windows/hour per distance band, 2/minute/band, one/aircraft/minute, 24/aircraft/hour; original 2ms RF, same-transmission CRC-valid stock; independent uncorrected replay required. No DSP/neural/external labels."
+        },
+        "capture_schedule": {
+          "enabled": true,
+          "policy": "hourly_3s_rf_plus_bounded_packet_metadata",
+          "hour_seconds": 1.9806435555555553,
+          "max_burst_seconds": 1.9806435555555553,
+          "bucket": null,
+          "used_seconds": 0.0,
+          "burst_used_seconds": 0.0,
+          "not_before_unix": 0.0,
+          "skipped_chunks": 0,
+          "bursts": 0,
+          "packet_bucket": 498142,
+          "packet_bytes": 2956,
+          "packet_cap_bytes_per_hour": 524288,
+          "packet_skipped": 0,
+          "packet_iq_policy": "references_to_scheduled_continuous_RF_only"
+        },
+        "packet_ledger": {
+          "enabled": true,
+          "pre_seconds": 30.0,
+          "tail_seconds": 8.0,
+          "history_bytes": 818569,
+          "history_limit_bytes": 8388608,
+          "ready": true,
+          "streams": {
+            "stock": {
+              "connected": true,
+              "since": 128101.578031892,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 218882,
+              "latest_tick": 1537593060686,
+              "last_data": 128152.107646508
+            },
+            "unified": {
+              "connected": true,
+              "since": 128101.578287435,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 231479,
+              "latest_tick": 1537556791682,
+              "last_data": 128152.081536975
+            }
+          },
+          "counts": {},
+          "faults": 0,
+          "recent_bursts": [],
+          "source_annotation_completeness": "best_effort_IPC; authoritative_actual_output_in_unified_beast"
+        },
+        "capture_triggers": {
+          "policy": {
+            "local_holdover_seconds": 60,
+            "external_poll_seconds": 30,
+            "external_max_age_seconds": 30,
+            "external_radius_nm": 250,
+            "burst_seconds": 2,
+            "burst_interval_seconds": 60
+          },
+          "active": [],
+          "burst_count": 1,
+          "next_burst_unix": 1793313475.5151079,
+          "external": {
+            "source": "https://opendata.adsb.fi",
+            "attribution": "Aircraft context: adsb.fi \u2014 https://adsb.fi (personal, non-commercial use)",
+            "attempts": 2,
+            "successes": 2,
+            "error": null,
+            "updated_unix": 1793313444.902249
+          },
+          "external_candidate_count": 56
+        },
+        "ram_lock_enabled": true,
+        "locked_page_bytes": 21102592,
+        "enabled": true,
+        "config": {
+          "packet_capture": true,
+          "continuous_capture": true,
+          "threshold_nm": 180.0,
+          "ram_limit_bytes": 268435456,
+          "continuous_ram_bytes": 134217728,
+          "disk_limit_bytes": 5000000000,
+          "flush_seconds": 43200
+        },
+        "counts": {
+          "readsb_tap_dropped_counter": 274117632,
+          "tap_samples_received": 121271600,
+          "unrangeable_packets": 373
+        },
+        "ram_bytes": 2956,
+        "ram_limit_bytes": 268435456,
+        "ring_bytes": 19267584,
+        "continuous_ram_bytes": 0,
+        "disk_bytes": 260065280,
+        "disk_limit_bytes": 5000000000,
+        "next_flush_unix": 1793314725.0304623,
+        "saving": false,
+        "error": null,
+        "far_aircraft_present": false,
+        "pending_packets": 0,
+        "files": [
+          {
+            "name": "capture-1793313385077339906.tar",
+            "bytes": 260065280
+          }
+        ],
+        "scope": "Hourly sampled far-range RF; packet/context metadata has a separate hourly byte quota. General packet IQ references scheduled RF; separately budgeted stock training snippets do not depend on scheduled RF. All traffic in admitted RF bursts has full stock/actual-relay journals; incomplete coverage is flagged. Capture pauses at caps; counters expose gaps/skips.",
+        "updated_unix": 1793313465.0250652
+      }
+    },
+    {
+      "health": {
+        "unix": 1793313475.8494923,
+        "pids": {
+          "readsb": 4694,
+          "fr24feed": 1193167,
+          "adsb-rescue-feed": 1622165,
+          "adsbexchange-feed": 1235929,
+          "adsb-far-capture": 2191342
+        },
+        "shadow_pid": 2113770,
+        "started_unix": 1793309667.5144923,
+        "updated_unix": 1793313467.3321178,
+        "feed_updated_unix": 1793313475.0379663,
+        "threads_alive": true,
+        "gain_db": 38.6,
+        "methods": {
+          "energy": true,
+          "crc": true,
+          "timing": true,
+          "soft": true,
+          "matched": true,
+          "coherent": true,
+          "header": false,
+          "sic": false,
+          "neural": true,
+          "pulse": false,
+          "stream1090": true,
+          "sequence": false,
+          "acquisition": false
+        },
+        "worker_config": {
+          "workers": 2,
+          "reserve_cores": 2,
+          "max_workers": 2,
+          "cpus": "2-3",
+          "coherent_cpus": "0-1",
+          "coherent_threshold": 0.35,
+          "coherent_budget": 48,
+          "optimized_dsp": true,
+          "sequence_acquisition": true,
+          "sequence_enabled": false,
+          "acquisition_enabled": false,
+          "optimized_v3": true,
+          "optimized_extended": true,
+          "coherent_pair_retry": true,
+          "shared_transport": "ring",
+          "cached_fir": true
+        },
+        "worker_roles": {
+          "2113794": "dsp",
+          "2113798": "coherent",
+          "2113797": "dsp",
+          "2113801": "coherent"
+        },
+        "workers": {
+          "2113794": [
+            2
+          ],
+          "2113798": [
+            0
+          ],
+          "2113797": [
+            3
+          ],
+          "2113801": [
+            1
+          ]
+        },
+        "pending": 1,
+        "mean_latency_s": 0.037597960006617845,
+        "aligned_seconds": 3798,
+        "shed": 1,
+        "samples": {
+          "samples_lost": 0,
+          "samples_dropped": 0
+        },
+        "feed": {
+          "stock_connected": true,
+          "fr24_routed": true,
+          "counts": {
+            "stock_bytes_relayed": 325932620,
+            "dsp_frames_relayed": 553938,
+            "relayed_coherent": 167402
+          },
+          "upstream_error": null
+        },
+        "fr24": {
+          "feed_status": "connected",
+          "rx_connected": "1",
+          "feed_last_ac_sent_time": "1793313462",
+          "feed_num_ac_tracked": "16"
+        },
+        "crc_archive": {
+          "disk_bytes": 120247232,
+          "ram_bytes": 8199658,
+          "error": null,
+          "saved_files": 14
+        },
+        "config_sha256": {
+          "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+          "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+          "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+          "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+        },
+        "temperature_c": 51.8
+      },
+      "capture": {
+        "far_training": {
+          "enabled": true,
+          "schema": "far-stock-training-v1",
+          "threshold_nm": 180,
+          "ram_limit_bytes": 50331648,
+          "ram_bytes": 0,
+          "hour_bucket": null,
+          "strata_used": {},
+          "minute_used": [],
+          "aircraft_minutes": [],
+          "aircraft_used": {},
+          "counts": {
+            "position_quality_or_range_rejected": 2752
+          },
+          "pending": 0,
+          "policy": "At most 80 windows/hour per distance band, 2/minute/band, one/aircraft/minute, 24/aircraft/hour; original 2ms RF, same-transmission CRC-valid stock; independent uncorrected replay required. No DSP/neural/external labels."
+        },
+        "capture_schedule": {
+          "enabled": true,
+          "policy": "hourly_3s_rf_plus_bounded_packet_metadata",
+          "hour_seconds": 1.9806435555555553,
+          "max_burst_seconds": 1.9806435555555553,
+          "bucket": null,
+          "used_seconds": 0.0,
+          "burst_used_seconds": 0.0,
+          "not_before_unix": 0.0,
+          "skipped_chunks": 0,
+          "bursts": 0,
+          "packet_bucket": 498142,
+          "packet_bytes": 2956,
+          "packet_cap_bytes_per_hour": 524288,
+          "packet_skipped": 0,
+          "packet_iq_policy": "references_to_scheduled_continuous_RF_only"
+        },
+        "packet_ledger": {
+          "enabled": true,
+          "pre_seconds": 30.0,
+          "tail_seconds": 8.0,
+          "history_bytes": 821611,
+          "history_limit_bytes": 8388608,
+          "ready": true,
+          "streams": {
+            "stock": {
+              "connected": true,
+              "since": 128101.578031892,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 262098,
+              "latest_tick": 1537714189189,
+              "last_data": 128162.210936159
+            },
+            "unified": {
+              "connected": true,
+              "since": 128101.578287435,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 276834,
+              "latest_tick": 1537678348695,
+              "last_data": 128162.208705868
+            }
+          },
+          "counts": {},
+          "faults": 0,
+          "recent_bursts": [],
+          "source_annotation_completeness": "best_effort_IPC; authoritative_actual_output_in_unified_beast"
+        },
+        "capture_triggers": {
+          "policy": {
+            "local_holdover_seconds": 60,
+            "external_poll_seconds": 30,
+            "external_max_age_seconds": 30,
+            "external_radius_nm": 250,
+            "burst_seconds": 2,
+            "burst_interval_seconds": 60
+          },
+          "active": [],
+          "burst_count": 1,
+          "next_burst_unix": 1793313475.5151079,
+          "external": {
+            "source": "https://opendata.adsb.fi",
+            "attribution": "Aircraft context: adsb.fi \u2014 https://adsb.fi (personal, non-commercial use)",
+            "attempts": 3,
+            "successes": 3,
+            "error": null,
+            "updated_unix": 1793313475.0901437
+          },
+          "external_candidate_count": 54
+        },
+        "ram_lock_enabled": true,
+        "locked_page_bytes": 21135360,
+        "enabled": true,
+        "config": {
+          "packet_capture": true,
+          "continuous_capture": true,
+          "threshold_nm": 180.0,
+          "ram_limit_bytes": 268435456,
+          "continuous_ram_bytes": 134217728,
+          "disk_limit_bytes": 5000000000,
+          "flush_seconds": 43200
+        },
+        "counts": {
+          "readsb_tap_dropped_counter": 274117632,
+          "tap_samples_received": 145555456,
+          "unrangeable_packets": 573
+        },
+        "ram_bytes": 2956,
+        "ram_limit_bytes": 268435456,
+        "ring_bytes": 19267584,
+        "continuous_ram_bytes": 0,
+        "disk_bytes": 260065280,
+        "disk_limit_bytes": 5000000000,
+        "next_flush_unix": 1793314725.0304623,
+        "saving": false,
+        "error": null,
+        "far_aircraft_present": false,
+        "pending_packets": 0,
+        "files": [
+          {
+            "name": "capture-1793313385077339906.tar",
+            "bytes": 260065280
+          }
+        ],
+        "scope": "Hourly sampled far-range RF; packet/context metadata has a separate hourly byte quota. General packet IQ references scheduled RF; separately budgeted stock training snippets do not depend on scheduled RF. All traffic in admitted RF bursts has full stock/actual-relay journals; incomplete coverage is flagged. Capture pauses at caps; counters expose gaps/skips.",
+        "updated_unix": 1793313475.129437
+      }
+    },
+    {
+      "health": {
+        "unix": 1793313485.9071949,
+        "pids": {
+          "readsb": 4694,
+          "fr24feed": 1193167,
+          "adsb-rescue-feed": 1622165,
+          "adsbexchange-feed": 1235929,
+          "adsb-far-capture": 2191342
+        },
+        "shadow_pid": 2113770,
+        "started_unix": 1793309667.5144923,
+        "updated_unix": 1793313477.3606143,
+        "feed_updated_unix": 1793313485.1504743,
+        "threads_alive": true,
+        "gain_db": 38.6,
+        "methods": {
+          "energy": true,
+          "crc": true,
+          "timing": true,
+          "soft": true,
+          "matched": true,
+          "coherent": true,
+          "header": false,
+          "sic": false,
+          "neural": true,
+          "pulse": false,
+          "stream1090": true,
+          "sequence": false,
+          "acquisition": false
+        },
+        "worker_config": {
+          "workers": 2,
+          "reserve_cores": 2,
+          "max_workers": 2,
+          "cpus": "2-3",
+          "coherent_cpus": "0-1",
+          "coherent_threshold": 0.35,
+          "coherent_budget": 48,
+          "optimized_dsp": true,
+          "sequence_acquisition": true,
+          "sequence_enabled": false,
+          "acquisition_enabled": false,
+          "optimized_v3": true,
+          "optimized_extended": true,
+          "coherent_pair_retry": true,
+          "shared_transport": "ring",
+          "cached_fir": true
+        },
+        "worker_roles": {
+          "2113794": "dsp",
+          "2113798": "coherent",
+          "2113797": "dsp",
+          "2113801": "coherent"
+        },
+        "workers": {
+          "2113794": [
+            2
+          ],
+          "2113798": [
+            0
+          ],
+          "2113797": [
+            3
+          ],
+          "2113801": [
+            1
+          ]
+        },
+        "pending": 0,
+        "mean_latency_s": 0.0375940536107737,
+        "aligned_seconds": 3808,
+        "shed": 1,
+        "samples": {
+          "samples_lost": 0,
+          "samples_dropped": 0
+        },
+        "feed": {
+          "stock_connected": true,
+          "fr24_routed": true,
+          "counts": {
+            "stock_bytes_relayed": 325973759,
+            "dsp_frames_relayed": 553995,
+            "relayed_coherent": 167419
+          },
+          "upstream_error": null
+        },
+        "fr24": {
+          "feed_status": "connected",
+          "rx_connected": "1",
+          "feed_last_ac_sent_time": "1793313462",
+          "feed_num_ac_tracked": "16"
+        },
+        "crc_archive": {
+          "disk_bytes": 120247232,
+          "ram_bytes": 8200381,
+          "error": null,
+          "saved_files": 14
+        },
+        "config_sha256": {
+          "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+          "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+          "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+          "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+        },
+        "temperature_c": 51.8
+      },
+      "capture": {
+        "far_training": {
+          "enabled": true,
+          "schema": "far-stock-training-v1",
+          "threshold_nm": 180,
+          "ram_limit_bytes": 50331648,
+          "ram_bytes": 0,
+          "hour_bucket": null,
+          "strata_used": {},
+          "minute_used": [],
+          "aircraft_minutes": [],
+          "aircraft_used": {},
+          "counts": {
+            "position_quality_or_range_rejected": 3150
+          },
+          "pending": 0,
+          "policy": "At most 80 windows/hour per distance band, 2/minute/band, one/aircraft/minute, 24/aircraft/hour; original 2ms RF, same-transmission CRC-valid stock; independent uncorrected replay required. No DSP/neural/external labels."
+        },
+        "capture_schedule": {
+          "enabled": true,
+          "policy": "hourly_3s_rf_plus_bounded_packet_metadata",
+          "hour_seconds": 1.9806435555555553,
+          "max_burst_seconds": 1.9806435555555553,
+          "bucket": 498142,
+          "used_seconds": 0.05461333333333333,
+          "burst_used_seconds": 0.05461333333333333,
+          "not_before_unix": 1793313476.190861,
+          "skipped_chunks": 213,
+          "bursts": 1,
+          "packet_bucket": 498142,
+          "packet_bytes": 5922,
+          "packet_cap_bytes_per_hour": 524288,
+          "packet_skipped": 0,
+          "packet_iq_policy": "references_to_scheduled_continuous_RF_only"
+        },
+        "packet_ledger": {
+          "enabled": true,
+          "pre_seconds": 30.0,
+          "tail_seconds": 8.0,
+          "history_bytes": 825456,
+          "history_limit_bytes": 8388608,
+          "ready": true,
+          "streams": {
+            "stock": {
+              "connected": true,
+              "since": 128101.578031892,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 301541,
+              "latest_tick": 1537835642044,
+              "last_data": 128172.315232992
+            },
+            "unified": {
+              "connected": true,
+              "since": 128101.578287435,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 319060,
+              "latest_tick": 1537799153150,
+              "last_data": 128172.298239572
+            }
+          },
+          "counts": {
+            "bursts": 1,
+            "stock_saved_bytes": 161369,
+            "stock_saved_chunks": 1378,
+            "unified_saved_bytes": 169664,
+            "unified_saved_chunks": 1380,
+            "dsp_annotations_saved_bytes": 0,
+            "dsp_annotations_saved_chunks": 279,
+            "complete_bursts": 1
+          },
+          "faults": 0,
+          "recent_bursts": [
+            {
+              "burst_id": "4694-307545273648-0",
+              "epoch": 4694,
+              "sample_start": 307545273648,
+              "sample_end": 307545404720,
+              "unix_start": 1793313476.148856,
+              "arrival_start": 128163.231413262,
+              "arrival_end": 128163.31107356,
+              "rf_file": "continuous.uc8",
+              "final_at": 128171.31107356,
+              "finalized": true,
+              "streams_complete": true
+            }
+          ],
+          "source_annotation_completeness": "best_effort_IPC; authoritative_actual_output_in_unified_beast"
+        },
+        "capture_triggers": {
+          "policy": {
+            "local_holdover_seconds": 60,
+            "external_poll_seconds": 30,
+            "external_max_age_seconds": 30,
+            "external_radius_nm": 250,
+            "burst_seconds": 2,
+            "burst_interval_seconds": 60
+          },
+          "active": [],
+          "burst_count": 2,
+          "next_burst_unix": 1793313536.1371999,
+          "external": {
+            "source": "https://opendata.adsb.fi",
+            "attribution": "Aircraft context: adsb.fi \u2014 https://adsb.fi (personal, non-commercial use)",
+            "attempts": 3,
+            "successes": 3,
+            "error": null,
+            "updated_unix": 1793313475.0901437
+          },
+          "external_candidate_count": 54
+        },
+        "ram_lock_enabled": true,
+        "locked_page_bytes": 22331392,
+        "enabled": true,
+        "config": {
+          "packet_capture": true,
+          "continuous_capture": true,
+          "threshold_nm": 180.0,
+          "ram_limit_bytes": 268435456,
+          "continuous_ram_bytes": 134217728,
+          "disk_limit_bytes": 5000000000,
+          "flush_seconds": 43200
+        },
+        "counts": {
+          "readsb_tap_dropped_counter": 274117632,
+          "tap_samples_received": 169702704,
+          "unrangeable_packets": 674,
+          "continuous_samples": 131072,
+          "tap_gap_samples": 101072
+        },
+        "ram_bytes": 1349835,
+        "ram_limit_bytes": 268435456,
+        "ring_bytes": 19267584,
+        "continuous_ram_bytes": 262144,
+        "disk_bytes": 260065280,
+        "disk_limit_bytes": 5000000000,
+        "next_flush_unix": 1793314725.0304623,
+        "saving": false,
+        "error": null,
+        "far_aircraft_present": false,
+        "pending_packets": 0,
+        "files": [
+          {
+            "name": "capture-1793313385077339906.tar",
+            "bytes": 260065280
+          }
+        ],
+        "scope": "Hourly sampled far-range RF; packet/context metadata has a separate hourly byte quota. General packet IQ references scheduled RF; separately budgeted stock training snippets do not depend on scheduled RF. All traffic in admitted RF bursts has full stock/actual-relay journals; incomplete coverage is flagged. Capture pauses at caps; counters expose gaps/skips.",
+        "updated_unix": 1793313485.233155
+      }
+    },
+    {
+      "health": {
+        "unix": 1793313495.980761,
+        "pids": {
+          "readsb": 4694,
+          "fr24feed": 1193167,
+          "adsb-rescue-feed": 1622165,
+          "adsbexchange-feed": 1235929,
+          "adsb-far-capture": 2191342
+        },
+        "shadow_pid": 2113770,
+        "started_unix": 1793309667.5144923,
+        "updated_unix": 1793313487.3855543,
+        "feed_updated_unix": 1793313495.2189794,
+        "threads_alive": true,
+        "gain_db": 38.6,
+        "methods": {
+          "energy": true,
+          "crc": true,
+          "timing": true,
+          "soft": true,
+          "matched": true,
+          "coherent": true,
+          "header": false,
+          "sic": false,
+          "neural": true,
+          "pulse": false,
+          "stream1090": true,
+          "sequence": false,
+          "acquisition": false
+        },
+        "worker_config": {
+          "workers": 2,
+          "reserve_cores": 2,
+          "max_workers": 2,
+          "cpus": "2-3",
+          "coherent_cpus": "0-1",
+          "coherent_threshold": 0.35,
+          "coherent_budget": 48,
+          "optimized_dsp": true,
+          "sequence_acquisition": true,
+          "sequence_enabled": false,
+          "acquisition_enabled": false,
+          "optimized_v3": true,
+          "optimized_extended": true,
+          "coherent_pair_retry": true,
+          "shared_transport": "ring",
+          "cached_fir": true
+        },
+        "worker_roles": {
+          "2113794": "dsp",
+          "2113798": "coherent",
+          "2113797": "dsp",
+          "2113801": "coherent"
+        },
+        "workers": {
+          "2113794": [
+            2
+          ],
+          "2113798": [
+            0
+          ],
+          "2113797": [
+            3
+          ],
+          "2113801": [
+            1
+          ]
+        },
+        "pending": 0,
+        "mean_latency_s": 0.03770208468505492,
+        "aligned_seconds": 3818,
+        "shed": 1,
+        "samples": {
+          "samples_lost": 0,
+          "samples_dropped": 0
+        },
+        "feed": {
+          "stock_connected": true,
+          "fr24_routed": true,
+          "counts": {
+            "stock_bytes_relayed": 326010810,
+            "dsp_frames_relayed": 554072,
+            "relayed_coherent": 167444
+          },
+          "upstream_error": null
+        },
+        "fr24": {
+          "feed_status": "connected",
+          "rx_connected": "1",
+          "feed_last_ac_sent_time": "1793313492",
+          "feed_num_ac_tracked": "14"
+        },
+        "crc_archive": {
+          "disk_bytes": 120247232,
+          "ram_bytes": 8200037,
+          "error": null,
+          "saved_files": 14
+        },
+        "config_sha256": {
+          "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+          "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+          "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+          "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+        },
+        "temperature_c": 52.35
+      },
+      "capture": {
+        "far_training": {
+          "enabled": true,
+          "schema": "far-stock-training-v1",
+          "threshold_nm": 180,
+          "ram_limit_bytes": 50331648,
+          "ram_bytes": 0,
+          "hour_bucket": null,
+          "strata_used": {},
+          "minute_used": [],
+          "aircraft_minutes": [],
+          "aircraft_used": {},
+          "counts": {
+            "position_quality_or_range_rejected": 3523
+          },
+          "pending": 0,
+          "policy": "At most 80 windows/hour per distance band, 2/minute/band, one/aircraft/minute, 24/aircraft/hour; original 2ms RF, same-transmission CRC-valid stock; independent uncorrected replay required. No DSP/neural/external labels."
+        },
+        "capture_schedule": {
+          "enabled": true,
+          "policy": "hourly_3s_rf_plus_bounded_packet_metadata",
+          "hour_seconds": 1.9806435555555553,
+          "max_burst_seconds": 1.9806435555555553,
+          "bucket": 498142,
+          "used_seconds": 0.05461333333333333,
+          "burst_used_seconds": 0.05461333333333333,
+          "not_before_unix": 1793313476.190861,
+          "skipped_chunks": 213,
+          "bursts": 1,
+          "packet_bucket": 498142,
+          "packet_bytes": 5922,
+          "packet_cap_bytes_per_hour": 524288,
+          "packet_skipped": 0,
+          "packet_iq_policy": "references_to_scheduled_continuous_RF_only"
+        },
+        "packet_ledger": {
+          "enabled": true,
+          "pre_seconds": 30.0,
+          "tail_seconds": 8.0,
+          "history_bytes": 819486,
+          "history_limit_bytes": 8388608,
+          "ready": true,
+          "streams": {
+            "stock": {
+              "connected": true,
+              "since": 128101.578031892,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 338645,
+              "latest_tick": 1537957231884,
+              "last_data": 128182.447043921
+            },
+            "unified": {
+              "connected": true,
+              "since": 128101.578287435,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 358325,
+              "latest_tick": 1537921167534,
+              "last_data": 128182.447240222
+            }
+          },
+          "counts": {
+            "bursts": 1,
+            "stock_saved_bytes": 161369,
+            "stock_saved_chunks": 1378,
+            "unified_saved_bytes": 169664,
+            "unified_saved_chunks": 1380,
+            "dsp_annotations_saved_bytes": 0,
+            "dsp_annotations_saved_chunks": 279,
+            "complete_bursts": 1
+          },
+          "faults": 0,
+          "recent_bursts": [
+            {
+              "burst_id": "4694-307545273648-0",
+              "epoch": 4694,
+              "sample_start": 307545273648,
+              "sample_end": 307545404720,
+              "unix_start": 1793313476.148856,
+              "arrival_start": 128163.231413262,
+              "arrival_end": 128163.31107356,
+              "rf_file": "continuous.uc8",
+              "final_at": 128171.31107356,
+              "finalized": true,
+              "streams_complete": true
+            }
+          ],
+          "source_annotation_completeness": "best_effort_IPC; authoritative_actual_output_in_unified_beast"
+        },
+        "capture_triggers": {
+          "policy": {
+            "local_holdover_seconds": 60,
+            "external_poll_seconds": 30,
+            "external_max_age_seconds": 30,
+            "external_radius_nm": 250,
+            "burst_seconds": 2,
+            "burst_interval_seconds": 60
+          },
+          "active": [],
+          "burst_count": 2,
+          "next_burst_unix": 1793313536.1371999,
+          "external": {
+            "source": "https://opendata.adsb.fi",
+            "attribution": "Aircraft context: adsb.fi \u2014 https://adsb.fi (personal, non-commercial use)",
+            "attempts": 3,
+            "successes": 3,
+            "error": null,
+            "updated_unix": 1793313475.0901437
+          },
+          "external_candidate_count": 54
+        },
+        "ram_lock_enabled": true,
+        "locked_page_bytes": 22364160,
+        "enabled": true,
+        "config": {
+          "packet_capture": true,
+          "continuous_capture": true,
+          "threshold_nm": 180.0,
+          "ram_limit_bytes": 268435456,
+          "continuous_ram_bytes": 134217728,
+          "disk_limit_bytes": 5000000000,
+          "flush_seconds": 43200
+        },
+        "counts": {
+          "readsb_tap_dropped_counter": 274117632,
+          "tap_samples_received": 193981024,
+          "unrangeable_packets": 781,
+          "continuous_samples": 131072,
+          "tap_gap_samples": 101072
+        },
+        "ram_bytes": 1349835,
+        "ram_limit_bytes": 268435456,
+        "ring_bytes": 19267584,
+        "continuous_ram_bytes": 262144,
+        "disk_bytes": 260065280,
+        "disk_limit_bytes": 5000000000,
+        "next_flush_unix": 1793314725.0304623,
+        "saving": false,
+        "error": null,
+        "far_aircraft_present": false,
+        "pending_packets": 0,
+        "files": [
+          {
+            "name": "capture-1793313385077339906.tar",
+            "bytes": 260065280
+          }
+        ],
+        "scope": "Hourly sampled far-range RF; packet/context metadata has a separate hourly byte quota. General packet IQ references scheduled RF; separately budgeted stock training snippets do not depend on scheduled RF. All traffic in admitted RF bursts has full stock/actual-relay journals; incomplete coverage is flagged. Capture pauses at caps; counters expose gaps/skips.",
+        "updated_unix": 1793313495.3651612
+      }
+    },
+    {
+      "health": {
+        "unix": 1793313506.1152732,
+        "pids": {
+          "readsb": 4694,
+          "fr24feed": 1193167,
+          "adsb-rescue-feed": 1622165,
+          "adsbexchange-feed": 1235929,
+          "adsb-far-capture": 2191342
+        },
+        "shadow_pid": 2113770,
+        "started_unix": 1793309667.5144923,
+        "updated_unix": 1793313497.407569,
+        "feed_updated_unix": 1793313505.3656795,
+        "threads_alive": true,
+        "gain_db": 38.6,
+        "methods": {
+          "energy": true,
+          "crc": true,
+          "timing": true,
+          "soft": true,
+          "matched": true,
+          "coherent": true,
+          "header": false,
+          "sic": false,
+          "neural": true,
+          "pulse": false,
+          "stream1090": true,
+          "sequence": false,
+          "acquisition": false
+        },
+        "worker_config": {
+          "workers": 2,
+          "reserve_cores": 2,
+          "max_workers": 2,
+          "cpus": "2-3",
+          "coherent_cpus": "0-1",
+          "coherent_threshold": 0.35,
+          "coherent_budget": 48,
+          "optimized_dsp": true,
+          "sequence_acquisition": true,
+          "sequence_enabled": false,
+          "acquisition_enabled": false,
+          "optimized_v3": true,
+          "optimized_extended": true,
+          "coherent_pair_retry": true,
+          "shared_transport": "ring",
+          "cached_fir": true
+        },
+        "worker_roles": {
+          "2113794": "dsp",
+          "2113798": "coherent",
+          "2113797": "dsp",
+          "2113801": "coherent"
+        },
+        "workers": {
+          "2113794": [
+            2
+          ],
+          "2113798": [
+            0
+          ],
+          "2113797": [
+            3
+          ],
+          "2113801": [
+            1
+          ]
+        },
+        "pending": 0,
+        "mean_latency_s": 0.03751927196502947,
+        "aligned_seconds": 3828,
+        "shed": 1,
+        "samples": {
+          "samples_lost": 0,
+          "samples_dropped": 0
+        },
+        "feed": {
+          "stock_connected": true,
+          "fr24_routed": true,
+          "counts": {
+            "stock_bytes_relayed": 326050321,
+            "dsp_frames_relayed": 554153,
+            "relayed_coherent": 167465
+          },
+          "upstream_error": null
+        },
+        "fr24": {
+          "feed_status": "connected",
+          "rx_connected": "1",
+          "feed_last_ac_sent_time": "1793313492",
+          "feed_num_ac_tracked": "14"
+        },
+        "crc_archive": {
+          "disk_bytes": 120247232,
+          "ram_bytes": 8207297,
+          "error": null,
+          "saved_files": 14
+        },
+        "config_sha256": {
+          "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+          "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+          "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+          "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+        },
+        "temperature_c": 52.35
+      },
+      "capture": {
+        "far_training": {
+          "enabled": true,
+          "schema": "far-stock-training-v1",
+          "threshold_nm": 180,
+          "ram_limit_bytes": 50331648,
+          "ram_bytes": 0,
+          "hour_bucket": null,
+          "strata_used": {},
+          "minute_used": [],
+          "aircraft_minutes": [],
+          "aircraft_used": {},
+          "counts": {
+            "position_quality_or_range_rejected": 3920
+          },
+          "pending": 0,
+          "policy": "At most 80 windows/hour per distance band, 2/minute/band, one/aircraft/minute, 24/aircraft/hour; original 2ms RF, same-transmission CRC-valid stock; independent uncorrected replay required. No DSP/neural/external labels."
+        },
+        "capture_schedule": {
+          "enabled": true,
+          "policy": "hourly_3s_rf_plus_bounded_packet_metadata",
+          "hour_seconds": 1.9806435555555553,
+          "max_burst_seconds": 1.9806435555555553,
+          "bucket": 498142,
+          "used_seconds": 0.05461333333333333,
+          "burst_used_seconds": 0.05461333333333333,
+          "not_before_unix": 1793313476.190861,
+          "skipped_chunks": 213,
+          "bursts": 1,
+          "packet_bucket": 498142,
+          "packet_bytes": 5922,
+          "packet_cap_bytes_per_hour": 524288,
+          "packet_skipped": 0,
+          "packet_iq_policy": "references_to_scheduled_continuous_RF_only"
+        },
+        "packet_ledger": {
+          "enabled": true,
+          "pre_seconds": 30.0,
+          "tail_seconds": 8.0,
+          "history_bytes": 798997,
+          "history_limit_bytes": 8388608,
+          "ready": true,
+          "streams": {
+            "stock": {
+              "connected": true,
+              "since": 128101.578031892,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 377280,
+              "latest_tick": 1538078131209,
+              "last_data": 128192.52199595
+            },
+            "unified": {
+              "connected": true,
+              "since": 128101.578287435,
+              "generation": 1,
+              "connections": 1,
+              "disconnects": 0,
+              "bytes": 399261,
+              "latest_tick": 1538041760217,
+              "last_data": 128192.514728416
+            }
+          },
+          "counts": {
+            "bursts": 1,
+            "stock_saved_bytes": 161369,
+            "stock_saved_chunks": 1378,
+            "unified_saved_bytes": 169664,
+            "unified_saved_chunks": 1380,
+            "dsp_annotations_saved_bytes": 0,
+            "dsp_annotations_saved_chunks": 279,
+            "complete_bursts": 1
+          },
+          "faults": 0,
+          "recent_bursts": [
+            {
+              "burst_id": "4694-307545273648-0",
+              "epoch": 4694,
+              "sample_start": 307545273648,
+              "sample_end": 307545404720,
+              "unix_start": 1793313476.148856,
+              "arrival_start": 128163.231413262,
+              "arrival_end": 128163.31107356,
+              "rf_file": "continuous.uc8",
+              "final_at": 128171.31107356,
+              "finalized": true,
+              "streams_complete": true
+            }
+          ],
+          "source_annotation_completeness": "best_effort_IPC; authoritative_actual_output_in_unified_beast"
+        },
+        "capture_triggers": {
+          "policy": {
+            "local_holdover_seconds": 60,
+            "external_poll_seconds": 30,
+            "external_max_age_seconds": 30,
+            "external_radius_nm": 250,
+            "burst_seconds": 2,
+            "burst_interval_seconds": 60
+          },
+          "active": [],
+          "burst_count": 2,
+          "next_burst_unix": 1793313536.1371999,
+          "external": {
+            "source": "https://opendata.adsb.fi",
+            "attribution": "Aircraft context: adsb.fi \u2014 https://adsb.fi (personal, non-commercial use)",
+            "attempts": 4,
+            "successes": 4,
+            "error": null,
+            "updated_unix": 1793313505.2867684
+          },
+          "external_candidate_count": 50
+        },
+        "ram_lock_enabled": true,
+        "locked_page_bytes": 22511616,
+        "enabled": true,
+        "config": {
+          "packet_capture": true,
+          "continuous_capture": true,
+          "threshold_nm": 180.0,
+          "ram_limit_bytes": 268435456,
+          "continuous_ram_bytes": 134217728,
+          "disk_limit_bytes": 5000000000,
+          "flush_seconds": 43200
+        },
+        "counts": {
+          "readsb_tap_dropped_counter": 274117632,
+          "tap_samples_received": 218199344,
+          "unrangeable_packets": 834,
+          "continuous_samples": 131072,
+          "tap_gap_samples": 101072
+        },
+        "ram_bytes": 1349835,
+        "ram_limit_bytes": 268435456,
+        "ring_bytes": 19267584,
+        "continuous_ram_bytes": 262144,
+        "disk_bytes": 260065280,
+        "disk_limit_bytes": 5000000000,
+        "next_flush_unix": 1793314725.0304623,
+        "saving": false,
+        "error": null,
+        "far_aircraft_present": false,
+        "pending_packets": 0,
+        "files": [
+          {
+            "name": "capture-1793313385077339906.tar",
+            "bytes": 260065280
+          }
+        ],
+        "scope": "Hourly sampled far-range RF; packet/context metadata has a separate hourly byte quota. General packet IQ references scheduled RF; separately budgeted stock training snippets do not depend on scheduled RF. All traffic in admitted RF bursts has full stock/actual-relay journals; incomplete coverage is flagged. Capture pauses at caps; counters expose gaps/skips.",
+        "updated_unix": 1793313505.4400263
+      }
+    }
+  ],
+  "activated": true,
+  "shutdown_saved_files": [
+    {
+      "path": "/var/lib/adsb-far-capture/capture-1793313385077339906.tar",
+      "bytes": 260065280
+    }
+  ],
+  "source_sha256": {
+    "/home/pi/adsb-neural-rescue/src/rescue/far_capture.py": "0620688331a55af5927f6efca09f4d16f3d8900c108a786fe78b7b70490f042a",
+    "/home/pi/adsb-neural-rescue/src/rescue/far_training.py": "424df871debcc81a8255679bcdc7fd7202dded318dc6939c231303f3a4ebfd84",
+    "/home/pi/adsb-neural-rescue/src/rescue/capture_schedule.py": "40d454baff69c598ae9aa293a9af00178aaba19d12370f4bb3faf5c80db4e896",
+    "/home/pi/adsb-neural-rescue/src/rescue/burst_ledger.py": "8bd16b45b89b749bd340857c2fcab95e6f187cfe35a61c4ff4c666549bedc096",
+    "/etc/default/adsb-far-capture.json": "f5188529b70e7b9962b6c78936d4304f8b80cc30d7153570a68d5e2fa9d2c8cb"
+  }
+}

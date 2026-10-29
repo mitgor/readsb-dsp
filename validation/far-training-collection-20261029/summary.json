@@ -1,0 +1,26 @@
+{
+  "activated": true,
+  "threshold_nm": 180,
+  "disk_cap_bytes": 5000000000,
+  "bulk_save_seconds": 43200,
+  "training_ram_limit_bytes": 50331648,
+  "continuous_ram_limit_bytes": 134217728,
+  "training_capacity": "80 windows/hour/band across 180\u2013200, 200\u2013250, >=250 nm; 2/min/band; 1/aircraft/min; 24/aircraft/hour; maximum 240/hour subject to quality/traffic/caps",
+  "saved_archives_transferred_and_deleted": 21,
+  "verified_deleted_bytes": 1652263872,
+  "remaining_saved_rf_archives": [],
+  "remaining_saved_crc_archives": [],
+  "live_crc_ram_retained_bytes": 8211889,
+  "decoder_and_feeder_pids_unchanged": true,
+  "collector_restart_only": true,
+  "decoder_config_and_gain_unchanged": true,
+  "new_training_windows_observed": 0,
+  "backup": "/var/backups/adsb-far-training-1793313385056780312",
+  "policy": "Original 2ms I/Q + exact same-transmission stock Beast, strictly causal stock position age<=15s NIC/NACp>=5 no MLAT/TIS-B. Uncorrected independent Mac replay required before training eligibility. No external/DSP/neural labels. No live model change.",
+  "limitations": [
+    "No qualifying >=180nm stock track was present during observation; capacity/pipeline tests pass but future training yield depends on traffic and independently validated waveform labels.",
+    "Only saved immutable archives were transferred/deleted. New collector RAM and the working decoder CRC RAM cache remain active until normal saves; no working decoder restart or forced CRC flush.",
+    "Continuous RF remains evaluation-only and protected from training; new targeted training snippets overlapping retained continuous RF are skipped.",
+    "Transfer does not schedule ongoing Mac offloads. Recorder still pauses at caps and never overwrites data."
+  ]
+}
