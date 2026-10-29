@@ -4,6 +4,7 @@
 #include "readsb.h"
 #include "dsp_rescue.h"
 #include "dsp_rescue_coeffs.h"
+#include "dsp_stream_phase.h"
 
 void rescue_scores(const float *, int64_t, float *, double *);
 int64_t rescue_header_ids(const float *, int64_t, const int64_t *, int64_t, int64_t *);
@@ -31,7 +32,7 @@ static struct {
     float iq[2 * (CHUNK + CONTEXT)], power[CHUNK + CONTEXT];
     double scores[CHUNK + CONTEXT];
     FILE *log;
-    uint64_t buffers, backlog, deadlines, gaps, overflow, peaks, raw[4], extras[4];
+    uint64_t buffers, backlog, deadlines, gaps, overflow, peaks, raw[5], extras[5];
     uint64_t duplicates, unknown, conflicts, budget_drops, forwarded;
     uint64_t cpu_us;
 } R;
@@ -57,7 +58,7 @@ static uint32_t address(const struct rescue_event *e) {
 }
 
 void dspRescueInit(void) {
-    if (!Modes.dsp_rescue && (Modes.dsp_rescue_output || Modes.dsp_rescue_log || Modes.dsp_rescue_budget_us)) {
+    if (!Modes.dsp_rescue && (Modes.dsp_rescue_stream_phase || Modes.dsp_rescue_output || Modes.dsp_rescue_log || Modes.dsp_rescue_budget_us)) {
         fprintf(stderr, "DSP rescue options require --dsp-rescue\n");
         exit(1);
     }
@@ -187,6 +188,14 @@ static void candidate(const uint8_t *row, int method, unsigned corrected,
     memcpy(e->msg, row, 14);
 }
 
+struct phase_context { const struct mag_buf *mag; };
+static void phase_candidate(const uint8_t row[14], int64_t bit_sample, void *opaque) {
+    struct phase_context *ctx = opaque;
+    /* Subtract the eight-microsecond preamble, then convert 8 MHz to 4 MHz.
+     * readsb's timestamp convention is applied by candidate(). */
+    candidate(row, 4, 0, (bit_sample - 64) / 2, ctx->mag, 0);
+}
+
 /* Unique one/two-bit syndrome solution over <=6 weakest payload/parity bits.
  * DF, CA and ICAO remain untouched. Bounded 21 hypotheses. */
 static unsigned soft(const float *iq, int s, uint8_t *row) {
@@ -307,20 +316,26 @@ void dspRescueProcess(const struct mag_buf *mag) {
         }
         at += core;
     }
+    if (Modes.dsp_rescue_stream_phase && monotonic_us() < deadline) {
+        struct phase_context ctx = {mag};
+        dspStreamPhase(mag->rescue_iq, mag->length + Modes.trailing_samples,
+                       base, base + Modes.trailing_samples,
+                       phase_candidate, &ctx, deadline);
+    }
     R.cpu_us += monotonic_us()-began;
 }
 
 void dspRescueCleanup(void) {
     if (!Modes.dsp_rescue) return;
     /* Do not release the last pending block without a following stock pass. */
-    fprintf(stderr, "DSP rescue summary: {\"buffers\":%llu,\"work_us\":%llu,\"backlog_skips\":%llu,\"deadline_buffers\":%llu,\"discontinuities\":%llu,\"pending_overflow\":%llu,\"pending_tail\":%u,\"peaks\":%llu,\"retry_budget_skips\":%llu,\"duplicates\":%llu,\"unknown_identity\":%llu,\"conflicts\":%llu,\"raw\":[%llu,%llu,%llu,%llu],\"extras\":[%llu,%llu,%llu,%llu],\"forwarded\":%llu}\n",
+    fprintf(stderr, "DSP rescue summary: {\"buffers\":%llu,\"work_us\":%llu,\"backlog_skips\":%llu,\"deadline_buffers\":%llu,\"discontinuities\":%llu,\"pending_overflow\":%llu,\"pending_tail\":%u,\"peaks\":%llu,\"retry_budget_skips\":%llu,\"duplicates\":%llu,\"unknown_identity\":%llu,\"conflicts\":%llu,\"raw\":[%llu,%llu,%llu,%llu,%llu],\"extras\":[%llu,%llu,%llu,%llu,%llu],\"forwarded\":%llu}\n",
         (unsigned long long)R.buffers, (unsigned long long)R.cpu_us,
         (unsigned long long)R.backlog, (unsigned long long)R.deadlines,
         (unsigned long long)R.gaps, (unsigned long long)R.overflow, R.pending_count,
         (unsigned long long)R.peaks, (unsigned long long)R.budget_drops,
         (unsigned long long)R.duplicates, (unsigned long long)R.unknown, (unsigned long long)R.conflicts,
-        (unsigned long long)R.raw[0], (unsigned long long)R.raw[1], (unsigned long long)R.raw[2], (unsigned long long)R.raw[3],
-        (unsigned long long)R.extras[0], (unsigned long long)R.extras[1], (unsigned long long)R.extras[2], (unsigned long long)R.extras[3],
+        (unsigned long long)R.raw[0], (unsigned long long)R.raw[1], (unsigned long long)R.raw[2], (unsigned long long)R.raw[3], (unsigned long long)R.raw[4],
+        (unsigned long long)R.extras[0], (unsigned long long)R.extras[1], (unsigned long long)R.extras[2], (unsigned long long)R.extras[3], (unsigned long long)R.extras[4],
         (unsigned long long)R.forwarded);
     if (R.log && fclose(R.log)) perror("DSP audit log close");
     R.log=NULL;

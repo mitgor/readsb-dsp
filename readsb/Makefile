@@ -188,7 +188,7 @@ readsb.o: readsb.c *.h .version
 %.o: %.c *.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-readsb: readsb.o argp.o anet.o interactive.o mode_ac.o mode_s.o comm_b.o json_out.o net_io.o crc.o demod_2400.o dsp_rescue.o contrib/dsp-rescue/dsp_rescue/frontend.o \
+readsb: readsb.o argp.o anet.o interactive.o mode_ac.o mode_s.o comm_b.o json_out.o net_io.o crc.o demod_2400.o dsp_rescue.o dsp_stream_phase.o contrib/dsp-rescue/dsp_rescue/frontend.o \
 	uat2esnt/uat2esnt.o uat2esnt/uat_decode.o \
 	stats.o cpr.o icao_filter.o track.o util.o fasthash.o convert.o sdr_ifile.o sdr_beast.o sdr.o ais_charset.o \
 	globe_index.o geomag.o receiver.o aircraft.o api.o threadpool.o \
@@ -232,10 +232,10 @@ dsp_rescue.o contrib/dsp-rescue/dsp_rescue/frontend.o: CFLAGS += -ffp-contract=o
 
 .PHONY: dsp-rescue-test dsp-rescue-test-sanitize
 dsp-rescue-test:
-	$(CC) $(CFLAGS) -ffp-contract=off -I. tests/dsp-rescue/unit.c contrib/dsp-rescue/dsp_rescue/frontend.c -lm -o tests/dsp-rescue/unit
+	$(CC) $(CFLAGS) -ffp-contract=off -I. tests/dsp-rescue/unit.c dsp_stream_phase.c contrib/dsp-rescue/dsp_rescue/frontend.c -lm -o tests/dsp-rescue/unit
 	./tests/dsp-rescue/unit
 
 # Supported by GCC/Clang; this does not replace the normal build flags.
 dsp-rescue-test-sanitize:
-	$(CC) $(CFLAGS) -O1 -ffp-contract=off -I. -fsanitize=address,undefined -fno-omit-frame-pointer tests/dsp-rescue/unit.c contrib/dsp-rescue/dsp_rescue/frontend.c -lm -o tests/dsp-rescue/unit
+	$(CC) $(CFLAGS) -O1 -ffp-contract=off -I. -fsanitize=address,undefined -fno-omit-frame-pointer tests/dsp-rescue/unit.c dsp_stream_phase.c contrib/dsp-rescue/dsp_rescue/frontend.c -lm -o tests/dsp-rescue/unit
 	./tests/dsp-rescue/unit

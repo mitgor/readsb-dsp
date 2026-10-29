@@ -17,6 +17,10 @@ contribution in PR #163, not an update to that PR.
 - `--dsp-rescue-budget-us N`: 100–50000 microseconds per input buffer; default
   min(5000 microseconds, 10% of the buffer's RF duration). A cooperative wall-time
   budget, not a hard realtime deadline or an OS CPU quota.
+- `--dsp-rescue-stream-phase`: opt in to the native eight-phase rolling-CRC
+  search adapted from Stream1090. It runs after the existing methods within
+  the same budget. It detects clean DF17 only, uses the same stock-first guards,
+  and stays shadow-only unless `--dsp-rescue-output` is also specified.
 - `--dsp-rescue-log FILE`: buffered candidate audit JSONL, for offline validation.
   It contains timestamps, payloads, method and guard result. Disk I/O can block;
   leave unset for live use. Summary counters go to stderr on exit.
@@ -60,7 +64,7 @@ context. Artificial initial history and context after sample loss are excluded.
 Discontinuities reset pending, duplicate and stock identity state; no packet is
 assembled across a known sample gap.
 
-All four methods are native C:
+The four original methods are native C:
 
 1. Clipped-energy PPM slicing on the shared normalized-preamble/FIR front end.
 2. Six fractional timing retries using the existing C sinc interpolation kernel.
@@ -69,6 +73,13 @@ All four methods are native C:
    `--no-fix` disables this method. Otherwise its explicit DSP limit is two
    weak bits; the existing stock single-bit correction limit is unchanged.
 4. Preamble-derived carrier estimate and complex matched filtering.
+
+The optional fifth method is a native eight-phase sliding Manchester/CRC search.
+It interpolates linear I/Q magnitude from 2.4 to 8 MS/s, compares early and
+late half-bit samples in eight phase streams, and checks a rolling 112-bit CRC.
+Unlike the four preamble-gated methods, it can find a frame without selecting a
+preamble peak first. Only uncorrected DF17 frames are admitted. See
+[the port notes](STREAM_PHASE.md) for provenance, limits and validation.
 
 No relaxed-header search, interference cancellation or broad CRC search is added.
 Expensive retries are capped at 32 failed header-screened windows per 50ms RF and
@@ -100,7 +111,7 @@ stock `(timestamp,payload)` record. Additional latency is one input buffer
 (about 27.3ms for 65536 samples). Final pending candidates are discarded without
 a following stock pass; a short/empty final buffer also discards them.
 
-Counters `raw` / `extras` are ordered energy, timing, soft, matched. `extras` is
+Counters `raw` / `extras` are ordered energy, timing, soft, matched, phase. `extras` is
 the guarded, deduplicated union; `forwarded` counts actual native submissions
 after decoder checks. JSONL includes released candidates and duplicate rejects;
 pre-release drops appear only in counters. The initial stream start counts as a

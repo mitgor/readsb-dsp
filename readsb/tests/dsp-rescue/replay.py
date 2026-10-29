@@ -42,6 +42,7 @@ def compare(exe, stock_exe, path):
     stock, baseline = run(stock_exe, path, [])
     report = {'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'stock': baseline}
     for name, options in [('disabled', []), ('shadow', ['--dsp-rescue']),
+                          ('phase_shadow', ['--dsp-rescue', '--dsp-rescue-stream-phase']),
                           ('output', ['--dsp-rescue', '--dsp-rescue-output']),
                           ('tight_budget', ['--dsp-rescue', '--dsp-rescue-budget-us', '100'])]:
         received, r = run(exe, path, options)
@@ -111,13 +112,13 @@ def main():
             assert sum(r['rescue']['raw']) == 0, r
             report['shuffled'] = r
         # Reject configuration mistakes before reading from SDR/input.
-        for opts in (['--dsp-rescue-output'], ['--dsp-rescue-budget-us','oops'],
+        for opts in (['--dsp-rescue-output'], ['--dsp-rescue-stream-phase'], ['--dsp-rescue-budget-us','oops'],
                      ['--dsp-rescue-budget-us','0'], ['--dsp-rescue-budget-us','50001'],
                      ['--net-only','--dsp-rescue'],
                      ['--device-type','ifile','--ifile',str(raw),'--iformat','SC16','--dsp-rescue']):
             proc=subprocess.run([str(exe),*opts],capture_output=True,timeout=10)
             assert proc.returncode != 0, opts
-        report['invalid_configurations_rejected']=6
+        report['invalid_configurations_rejected']=7
     a.output.write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report,indent=2))
 

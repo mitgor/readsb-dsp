@@ -13,6 +13,38 @@ void netUseMessage(struct modesMessage *mm) { (void)mm; sends++; }
 void netDrainMessageBuffers(void) {}
 
 static const uint8_t example[14] = {0x8d,0x40,0x62,0x1d,0x58,0xc3,0x82,0xd6,0x90,0xc8,0xac,0x28,0x63,0xa7};
+static unsigned phase_hits;
+static int64_t phase_time;
+static void phase_found(const uint8_t row[14], int64_t bit_sample, void *ctx) {
+    (void)ctx;
+    assert(!memcmp(row, example, 14));
+    phase_hits++;
+    phase_time = bit_sample;
+}
+static void phase_decoder(void) {
+    const int start=1200, split=1400, history=326, n=3000;
+    uint8_t *iq=malloc(2*n); assert(iq);
+    memset(iq,128,2*n);
+    for (int i=start-4; i<start+300; i++) {
+        double t=(i-start)/2.4;
+        int on=(t>=0 && t<.5) || (t>=1 && t<1.5) ||
+               (t>=3.5 && t<4) || (t>=4.5 && t<5);
+        int bit=(int)(t-8);
+        if (t>=8 && bit<112) {
+            int value=(example[bit/8]>>(7-bit%8))&1;
+            on |= value ? t-8-bit<.5 : t-8-bit>=.5;
+        }
+        if (on) iq[2*i]=210;
+    }
+    phase_hits=0;
+    dspStreamPhase(iq,split,0,0,phase_found,NULL,monotonic_us()+1000000);
+    assert(phase_hits==0); /* frame is cut off in this block */
+    dspStreamPhase(iq+2*(split-history),n-split+history,split-history,
+                   split,phase_found,NULL,monotonic_us()+1000000);
+    assert(phase_hits>=1 && phase_hits<=3);
+    assert(llabs(phase_time-(int64_t)(start*10/3+64))<=8);
+    free(iq);
+}
 static struct rescue_event event(int64_t t) {
     struct rescue_event e = {.ticks=t, .sys=1000}; memcpy(e.msg, example, 14); return e;
 }
@@ -101,4 +133,4 @@ static void buffers(void) {
     }
     free(raw); free(prev); free(next);
 }
-int main(void) { guards(); weak_bits(); buffers(); puts("native DSP guards, weak bits, capture, streaming bounds: OK"); }
+int main(void) { guards(); weak_bits(); buffers(); phase_decoder(); puts("native DSP guards, weak bits, capture, phase decoder, streaming bounds: OK"); }
