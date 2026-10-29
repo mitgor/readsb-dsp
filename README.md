@@ -111,6 +111,11 @@ The [CPU governor](src/deadsb/governor.py) uses conservative admission profiles
 and measured system utilization. Its 60% ceiling is a cooperative control target,
 not a guarantee against stock load, unrelated activity or brief spikes.
 
+The coherent quantile sort now uses a specialized allocation-free C implementation
+adapted from Goose, with exact replay parity and **22–24% less coherent-kernel CPU
+on Raspberry Pi 5**. This is a kernel comparison, not a whole-pipeline saving.
+See the [benchmark and live deployment](validation/coherent-sort-20261029/report.md).
+
 ## Example reception statistics
 
 ![Historical receiver statistics by distance: stock DF17, energy and neural extras, total improvement and DSP attribution](docs/images/reception-statistics-2026-10-25.png)

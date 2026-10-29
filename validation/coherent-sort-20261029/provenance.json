@@ -1,0 +1,11 @@
+{
+  "kernel_sha256": "7daf390ecb5008444f1e5e3747f99130c33d42fab578b02b55f37a29d60b6384",
+  "header_sha256": "e5757b6c1d206a0c4d742624cbeb3a51f678c98d91448e9831f50541553a6298",
+  "fixture_sha256": "5e95c0a0ed5eaf0074332dd14a5ba528ab191be4665e57223e3b104d9e159c46",
+  "deployment_sha256": "775b99302cf7d0e4d4d89f46bf483065344e161c69cf3014a1443a1b93b91715",
+  "upstream": "https://github.com/aardappel/goose/blob/acc6310a83df7a322d3f8264a808f675348c4260/stdlib/std.goose",
+  "license": "Apache-2.0 for adapted sort; GPL-3.0-or-later for combined project",
+  "live_active": true,
+  "python_integration_tests": 41,
+  "mac_pi_sort_cases_each": 200000
+}

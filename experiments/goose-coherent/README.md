@@ -22,7 +22,9 @@ commit `acc6310a83df7a322d3f8264a808f675348c4260`. For macOS ARM64 download
 
 Extract the complete archive (including stdlib) below `.work/compiler/`.
 Goose emits standalone C; the same target C compiler builds both implementations
-with `-O3 -std=c11 -ffp-contract=off`, no fast-math. Goose's `-O2` enables its
+with `-O3 -std=c11 -ffp-contract=off`, no fast-math. C builds explicitly
+define `RESCUE_REFERENCE_SORT` to retain the original libc quantile sort even
+after the later production typed-sort optimization. Goose's `-O2` enables its
 inlining pass. Standard runtime checks remain enabled. Compiler execution and
 initialization are outside timed decoding. No system-wide Goose installation
 is required; `GOOSE_HOME` stays inside `.work/`.

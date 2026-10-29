@@ -17,6 +17,7 @@ static int compare_double(const void *a,const void *b) {
 static int compare_pattern(const void *a,const void *b) {
     uint32_t x=((const Pattern *)a)->key,y=((const Pattern *)b)->key;return (x>y)-(x<y);
 }
+#include "coherent_sort.h"
 static uint32_t crc(const uint8_t *row) {
     uint32_t c=0;
     for(int b=0;b<112;b++) {
@@ -41,7 +42,7 @@ int rescue_coherent_init(void) {
     return 0;
 }
 static double quantile(double *values,int n,double fraction) {
-    qsort(values,n,sizeof(double),compare_double);
+    coherent_sort(values,n);
     double index=(n-1)*fraction;int lo=(int)index,hi=(int)ceil(index);
     return values[lo]+(values[hi]-values[lo])*(index-lo);
 }

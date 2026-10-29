@@ -1,0 +1,18 @@
+{
+  "healthy": true,
+  "aligned_seconds": 289,
+  "sample_counters": {
+    "samples_lost": 0,
+    "samples_dropped": 0
+  },
+  "mapped": {
+    "1783073": [
+      "_coherent.so",
+      "_coherent_pair.so"
+    ],
+    "1783076": [
+      "_coherent.so",
+      "_coherent_pair.so"
+    ]
+  }
+}
