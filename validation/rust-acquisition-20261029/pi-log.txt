@@ -1,0 +1,31 @@
+Started rust-acquisition-benchmark-20261029.service - /home/pi/adsb-neural-rescue/.venv/bin/python experiments/rust-acquisition/protected_job.py.
+running 4 tests
+test tests::distance ... ok
+test tests::invalid_count ... ok
+test tests::plateau_midpoint ... ok
+test tests::ties_fall_back ... ok
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+{
+  "exact_scoring_and_candidate_cases": 1201,
+  "budgets": [
+    1,
+    8,
+    16,
+    64,
+    256
+  ],
+  "fallback_cases": 1,
+  "selected_candidates_in_non_noise_cases": 259,
+  "invalid_argument_checks": 10,
+  "input_immutable": true,
+  "noise_blocks": 64,
+  "noise_candidate_hypotheses": 543,
+  "noise_crc_valid": 0,
+  "noise_policy": "Acquisition hypotheses are not accepted packets; frozen installed coherent decoder used only in this offline process."
+}
+scores 11.217677165063433 percent saving
+selector-16 12.378046461699144 percent saving
+selector-64 12.368838410479178 percent saving
+selector-256 8.94006350092269 percent saving
+rust-acquisition-benchmark-20261029.service: Deactivated successfully.
+rust-acquisition-benchmark-20261029.service: Consumed 47.544s CPU time.

@@ -1,0 +1,182 @@
+{
+  "blocks": 24,
+  "power_samples": 3979973,
+  "nominal_rf_seconds": 0.99115525,
+  "weights": [
+    0.6538461446762085,
+    -0.3461538553237915,
+    11.769231796264648
+  ],
+  "files": [
+    {
+      "file": "rf-000.uc8",
+      "source_sha256": "0f1a0074cfd98d86ee30b9aab1ccfea2ece8c60155a3431eab6fcd7bf996d64e",
+      "offset_4msps": 0,
+      "core": 200000,
+      "samples": 200480
+    },
+    {
+      "file": "rf-001.uc8",
+      "source_sha256": "5ed7c5da20682704dde4e509ef0ea527ff12244e940e7f5a64d7989609d8683d",
+      "offset_4msps": 0,
+      "core": 99521,
+      "samples": 100480
+    },
+    {
+      "file": "rf-003.uc8",
+      "source_sha256": "5cca206b819c0a51c70571b040ba462dcb4e967bfb9c8c483878a43d3b4c1d2a",
+      "offset_4msps": 0,
+      "core": 200000,
+      "samples": 200480
+    },
+    {
+      "file": "rf-005.uc8",
+      "source_sha256": "09de3cdab368bfd1086911675ae8c1b76ad24699f7d34758fe8acc8222259aab",
+      "offset_4msps": 0,
+      "core": 99521,
+      "samples": 100480
+    },
+    {
+      "file": "rf-007.uc8",
+      "source_sha256": "5ecffccb16f3f7be0037ac89f66b5a1458d63a139cb03de30eca5913d676f4f8",
+      "offset_4msps": 0,
+      "core": 200000,
+      "samples": 200480
+    },
+    {
+      "file": "rf-008.uc8",
+      "source_sha256": "b55c593de80bc98fd4e6eefbc022bea602e048046669267b7bdbca86c4fc6afc",
+      "offset_4msps": 0,
+      "core": 200000,
+      "samples": 200480
+    },
+    {
+      "file": "rf-010.uc8",
+      "source_sha256": "51c14c436569f6a850ce9093ee469cbadccb590913ac724e68c09f683a77901e",
+      "offset_4msps": 0,
+      "core": 200000,
+      "samples": 200480
+    },
+    {
+      "file": "rf-012.uc8",
+      "source_sha256": "146382b41d6cb5ec14039aff3ebc79eb3b6486de4ddb3802d1cc989063279b2e",
+      "offset_4msps": 0,
+      "core": 99521,
+      "samples": 100480
+    },
+    {
+      "file": "rf-014.uc8",
+      "source_sha256": "65ca7ba0d2ee0cf35c478a8136912f1d76559622849739d77a0769ffd6dd0578",
+      "offset_4msps": 0,
+      "core": 200000,
+      "samples": 200480
+    },
+    {
+      "file": "rf-016.uc8",
+      "source_sha256": "84c0be44f04b7186b3d899619095b0d473068d4a67e75a38b485c009d41d201f",
+      "offset_4msps": 0,
+      "core": 200000,
+      "samples": 200480
+    },
+    {
+      "file": "rf-017.uc8",
+      "source_sha256": "47cd97418ac9545ffb5ee24ba6304a0930f8a36864f8ff6b1ae01b0ff512d776",
+      "offset_4msps": 0,
+      "core": 200000,
+      "samples": 200480
+    },
+    {
+      "file": "rf-052.uc8",
+      "source_sha256": "0391f1446de4f6f8f214ab649fc0bba3b11c2e6730cd33f726dec3be18702cc1",
+      "offset_4msps": 0,
+      "core": 167974,
+      "samples": 168933
+    },
+    {
+      "file": "rf-054.uc8",
+      "source_sha256": "6c2ad1954ecdc41b1d317bf252a0090036b54a26ab7e4ca58f83c4a2fe75c82a",
+      "offset_4msps": 0,
+      "core": 99521,
+      "samples": 100480
+    },
+    {
+      "file": "rf-056.uc8",
+      "source_sha256": "17597fc3be990231837967a31e72513b5a3a00c427e38de7eb93ed9783572c3d",
+      "offset_4msps": 0,
+      "core": 49521,
+      "samples": 50480
+    },
+    {
+      "file": "rf-057.uc8",
+      "source_sha256": "6a2d541e48b83078dab951316ee4d6c38eafab6fbdc0e604ba631c70363e0dfa",
+      "offset_4msps": 0,
+      "core": 200000,
+      "samples": 200480
+    },
+    {
+      "file": "rf-059.uc8",
+      "source_sha256": "99498dd945ca3da15b49c60939b66003c1f8b56063c1099b3411bebf30365a14",
+      "offset_4msps": 0,
+      "core": 200000,
+      "samples": 200480
+    },
+    {
+      "file": "rf-061.uc8",
+      "source_sha256": "087eb91d9e9b9cf55c188182f2145f6e8daa7f5521bcb2a797717e030ec0a6cb",
+      "offset_4msps": 0,
+      "core": 200000,
+      "samples": 200480
+    },
+    {
+      "file": "rf-063.uc8",
+      "source_sha256": "5de27346261d148e7fc87863ccfdcea13ef497f13cbe5474957ac2d799fe6395",
+      "offset_4msps": 0,
+      "core": 99521,
+      "samples": 100480
+    },
+    {
+      "file": "rf-065.uc8",
+      "source_sha256": "9017f7fa690d9d502c035076ac8f74fb396a3aa79834ddb6bedb3904ec080386",
+      "offset_4msps": 0,
+      "core": 200000,
+      "samples": 200480
+    },
+    {
+      "file": "rf-066.uc8",
+      "source_sha256": "0166ac2082f2ed4b5aaf5a5da3f682cd492157c9c33a87505ff323776388eb8a",
+      "offset_4msps": 0,
+      "core": 49521,
+      "samples": 50480
+    },
+    {
+      "file": "rf-068.uc8",
+      "source_sha256": "bf2e0dc7cdac428663b2fa0faddae44d630ec08ec689336e4a14cbab1c579943",
+      "offset_4msps": 0,
+      "core": 200000,
+      "samples": 200480
+    },
+    {
+      "file": "rf-070.uc8",
+      "source_sha256": "92ee96b431b081a8834052d83fe66ebf6b265f3bac8a33c2dc64dd8bc5fb41b8",
+      "offset_4msps": 0,
+      "core": 200000,
+      "samples": 200480
+    },
+    {
+      "file": "rf-072.uc8",
+      "source_sha256": "27fc84d991aebe75ab106584c7d4ea50910ffcb2b6168e8b4097e8b2268d780a",
+      "offset_4msps": 0,
+      "core": 200000,
+      "samples": 200480
+    },
+    {
+      "file": "rf-074.uc8",
+      "source_sha256": "6d29030d3adc9dcfe3e1380af6b11c10aebe54243fd4a7866e0de1931f8fcc65",
+      "offset_4msps": 0,
+      "core": 200000,
+      "samples": 200480
+    }
+  ],
+  "fixture_sha256": "1cfaababc186ddddd824428b491457583ec033d8a376e4bc12cfddaf39232958",
+  "scope": "First 50ms blocks from 24 time-spread already-consumed RF captures; no new labels or reserved RF."
+}

@@ -1,0 +1,11 @@
+2026-10-29T21:12:34+0000 pi24-bookworm systemd[1]: Stopping adsb-rescue-shadow.service - ADS-B neural rescue shadow statistics and bounded training collection...
+2026-10-29T21:12:36+0000 pi24-bookworm systemd[1]: adsb-rescue-shadow.service: Killing process 2053918 (python) with signal SIGKILL.
+2026-10-29T21:12:36+0000 pi24-bookworm systemd[1]: adsb-rescue-shadow.service: Deactivated successfully.
+2026-10-29T21:12:36+0000 pi24-bookworm systemd[1]: Stopped adsb-rescue-shadow.service - ADS-B neural rescue shadow statistics and bounded training collection.
+2026-10-29T21:12:36+0000 pi24-bookworm systemd[1]: adsb-rescue-shadow.service: Consumed 16min 36.733s CPU time.
+2026-10-29T21:12:36+0000 pi24-bookworm systemd[1]: Started adsb-rescue-shadow.service - ADS-B neural rescue shadow statistics and bounded training collection.
+2026-10-29T21:12:37+0000 pi24-bookworm python[2079933]: 2026-10-29 21:12:37.154816468 [W:onnxruntime:Default, telemetry_1ds.cc:600 operator()] Failed to persist telemetry device ID; using an in-memory identifier
+2026-10-29T21:12:39+0000 pi24-bookworm python[2079944]: 2026-10-29 21:12:39.722065092 [W:onnxruntime:Default, telemetry_1ds.cc:600 operator()] Failed to persist telemetry device ID; using an in-memory identifier
+2026-10-29T21:12:39+0000 pi24-bookworm python[2079951]: 2026-10-29 21:12:39.838197887 [W:onnxruntime:Default, telemetry_1ds.cc:600 operator()] Failed to persist telemetry device ID; using an in-memory identifier
+2026-10-29T21:12:39+0000 pi24-bookworm python[2079947]: 2026-10-29 21:12:39.847153248 [W:onnxruntime:Default, telemetry_1ds.cc:600 operator()] Failed to persist telemetry device ID; using an in-memory identifier
+2026-10-29T21:12:39+0000 pi24-bookworm python[2079948]: 2026-10-29 21:12:39.869858133 [W:onnxruntime:Default, telemetry_1ds.cc:600 operator()] Failed to persist telemetry device ID; using an in-memory identifier

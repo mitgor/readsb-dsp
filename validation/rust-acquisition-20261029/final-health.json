@@ -1,0 +1,20 @@
+{
+  "healthy": true,
+  "protected_receiver_feeder_capture_pids_unchanged": true,
+  "gain_and_config_unchanged": true,
+  "samples": {
+    "samples_lost": 0,
+    "samples_dropped": 0
+  },
+  "guard": {
+    "state": "healthy",
+    "updated_unix": 1793308459.9864385,
+    "failures": 0,
+    "aligned_seconds": 98
+  },
+  "rust_release_state": "active",
+  "shadow_pid_at_benchmark_end": 2053900,
+  "shadow_pid_at_final_check": 2079933,
+  "external_shadow_restart_after_benchmark": true,
+  "our_service_mutations": false
+}
