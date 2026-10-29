@@ -1,0 +1,6 @@
+{
+  "test": "Original real RF and independently decoded same-transmission stock; synthetic 190nm metadata; fixture destroyed and never used for training",
+  "qualified": 1,
+  "archive_format": "far-capture-v3",
+  "readsb_sha256": "9f8a23dad7bf881cffd024e966bb868c2e1c3cc0ff6d198601cb56b249a93b9d"
+}

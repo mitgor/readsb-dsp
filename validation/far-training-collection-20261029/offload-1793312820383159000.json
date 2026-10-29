@@ -1,0 +1,190 @@
+{
+  "run": "1793312820383159000",
+  "files": [
+    {
+      "path": "/var/lib/adsb-far-capture/capture-1793145147497080393.tar",
+      "bytes": 260065280,
+      "mtime_ns": 1793145152256444378,
+      "sha256": "11186677b057d2bb7d433deadf76748f56a622f73ee82be5d6a75730abbcc225",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-far-capture/capture-1793145147497080393.tar",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-far-capture/capture-1793116521605222370.tar",
+      "bytes": 28579840,
+      "mtime_ns": 1793116522172397653,
+      "sha256": "729405f76e5c46aaff163edbf6f2e503bf05dbfbdda9b20f486362ecef6b2ab4",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-far-capture/capture-1793116521605222370.tar",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-far-capture/capture-1793184621472603248.tar",
+      "bytes": 260065280,
+      "mtime_ns": 1793184625604481327,
+      "sha256": "24b699ba3598bf27103a80a051613a193892ae83f379a77bd40158cc09ea3112",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-far-capture/capture-1793184621472603248.tar",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-far-capture/capture-1793271525030920024.tar",
+      "bytes": 260065280,
+      "mtime_ns": 1793271526074486947,
+      "sha256": "6d911cbe25fb31730caca11050fe6088013c007c1589ee7a7d0415f22621fe1b",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-far-capture/capture-1793271525030920024.tar",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-far-capture/capture-1793228324709506700.tar",
+      "bytes": 260065280,
+      "mtime_ns": 1793228325525464371,
+      "sha256": "739027d291b2af42b1019bab58cf6ca513cc64b43c91866e6efb71834450375c",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-far-capture/capture-1793228324709506700.tar",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-far-capture/capture-1793116253694851515.tar",
+      "bytes": 203110400,
+      "mtime_ns": 1793116256478626668,
+      "sha256": "959953c58c5631b20972fc3075ba11203e66d2d915fa889365637528b77c24b3",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-far-capture/capture-1793116253694851515.tar",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-rescue/crc-verification/batch-1793302615448248663.jsonl.gz",
+      "bytes": 10649534,
+      "mtime_ns": 1793302615459560564,
+      "sha256": "5664f7cd67c99857f460bb8b209c8c905e76f10e0d4506464806bd470b92751b",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-rescue/crc-verification/batch-1793302615448248663.jsonl.gz",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-rescue/crc-verification/batch-1793293310372536288.jsonl.gz",
+      "bytes": 10822222,
+      "mtime_ns": 1793293310383516561,
+      "sha256": "02eb41e196a090ae1285d19e99b7071646a3ef6b60bc74ed3f1a5c90e0c53f22",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-rescue/crc-verification/batch-1793293310372536288.jsonl.gz",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-rescue/crc-verification/batch-1793213983155188421.jsonl.gz",
+      "bytes": 10826772,
+      "mtime_ns": 1793213983162935804,
+      "sha256": "9913de4eef880ca677d1f109b589baa00835b2cc0654408dcd10a73128e39000",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-rescue/crc-verification/batch-1793213983155188421.jsonl.gz",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-rescue/crc-verification/batch-1793283520854564844.jsonl.gz",
+      "bytes": 7992107,
+      "mtime_ns": 1793283520859594372,
+      "sha256": "ee4e56a4ae848d840fa42f1084f068ad97a7ab4d9d55b8d0f7da04ad8813e814",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-rescue/crc-verification/batch-1793283520854564844.jsonl.gz",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-rescue/crc-verification/batch-1793266038190121062.jsonl.gz",
+      "bytes": 10197773,
+      "mtime_ns": 1793266038199438073,
+      "sha256": "f574512625ff2845c8042bfa9fa6b4fc202a655c00b000532561df83f1fe6de4",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-rescue/crc-verification/batch-1793266038190121062.jsonl.gz",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-rescue/crc-verification/batch-1793308354953358013.jsonl.gz",
+      "bytes": 7777312,
+      "mtime_ns": 1793308354960264025,
+      "sha256": "f3762eeb967434be1b3c4965a379027f2806c6a006c6cc6f421f8239f7a11015",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-rescue/crc-verification/batch-1793308354953358013.jsonl.gz",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-rescue/crc-verification/batch-1793304662868003735.jsonl.gz",
+      "bytes": 8755341,
+      "mtime_ns": 1793304662875281462,
+      "sha256": "f364693212e6ba801e04a81e67e9bff5fbea32b39f95a04b2449c92e79b80ef0",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-rescue/crc-verification/batch-1793304662868003735.jsonl.gz",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-rescue/crc-verification/batch-1793307136828734465.jsonl.gz",
+      "bytes": 9454800,
+      "mtime_ns": 1793307136834752579,
+      "sha256": "8671adf8c993d3df6bc5c349f45ebe536aded1f8310f2934d731471dda806249",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-rescue/crc-verification/batch-1793307136828734465.jsonl.gz",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-rescue/crc-verification/batch-1793302900999064439.jsonl.gz",
+      "bytes": 3756119,
+      "mtime_ns": 1793302900999733301,
+      "sha256": "f693ffcb56889f3f96d8471d1186aa752c6212e0dc1fa843ff37c7a13735e7a5",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-rescue/crc-verification/batch-1793302900999064439.jsonl.gz",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-rescue/crc-verification/batch-1793285021945788547.jsonl.gz",
+      "bytes": 867466,
+      "mtime_ns": 1793285021941895845,
+      "sha256": "f85dc9dfb3485074659e0421c1b539e2b0bd36a8733e765aed653f6600e4da01",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-rescue/crc-verification/batch-1793285021945788547.jsonl.gz",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-rescue/crc-verification/batch-1793309664838135307.jsonl.gz",
+      "bytes": 7457593,
+      "mtime_ns": 1793309664843015214,
+      "sha256": "8ee1ba4b4ee51efc4483a6fd1e2b1ee73f8270f2cce4b5ca825614715a8a6311",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-rescue/crc-verification/batch-1793309664838135307.jsonl.gz",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-rescue/crc-verification/batch-1793257193138211544.jsonl.gz",
+      "bytes": 11153647,
+      "mtime_ns": 1793257193152521436,
+      "sha256": "13bf712182e2901befcbe8fcd34895b3f1fa9b3542e0b72947461c9fba314932",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-rescue/crc-verification/batch-1793257193138211544.jsonl.gz",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-rescue/crc-verification/batch-1793284984881010093.jsonl.gz",
+      "bytes": 9123501,
+      "mtime_ns": 1793284984888306299,
+      "sha256": "20d7004d0e4cc4e6ea53cef5d2e9a45bd24972245fdb517d1f63599fe440c933",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-rescue/crc-verification/batch-1793284984881010093.jsonl.gz",
+      "mac_verified": true
+    },
+    {
+      "path": "/var/lib/adsb-rescue/crc-verification/batch-1793282472149913831.jsonl.gz",
+      "bytes": 11413045,
+      "mtime_ns": 1793282472157756824,
+      "sha256": "065098b4eff25d6c54a789182eaf97d5f3db7066412f35b9ee4d4a411ff1e91f",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-rescue/crc-verification/batch-1793282472149913831.jsonl.gz",
+      "mac_verified": true
+    }
+  ],
+  "policy": "Only immutable named capture tar / batch jsonl.gz; live RAM, configurations, graphs and active buffers excluded.",
+  "verified_bytes": 1392198592,
+  "deleted": [
+    "/var/lib/adsb-far-capture/capture-1793145147497080393.tar",
+    "/var/lib/adsb-far-capture/capture-1793116521605222370.tar",
+    "/var/lib/adsb-far-capture/capture-1793184621472603248.tar",
+    "/var/lib/adsb-far-capture/capture-1793271525030920024.tar",
+    "/var/lib/adsb-far-capture/capture-1793228324709506700.tar",
+    "/var/lib/adsb-far-capture/capture-1793116253694851515.tar",
+    "/var/lib/adsb-rescue/crc-verification/batch-1793302615448248663.jsonl.gz",
+    "/var/lib/adsb-rescue/crc-verification/batch-1793293310372536288.jsonl.gz",
+    "/var/lib/adsb-rescue/crc-verification/batch-1793213983155188421.jsonl.gz",
+    "/var/lib/adsb-rescue/crc-verification/batch-1793283520854564844.jsonl.gz",
+    "/var/lib/adsb-rescue/crc-verification/batch-1793266038190121062.jsonl.gz",
+    "/var/lib/adsb-rescue/crc-verification/batch-1793308354953358013.jsonl.gz",
+    "/var/lib/adsb-rescue/crc-verification/batch-1793304662868003735.jsonl.gz",
+    "/var/lib/adsb-rescue/crc-verification/batch-1793307136828734465.jsonl.gz",
+    "/var/lib/adsb-rescue/crc-verification/batch-1793302900999064439.jsonl.gz",
+    "/var/lib/adsb-rescue/crc-verification/batch-1793285021945788547.jsonl.gz",
+    "/var/lib/adsb-rescue/crc-verification/batch-1793309664838135307.jsonl.gz",
+    "/var/lib/adsb-rescue/crc-verification/batch-1793257193138211544.jsonl.gz",
+    "/var/lib/adsb-rescue/crc-verification/batch-1793284984881010093.jsonl.gz",
+    "/var/lib/adsb-rescue/crc-verification/batch-1793282472149913831.jsonl.gz"
+  ],
+  "deleted_bytes": 1392198592
+}

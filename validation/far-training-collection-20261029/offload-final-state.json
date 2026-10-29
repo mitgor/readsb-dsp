@@ -1,0 +1,24 @@
+{
+  "rf_archives": [],
+  "crc_archives": [],
+  "rf_disk_bytes": 0,
+  "rf_ram_bytes": 1355775,
+  "training": {
+    "enabled": true,
+    "schema": "far-stock-training-v1",
+    "threshold_nm": 180,
+    "ram_limit_bytes": 50331648,
+    "ram_bytes": 0,
+    "hour_bucket": null,
+    "strata_used": {},
+    "minute_used": [],
+    "aircraft_minutes": [],
+    "aircraft_used": {},
+    "counts": {
+      "position_quality_or_range_rejected": 8453
+    },
+    "pending": 0,
+    "policy": "At most 80 windows/hour per distance band, 2/minute/band, one/aircraft/minute, 24/aircraft/hour; original 2ms RF, same-transmission CRC-valid stock; independent uncorrected replay required. No DSP/neural/external labels."
+  },
+  "crc_ram_bytes": 8211889
+}

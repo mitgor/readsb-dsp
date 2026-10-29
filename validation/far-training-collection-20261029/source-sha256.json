@@ -1,0 +1,9 @@
+{
+  "src/rescue/far_capture.py": "0620688331a55af5927f6efca09f4d16f3d8900c108a786fe78b7b70490f042a",
+  "src/rescue/far_training.py": "424df871debcc81a8255679bcdc7fd7202dded318dc6939c231303f3a4ebfd84",
+  "src/rescue/burst_ledger.py": "8bd16b45b89b749bd340857c2fcab95e6f187cfe35a61c4ff4c666549bedc096",
+  "src/rescue/capture_schedule.py": "40d454baff69c598ae9aa293a9af00178aaba19d12370f4bb3faf5c80db4e896",
+  "scripts/collection/offload_20261029.py": "764efb7abae335e0fb5c0fe021a9a493f8ccf8b87cbb85be3d9a6b6321204822",
+  "scripts/collection/qualify_far_training.py": "5d571815be0a4610b18677643d0073ad6d9d3f17f387d4153deadccab91e3168",
+  "tools/deploy_far_training.py": "69b6a31d4cbd04375a1bd260a5865838c41b6b123711a2926eaa063d736d8fd7"
+}

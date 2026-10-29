@@ -1,0 +1,19 @@
+{
+  "run": "1793313519760374000",
+  "files": [
+    {
+      "path": "/var/lib/adsb-far-capture/capture-1793313385077339906.tar",
+      "bytes": 260065280,
+      "mtime_ns": 1793313385835945363,
+      "sha256": "a95ba002424bfacdc68364a5a087bd7a3bd495dc35ff5e496a1895c296889df2",
+      "local": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/pi-offload-20261029/var/lib/adsb-far-capture/capture-1793313385077339906.tar",
+      "mac_verified": true
+    }
+  ],
+  "policy": "Only immutable named capture tar / batch jsonl.gz; live RAM, configurations, graphs and active buffers excluded.",
+  "verified_bytes": 260065280,
+  "deleted": [
+    "/var/lib/adsb-far-capture/capture-1793313385077339906.tar"
+  ],
+  "deleted_bytes": 260065280
+}

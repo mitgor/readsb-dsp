@@ -8,15 +8,16 @@ from pathlib import Path
 from .capture_triggers import CaptureTriggers,ExternalPoller
 from .burst_ledger import BurstLedger,FILES as LEDGER_FILES
 from .capture_schedule import CaptureSchedule
+from .far_training import FarTraining,RAM_LIMIT as TRAINING_RAM,FILES as TRAINING_FILES
 from .wire import BeastParser
 from .telemetry import distance_nm,MemoryPins
 HEADER=struct.Struct('<4sIIIQQQ');RATE=2400000;CORRECTION=2398
 CONFIG=Path('/etc/default/adsb-far-capture.json')
-DEFAULTS=dict(packet_capture=True,continuous_capture=True,threshold_nm=200.,ram_limit_bytes=256*1024**2,continuous_ram_bytes=192*1024**2,disk_limit_bytes=5000000000,flush_seconds=43200)
+DEFAULTS=dict(packet_capture=True,continuous_capture=True,threshold_nm=180.,ram_limit_bytes=256*1024**2,continuous_ram_bytes=128*1024**2,disk_limit_bytes=5000000000,flush_seconds=43200)
 def config(path=CONFIG):
  c={**DEFAULTS,**(json.loads(path.read_text()) if path.exists() else {})}
  if set(c)!=set(DEFAULTS) or any(type(c[k]) is not bool for k in ('packet_capture','continuous_capture')):raise ValueError('Invalid capture switches')
- if c['threshold_nm']!=200 or c['disk_limit_bytes']!=5000000000 or c['flush_seconds']!=43200:raise ValueError('Capture threshold/cap/save policy is fixed')
+ if c['threshold_nm'] not in (180,200) or c['disk_limit_bytes']!=5000000000 or c['flush_seconds']!=43200:raise ValueError('Capture threshold/cap/save policy is fixed')
  if not 16*1024**2<=c['ram_limit_bytes']<=256*1024**2 or not 0<=c['continuous_ram_bytes']<c['ram_limit_bytes']:raise ValueError('Invalid capture RAM limits')
  return c
 
@@ -71,7 +72,7 @@ class LockedPins(MemoryPins):
 
 class Batch:
  def __init__(self,pins=None):
-  self.pins=pins;self.parts={k:[] for k in ('continuous.uc8','packets.uc8','stock.beast','packets.jsonl','segments.jsonl',*LEDGER_FILES)};self.lengths=collections.Counter();self.raw_index=[];self.events=0
+  self.pins=pins;self.parts={k:[] for k in ('continuous.uc8','packets.uc8','stock.beast','packets.jsonl','segments.jsonl',*LEDGER_FILES,*TRAINING_FILES)};self.lengths=collections.Counter();self.raw_index=[];self.events=0
  def append(self,name,blob):
   if self.pins and not self.pins.pin(blob):raise MemoryError('Capture RAM locking failed; collection paused')
   offset=self.lengths[name];self.parts[name].append(blob);self.lengths[name]+=len(blob);return offset
@@ -86,19 +87,20 @@ class Batch:
 class Recorder:
  def __init__(self,directory,cfg=None,lock_memory=False):
   self.directory=Path(directory);self.directory.mkdir(parents=True,exist_ok=True);self.cfg=cfg or dict(DEFAULTS);self.pins=LockedPins() if lock_memory else None;self.batch=Batch(self.pins);self.inflight=0;self.lock=threading.Lock();self.writer=None;self.count=collections.Counter();self.last_error=None;self.next_flush=time.time()+self.cfg['flush_seconds'];self.epoch=None;self.ring=collections.deque();self.ring_bytes=0;self.expected=None;self.pending=collections.deque(maxlen=10000);self.seen={};self.positions={};self.health={};self.far_present=False;self.trigger_context={};self.ledger=None;self.failed_batch=None;self._disk_bytes=0;self._disk_checked=0
-  self.schedule=CaptureSchedule(self.cfg['continuous_ram_bytes'],enabled=False)
+  self.schedule=CaptureSchedule(self.cfg['continuous_ram_bytes'],enabled=False);self.training=None
  def disk_bytes(self,refresh=False):
   if refresh or time.monotonic()-self._disk_checked>2:
    self._disk_bytes=sum(p.stat().st_size for p in self.directory.iterdir() if p.is_file());self._disk_checked=time.monotonic()
   return self._disk_bytes
- def allowance(self,n,continuous=False,journal=False,closing=False):
+ def allowance(self,n,continuous=False,journal=False,closing=False,training=False):
   with self.lock:
    # Ordinary RF/packet metadata cannot consume the bounded journal tail pool.
    # Journal data cannot consume the space promised to pending end markers.
    closures=8192*sum(not b.get('finalized') for b in self.ledger.bursts) if self.ledger else 0
    tail=min(16*1024**2,self.cfg['ram_limit_bytes']//8) if self.ledger and not journal else 0
    future_rf=max(0,self.cfg['continuous_ram_bytes']-self.batch.lengths['continuous.uc8']) if self.schedule.enabled and not continuous else 0
-   reserve=0 if closing else closures+tail+future_rf
+   training_reserve=max(0,TRAINING_RAM-self.training.used_bytes()) if self.training and not training else 0
+   reserve=0 if closing else closures+tail+future_rf+training_reserve
    if self.batch.bytes+self.inflight+n+reserve+(self.ledger.history_limit if self.ledger else 0)>self.cfg['ram_limit_bytes']:self.count['ram_cap_skips']+=1;return False
    if continuous and self.batch.lengths['continuous.uc8']+n>self.cfg['continuous_ram_bytes']:self.count['continuous_ram_cap_skips']+=1;return False
    # Include tar headers, terminal blocks, manifest reserve and in-flight bytes.
@@ -155,6 +157,7 @@ class Recorder:
   if unix is None:
    if not self.ring:self.count['packet_no_rf_clock']+=1;return
    unix=self.clock_unix+(ticks/5-self.clock_sample)/RATE
+  if self.training:self.training.offer(row,ticks,unix,epoch or self.epoch,source)
   d,age=self.position(addr,unix)
   if d is None:self.count['unrangeable_packets']+=1;return
   if d<=self.cfg['threshold_nm']:return
@@ -187,6 +190,7 @@ class Recorder:
    if at>=hi:return first
   return None
  def drain(self):
+  if self.training:self.training.drain()
   while self.pending:
    created,row=self.pending[0];center=round(row['ticks']/5);lo=center-192;hi=center+576
    if self.expected is None or hi>self.expected:
@@ -218,6 +222,7 @@ class Recorder:
   if self.ledger:
    self.ledger.drain(force=True)
    if time.monotonic()<self.ledger.until:return False
+   if any(not b.get('finalized') for b in self.ledger.bursts):self.count['flush_waiting_for_journal_closure']+=1;return False
   if self.writer and self.writer.is_alive():return False
   if not force and time.time()<self.next_flush:return False
   retry=self.failed_batch is not None
@@ -228,11 +233,11 @@ class Recorder:
   if not retry:
    self.batch=Batch(self.pins)
    if self.ledger:self.ledger.last_saved=0;self.ledger.bursts=[]
-  self.failed_batch=None;self.inflight=batch.estimate();frozen_cfg=dict(self.cfg);frozen_schedule=self.schedule.report();self.next_flush=time.time()+self.cfg['flush_seconds']
+  self.failed_batch=None;self.inflight=batch.estimate();frozen_cfg=dict(self.cfg);frozen_schedule=self.schedule.report();frozen_training=self.training.report() if self.training else {'enabled':False};self.next_flush=time.time()+self.cfg['flush_seconds']
   def write():
    target=self.directory/f'capture-{time.time_ns()}.tar';temporary=target.with_suffix('.partial')
    try:
-    manifest=dict(schema='far-capture-v2',threshold_nm=frozen_cfg['threshold_nm'],sample_rate=RATE,config=frozen_cfg,capture_schedule=frozen_schedule,source='readsb_copy_tap_and_stock_beast_plus_guarded_dsp',files={},packets=batch.events,created_unix=time.time(),clock_correction_ticks=CORRECTION,counters=dict(self.count),packet_ledger=getattr(batch,'ledger_status',None))
+    manifest=dict(schema='far-capture-v3',threshold_nm=frozen_cfg['threshold_nm'],sample_rate=RATE,config=frozen_cfg,capture_schedule=frozen_schedule,far_training=frozen_training,source='readsb_copy_tap_and_stock_beast_plus_guarded_dsp',files={},packets=batch.events,created_unix=time.time(),clock_correction_ticks=CORRECTION,counters=dict(self.count),packet_ledger=getattr(batch,'ledger_status',None))
     with tarfile.open(temporary,'w',format=tarfile.USTAR_FORMAT) as archive:
      for name,parts in batch.parts.items():
       reader=Chain(parts);entry=tarfile.TarInfo(name);entry.size=batch.lengths[name];archive.addfile(entry,reader);manifest['files'][name]=dict(bytes=entry.size,sha256=reader.hash.hexdigest())
@@ -247,18 +252,18 @@ class Recorder:
     with self.lock:self.inflight=0 if not self.last_error else batch.estimate()
   self.writer=threading.Thread(target=write,daemon=False);self.writer.start();return True
  def report(self):
-  scope=('Hourly sampled far-range RF; packet/context metadata has a separate hourly byte quota. Packet IQ references scheduled RF only. All traffic in admitted RF bursts has full stock/actual-relay journals; incomplete coverage is flagged.' if self.schedule.enabled else 'All ranged stock Mode S/ADS-B and guarded DSP packets; unknown addresses/positions cannot be ranged. Continuous chunks and packet snippets share original UC8 when available.')
-  return dict(capture_schedule=self.schedule.report(),packet_ledger=self.ledger.status() if self.ledger else None,capture_triggers=self.trigger_context,ram_lock_enabled=self.pins is not None,locked_page_bytes=len(self.pins.pages)*self.pins.page if self.pins else 0,enabled=self.cfg['packet_capture'] or self.cfg['continuous_capture'],config=self.cfg,counts=dict(self.count),ram_bytes=self.batch.bytes+self.inflight,ram_limit_bytes=self.cfg['ram_limit_bytes'],ring_bytes=self.ring_bytes,continuous_ram_bytes=self.batch.lengths['continuous.uc8'],disk_bytes=self.disk_bytes(),disk_limit_bytes=self.cfg['disk_limit_bytes'],next_flush_unix=self.next_flush,saving=bool(self.writer and self.writer.is_alive()),error=self.last_error,far_aircraft_present=self.far_present,pending_packets=len(self.pending),files=[dict(name=p.name,bytes=p.stat().st_size) for p in sorted(self.directory.glob('capture-*.tar'))],scope=scope+' Capture pauses at caps; counters expose gaps/skips.')
+  scope=('Hourly sampled far-range RF; packet/context metadata has a separate hourly byte quota. General packet IQ references scheduled RF; separately budgeted stock training snippets do not depend on scheduled RF. All traffic in admitted RF bursts has full stock/actual-relay journals; incomplete coverage is flagged.' if self.schedule.enabled else 'All ranged stock Mode S/ADS-B and guarded DSP packets; unknown addresses/positions cannot be ranged. Continuous chunks and packet snippets share original UC8 when available.')
+  return dict(far_training=self.training.report() if self.training else {'enabled':False},capture_schedule=self.schedule.report(),packet_ledger=self.ledger.status() if self.ledger else None,capture_triggers=self.trigger_context,ram_lock_enabled=self.pins is not None,locked_page_bytes=len(self.pins.pages)*self.pins.page if self.pins else 0,enabled=self.cfg['packet_capture'] or self.cfg['continuous_capture'],config=self.cfg,counts=dict(self.count),ram_bytes=self.batch.bytes+self.inflight,ram_limit_bytes=self.cfg['ram_limit_bytes'],ring_bytes=self.ring_bytes,continuous_ram_bytes=self.batch.lengths['continuous.uc8'],disk_bytes=self.disk_bytes(),disk_limit_bytes=self.cfg['disk_limit_bytes'],next_flush_unix=self.next_flush,saving=bool(self.writer and self.writer.is_alive()),error=self.last_error,far_aircraft_present=self.far_present,pending_packets=len(self.pending),files=[dict(name=p.name,bytes=p.stat().st_size) for p in sorted(self.directory.glob('capture-*.tar'))],scope=scope+' Capture pauses at caps; counters expose gaps/skips.')
 
 def main():
  p=argparse.ArgumentParser();p.add_argument('--directory',type=Path,default=Path('/var/lib/adsb-far-capture'));p.add_argument('--runtime',type=Path,default=Path('/run/adsb-far-capture'));p.add_argument('--lat',type=float,required=True);p.add_argument('--lon',type=float,required=True);a=p.parse_args();a.runtime.mkdir(parents=True,exist_ok=True);rec=Recorder(a.directory,config(),lock_memory=True);path=a.runtime/'iq.sock';path.unlink(missing_ok=True);sock=socket.socket(socket.AF_UNIX,socket.SOCK_DGRAM);sock.setsockopt(socket.SOL_SOCKET,socket.SO_RCVBUF,4*1024**2);sock.bind(str(path));os.chmod(path,0o660);sock.setblocking(False);stock=None;parser=BeastParser(preserve_wire=True);stop=threading.Event()
  import signal
  for sig in (signal.SIGTERM,signal.SIGINT):signal.signal(sig,lambda *_:stop.set())
- rec.origin=(a.lat,a.lon);rec.schedule=CaptureSchedule(rec.cfg['continuous_ram_bytes']);rec.ledger=BurstLedger(rec);rec.ledger.start()
+ rec.origin=(a.lat,a.lon);rec.schedule=CaptureSchedule(rec.cfg['continuous_ram_bytes']);rec.training=FarTraining(rec);rec.ledger=BurstLedger(rec);rec.ledger.start()
  last=0;retry=0;triggers=CaptureTriggers(rec.cfg['threshold_nm']);external=ExternalPoller((a.lat,a.lon),rec.cfg['threshold_nm']);external.start()
  # Runtime status survives clean collector restart; preserve the scheduled deadline.
  try:
-  previous=json.loads((a.runtime/'status.json').read_text());deadline=previous['next_flush_unix'];rec.schedule.restore(previous.get('capture_schedule'))
+  previous=json.loads((a.runtime/'status.json').read_text());deadline=previous['next_flush_unix'];rec.schedule.restore(previous.get('capture_schedule'));rec.training.restore(previous.get('far_training'))
   if time.time()<deadline<=time.time()+rec.cfg['flush_seconds']:rec.next_flush=deadline
  except (OSError,ValueError,KeyError,TypeError):pass
  try:
@@ -298,7 +303,7 @@ def main():
      for row in data['aircraft']:
       if all(k in row for k in ('hex','lat','lon','seen_pos')) and not row['hex'].startswith('~'):
        stamp=data['now']-row['seen_pos'];distance=distance_nm(row['lat'],row['lon'],(a.lat,a.lon));h=rec.positions.setdefault(row['hex'],collections.deque(maxlen=40))
-       quality=dict(nic=row.get('nic'),nac_p=row.get('nac_p'),lat=row['lat'],lon=row['lon'],passes_numeric_logger_criteria=all(isinstance(row.get(k),(int,float)) and row[k]>=5 for k in ('nic','nac_p')),mlat_fields=row.get('mlat',[]),tisb_fields=row.get('tisb',[]))
+       quality=dict(available_unix=data['now'],nic=row.get('nic'),nac_p=row.get('nac_p'),lat=row['lat'],lon=row['lon'],passes_numeric_logger_criteria=all(isinstance(row.get(k),(int,float)) and row[k]>=5 for k in ('nic','nac_p')),mlat_fields=row.get('mlat',[]),tisb_fields=row.get('tisb',[]))
        if not h or stamp>h[-1][0]:h.append((stamp,distance,quality))
        if row['seen_pos']<=15:local_context.append(dict(icao=row['hex'],distance_nm=distance,last_seen_unix=data['now']-row.get('seen',100),position_unix=stamp,source='local_stock'))
      ext=external.snapshot();active=triggers.update(now,local_context,ext['tracks']);rec.far_present=bool(active);rec.trigger_context=dict(triggers.report(now),external={k:v for k,v in ext.items() if k!='tracks'},external_candidate_count=len(ext['tracks']))
