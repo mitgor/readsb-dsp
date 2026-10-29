@@ -3,6 +3,9 @@
 __pycache__/
 *.uc8
 *.jsonl
+validation/stream-phase-live-20261029/native-live-shadow/*
+!validation/stream-phase-live-20261029/native-live-shadow/REPORT.md
+!validation/stream-phase-live-20261029/native-live-shadow/public-summary.json
 
 # Generated builds, RF, private credentials and runtime state
 .venv/

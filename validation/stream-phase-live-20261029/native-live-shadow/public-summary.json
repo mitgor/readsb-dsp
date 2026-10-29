@@ -1,0 +1,52 @@
+{
+  "mode": "native_phase_research_shadow",
+  "source_commit": "b1fce23",
+  "duration_s": 1801,
+  "paired_rf_seconds": 1705,
+  "processed_rf_seconds": 1710,
+  "unified_absent_candidates": 4990,
+  "candidate_kind_0_clean": 290,
+  "candidate_kind_1_table": 1558,
+  "candidate_kind_2_erasure": 3142,
+  "research_iq_discontinuities": 361,
+  "research_queue_shed_rf_seconds": 0,
+  "decoder_errors": 0,
+  "unified_incomplete_rf_seconds": 0,
+  "by_distance_nm": {
+    "50-100": 1597,
+    "unknown": 460,
+    "100-150": 2164,
+    "0-50": 479,
+    "150-180": 255,
+    "180-200": 35
+  },
+  "paired_beast_capture": {
+    "capture_complete": true,
+    "stock_df17": 447970,
+    "unified_df17": 517374,
+    "stock_max_arrival_gap_s": 0.05821788,
+    "unified_max_arrival_gap_s": 0.294186263
+  },
+  "same_receiver_exact_payload_seen_later_30s": 1899,
+  "external_track_context": {
+    "source": "adsb.fi",
+    "fresh_icao": 3532,
+    "distance_bin_agrees": 3191,
+    "distance_bin_known": 3237,
+    "polls": 40,
+    "poll_errors": 0,
+    "packet_truth": false
+  },
+  "uniform_noise_negative_control": {
+    "seconds": 300,
+    "known_icao": 3236,
+    "candidate_kinds": [
+      4,
+      1,
+      14
+    ]
+  },
+  "feeding_changed": false,
+  "research_forwarding_enabled": false,
+  "decision": "Repairs remain quarantined; no canary."
+}

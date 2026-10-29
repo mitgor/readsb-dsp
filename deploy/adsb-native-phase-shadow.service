@@ -1,0 +1,26 @@
+[Unit]
+Description=Bounded native Stream1090 phase validation on copied readsb I/Q
+After=network.target adsb-rescue-shadow.service
+
+[Service]
+Type=simple
+User=pi
+Group=readsb
+WorkingDirectory=/home/pi/adsb-neural-rescue
+Environment=PYTHONPATH=/home/pi/adsb-neural-rescue/src
+ExecStart=/home/pi/adsb-neural-rescue/.venv/bin/python -m rescue.native_phase_shadow --binary /home/pi/readsb-dsp-phase-shadow/libdsp_stream_phase.so --commit b1fce23 --lat 52.4256 --lon 13.1556 --duration 1800
+Restart=no
+Nice=19
+CPUQuota=80%
+CPUWeight=1
+MemoryMax=256M
+MemorySwapMax=0
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/run/adsb-rescue
+StandardOutput=null
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
