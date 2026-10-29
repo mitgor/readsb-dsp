@@ -1,0 +1,21 @@
+{
+  "processed_seconds": 1195,
+  "counts": {
+    "both_clean": 100666,
+    "both_table": 17331,
+    "both_erasure": 10880,
+    "old_only_erasure": 7271,
+    "old_only_erasure_beyond_stock": 4590,
+    "old_only_table": 10846,
+    "old_only_table_beyond_stock": 3223,
+    "old_only_df19": 73,
+    "old_only_df19_beyond_stock": 32,
+    "old_only_clean": 2414,
+    "old_only_clean_beyond_stock": 200,
+    "both_df19": 154,
+    "old_only_erasure_in_stock": 2681,
+    "old_only_table_in_stock": 7623,
+    "old_only_clean_in_stock": 2214,
+    "old_only_df19_in_stock": 41
+  }
+}

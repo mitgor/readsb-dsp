@@ -1,0 +1,30 @@
+{
+  "hardware": "Raspberry Pi 5 aarch64",
+  "rf_seconds": 59,
+  "sample": "first 60 seconds of saved live RF, copied into /dev/shm for benchmark",
+  "known_address_bitmap": "all 3236 distinct stock addresses in the paired 20-minute tap; conservative CPU upper bound, not validity evidence",
+  "priority": "nice +10; receiver and feeders remained active",
+  "clean": {
+    "cpu_seconds": 6.692,
+    "wall_seconds": 7.34,
+    "core_fraction": 0.1134,
+    "clean_candidates": 16558
+  },
+  "repair": {
+    "cpu_seconds": 9.4609,
+    "wall_seconds": 10.2831,
+    "core_fraction": 0.1604,
+    "clean_candidates": 16558,
+    "table_candidates": 3731,
+    "erasure_candidates": 2505
+  },
+  "after": {
+    "readsb": "active",
+    "fr24feed": "active",
+    "adsb-rescue-feed": "active",
+    "adsb-rescue-shadow": "active",
+    "fr24_stock_age_s": 0.0047,
+    "fr24_upstream_error": null,
+    "fr24_routed": true
+  }
+}

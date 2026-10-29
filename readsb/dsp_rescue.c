@@ -25,16 +25,19 @@ struct rescue_event {
     uint8_t msg[14], method, corrected;
 };
 static struct {
-    struct rescue_event stock[HISTORY], pending[PENDING], accepted[PENDING];
+    struct rescue_event stock[HISTORY], pending[PENDING], accepted[PENDING], research_accepted[PENDING];
     unsigned stock_at, stock_count, pending_count, accepted_at, accepted_count;
+    unsigned research_at, research_count;
     int64_t expected, epoch, valid_from;
     unsigned retries;
     float iq[2 * (CHUNK + CONTEXT)], power[CHUNK + CONTEXT];
     double scores[CHUNK + CONTEXT];
     FILE *log;
     uint64_t buffers, backlog, deadlines, gaps, overflow, peaks, raw[5], extras[5];
-    uint64_t duplicates, unknown, conflicts, budget_drops, forwarded;
+    uint64_t duplicates, unknown, conflicts, budget_drops, forwarded, shadow_only_repair;
     uint64_t cpu_us;
+    uint8_t clean_stock_icao[1u << 21]; /* fast prefilter; guard enforces 30 s */
+    int64_t bitmap_rebuilt_tick;
 } R;
 
 static int64_t monotonic_us(void) {
@@ -58,8 +61,12 @@ static uint32_t address(const struct rescue_event *e) {
 }
 
 void dspRescueInit(void) {
-    if (!Modes.dsp_rescue && (Modes.dsp_rescue_stream_phase || Modes.dsp_rescue_output || Modes.dsp_rescue_log || Modes.dsp_rescue_budget_us)) {
+    if (!Modes.dsp_rescue && (Modes.dsp_rescue_stream_phase || Modes.dsp_rescue_stream_phase_repair || Modes.dsp_rescue_output || Modes.dsp_rescue_log || Modes.dsp_rescue_budget_us)) {
         fprintf(stderr, "DSP rescue options require --dsp-rescue\n");
+        exit(1);
+    }
+    if (Modes.dsp_rescue_stream_phase_repair && !Modes.dsp_rescue_stream_phase) {
+        fprintf(stderr, "Phase repair requires --dsp-rescue-stream-phase\n");
         exit(1);
     }
     if (!Modes.dsp_rescue) return;
@@ -94,13 +101,33 @@ void dspRescueCapture(struct mag_buf *out, const struct mag_buf *last, const uns
 void dspRescueBegin(const struct mag_buf *mag) {
     if (!Modes.dsp_rescue) return;
     if (mag->dropped || mag->sampleTimestamp != R.expected) {
-        R.stock_count = R.pending_count = R.accepted_count = 0;
-        R.stock_at = R.accepted_at = 0;
+        R.stock_count = R.pending_count = R.accepted_count = R.research_count = 0;
+        R.stock_at = R.accepted_at = R.research_at = 0;
         R.epoch = -1;
         R.valid_from = mag->sampleTimestamp / 5;
+        memset(R.clean_stock_icao, 0, sizeof(R.clean_stock_icao));
+        R.bitmap_rebuilt_tick = 0;
         R.gaps++;
     }
     R.expected = mag->sampleTimestamp + (int64_t) mag->length * 5;
+}
+
+static void mark_clean_stock_icao(uint32_t addr) {
+    R.clean_stock_icao[addr >> 3] |= (uint8_t)(1u << (addr & 7));
+}
+
+/* A bitmap held for an entire receiver uptime would gradually admit random
+ * noise headers as more addresses are seen. Rebuild it from recent clean
+ * stock every five seconds; the exact 30-second guard remains authoritative. */
+static void rebuild_clean_stock_bitmap(int64_t now) {
+    memset(R.clean_stock_icao, 0, sizeof(R.clean_stock_icao));
+    for (unsigned i = 0; i < R.stock_count; i++) {
+        const struct rescue_event *s = &R.stock[(R.stock_at - 1 - i) % HISTORY];
+        int64_t age = now - s->ticks;
+        if (age > 30 * 12000000LL) break;
+        if (age >= 0 && !s->corrected) mark_clean_stock_icao(address(s));
+    }
+    R.bitmap_rebuilt_tick = now;
 }
 
 void dspRescueStock(const struct modesMessage *mm) {
@@ -109,6 +136,10 @@ void dspRescueStock(const struct modesMessage *mm) {
     *e = (struct rescue_event) {.ticks = mm->timestamp, .corrected = mm->correctedbits};
     memcpy(e->msg, mm->msg, 14);
     if (R.stock_count < HISTORY) R.stock_count++;
+    if (!R.bitmap_rebuilt_tick || e->ticks - R.bitmap_rebuilt_tick >= 5 * 12000000LL)
+        rebuild_clean_stock_bitmap(e->ticks);
+    else if (!mm->correctedbits)
+        mark_clean_stock_icao(address(e));
 }
 
 /* A shared RF sample clock replaces the offline clock fit. Timestamp convention
@@ -138,6 +169,14 @@ static int guarded(const struct rescue_event *e) {
             R.conflicts++; return 0;
         }
     }
+    if (e->method == 4 && e->corrected) {
+        for (unsigned i = 0; i < R.research_count; i++) {
+            const struct rescue_event *s = &R.research_accepted[(R.research_at - 1 - i) % PENDING];
+            if (llabs(e->ticks - s->ticks) <= 1440 && !memcmp(e->msg, s->msg, 14)) {
+                R.duplicates++; return 0;
+            }
+        }
+    }
     if (!identity) { R.unknown++; return 0; }
     return 1;
 }
@@ -149,8 +188,13 @@ static void release_pending(int64_t deadline) {
         int accept = guarded(e);
         if (accept) {
             R.extras[e->method]++;
-            R.accepted[R.accepted_at++ % PENDING] = *e;
-            if (R.accepted_count < PENDING) R.accepted_count++;
+            if (e->method == 4 && e->corrected) {
+                R.research_accepted[R.research_at++ % PENDING] = *e;
+                if (R.research_count < PENDING) R.research_count++;
+            } else {
+                R.accepted[R.accepted_at++ % PENDING] = *e;
+                if (R.accepted_count < PENDING) R.accepted_count++;
+            }
         }
         if (R.log) {
             fprintf(R.log, "{\"ticks\":%lld,\"method\":%u,\"corrected_bits\":%u,\"guarded\":%s,\"message\":\"",
@@ -159,6 +203,12 @@ static void release_pending(int64_t deadline) {
             fputs("\"}\n", R.log);
         }
         if (!accept || !Modes.dsp_rescue_output) continue;
+        /* New phase repairs have not passed an independent false-positive
+         * check. Keep them shadow-only even when general DSP output is on.
+         * readsb's correction counters also support at most two bits. */
+        if ((e->method == 4 && e->corrected) || e->corrected > MODES_MAX_BITERRORS) {
+            R.shadow_only_repair++; continue;
+        }
         struct modesMessage *mm = netGetMM(&Modes.netMessageBuffer[0]);
         memcpy(mm->msg, e->msg, 14);
         mm->timestamp = e->ticks;
@@ -189,11 +239,13 @@ static void candidate(const uint8_t *row, int method, unsigned corrected,
 }
 
 struct phase_context { const struct mag_buf *mag; };
-static void phase_candidate(const uint8_t row[14], int64_t bit_sample, void *opaque) {
+static void phase_candidate(const uint8_t row[14], int64_t bit_sample,
+                            unsigned corrected, unsigned kind, void *opaque) {
     struct phase_context *ctx = opaque;
+    (void)kind;
     /* Subtract the eight-microsecond preamble, then convert 8 MHz to 4 MHz.
      * readsb's timestamp convention is applied by candidate(). */
-    candidate(row, 4, 0, (bit_sample - 64) / 2, ctx->mag, 0);
+    candidate(row, 4, corrected, (bit_sample - 64) / 2, ctx->mag, 0);
 }
 
 /* Unique one/two-bit syndrome solution over <=6 weakest payload/parity bits.
@@ -318,9 +370,11 @@ void dspRescueProcess(const struct mag_buf *mag) {
     }
     if (Modes.dsp_rescue_stream_phase && monotonic_us() < deadline) {
         struct phase_context ctx = {mag};
-        dspStreamPhase(mag->rescue_iq, mag->length + Modes.trailing_samples,
-                       base, base + Modes.trailing_samples,
-                       phase_candidate, &ctx, deadline);
+        dspStreamPhaseRepair(mag->rescue_iq, mag->length + Modes.trailing_samples,
+                             base, base + Modes.trailing_samples,
+                             phase_candidate, &ctx,
+                             Modes.dsp_rescue_stream_phase_repair && Modes.nfix_crc ? R.clean_stock_icao : NULL,
+                             deadline);
     }
     R.cpu_us += monotonic_us()-began;
 }
@@ -328,7 +382,7 @@ void dspRescueProcess(const struct mag_buf *mag) {
 void dspRescueCleanup(void) {
     if (!Modes.dsp_rescue) return;
     /* Do not release the last pending block without a following stock pass. */
-    fprintf(stderr, "DSP rescue summary: {\"buffers\":%llu,\"work_us\":%llu,\"backlog_skips\":%llu,\"deadline_buffers\":%llu,\"discontinuities\":%llu,\"pending_overflow\":%llu,\"pending_tail\":%u,\"peaks\":%llu,\"retry_budget_skips\":%llu,\"duplicates\":%llu,\"unknown_identity\":%llu,\"conflicts\":%llu,\"raw\":[%llu,%llu,%llu,%llu,%llu],\"extras\":[%llu,%llu,%llu,%llu,%llu],\"forwarded\":%llu}\n",
+    fprintf(stderr, "DSP rescue summary: {\"buffers\":%llu,\"work_us\":%llu,\"backlog_skips\":%llu,\"deadline_buffers\":%llu,\"discontinuities\":%llu,\"pending_overflow\":%llu,\"pending_tail\":%u,\"peaks\":%llu,\"retry_budget_skips\":%llu,\"duplicates\":%llu,\"unknown_identity\":%llu,\"conflicts\":%llu,\"raw\":[%llu,%llu,%llu,%llu,%llu],\"extras\":[%llu,%llu,%llu,%llu,%llu],\"shadow_only_repair\":%llu,\"forwarded\":%llu}\n",
         (unsigned long long)R.buffers, (unsigned long long)R.cpu_us,
         (unsigned long long)R.backlog, (unsigned long long)R.deadlines,
         (unsigned long long)R.gaps, (unsigned long long)R.overflow, R.pending_count,
@@ -336,6 +390,7 @@ void dspRescueCleanup(void) {
         (unsigned long long)R.duplicates, (unsigned long long)R.unknown, (unsigned long long)R.conflicts,
         (unsigned long long)R.raw[0], (unsigned long long)R.raw[1], (unsigned long long)R.raw[2], (unsigned long long)R.raw[3], (unsigned long long)R.raw[4],
         (unsigned long long)R.extras[0], (unsigned long long)R.extras[1], (unsigned long long)R.extras[2], (unsigned long long)R.extras[3], (unsigned long long)R.extras[4],
+        (unsigned long long)R.shadow_only_repair,
         (unsigned long long)R.forwarded);
     if (R.log && fclose(R.log)) perror("DSP audit log close");
     R.log=NULL;

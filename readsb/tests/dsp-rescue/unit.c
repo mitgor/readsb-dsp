@@ -15,15 +15,24 @@ void netDrainMessageBuffers(void) {}
 static const uint8_t example[14] = {0x8d,0x40,0x62,0x1d,0x58,0xc3,0x82,0xd6,0x90,0xc8,0xac,0x28,0x63,0xa7};
 static unsigned phase_hits;
 static int64_t phase_time;
+static unsigned repair_hits, table_hits, erasure_hits;
 static void phase_found(const uint8_t row[14], int64_t bit_sample, void *ctx) {
     (void)ctx;
     assert(!memcmp(row, example, 14));
     phase_hits++;
     phase_time = bit_sample;
 }
-static void phase_decoder(void) {
-    const int start=1200, split=1400, history=326, n=3000;
-    uint8_t *iq=malloc(2*n); assert(iq);
+static uint8_t phase_known[1u << 21];
+static uint8_t phase_unknown[1u << 21];
+static void phase_recovered(const uint8_t row[14], int64_t bit_sample,
+                            unsigned bits, unsigned kind, void *ctx) {
+    (void)bit_sample; (void)ctx;
+    assert(!memcmp(row, example, 14));
+    repair_hits++;
+    if (kind==1 && bits==1) table_hits++;
+    if (kind==2) erasure_hits++;
+}
+static void phase_signal(uint8_t *iq, int n, int start, const uint8_t row[14]) {
     memset(iq,128,2*n);
     for (int i=start-4; i<start+300; i++) {
         double t=(i-start)/2.4;
@@ -31,11 +40,16 @@ static void phase_decoder(void) {
                (t>=3.5 && t<4) || (t>=4.5 && t<5);
         int bit=(int)(t-8);
         if (t>=8 && bit<112) {
-            int value=(example[bit/8]>>(7-bit%8))&1;
+            int value=(row[bit/8]>>(7-bit%8))&1;
             on |= value ? t-8-bit<.5 : t-8-bit>=.5;
         }
         if (on) iq[2*i]=210;
     }
+}
+static void phase_decoder(void) {
+    const int start=1200, split=1400, history=326, n=3000;
+    uint8_t *iq=malloc(2*n); assert(iq);
+    phase_signal(iq,n,start,example);
     phase_hits=0;
     dspStreamPhase(iq,split,0,0,phase_found,NULL,monotonic_us()+1000000);
     assert(phase_hits==0); /* frame is cut off in this block */
@@ -43,6 +57,17 @@ static void phase_decoder(void) {
                    split,phase_found,NULL,monotonic_us()+1000000);
     assert(phase_hits>=1 && phase_hits<=3);
     assert(llabs(phase_time-(int64_t)(start*10/3+64))<=8);
+    uint8_t damaged[14]; memcpy(damaged,example,14);
+    damaged[66/8] ^= 1u << (7-66%8);
+    phase_signal(iq,n,start,damaged);
+    repair_hits=table_hits=erasure_hits=0;
+    phase_known[0x40621d >> 3] |= 1u << (0x40621d & 7);
+    dspStreamPhaseRepair(iq,n,0,0,phase_recovered,NULL,phase_unknown,
+                         monotonic_us()+1000000);
+    assert(repair_hits==0);
+    dspStreamPhaseRepair(iq,n,0,0,phase_recovered,NULL,phase_known,
+                         monotonic_us()+1000000);
+    assert(repair_hits>=1 && table_hits>=1);
     free(iq);
 }
 static struct rescue_event event(int64_t t) {
@@ -66,10 +91,26 @@ static void guards(void) {
     R.accepted[0].msg[5]^=1; assert(!guarded(&e)); // same-time conflict
     reset(); stock(e.ticks-12000000); R.stock[0].corrected=1;
     assert(!guarded(&e)); // repaired stock cannot establish identity
+    reset(); stock(12000000);
+    assert(R.clean_stock_icao[0x40621d >> 3] & (1u << (0x40621d & 7)));
+    rebuild_clean_stock_bitmap(32 * 12000000LL);
+    assert(!(R.clean_stock_icao[0x40621d >> 3] & (1u << (0x40621d & 7))));
+    reset(); struct modesMessage repaired={.timestamp=12000000,.msgtype=17,.correctedbits=1};
+    memcpy(repaired.msg,example,14); dspRescueStock(&repaired);
+    assert(!(R.clean_stock_icao[0x40621d >> 3] & (1u << (0x40621d & 7))));
     reset(); stock(e.ticks-12000000); R.pending[0]=e; R.pending_count=1;
     release_pending(monotonic_us()+1000000); assert(R.extras[0]==1 && sends==0);
     reset(); stock(e.ticks-12000000); R.pending[0]=e; R.pending_count=1; Modes.dsp_rescue_output=1;
     release_pending(monotonic_us()+1000000); assert(sends==1 && R.forwarded==1);
+    reset(); stock(e.ticks-12000000); e.corrected=3; R.pending[0]=e; R.pending_count=1; Modes.dsp_rescue_output=1;
+    release_pending(monotonic_us()+1000000); assert(sends==0 && R.shadow_only_repair==1);
+    reset(); stock(e.ticks-12000000); e.method=4; e.corrected=1; R.pending[0]=e; R.pending_count=1; Modes.dsp_rescue_output=1;
+    release_pending(monotonic_us()+1000000); assert(sends==0 && R.shadow_only_repair==1);
+    assert(R.research_count==1 && R.accepted_count==0);
+    R.pending[0]=e; R.pending_count=1;
+    release_pending(monotonic_us()+1000000); assert(R.extras[4]==1);
+    e.method=0; e.corrected=0; R.pending[0]=e; R.pending_count=1;
+    release_pending(monotonic_us()+1000000); assert(sends==1 && R.extras[0]==1);
     reset(); stock(e.ticks-12000000); R.pending[0]=e; R.pending_count=1;
     release_pending(0); assert(!R.pending_count && !sends && R.budget_drops==1);
     struct mag_buf mag={.sampleTimestamp=2000,.length=100,.dropped=1};

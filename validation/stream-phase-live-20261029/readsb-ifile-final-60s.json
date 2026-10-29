@@ -1,0 +1,119 @@
+{
+  "disabled": {
+    "exit": 1,
+    "wall_s": 5.305136083159596,
+    "records": 43171,
+    "df17": 9476
+  },
+  "phase_repair_shadow": {
+    "exit": 1,
+    "wall_s": 10.076076499652117,
+    "records": 43171,
+    "df17": 9476,
+    "rescue": {
+      "buffers": 2198,
+      "work_us": 4535810,
+      "backlog_skips": 0,
+      "deadline_buffers": 0,
+      "discontinuities": 1,
+      "pending_overflow": 0,
+      "pending_tail": 12,
+      "peaks": 1310123,
+      "retry_budget_skips": 4952,
+      "duplicates": 31566,
+      "unknown_identity": 76,
+      "conflicts": 0,
+      "raw": [
+        8637,
+        645,
+        266,
+        58,
+        23051
+      ],
+      "extras": [
+        184,
+        156,
+        121,
+        44,
+        498
+      ],
+      "shadow_only_repair": 0,
+      "forwarded": 0
+    }
+  },
+  "output_without_phase": {
+    "exit": 1,
+    "wall_s": 5.040891665965319,
+    "records": 43676,
+    "df17": 9981,
+    "rescue": {
+      "buffers": 2198,
+      "work_us": 3207297,
+      "backlog_skips": 0,
+      "deadline_buffers": 0,
+      "discontinuities": 1,
+      "pending_overflow": 0,
+      "pending_tail": 3,
+      "peaks": 1310123,
+      "retry_budget_skips": 4952,
+      "duplicates": 9027,
+      "unknown_identity": 71,
+      "conflicts": 0,
+      "raw": [
+        8637,
+        645,
+        266,
+        58,
+        0
+      ],
+      "extras": [
+        184,
+        156,
+        121,
+        44,
+        0
+      ],
+      "shadow_only_repair": 0,
+      "forwarded": 505
+    }
+  },
+  "output_with_phase_repair": {
+    "exit": 1,
+    "wall_s": 10.081768374890089,
+    "records": 43739,
+    "df17": 10044,
+    "rescue": {
+      "buffers": 2198,
+      "work_us": 4467401,
+      "backlog_skips": 0,
+      "deadline_buffers": 0,
+      "discontinuities": 1,
+      "pending_overflow": 0,
+      "pending_tail": 12,
+      "peaks": 1310123,
+      "retry_budget_skips": 4952,
+      "duplicates": 31566,
+      "unknown_identity": 76,
+      "conflicts": 0,
+      "raw": [
+        8637,
+        645,
+        266,
+        58,
+        23051
+      ],
+      "extras": [
+        184,
+        156,
+        121,
+        44,
+        498
+      ],
+      "shadow_only_repair": 435,
+      "forwarded": 568
+    }
+  },
+  "shadow_equal_stock": true,
+  "output_preserved": 0,
+  "output_additions": 63
+}

@@ -82,6 +82,7 @@ static struct argp_option optionsReadsb[] = {
     {"raw", OptRaw, 0, 0, "Show only messages hex values", 1},
     {"dsp-rescue", OptDspRescue, 0, 0, "Experimental native DSP rescue in shadow mode (RTL-SDR / UC8 ifile only)", 1},
     {"dsp-rescue-stream-phase", OptDspRescueStreamPhase, 0, 0, "Opt in to native eight-phase rolling-CRC DF17 search; requires --dsp-rescue", 1},
+    {"dsp-rescue-stream-phase-repair", OptDspRescueStreamPhaseRepair, 0, 0, "Opt in to shadow-only native phase CRC and erasure repairs; requires --dsp-rescue-stream-phase", 1},
     {"dsp-rescue-output", OptDspRescueOutput, 0, 0, "Opt in to forwarding guarded DSP additions; requires --dsp-rescue", 1},
     {"dsp-rescue-log", OptDspRescueLog, "FILE", 0, "Optional candidate audit JSONL (offline validation; may block on disk)", 1},
     {"dsp-rescue-budget-us", OptDspRescueBudget, "100-50000", 0, "Rescue wall-time budget per input buffer (default: min(5000us, 10% RF duration))", 1},

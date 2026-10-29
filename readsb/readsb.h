@@ -833,6 +833,7 @@ struct _Modes
 
     int dsp_rescue;
     int dsp_rescue_stream_phase;
+    int dsp_rescue_stream_phase_repair;
     int dsp_rescue_output;
     unsigned dsp_rescue_budget_us;
     char *dsp_rescue_log;
@@ -1274,6 +1275,7 @@ enum {
     OptRaw,
     OptDspRescue,
     OptDspRescueStreamPhase,
+    OptDspRescueStreamPhaseRepair,
     OptDspRescueOutput,
     OptDspRescueLog,
     OptDspRescueBudget,

@@ -18,6 +18,7 @@ readsb/crctests
 readsb/cprtests
 readsb/.version
 readsb/tests/dsp-rescue/unit
+readsb/tests/dsp-rescue/repair_unit
 *.egg-info/
 data/
 results/

@@ -1,0 +1,490 @@
+{
+  "synthetic_packets": 11,
+  "synthetic_boundaries": {
+    "sha256": "1b82354924d6983fad96556b895e7b8f721fd159e0d976c5cc8ccfde294e3adb",
+    "stock": {
+      "exit": 1,
+      "wall_s": 5.011485207825899,
+      "records": 11,
+      "df17": 11
+    },
+    "disabled": {
+      "exit": 1,
+      "wall_s": 5.016523000318557,
+      "records": 11,
+      "df17": 11,
+      "missing_stock_records": 0,
+      "extra_records": 0
+    },
+    "shadow": {
+      "exit": 1,
+      "wall_s": 5.018487541936338,
+      "records": 11,
+      "df17": 11,
+      "rescue": {
+        "buffers": 8,
+        "work_us": 18456,
+        "backlog_skips": 0,
+        "deadline_buffers": 2,
+        "discontinuities": 1,
+        "pending_overflow": 0,
+        "pending_tail": 0,
+        "peaks": 2338,
+        "retry_budget_skips": 0,
+        "duplicates": 11,
+        "unknown_identity": 0,
+        "conflicts": 0,
+        "raw": [
+          11,
+          0,
+          0,
+          0,
+          0
+        ],
+        "extras": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "shadow_only_repair": 0,
+        "forwarded": 0
+      },
+      "missing_stock_records": 0,
+      "extra_records": 0
+    },
+    "phase_shadow": {
+      "exit": 1,
+      "wall_s": 5.013256500009447,
+      "records": 11,
+      "df17": 11,
+      "rescue": {
+        "buffers": 8,
+        "work_us": 20069,
+        "backlog_skips": 0,
+        "deadline_buffers": 1,
+        "discontinuities": 1,
+        "pending_overflow": 0,
+        "pending_tail": 0,
+        "peaks": 2361,
+        "retry_budget_skips": 0,
+        "duplicates": 20,
+        "unknown_identity": 0,
+        "conflicts": 0,
+        "raw": [
+          11,
+          0,
+          0,
+          0,
+          9
+        ],
+        "extras": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "shadow_only_repair": 0,
+        "forwarded": 0
+      },
+      "missing_stock_records": 0,
+      "extra_records": 0
+    },
+    "phase_repair_shadow": {
+      "exit": 1,
+      "wall_s": 5.0089239166118205,
+      "records": 11,
+      "df17": 11,
+      "rescue": {
+        "buffers": 8,
+        "work_us": 15504,
+        "backlog_skips": 0,
+        "deadline_buffers": 0,
+        "discontinuities": 1,
+        "pending_overflow": 0,
+        "pending_tail": 0,
+        "peaks": 2429,
+        "retry_budget_skips": 0,
+        "duplicates": 33,
+        "unknown_identity": 0,
+        "conflicts": 0,
+        "raw": [
+          11,
+          0,
+          0,
+          0,
+          22
+        ],
+        "extras": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "shadow_only_repair": 0,
+        "forwarded": 0
+      },
+      "missing_stock_records": 0,
+      "extra_records": 0
+    },
+    "output": {
+      "exit": 1,
+      "wall_s": 1.009864707943052,
+      "records": 11,
+      "df17": 11,
+      "rescue": {
+        "buffers": 8,
+        "work_us": 10607,
+        "backlog_skips": 0,
+        "deadline_buffers": 0,
+        "discontinuities": 1,
+        "pending_overflow": 0,
+        "pending_tail": 0,
+        "peaks": 2429,
+        "retry_budget_skips": 0,
+        "duplicates": 11,
+        "unknown_identity": 0,
+        "conflicts": 0,
+        "raw": [
+          11,
+          0,
+          0,
+          0,
+          0
+        ],
+        "extras": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "shadow_only_repair": 0,
+        "forwarded": 0
+      },
+      "missing_stock_records": 0,
+      "extra_records": 0
+    },
+    "tight_budget": {
+      "exit": 1,
+      "wall_s": 5.011735666543245,
+      "records": 11,
+      "df17": 11,
+      "rescue": {
+        "buffers": 8,
+        "work_us": 864,
+        "backlog_skips": 0,
+        "deadline_buffers": 8,
+        "discontinuities": 1,
+        "pending_overflow": 0,
+        "pending_tail": 0,
+        "peaks": 0,
+        "retry_budget_skips": 0,
+        "duplicates": 0,
+        "unknown_identity": 0,
+        "conflicts": 0,
+        "raw": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "extras": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "shadow_only_repair": 0,
+        "forwarded": 0
+      },
+      "missing_stock_records": 0,
+      "extra_records": 0
+    }
+  },
+  "noise": {
+    "exit": 1,
+    "wall_s": 5.016705584246665,
+    "records": 0,
+    "df17": 0,
+    "rescue": {
+      "buffers": 8,
+      "work_us": 16242,
+      "backlog_skips": 0,
+      "deadline_buffers": 0,
+      "discontinuities": 1,
+      "pending_overflow": 0,
+      "pending_tail": 0,
+      "peaks": 324,
+      "retry_budget_skips": 0,
+      "duplicates": 0,
+      "unknown_identity": 0,
+      "conflicts": 0,
+      "raw": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "extras": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "shadow_only_repair": 0,
+      "forwarded": 0
+    }
+  },
+  "recorded": {
+    "sha256": "8f1bab4fe675d9e4331c009efb93c0cbc7ebe3aa9afc400ff1326467215f271f",
+    "stock": {
+      "exit": 1,
+      "wall_s": 5.043745500035584,
+      "records": 43171,
+      "df17": 9476
+    },
+    "disabled": {
+      "exit": 1,
+      "wall_s": 5.0398476254194975,
+      "records": 43171,
+      "df17": 9476,
+      "missing_stock_records": 0,
+      "extra_records": 0
+    },
+    "shadow": {
+      "exit": 1,
+      "wall_s": 5.042336874641478,
+      "records": 43171,
+      "df17": 9476,
+      "rescue": {
+        "buffers": 2198,
+        "work_us": 3155519,
+        "backlog_skips": 0,
+        "deadline_buffers": 0,
+        "discontinuities": 1,
+        "pending_overflow": 0,
+        "pending_tail": 3,
+        "peaks": 1310123,
+        "retry_budget_skips": 4952,
+        "duplicates": 9027,
+        "unknown_identity": 71,
+        "conflicts": 0,
+        "raw": [
+          8637,
+          645,
+          266,
+          58,
+          0
+        ],
+        "extras": [
+          184,
+          156,
+          121,
+          44,
+          0
+        ],
+        "shadow_only_repair": 0,
+        "forwarded": 0
+      },
+      "missing_stock_records": 0,
+      "extra_records": 0
+    },
+    "phase_shadow": {
+      "exit": 1,
+      "wall_s": 5.02943579107523,
+      "records": 43171,
+      "df17": 9476,
+      "rescue": {
+        "buffers": 2198,
+        "work_us": 4153435,
+        "backlog_skips": 0,
+        "deadline_buffers": 0,
+        "discontinuities": 1,
+        "pending_overflow": 0,
+        "pending_tail": 11,
+        "peaks": 1310123,
+        "retry_budget_skips": 4952,
+        "duplicates": 25790,
+        "unknown_identity": 75,
+        "conflicts": 0,
+        "raw": [
+          8637,
+          645,
+          266,
+          58,
+          16838
+        ],
+        "extras": [
+          184,
+          156,
+          121,
+          44,
+          63
+        ],
+        "shadow_only_repair": 0,
+        "forwarded": 0
+      },
+      "missing_stock_records": 0,
+      "extra_records": 0
+    },
+    "phase_repair_shadow": {
+      "exit": 1,
+      "wall_s": 10.064056708011776,
+      "records": 43171,
+      "df17": 9476,
+      "rescue": {
+        "buffers": 2198,
+        "work_us": 4453146,
+        "backlog_skips": 0,
+        "deadline_buffers": 0,
+        "discontinuities": 1,
+        "pending_overflow": 0,
+        "pending_tail": 12,
+        "peaks": 1310123,
+        "retry_budget_skips": 4952,
+        "duplicates": 31528,
+        "unknown_identity": 75,
+        "conflicts": 0,
+        "raw": [
+          8637,
+          645,
+          266,
+          58,
+          23039
+        ],
+        "extras": [
+          184,
+          156,
+          121,
+          44,
+          525
+        ],
+        "shadow_only_repair": 0,
+        "forwarded": 0
+      },
+      "missing_stock_records": 0,
+      "extra_records": 0
+    },
+    "output": {
+      "exit": 1,
+      "wall_s": 5.032226250041276,
+      "records": 43676,
+      "df17": 9981,
+      "rescue": {
+        "buffers": 2198,
+        "work_us": 3165100,
+        "backlog_skips": 0,
+        "deadline_buffers": 1,
+        "discontinuities": 1,
+        "pending_overflow": 0,
+        "pending_tail": 3,
+        "peaks": 1310040,
+        "retry_budget_skips": 4950,
+        "duplicates": 9028,
+        "unknown_identity": 71,
+        "conflicts": 0,
+        "raw": [
+          8637,
+          646,
+          266,
+          58,
+          0
+        ],
+        "extras": [
+          184,
+          156,
+          121,
+          44,
+          0
+        ],
+        "shadow_only_repair": 0,
+        "forwarded": 505
+      },
+      "missing_stock_records": 0,
+      "extra_records": 505
+    },
+    "tight_budget": {
+      "exit": 1,
+      "wall_s": 5.037465749774128,
+      "records": 43171,
+      "df17": 9476,
+      "rescue": {
+        "buffers": 2198,
+        "work_us": 273322,
+        "backlog_skips": 0,
+        "deadline_buffers": 2198,
+        "discontinuities": 1,
+        "pending_overflow": 0,
+        "pending_tail": 0,
+        "peaks": 54463,
+        "retry_budget_skips": 0,
+        "duplicates": 356,
+        "unknown_identity": 2,
+        "conflicts": 0,
+        "raw": [
+          336,
+          29,
+          12,
+          4,
+          0
+        ],
+        "extras": [
+          7,
+          11,
+          3,
+          2,
+          0
+        ],
+        "shadow_only_repair": 0,
+        "forwarded": 0
+      },
+      "missing_stock_records": 0,
+      "extra_records": 0
+    }
+  },
+  "shuffled": {
+    "exit": 1,
+    "wall_s": 10.026423540897667,
+    "records": 13,
+    "df17": 8,
+    "rescue": {
+      "buffers": 2198,
+      "work_us": 3811408,
+      "backlog_skips": 0,
+      "deadline_buffers": 0,
+      "discontinuities": 1,
+      "pending_overflow": 0,
+      "pending_tail": 0,
+      "peaks": 8832885,
+      "retry_budget_skips": 253723,
+      "duplicates": 0,
+      "unknown_identity": 0,
+      "conflicts": 0,
+      "raw": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "extras": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "shadow_only_repair": 0,
+      "forwarded": 0
+    }
+  },
+  "invalid_configurations_rejected": 9
+}

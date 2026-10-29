@@ -32,6 +32,9 @@ boundaries), uniform noise, shuffled real I/Q and six invalid configurations.
 rejection), duplicates, conflicting messages, shadow isolation, explicit output,
 wall-budget discard, discontinuity reset, live backlog skip, one/two-bit header
 protection, UC8 history copying, short-buffer native bounds and global FIR phase.
+It also checks phase repair's separate research deduplication ring cannot
+suppress working output. `repair_unit.c` checks the rolling CRC basis and a
+bounded three-bit erasure solution; both run under ASan/UBSan.
 It includes the private implementation to inspect caches without exposing a test
 API in readsb. The normal network/decoder functions are stubbed in that test only.
 
@@ -39,3 +42,13 @@ The standalone unit executable is ignored by Git. Never commit private UC8,
 per-aircraft audit logs or timestamped receiver output. Aggregate validation
 results can be shared separately. Upstream ifile currently exits 1 at EOF; the
 harness checks actual records and rescue summaries in addition to the exit code.
+
+`trace_stream1090_provenance.py` instruments only a clean pinned upstream
+checkout for offline comparison. `classify_stream_phase_gap.py` separates
+clean, fixed-table, erasure and DF19 output on the saved live capture.
+`replay_stream_phase_repair.py` then tests the native repair port on the same
+RF, using only preceding stock Beast addresses as a permissive prefilter.
+`bench_stream_phase.c` measures standalone CPU cost from an offline UC8 file;
+it never opens a receiver or feeder socket. Native phase repairs require
+`--dsp-rescue-stream-phase-repair` and remain shadow-only even if general DSP
+output is enabled.

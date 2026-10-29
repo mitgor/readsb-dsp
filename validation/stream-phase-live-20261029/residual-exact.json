@@ -1,0 +1,28 @@
+{
+  "counts": {
+    "miss_erasure": 930,
+    "outside_paired_coverage": 126,
+    "miss_table": 1209,
+    "miss_df19": 60,
+    "miss_clean": 172,
+    "paired_miss_erasure": 887,
+    "in_stock_erasure": 64,
+    "paired_miss_table": 1136,
+    "in_stock_table": 380,
+    "paired_miss_clean": 164,
+    "beyond_stock_clean": 40,
+    "beyond_stock_clean_prior_stock": 39,
+    "beyond_stock_erasure": 823,
+    "beyond_stock_erasure_prior_stock": 803,
+    "beyond_stock_table": 756,
+    "beyond_stock_table_prior_stock": 751,
+    "in_stock_clean": 124,
+    "paired_miss_df19": 58,
+    "in_stock_df19": 31,
+    "beyond_stock_erasure_no_prior_stock": 20,
+    "beyond_stock_df19": 27,
+    "beyond_stock_df19_prior_stock": 27,
+    "beyond_stock_table_no_prior_stock": 5,
+    "beyond_stock_clean_no_prior_stock": 1
+  }
+}

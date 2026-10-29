@@ -1727,6 +1727,9 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
         case OptDspRescueStreamPhase:
             Modes.dsp_rescue_stream_phase = 1;
             break;
+        case OptDspRescueStreamPhaseRepair:
+            Modes.dsp_rescue_stream_phase_repair = 1;
+            break;
         case OptDspRescueOutput:
             Modes.dsp_rescue_output = 1;
             break;

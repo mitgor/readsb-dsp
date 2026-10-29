@@ -200,7 +200,7 @@ viewadsb: readsb
 	cp readsb viewadsb
 
 clean:
-	rm -f tests/dsp-rescue/unit contrib/dsp-rescue/dsp_rescue/*.o *.o uat2esnt/*.o oneoff/*.o compat/clock_gettime/*.o compat/clock_nanosleep/*.o compat/apple/*.o readsb viewadsb cprtests crctests oneoff/convert_benchmark
+	rm -f tests/dsp-rescue/unit tests/dsp-rescue/repair_unit contrib/dsp-rescue/dsp_rescue/*.o *.o uat2esnt/*.o oneoff/*.o compat/clock_gettime/*.o compat/clock_nanosleep/*.o compat/apple/*.o readsb viewadsb cprtests crctests oneoff/convert_benchmark
 
 .PHONY: test cprtest crctest
 
@@ -234,8 +234,12 @@ dsp_rescue.o contrib/dsp-rescue/dsp_rescue/frontend.o: CFLAGS += -ffp-contract=o
 dsp-rescue-test:
 	$(CC) $(CFLAGS) -ffp-contract=off -I. tests/dsp-rescue/unit.c dsp_stream_phase.c contrib/dsp-rescue/dsp_rescue/frontend.c -lm -o tests/dsp-rescue/unit
 	./tests/dsp-rescue/unit
+	$(CC) $(CFLAGS) -I. tests/dsp-rescue/repair_unit.c -lm -o tests/dsp-rescue/repair_unit
+	./tests/dsp-rescue/repair_unit
 
 # Supported by GCC/Clang; this does not replace the normal build flags.
 dsp-rescue-test-sanitize:
 	$(CC) $(CFLAGS) -O1 -ffp-contract=off -I. -fsanitize=address,undefined -fno-omit-frame-pointer tests/dsp-rescue/unit.c dsp_stream_phase.c contrib/dsp-rescue/dsp_rescue/frontend.c -lm -o tests/dsp-rescue/unit
 	./tests/dsp-rescue/unit
+	$(CC) $(CFLAGS) -O1 -I. -fsanitize=address,undefined -fno-omit-frame-pointer tests/dsp-rescue/repair_unit.c -lm -o tests/dsp-rescue/repair_unit
+	./tests/dsp-rescue/repair_unit
