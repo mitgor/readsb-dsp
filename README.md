@@ -250,3 +250,7 @@ Read [validation](validation/DEADSB.md) for the current evidence and limitations
 ### Rust acquisition and EM defaults
 
 Optional Rust backends retain the C fallback and preserve method switches. See the [release and rollback guide](experiments/rust-methods-live/README.md). Installing the EM backend does not enable a live EM feed stage.
+
+### Recent-data neural companion experiment
+
+The [29 October label/training audit](validation/neural-retrain-20261029/report.html) preserves the live three-model cascade. A new companion improves isolated packet-window reconstruction but adds no unique packets beyond the complete DSP/neural/Stream1090 pipeline on the chronological RF holdout. Both dated candidates remain offline; [reproduction and limitations](scripts/learning/retrain_recent/README.md).

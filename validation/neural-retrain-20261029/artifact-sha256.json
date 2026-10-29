@@ -1,0 +1,17 @@
+{
+  "scripts/learning/retrain_recent/pi_job.py": "a96a9325b4d36f5f601bcc9be14034a09042de90feb12e424ae0932becc4a6f1",
+  "scripts/learning/retrain_recent/controls.py": "7c21f326488659db8b3f9ab903d229c08b6627144b6ba3f8d0feec41b94e07fe",
+  "scripts/learning/retrain_recent/benchmark.py": "2132fad3a1e11bc89a482e41bdc1b81ebf02d57dbf0e7118a2a7e79bd9a477a0",
+  "scripts/learning/retrain_recent/audit.py": "82f0c99b9a7a81ccece2b5a8f112bfa9ad26474bd721763c887d92ca8fbad518",
+  "scripts/learning/retrain_recent/common.py": "eb4a731d6d7b113de2796219b5291d469cfef08f28f09b53df4b84364278b7e6",
+  "scripts/learning/retrain_recent/train.py": "b563c30dc935d12df15442b9a0b770786ddae648b112b248b984accccd8dfbb1",
+  "scripts/learning/retrain_recent/report.py": "5ce8cdec053031e052830c791b69d1ce7d8602043abc0b3d0898ccfc8905aeb7",
+  "scripts/learning/retrain_recent/prepare.py": "2e5812d8aef86f97813061d9b39eb74af1ed772ed7535b4fb4e98050eb9f2abe",
+  "scripts/learning/retrain_recent/freeze_candidate.py": "686ad9d0fdfd78a57d19f2b51c0d1cff4225f5046a729e8e10a00640ec7c3e57",
+  "models/candidates/recent-20261029/dsp/tiny-rf-v1.onnx": "184fd12c076b0c64abe4f496f7781c76d292515b5d191c3078839b7c3f1b5be1",
+  "models/candidates/recent-20261029/dsp/tiny-rf-v1.pt": "7718d7fa458b31a37b23550687706803563a1f7ab19dc8a866c5dd1e21d4998b",
+  "models/candidates/recent-20261029/raw/tiny-rf-v1.onnx": "395b55eb8075956514ef2e51b547f2c4e56c1215b3e5e6037f1599fac46f26b1",
+  "models/candidates/recent-20261029/raw/tiny-rf-v1.pt": "66d94a16cecd181b94763d882d6315ba4d0709700e5ccc01c5a9c93f3aeb61a1",
+  "models/candidates/improvement-raw-20261027/tiny-rf-v1.pt": "7e17963131d935f581e9564303bcc3ca1e909909c9667baac83d7037e4081fad",
+  "reference/original_decoder.py": "bce65153ec38fee10a6d74f03103a3858e3f52bb8fd1fe54b6bea4a9bc5c6a7a"
+}

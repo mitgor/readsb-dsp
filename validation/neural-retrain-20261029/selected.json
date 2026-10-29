@@ -1,0 +1,39 @@
+{
+  "variant": "dsp",
+  "model": "models/candidates/recent-20261029/dsp/tiny-rf-v1.onnx",
+  "sha256": "184fd12c076b0c64abe4f496f7781c76d292515b5d191c3078839b7c3f1b5be1",
+  "frozen_unix": 1793311674.215873,
+  "criteria": "Validation only: zero wrong CRC, qualified far additions, total additions, bit errors. Test and chronological RF not used.",
+  "validation": {
+    "raw": {
+      "windows": 1596,
+      "candidate_exact": 1090,
+      "candidate_wrong_crc": 0,
+      "baseline_exact": 1244,
+      "combined_exact": 1252,
+      "additions": 8,
+      "losses": 0,
+      "new_windows": 562,
+      "new_additions": 1,
+      "qualified_far180_windows": 1,
+      "qualified_far180_additions": 0,
+      "bit_errors": 1236
+    },
+    "dsp": {
+      "windows": 1596,
+      "candidate_exact": 1168,
+      "candidate_wrong_crc": 0,
+      "baseline_exact": 1244,
+      "combined_exact": 1252,
+      "additions": 8,
+      "losses": 0,
+      "new_windows": 562,
+      "new_additions": 1,
+      "qualified_far180_windows": 1,
+      "qualified_far180_additions": 0,
+      "bit_errors": 956
+    }
+  },
+  "reservation_sha256": "d0ccbb5c545c938a46b586d05a84db63646ec31ebd9b08b214fc8b65b703dc5d",
+  "live_changes": false
+}

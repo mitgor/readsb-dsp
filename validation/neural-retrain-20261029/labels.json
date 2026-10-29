@@ -1,0 +1,128 @@
+{
+  "counts": {
+    "reserved_overlap_rejected": 394,
+    "qualified_stock_nofix": 5359,
+    "qualified_far180": 10,
+    "alignment_quality_rejected": 21,
+    "cross_split_rf_rejected": 236,
+    "duplicate_iq_or_payload_rejected": 1768
+  },
+  "crc_audit": {
+    "iq_verified": 16509,
+    "same_transmission_stock_match": 0,
+    "same_icao_only_or_later_repetition_quarantined": 16509,
+    "quarantined": 16509
+  },
+  "archives": [
+    {
+      "archive": "capture-1793184621472603248.tar",
+      "sha256": "24b699ba3598bf27103a80a051613a193892ae83f379a77bd40158cc09ea3112",
+      "ledger": {
+        "archive_complete": false,
+        "error": "RF has no closed packet ledger",
+        "policy": "Exclude open/incomplete bursts; separately verify closed continuous RF and stream coverage. No packet-snippet labels admitted."
+      },
+      "counts": {
+        "rf_groups": 45
+      }
+    },
+    {
+      "archive": "capture-1793228324709506700.tar",
+      "sha256": "739027d291b2af42b1019bab58cf6ca513cc64b43c91866e6efb71834450375c",
+      "ledger": {
+        "archive_complete": false,
+        "error": "RF has no closed packet ledger",
+        "policy": "Exclude open/incomplete bursts; separately verify closed continuous RF and stream coverage. No packet-snippet labels admitted."
+      },
+      "counts": {
+        "rf_groups": 52
+      }
+    },
+    {
+      "archive": "capture-1793271525030920024.tar",
+      "sha256": "6d911cbe25fb31730caca11050fe6088013c007c1589ee7a7d0415f22621fe1b",
+      "ledger": {
+        "archive_complete": false,
+        "error": "RF has no closed packet ledger",
+        "policy": "Exclude open/incomplete bursts; separately verify closed continuous RF and stream coverage. No packet-snippet labels admitted."
+      },
+      "counts": {
+        "rf_groups": 36
+      }
+    }
+  ],
+  "splits": {
+    "test": {
+      "windows": 630,
+      "new": 178,
+      "far180": 58,
+      "new_far180": 0
+    },
+    "validation": {
+      "windows": 1596,
+      "new": 562,
+      "far180": 105,
+      "new_far180": 1
+    },
+    "train": {
+      "windows": 8838,
+      "new": 2615,
+      "far180": 1281,
+      "new_far180": 8
+    }
+  },
+  "cross_split": {
+    "test_validation": "ICAO/payload/IQ disjoint; new RF checked against all earlier opposite-split windows",
+    "test_train": "ICAO/payload/IQ disjoint; new RF checked against all earlier opposite-split windows",
+    "train_validation": "ICAO/payload/IQ disjoint; new RF checked against all earlier opposite-split windows"
+  },
+  "reservation_manifests": [
+    {
+      "file": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/long-validation-20261025/reserved-intervals.json",
+      "sha256": "92f97eabb49b422e90fa342de7c8a8f0db0d5313e6d914adc9132ffe3fd40fb3",
+      "intervals": 615
+    },
+    {
+      "file": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/long-validation-improvement-20261027/reserved-intervals.json",
+      "sha256": "a2eb5eb3ec3e650de618d25a4d1955b9976e9c13028117d8d2e5ac4c562ca74a",
+      "intervals": 50
+    },
+    {
+      "file": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/long-validation-joint-carrier-20261028/reserved-intervals.json",
+      "sha256": "0f2c281a88bff2078462518b418907d62a66d98f51a7cd94739414c66fbafcd5",
+      "intervals": 1906
+    },
+    {
+      "file": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/long-validation-pulse-tail-preflight-20261028/reserved-intervals.json",
+      "sha256": "df324b2e531d580606c6e9bcd327bfabed62320c893b48d7c505410ca3b4af98",
+      "intervals": 1
+    },
+    {
+      "file": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/long-validation-pulse-tail-prospective-20261028/reserved-intervals.json",
+      "sha256": "f1b89ec7ede36bc3eaa74d448f845cbbe056afba485a485f2fc9c293d2a885e4",
+      "intervals": 7
+    },
+    {
+      "file": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/long-validation-pulse-tail-prospective-20261028-v4/reserved-intervals.json",
+      "sha256": "abcf196b96e71830a4110d511007f8b3037cca2b9afcc43553ade74f2fa61cd8",
+      "intervals": 21
+    },
+    {
+      "file": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/long-validation-replay-audit-20261028/reserved-intervals.json",
+      "sha256": "83edc30da19678a9194df22cf5f0e9b042cae2b810ef54374ab51c353fe98d75",
+      "intervals": 29
+    },
+    {
+      "file": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/long-validation-research-20261028/reserved-intervals.json",
+      "sha256": "d47924bc48a00a4958259916a87b60efe2f4074a46069f0d9614690f075345a2",
+      "intervals": 367
+    },
+    {
+      "file": "/Users/mit/Documents/!project/adsb-neural-rescue/data/raw/long-validation-retrain-companion-20261029/reserved-intervals.json",
+      "sha256": "d0ccbb5c545c938a46b586d05a84db63646ec31ebd9b08b214fc8b65b703dc5d",
+      "intervals": 4454
+    }
+  ],
+  "readsb_sha256": "9f8a23dad7bf881cffd024e966bb868c2e1c3cc0ff6d198601cb56b249a93b9d",
+  "policy": "Same-transmission live stock plus independent no-fix DF17 replay, preamble-only alignment. New ranges require prior NIC/NACp>=5, no MLAT, age<=15s; not physical ground truth. Historical unverified distances are not used for new far weighting."
+}

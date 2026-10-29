@@ -1,0 +1,38 @@
+{
+  "overlap": {
+    "raw": {
+      "windows": 4096,
+      "primary": 962,
+      "secondary_valid": 1,
+      "unaccounted_valid": 0
+    },
+    "dsp": {
+      "windows": 4096,
+      "primary": 1009,
+      "secondary_valid": 1,
+      "unaccounted_valid": 0
+    }
+  },
+  "clean": {
+    "raw": {
+      "windows": 4096,
+      "exact": 2809,
+      "wrong_crc_valid": 0
+    },
+    "dsp": {
+      "windows": 4096,
+      "exact": 2845,
+      "wrong_crc_valid": 0
+    }
+  },
+  "noise": {
+    "raw": {
+      "windows": 20000,
+      "valid": 0
+    },
+    "dsp": {
+      "windows": 20000,
+      "valid": 0
+    }
+  }
+}
