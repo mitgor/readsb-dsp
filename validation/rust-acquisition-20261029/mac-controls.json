@@ -1,0 +1,18 @@
+{
+  "exact_scoring_and_candidate_cases": 1201,
+  "budgets": [
+    1,
+    8,
+    16,
+    64,
+    256
+  ],
+  "fallback_cases": 1,
+  "selected_candidates_in_non_noise_cases": 259,
+  "invalid_argument_checks": 10,
+  "input_immutable": true,
+  "noise_blocks": 64,
+  "noise_candidate_hypotheses": 543,
+  "noise_crc_valid": 0,
+  "noise_policy": "Acquisition hypotheses are not accepted packets; frozen installed coherent decoder used only in this offline process."
+}

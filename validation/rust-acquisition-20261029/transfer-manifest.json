@@ -1,0 +1,29 @@
+{
+  "copies": [
+    {
+      "remote_owned_file": "pi-binaries.tar",
+      "sha256": "0b38f3441c40704e4427871aefbaa26e078617fe56cbd9a21b6dcdd82d98e891",
+      "bytes": 604160,
+      "verified": true
+    },
+    {
+      "remote_owned_file": "pi.json",
+      "sha256": "52458fb3a5771ca05bf567c9bf287060eaa98ac07e0f9762ed6c1038179e5a80",
+      "bytes": 39502,
+      "verified": true
+    },
+    {
+      "remote_owned_file": "experiments/rust-acquisition/.work/blocks.bin",
+      "sha256": "1cfaababc186ddddd824428b491457583ec033d8a376e4bc12cfddaf39232958",
+      "bytes": 15920308,
+      "verified": true
+    },
+    {
+      "remote_owned_file": "experiments/rust-acquisition/.work/iq-blocks.bin",
+      "sha256": "a9c470ce0c880993d91f552f949a13952d74f8e11ddcb7bcf57481e0de61fbd8",
+      "bytes": 31840176,
+      "verified": true
+    }
+  ],
+  "private_files_under_ignored_work": true
+}

@@ -1,0 +1,28 @@
+{
+  "iq_fixture_sha256": "a9c470ce0c880993d91f552f949a13952d74f8e11ddcb7bcf57481e0de61fbd8",
+  "policy": "Same frozen coherent decoder applied to each selector output in this offline process. Raw CRC-valid window outputs, not new packets beyond the live pipeline; no forwarding.",
+  "budgets": {
+    "16": {
+      "candidates": 384,
+      "crc_valid_window_outputs": 131,
+      "repaired_window_outputs": 12,
+      "packet_start_payload_repair_signature_sha256": "33b34cac6c927b3adc3853313303acbf46a70301d7c3a9156ee0a413a8174df0",
+      "exact_candidate_and_all_decoder_arrays": true
+    },
+    "64": {
+      "candidates": 1536,
+      "crc_valid_window_outputs": 135,
+      "repaired_window_outputs": 12,
+      "packet_start_payload_repair_signature_sha256": "0b98a2945dc17482a1c9832ebda56712f279c0aa55f53274cdeedef1a4ae15c7",
+      "exact_candidate_and_all_decoder_arrays": true
+    },
+    "256": {
+      "candidates": 6045,
+      "crc_valid_window_outputs": 135,
+      "repaired_window_outputs": 12,
+      "packet_start_payload_repair_signature_sha256": "0b98a2945dc17482a1c9832ebda56712f279c0aa55f53274cdeedef1a4ae15c7",
+      "exact_candidate_and_all_decoder_arrays": true
+    }
+  },
+  "decoder_sha256": "721c6c354319440a2568ef6b780dc8cb8fd6c4d4ae54f0d62bf667a931851b46"
+}

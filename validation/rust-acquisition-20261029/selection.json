@@ -1,0 +1,14 @@
+{
+  "source": "adsb-neural-rescue/results/bundle-benchmark-20261026/summary.json",
+  "source_sha256": "1faffcf7cd6ff5ac5c45d5aa24a06618efd5bfd4836e7d2e0492e681cf1c7d95",
+  "historical_hardware": "Pi 4",
+  "new_target": "Pi 5",
+  "baseline_total_cpu_per_rf_s": 0.8076215707146399,
+  "acquisition_total_cpu_per_rf_s": 1.1463818720639705,
+  "baseline_selection_cpu_per_rf_s": 0.12013116533405471,
+  "acquisition_selection_cpu_per_rf_s": 0.4373274111277714,
+  "incremental_selection_cost": 0.3171962457937167,
+  "selected": "rescue_extended_scores_neon + rescue_extended_select_neon",
+  "rationale": "Disabled acquisition adds substantial native-heavy scoring/peak-selection work after the already ported coherent and EM kernels. Legacy bundle timing is aggregate and does not identify one hotter function. This is the next best-supported isolated maintained C target, not an exhaustive global kernel profile.",
+  "live_enabled": false
+}

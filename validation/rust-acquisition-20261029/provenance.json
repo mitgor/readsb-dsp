@@ -1,0 +1,36 @@
+{
+  "source_sha256": {
+    "src/rescue/pipeline_extended_neon.c": "ff98031bac8b24749e19c454c8472484cb44dc78023ef6c5fb6a927389126702",
+    "src/rescue/pipeline_v3.c": "b7bf6ead7b9200c8258926f9c98595d69a0810c88ca3bd57abb17a98a2d21974",
+    "src/rescue/pipeline_native.c": "bffe3dd3cdd017c06b3d7df474c0b808464c4b456bbbef86e6afb213c6b8ca0c",
+    "src/rescue/research_sequence.c": "837b1ff18c88d73ce68d58af51b04ac9bf51d8ac24147e97416d1b0cd983a7a2",
+    "src/rescue/research_science.c": "ebee838869ffd76a97927cf94e674030e5590f9af22f2c4d36b23dbc24527ebe",
+    "src/rescue/coherent_kernel.c": "7daf390ecb5008444f1e5e3747f99130c33d42fab578b02b55f37a29d60b6384",
+    "src/rescue/coherent_sort.h": "e5757b6c1d206a0c4d742624cbeb3a51f678c98d91448e9831f50541553a6298",
+    "experiments/rust-acquisition/acquisition.rs": "64e000cbec655272a31d3523950487aef3178160831bc6dc24d7b3735afadf07",
+    "experiments/rust-acquisition/driver.c": "9963687de8ae47edf190c253755fe8a20f86897a1e508e6ffa555b5fe987d463",
+    "experiments/rust-acquisition/build.py": "776bb01956108ee2f907b1ecd3566eff23d086ac00be5dfed26202158546ec12",
+    "experiments/rust-acquisition/benchmark.py": "936e3ddc0cb469b3fa7506f8787ff08c140c50a5d005a8c20de53c3f765b328e",
+    "experiments/rust-acquisition/controls.py": "9057d24ca9e22ce0010013d2386c9627e9ab8f77b223797ddafdbaf65778b093",
+    "experiments/rust-acquisition/protected_job.py": "e44fab662b146ca665335057dd6a4e9accae386fc1cace2ef67c9e71dc0c8a9d"
+  },
+  "fixture_sha256": "1cfaababc186ddddd824428b491457583ec033d8a376e4bc12cfddaf39232958",
+  "scope": "Isolated existing scorer and selector; no search/threshold/admission changes; live acquisition remains disabled",
+  "rust_version": "1.99.1",
+  "new_target": "Raspberry Pi 5",
+  "historical_selection_hardware": "Raspberry Pi 4",
+  "live_mutations": false,
+  "additional_sources_sha256": {
+    "experiments/rust-acquisition/prepare_iq.py": "903e3b066167fbc8daf67ab59723b23702cefdedda9759176615f415a4b4e4ee",
+    "experiments/rust-acquisition/packet_replay.py": "feb566751979104bf2b35346bf17caa8aa6f10303a314e7a6481372e9e330031"
+  },
+  "result_sha256": {
+    "mac.json": "2e8919920feda230da7d5fc0a5500e3a8b46f8c7480c2fd2ef7346f78ba00425",
+    "pi.json": "52458fb3a5771ca05bf567c9bf287060eaa98ac07e0f9762ed6c1038179e5a80",
+    "pi-health.json": "85ad0de8d90ba881a266a12762757710678857bcd5371a18e3d8d8a48be6ebfd",
+    "mac-packets.json": "520f50ba4ed916c43c97a6ca4b272a8736531897e52df0f1d6f574196ca5f192",
+    "pi-packets.json": "5dd66c88cf7a5312b604ed5f2de3603290b744fa74711a755ee21c713a433a11",
+    "final-health.json": "d2e9659d853d6cc71efda6f523e50b849925f1d55b8ac91d7d6b53dac913c766"
+  },
+  "external_dsp_restart_after_timed_benchmark": "2026-10-29 21:12:34 UTC, not requested by this experiment; benchmark ended 21:10:39 UTC"
+}
