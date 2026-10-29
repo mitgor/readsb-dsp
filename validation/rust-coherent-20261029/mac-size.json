@@ -1,0 +1,42 @@
+{
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "policy": "strip -S on copies only; raw binaries used for CPU/RSS are unchanged. Rust prebuilt standard-library debug sections can survive staticlib compilation. Debug-only file size is not resident RAM.",
+  "variants": {
+    "c-old": {
+      "raw_bytes": 35128,
+      "debug_stripped_bytes": 35144,
+      "raw_sha256": "dd18803677d1ee0ad483b21453c2950225701751af342661b56ab94fa9b0ae0c",
+      "stripped_sha256": "413ab2ba0d8d7d2121864be5ed393c9cd4481022e7960974b42dbeaac589f076"
+    },
+    "c-current": {
+      "raw_bytes": 51664,
+      "debug_stripped_bytes": 51688,
+      "raw_sha256": "89e84d887d7a0998ff69dbc85803567654b64aee58036e469b04d3d205168978",
+      "stripped_sha256": "924d5750fc4bdc2aea5fa38633245f8488a0e65db9c41af6c776bc91339075c4"
+    },
+    "goose": {
+      "raw_bytes": 53000,
+      "debug_stripped_bytes": 53016,
+      "raw_sha256": "f8d07e9970fbfdfef48b2ae936b96ca865f2b8c9feb5c3caca90b54faa57d338",
+      "stripped_sha256": "c554fa7f18347ad4c8b00b5310ca4b2e425741f40021c85bb9b86e1f385f73b1"
+    },
+    "rust": {
+      "raw_bytes": 1434024,
+      "debug_stripped_bytes": 1434032,
+      "raw_sha256": "2c73f54d58e16e980240949302369b3035ad25723dea7709dc598977245d8e52",
+      "stripped_sha256": "96e6f21ea6082871f26914a9dc8abac6d2e77e67b11ff6483da63a5ee50d7218"
+    },
+    "rust-libc": {
+      "raw_bytes": 1433472,
+      "debug_stripped_bytes": 1433496,
+      "raw_sha256": "2bfe5c77b1f2d3003fbc820e52549a79ac4a58a787850ce1630f26f80acee093",
+      "stripped_sha256": "ea349a9af15c93452f2394c312963cb9aa1a0852060d506b0e6ec2c43623730e"
+    },
+    "rust-matched": {
+      "raw_bytes": 1433536,
+      "debug_stripped_bytes": 1433544,
+      "raw_sha256": "6256fd8890de25960afb23f2363d711b40ccdec082027f63403d835b080aae42",
+      "stripped_sha256": "afeebad2086985387b8a46df474c5cb2e009431b1d3a0d9b877b9977cdd31012"
+    }
+  }
+}

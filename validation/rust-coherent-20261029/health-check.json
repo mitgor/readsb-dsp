@@ -1,0 +1,20 @@
+{
+  "unchanged": true,
+  "checks": {
+    "pids": true,
+    "shadow_pid": true,
+    "started_unix": true,
+    "config_sha256": true,
+    "gain_db": true,
+    "methods": true,
+    "worker_config": true,
+    "samples": true
+  },
+  "additional_aligned_seconds": 230,
+  "fr24_connected": true,
+  "coherent_frames_relayed": 1183,
+  "sample_counters": {
+    "samples_lost": 0,
+    "samples_dropped": 0
+  }
+}

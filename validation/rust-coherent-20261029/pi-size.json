@@ -1,0 +1,42 @@
+{
+  "platform": "Linux-6.12.109+rpt-rpi-2712-aarch64-with-glibc2.36",
+  "policy": "strip -S on copies only; raw binaries used for CPU/RSS are unchanged. Rust prebuilt standard-library debug sections can survive staticlib compilation. Debug-only file size is not resident RAM.",
+  "variants": {
+    "c-old": {
+      "raw_bytes": 72304,
+      "debug_stripped_bytes": 72048,
+      "raw_sha256": "ee34023d44aace001030909f46bacf3aea8e29339db6a5c40c33616a22636e4e",
+      "stripped_sha256": "5c1536dbfc28c49008a316a2a95f54db918a576a425917717ca87e6cb7eaaf12"
+    },
+    "c-current": {
+      "raw_bytes": 72344,
+      "debug_stripped_bytes": 72096,
+      "raw_sha256": "7d7d223e0f2632c1662ae70bc188ef6953efcb4beed65e68fc92a82473df6ccf",
+      "stripped_sha256": "45f85be0d820373e4a1572b95861aada1e977452cb90a0dd47744385387afa98"
+    },
+    "goose": {
+      "raw_bytes": 74880,
+      "debug_stripped_bytes": 74568,
+      "raw_sha256": "0b23cf59780cd2ea8cc52e118f42ca013b4b932e7f4c7079f38300bdf35e254c",
+      "stripped_sha256": "eb18460758fb864a63852113fa94104edd70968d628f8fb72181de43f57d3c04"
+    },
+    "rust": {
+      "raw_bytes": 5766312,
+      "debug_stripped_bytes": 1617616,
+      "raw_sha256": "4ab5bb58c0e76dc84ecf2e78f6a6e4a584d1a0bf235a8d292600b80c231c88c6",
+      "stripped_sha256": "13ab5976ab29e73e40c4eb8bc7287667b3eaf4cc18ecde901c0804086140e309"
+    },
+    "rust-libc": {
+      "raw_bytes": 5765728,
+      "debug_stripped_bytes": 1617032,
+      "raw_sha256": "e25d429481002a659449990af614b6a660721a37fde341d3e457b27fcad79ce2",
+      "stripped_sha256": "48b8c6d74950ccd5749418f3d51ee614023792c71bdaa5ecc4ce526f0de5acdb"
+    },
+    "rust-matched": {
+      "raw_bytes": 5766360,
+      "debug_stripped_bytes": 1617664,
+      "raw_sha256": "bb304f0ef0ae569065b8f0854a5cd869bede5f710df554e7dc4bdae728b20f10",
+      "stripped_sha256": "6d41a3d92205479fcbd8feea70ab12787060c1544627a0d14adfe6ab26e741c5"
+    }
+  }
+}

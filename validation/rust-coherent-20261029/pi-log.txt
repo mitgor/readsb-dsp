@@ -1,0 +1,150 @@
+Started coherent-rust-benchmark-20261029.service - /bin/bash /dev/shm/coherent-rust-20261029/pi_job.sh.
+rustc 1.99.1 (58cf8f9c3 2026-10-13)
+binary: rustc
+commit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67
+commit-date: 2026-10-13
+host: aarch64-unknown-linux-gnu
+release: 1.99.1
+LLVM version: 23.1.1
+warning: unused import: `c_void`
+ --> /dev/shm/coherent-rust-20261029/experiments/rust-coherent/coherent.rs:4:38
+  |
+4 | use std::{cmp::Ordering, ffi::{c_int,c_void}, slice, sync::OnceLock};
+  |                                      ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+warning: 1 warning emitted
+warning: unused import: `cmp::Ordering`
+ --> /dev/shm/coherent-rust-20261029/experiments/rust-coherent/coherent.rs:4:11
+  |
+4 | use std::{cmp::Ordering, ffi::{c_int,c_void}, slice, sync::OnceLock};
+  |           ^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+warning: 1 warning emitted
+warning: unused import: `cmp::Ordering`
+ --> /dev/shm/coherent-rust-20261029/experiments/rust-coherent/coherent.rs:4:11
+  |
+4 | use std::{cmp::Ordering, ffi::{c_int,c_void}, slice, sync::OnceLock};
+  |           ^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+warning: 1 warning emitted
+warning: unused import: `c_void`
+ --> /dev/shm/coherent-rust-20261029/experiments/rust-coherent/coherent.rs:4:38
+  |
+4 | use std::{cmp::Ordering, ffi::{c_int,c_void}, slice, sync::OnceLock};
+  |                                      ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+warning: 1 warning emitted
+running 3 tests
+test tests::bad_bounds ... ok
+test tests::crc_table ... ok
+test tests::known_crc ... ok
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+warning: unused import: `cmp::Ordering`
+ --> /dev/shm/coherent-rust-20261029/experiments/rust-coherent/coherent.rs:4:11
+  |
+4 | use std::{cmp::Ordering, ffi::{c_int,c_void}, slice, sync::OnceLock};
+  |           ^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+warning: 1 warning emitted
+running 4 tests
+test matched_sort::tests::sort_cases ... ok
+test tests::bad_bounds ... ok
+test tests::crc_table ... ok
+test tests::known_crc ... ok
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.69s
+trial 1 of 9
+trial 2 of 9
+trial 3 of 9
+trial 4 of 9
+trial 5 of 9
+trial 6 of 9
+trial 7 of 9
+trial 8 of 9
+trial 9 of 9
+{
+  "c-old": {
+    "median_cpu_us_per_window": 26.33540983481187,
+    "min_cpu_us_per_window": 26.194406087488527,
+    "max_cpu_us_per_window": 26.601248394004283,
+    "resident_bytes": 20561920,
+    "peak_rss_bytes": 20561920,
+    "virtual_bytes": 21889024,
+    "binary_bytes": 72304,
+    "valid": 262,
+    "tracked": 2582,
+    "cpu_saving_vs_old_c_percent": 0.0,
+    "cpu_saving_vs_current_c_percent": -28.405305364780077
+  },
+  "c-current": {
+    "median_cpu_us_per_window": 20.50959635974304,
+    "min_cpu_us_per_window": 20.43692436524931,
+    "max_cpu_us_per_window": 20.925961073722853,
+    "resident_bytes": 20578304,
+    "peak_rss_bytes": 20578304,
+    "virtual_bytes": 21905408,
+    "binary_bytes": 72344,
+    "valid": 262,
+    "tracked": 2582,
+    "cpu_saving_vs_old_c_percent": 22.121597923142588,
+    "cpu_saving_vs_current_c_percent": 0.0
+  },
+  "goose": {
+    "median_cpu_us_per_window": 19.935958397063324,
+    "min_cpu_us_per_window": 19.788638956867544,
+    "max_cpu_us_per_window": 20.01078739675742,
+    "resident_bytes": 20561920,
+    "peak_rss_bytes": 20545536,
+    "virtual_bytes": 4318855168,
+    "binary_bytes": 74880,
+    "valid": 262,
+    "tracked": 2582,
+    "cpu_saving_vs_old_c_percent": 24.299798172456512,
+    "cpu_saving_vs_current_c_percent": 2.7969246815879423
+  },
+  "rust": {
+    "median_cpu_us_per_window": 18.09459353013154,
+    "min_cpu_us_per_window": 17.874447537473234,
+    "max_cpu_us_per_window": 18.2923477363108,
+    "resident_bytes": 21069824,
+    "peak_rss_bytes": 21053440,
+    "virtual_bytes": 22806528,
+    "binary_bytes": 5766312,
+    "valid": 262,
+    "tracked": 2582,
+    "cpu_saving_vs_old_c_percent": 31.291771635112653,
+    "cpu_saving_vs_current_c_percent": 11.774989557335957
+  },
+  "rust-libc": {
+    "median_cpu_us_per_window": 24.969301927194863,
+    "min_cpu_us_per_window": 24.791888880391557,
+    "max_cpu_us_per_window": 25.09414117467115,
+    "resident_bytes": 21053440,
+    "peak_rss_bytes": 21037056,
+    "virtual_bytes": 22790144,
+    "binary_bytes": 5765728,
+    "valid": 262,
+    "tracked": 2582,
+    "cpu_saving_vs_old_c_percent": 5.187342502683201,
+    "cpu_saving_vs_current_c_percent": -21.744482383892706
+  },
+  "rust-matched": {
+    "median_cpu_us_per_window": 19.21950305903946,
+    "min_cpu_us_per_window": 19.091602477821965,
+    "max_cpu_us_per_window": 19.46035584276537,
+    "resident_bytes": 21069824,
+    "peak_rss_bytes": 21053440,
+    "virtual_bytes": 22806528,
+    "binary_bytes": 5766360,
+    "valid": 262,
+    "tracked": 2582,
+    "cpu_saving_vs_old_c_percent": 27.020300122180508,
+    "cpu_saving_vs_current_c_percent": 6.29019351758584
+  }
+}
+coherent-rust-benchmark-20261029.service: Deactivated successfully.
+coherent-rust-benchmark-20261029.service: Consumed 46.372s CPU time.
