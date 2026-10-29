@@ -1,0 +1,22 @@
+{
+  "release": {
+    "state": "active",
+    "backup": "/var/backups/adsb-rust-methods-1793309662661646477",
+    "installed_sha256": {
+      "src/rescue/coherent_extended_opt.py": "b3b337ec7f4b3116b7f4399330cf30029521ef8c86382ced6bea73d358a60bd6",
+      "src/rescue/research_science.py": "7687f527fb768ee0f1138ad7995a19b89e1cbd18870d56337cc0fcb89e52f206",
+      "src/rescue/acquisition_rust.rs": "fe2cb607a29f80611681455776135537487994a76216f4471d4ce6c392773a8c",
+      "src/rescue/science_em_rust.rs": "32d6463f261d7d676fae88c7f9501597cc61730257dda6c073ed86effad73c99",
+      "src/rescue/_acquisition_rust.so": "323c0f4c7723d9bfb6f37996620d04585aa9eb3daba9d2935c89f306e6686497",
+      "src/rescue/_science_em_rust.so": "28b6ebda9fe12a114448572ad9369d46790fb330c9c930134ff97e68c1045131",
+      "src/rescue/_science.so": "bacfc18ec2a1813ba36219062b732939a93218a72b04eaf845aef50ada1583fc"
+    },
+    "activated_unix": 1793309769.518024
+  },
+  "guard": {
+    "state": "healthy",
+    "updated_unix": 1793309789.1608837,
+    "failures": 0,
+    "aligned_seconds": 118
+  }
+}

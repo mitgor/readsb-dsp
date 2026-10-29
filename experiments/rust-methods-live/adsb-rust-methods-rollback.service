@@ -1,0 +1,5 @@
+[Unit]
+Description=Restore prior acquisition and EM backends on guard failure
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/adsb-rust-methods-mode rollback

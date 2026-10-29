@@ -1,0 +1,6 @@
+{
+  "isolated_mac_bundle_rust_build": "passed",
+  "unit_tests": 41,
+  "rollback_fault_tests": 2,
+  "mac_pi_packet_signatures": "exact"
+}

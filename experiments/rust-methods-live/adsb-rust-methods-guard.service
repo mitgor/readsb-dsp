@@ -1,0 +1,10 @@
+[Unit]
+Description=Rust acquisition and EM default backend health guard
+After=adsb-rescue-shadow.service
+OnFailure=adsb-rust-methods-rollback.service
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/adsb-rust-methods-mode watch --interval 15 --failures 3
+RuntimeDirectory=adsb-rust-methods
+[Install]
+WantedBy=multi-user.target

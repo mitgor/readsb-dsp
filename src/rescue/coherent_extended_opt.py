@@ -1,4 +1,4 @@
-"""Isolated exact-output extended selector for offline validation on AArch64."""
+"""Exact-policy extended selector; Rust is primary when installed, C is retained."""
 import ctypes as C
 from pathlib import Path
 import numpy as np
@@ -9,7 +9,9 @@ _LIB=None
 def library():
     global _LIB
     if _LIB is None:
-        lib=C.CDLL(str(Path(__file__).with_name('_pipeline_extended_neon.so')))
+        rust=Path(__file__).with_name('_acquisition_rust.so')
+        lib=C.CDLL(str(rust if rust.exists() else Path(__file__).with_name('_pipeline_extended_neon.so')))
+        lib._deadsb_backend='rust' if rust.exists() else 'c'
         arr=lambda t:np.ctypeslib.ndpointer(dtype=t,flags='C_CONTIGUOUS')
         lib.rescue_extended_select_neon.argtypes=[arr(np.float32),C.c_int64,C.c_int64,
             C.c_double,C.c_double,C.c_double,C.c_int,arr(np.int64),arr(np.float64)]
@@ -30,3 +32,6 @@ class ExtendedNeonBackend(BackendV3):
             return super().extended(power,core,budget)
         if count<0 or count>budget:raise ValueError('Native extended selection failed')
         return ids[:count],score[:count]
+
+def backend_status():
+    return library()._deadsb_backend

@@ -1,0 +1,35 @@
+............{
+  "project": "deadsb dsp",
+  "hardware": "macOS-26.6.2-arm64-arm-64bit",
+  "rf_seconds": 0.01,
+  "profile": 0,
+  "cpu_seconds": 0.005157999999999996,
+  "wall_seconds": 0.031802792102098465,
+  "input_sha256": "96ede0d305e2f31d08599b38c8671986b78bb3133862e8d7233a37fdcc049402",
+  "method_candidate_counts": {},
+  "candidate_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "candidate_count": 0,
+  "guards": "Raw candidate replay only; no independent truth, distance or incremental stock/relay comparison supplied.",
+  "live_changes": false,
+  "cpu_seconds_per_rf_second": 0.5157999999999996
+}
+{
+  "project": "deadsb dsp",
+  "hardware": "macOS-26.6.2-arm64-arm-64bit",
+  "rf_seconds": 0.01,
+  "profile": 4,
+  "cpu_seconds": 1.4999999999987246e-05,
+  "wall_seconds": 2.054218202829361e-05,
+  "input_sha256": "96ede0d305e2f31d08599b38c8671986b78bb3133862e8d7233a37fdcc049402",
+  "method_candidate_counts": {},
+  "candidate_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "candidate_count": 0,
+  "guards": "Raw candidate replay only; no independent truth, distance or incremental stock/relay comparison supplied.",
+  "live_changes": false,
+  "cpu_seconds_per_rf_second": 0.0014999999999987246
+}
+.............................
+----------------------------------------------------------------------
+Ran 41 tests in 12.634s
+
+OK
