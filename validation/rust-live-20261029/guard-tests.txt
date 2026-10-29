@@ -1,0 +1,12 @@
+test_backlog_and_fr24 (__main__.GuardTests.test_backlog_and_fr24) ... ok
+test_exact_prior_library_restore (__main__.GuardTests.test_exact_prior_library_restore) ... ok
+test_healthy (__main__.GuardTests.test_healthy) ... ok
+test_loss (__main__.GuardTests.test_loss) ... ok
+test_stale_status (__main__.GuardTests.test_stale_status) ... ok
+test_stalled_rf (__main__.GuardTests.test_stalled_rf) ... ok
+test_three_failures_trigger_one_rollback (__main__.GuardTests.test_three_failures_trigger_one_rollback) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.004s
+
+OK

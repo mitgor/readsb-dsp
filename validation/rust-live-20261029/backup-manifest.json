@@ -1,0 +1,32 @@
+{
+  "/home/pi/adsb-neural-rescue/src/rescue/_coherent.so": {
+    "existed": true,
+    "backup": "file-0",
+    "mode": 493,
+    "uid": 0,
+    "gid": 0,
+    "sha256": "4f49f8179e46e4836fd4704a89d583cf900baf25024ca79f94b63b64b633faf3"
+  },
+  "/home/pi/adsb-neural-rescue/src/rescue/_coherent_pair.so": {
+    "existed": true,
+    "backup": "file-1",
+    "mode": 493,
+    "uid": 1000,
+    "gid": 1000,
+    "sha256": "961a2c05cfd90d2a299898351f79f173d96289483ccf54d34526577640b84ba5"
+  },
+  "/home/pi/adsb-neural-rescue/src/rescue/coherent_rust.rs": {
+    "existed": false,
+    "backup": "file-2",
+    "mode": 420,
+    "uid": 1000,
+    "gid": 1000
+  },
+  "/home/pi/adsb-neural-rescue/src/rescue/coherent_peaks.c": {
+    "existed": false,
+    "backup": "file-3",
+    "mode": 420,
+    "uid": 1000,
+    "gid": 1000
+  }
+}

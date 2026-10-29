@@ -1,0 +1,22 @@
+warning: method `conjugate` is never used
+  --> /Users/mit/Documents/!project/readsb-dsp/src/rescue/coherent_rust.rs:17:5
+   |
+11 | impl Complex{
+   | ------------ method in this implementation
+...
+17 |  fn conjugate(self)->Self{Self{re:self.re,im:-self.im}}
+   |     ^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: 1 warning emitted
+
+warning: field `carriers` is never read
+  --> /Users/mit/Documents/!project/readsb-dsp/src/rescue/coherent_rust.rs:28:39
+   |
+28 | struct Tables{patterns:[Pattern;6328],carriers:[[Complex;8];41]}
+   |        ------ field in this struct    ^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: 1 warning emitted

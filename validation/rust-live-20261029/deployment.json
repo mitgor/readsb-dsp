@@ -1,0 +1,1511 @@
+{
+  "before": {
+    "unix": 1793302900.1895988,
+    "pids": {
+      "readsb": 4694,
+      "fr24feed": 1193167,
+      "adsb-rescue-feed": 1622165,
+      "adsbexchange-feed": 1235929,
+      "adsb-far-capture": 757
+    },
+    "shadow_pid": 1962634,
+    "started_unix": 1793302618.0339308,
+    "updated_unix": 1793302898.5244231,
+    "feed_updated_unix": 1793302899.470288,
+    "threads_alive": true,
+    "gain_db": 38.6,
+    "methods": {
+      "energy": true,
+      "crc": true,
+      "timing": true,
+      "soft": true,
+      "matched": true,
+      "coherent": true,
+      "header": false,
+      "sic": false,
+      "neural": true,
+      "pulse": false,
+      "stream1090": true,
+      "sequence": false,
+      "acquisition": false
+    },
+    "worker_config": {
+      "workers": 2,
+      "reserve_cores": 2,
+      "max_workers": 2,
+      "cpus": "2-3",
+      "coherent_cpus": "0-1",
+      "coherent_threshold": 0.35,
+      "coherent_budget": 48,
+      "optimized_dsp": true,
+      "sequence_acquisition": true,
+      "sequence_enabled": false,
+      "acquisition_enabled": false,
+      "optimized_v3": true,
+      "optimized_extended": true,
+      "coherent_pair_retry": true,
+      "shared_transport": "ring",
+      "cached_fir": true
+    },
+    "worker_roles": {
+      "1962649": "dsp",
+      "1962646": "dsp",
+      "1962650": "coherent",
+      "1962653": "coherent"
+    },
+    "workers": {
+      "1962649": [
+        2
+      ],
+      "1962646": [
+        3
+      ],
+      "1962650": [
+        0
+      ],
+      "1962653": [
+        1
+      ]
+    },
+    "pending": 0,
+    "mean_latency_s": 0.04513004454172915,
+    "aligned_seconds": 278,
+    "shed": 1,
+    "samples": {
+      "samples_lost": 0,
+      "samples_dropped": 0
+    },
+    "feed": {
+      "stock_connected": true,
+      "fr24_routed": true,
+      "counts": {
+        "stock_bytes_relayed": 221479003,
+        "dsp_frames_relayed": 376094,
+        "relayed_coherent": 115764
+      },
+      "upstream_error": null
+    },
+    "fr24": {
+      "feed_status": "connected",
+      "rx_connected": "1",
+      "feed_last_ac_sent_time": "1793302896",
+      "feed_num_ac_tracked": "47"
+    },
+    "crc_archive": {
+      "disk_bytes": 83046067,
+      "ram_bytes": 3636381,
+      "error": null,
+      "saved_files": 9
+    },
+    "config_sha256": {
+      "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+      "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+      "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+      "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+    },
+    "temperature_c": 57.3
+  },
+  "backup": "/var/backups/adsb-coherent-rust-1793302900241878108",
+  "installed_sha256": {
+    "src/rescue/_coherent.so": "4b0ace9ff94b985742ee97b15c7d9472a65ceb3c6603f0d2b82acfc1e4c17cc3",
+    "src/rescue/_coherent_pair.so": "54ae8162e10e029ddf5303762ba5fd3d6e842dcd9c21b17f26430a0ec9055f8d",
+    "src/rescue/coherent_rust.rs": "d010a6ad488ceb332a71fe1a1e68b47db799362e6135bf6989c62865a28a817f",
+    "src/rescue/coherent_peaks.c": "5ee5092cb8d3aae2a6f19068be2d6c9b132ab9bb952c71db9d5b820c89d9291c"
+  },
+  "proof_sha256": "4279d4f6ed142e652c11781198ffb41cd71154d92a62ce2c453e9c7873a7a6fd",
+  "samples": [
+    {
+      "unix": 1793302914.055194,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 1968291,
+      "started_unix": 1793302902.723431,
+      "updated_unix": 1793302912.7367308,
+      "feed_updated_unix": 1793302913.596307,
+      "threads_alive": true,
+      "gain_db": 38.6,
+      "methods": {
+        "energy": true,
+        "crc": true,
+        "timing": true,
+        "soft": true,
+        "matched": true,
+        "coherent": true,
+        "header": false,
+        "sic": false,
+        "neural": true,
+        "pulse": false,
+        "stream1090": true,
+        "sequence": false,
+        "acquisition": false
+      },
+      "worker_config": {
+        "workers": 2,
+        "reserve_cores": 2,
+        "max_workers": 2,
+        "cpus": "2-3",
+        "coherent_cpus": "0-1",
+        "coherent_threshold": 0.35,
+        "coherent_budget": 48,
+        "optimized_dsp": true,
+        "sequence_acquisition": true,
+        "sequence_enabled": false,
+        "acquisition_enabled": false,
+        "optimized_v3": true,
+        "optimized_extended": true,
+        "coherent_pair_retry": true,
+        "shared_transport": "ring",
+        "cached_fir": true
+      },
+      "worker_roles": {
+        "1968310": "dsp",
+        "1968307": "dsp",
+        "1968311": "coherent",
+        "1968314": "coherent"
+      },
+      "workers": {
+        "1968310": [
+          2
+        ],
+        "1968307": [
+          3
+        ],
+        "1968311": [
+          0
+        ],
+        "1968314": [
+          1
+        ]
+      },
+      "pending": 1,
+      "mean_latency_s": 0.18845705023957873,
+      "aligned_seconds": 8,
+      "shed": 1,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "feed": {
+        "stock_connected": true,
+        "fr24_routed": true,
+        "counts": {
+          "stock_bytes_relayed": 221595837,
+          "dsp_frames_relayed": 376214,
+          "relayed_coherent": 115798
+        },
+        "upstream_error": null
+      },
+      "fr24": {
+        "feed_status": "connected",
+        "rx_connected": "1",
+        "feed_last_ac_sent_time": "1793302896",
+        "feed_num_ac_tracked": "45"
+      },
+      "crc_archive": {
+        "disk_bytes": 86802186,
+        "ram_bytes": 0,
+        "error": null,
+        "saved_files": 10
+      },
+      "config_sha256": {
+        "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+        "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+        "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+        "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+      },
+      "temperature_c": 56.75
+    },
+    {
+      "unix": 1793302924.1125913,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 1968291,
+      "started_unix": 1793302902.723431,
+      "updated_unix": 1793302922.740986,
+      "feed_updated_unix": 1793302923.7101722,
+      "threads_alive": true,
+      "gain_db": 38.6,
+      "methods": {
+        "energy": true,
+        "crc": true,
+        "timing": true,
+        "soft": true,
+        "matched": true,
+        "coherent": true,
+        "header": false,
+        "sic": false,
+        "neural": true,
+        "pulse": false,
+        "stream1090": true,
+        "sequence": false,
+        "acquisition": false
+      },
+      "worker_config": {
+        "workers": 2,
+        "reserve_cores": 2,
+        "max_workers": 2,
+        "cpus": "2-3",
+        "coherent_cpus": "0-1",
+        "coherent_threshold": 0.35,
+        "coherent_budget": 48,
+        "optimized_dsp": true,
+        "sequence_acquisition": true,
+        "sequence_enabled": false,
+        "acquisition_enabled": false,
+        "optimized_v3": true,
+        "optimized_extended": true,
+        "coherent_pair_retry": true,
+        "shared_transport": "ring",
+        "cached_fir": true
+      },
+      "worker_roles": {
+        "1968310": "dsp",
+        "1968307": "dsp",
+        "1968311": "coherent",
+        "1968314": "coherent"
+      },
+      "workers": {
+        "1968310": [
+          2
+        ],
+        "1968307": [
+          3
+        ],
+        "1968311": [
+          0
+        ],
+        "1968314": [
+          1
+        ]
+      },
+      "pending": 0,
+      "mean_latency_s": 0.11075666627645357,
+      "aligned_seconds": 18,
+      "shed": 1,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "feed": {
+        "stock_connected": true,
+        "fr24_routed": true,
+        "counts": {
+          "stock_bytes_relayed": 221680003,
+          "dsp_frames_relayed": 376367,
+          "relayed_coherent": 115845
+        },
+        "upstream_error": null
+      },
+      "fr24": {
+        "feed_status": "connected",
+        "rx_connected": "1",
+        "feed_last_ac_sent_time": "1793302896",
+        "feed_num_ac_tracked": "47"
+      },
+      "crc_archive": {
+        "disk_bytes": 86802186,
+        "ram_bytes": 119415,
+        "error": null,
+        "saved_files": 10
+      },
+      "config_sha256": {
+        "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+        "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+        "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+        "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+      },
+      "temperature_c": 55.1
+    },
+    {
+      "unix": 1793302934.2052162,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 1968291,
+      "started_unix": 1793302902.723431,
+      "updated_unix": 1793302932.7517629,
+      "feed_updated_unix": 1793302933.8355732,
+      "threads_alive": true,
+      "gain_db": 38.6,
+      "methods": {
+        "energy": true,
+        "crc": true,
+        "timing": true,
+        "soft": true,
+        "matched": true,
+        "coherent": true,
+        "header": false,
+        "sic": false,
+        "neural": true,
+        "pulse": false,
+        "stream1090": true,
+        "sequence": false,
+        "acquisition": false
+      },
+      "worker_config": {
+        "workers": 2,
+        "reserve_cores": 2,
+        "max_workers": 2,
+        "cpus": "2-3",
+        "coherent_cpus": "0-1",
+        "coherent_threshold": 0.35,
+        "coherent_budget": 48,
+        "optimized_dsp": true,
+        "sequence_acquisition": true,
+        "sequence_enabled": false,
+        "acquisition_enabled": false,
+        "optimized_v3": true,
+        "optimized_extended": true,
+        "coherent_pair_retry": true,
+        "shared_transport": "ring",
+        "cached_fir": true
+      },
+      "worker_roles": {
+        "1968310": "dsp",
+        "1968307": "dsp",
+        "1968311": "coherent",
+        "1968314": "coherent"
+      },
+      "workers": {
+        "1968310": [
+          2
+        ],
+        "1968307": [
+          3
+        ],
+        "1968311": [
+          0
+        ],
+        "1968314": [
+          1
+        ]
+      },
+      "pending": 1,
+      "mean_latency_s": 0.0870818588664406,
+      "aligned_seconds": 28,
+      "shed": 1,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "feed": {
+        "stock_connected": true,
+        "fr24_routed": true,
+        "counts": {
+          "stock_bytes_relayed": 221762994,
+          "dsp_frames_relayed": 376539,
+          "relayed_coherent": 115894
+        },
+        "upstream_error": null
+      },
+      "fr24": {
+        "feed_status": "connected",
+        "rx_connected": "1",
+        "feed_last_ac_sent_time": "1793302926",
+        "feed_num_ac_tracked": "47"
+      },
+      "crc_archive": {
+        "disk_bytes": 86802186,
+        "ram_bytes": 238489,
+        "error": null,
+        "saved_files": 10
+      },
+      "config_sha256": {
+        "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+        "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+        "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+        "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+      },
+      "temperature_c": 56.2
+    },
+    {
+      "unix": 1793302944.276041,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 1968291,
+      "started_unix": 1793302902.723431,
+      "updated_unix": 1793302942.7641704,
+      "feed_updated_unix": 1793302943.96636,
+      "threads_alive": true,
+      "gain_db": 38.6,
+      "methods": {
+        "energy": true,
+        "crc": true,
+        "timing": true,
+        "soft": true,
+        "matched": true,
+        "coherent": true,
+        "header": false,
+        "sic": false,
+        "neural": true,
+        "pulse": false,
+        "stream1090": true,
+        "sequence": false,
+        "acquisition": false
+      },
+      "worker_config": {
+        "workers": 2,
+        "reserve_cores": 2,
+        "max_workers": 2,
+        "cpus": "2-3",
+        "coherent_cpus": "0-1",
+        "coherent_threshold": 0.35,
+        "coherent_budget": 48,
+        "optimized_dsp": true,
+        "sequence_acquisition": true,
+        "sequence_enabled": false,
+        "acquisition_enabled": false,
+        "optimized_v3": true,
+        "optimized_extended": true,
+        "coherent_pair_retry": true,
+        "shared_transport": "ring",
+        "cached_fir": true
+      },
+      "worker_roles": {
+        "1968310": "dsp",
+        "1968307": "dsp",
+        "1968311": "coherent",
+        "1968314": "coherent"
+      },
+      "workers": {
+        "1968310": [
+          2
+        ],
+        "1968307": [
+          3
+        ],
+        "1968311": [
+          0
+        ],
+        "1968314": [
+          1
+        ]
+      },
+      "pending": 0,
+      "mean_latency_s": 0.0754705330305635,
+      "aligned_seconds": 38,
+      "shed": 1,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "feed": {
+        "stock_connected": true,
+        "fr24_routed": true,
+        "counts": {
+          "stock_bytes_relayed": 221845505,
+          "dsp_frames_relayed": 376684,
+          "relayed_coherent": 115936
+        },
+        "upstream_error": null
+      },
+      "fr24": {
+        "feed_status": "connected",
+        "rx_connected": "1",
+        "feed_last_ac_sent_time": "1793302926",
+        "feed_num_ac_tracked": "43"
+      },
+      "crc_archive": {
+        "disk_bytes": 86802186,
+        "ram_bytes": 329375,
+        "error": null,
+        "saved_files": 10
+      },
+      "config_sha256": {
+        "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+        "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+        "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+        "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+      },
+      "temperature_c": 56.75
+    },
+    {
+      "unix": 1793302954.3313909,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 1968291,
+      "started_unix": 1793302902.723431,
+      "updated_unix": 1793302952.7742715,
+      "feed_updated_unix": 1793302954.0954359,
+      "threads_alive": true,
+      "gain_db": 38.6,
+      "methods": {
+        "energy": true,
+        "crc": true,
+        "timing": true,
+        "soft": true,
+        "matched": true,
+        "coherent": true,
+        "header": false,
+        "sic": false,
+        "neural": true,
+        "pulse": false,
+        "stream1090": true,
+        "sequence": false,
+        "acquisition": false
+      },
+      "worker_config": {
+        "workers": 2,
+        "reserve_cores": 2,
+        "max_workers": 2,
+        "cpus": "2-3",
+        "coherent_cpus": "0-1",
+        "coherent_threshold": 0.35,
+        "coherent_budget": 48,
+        "optimized_dsp": true,
+        "sequence_acquisition": true,
+        "sequence_enabled": false,
+        "acquisition_enabled": false,
+        "optimized_v3": true,
+        "optimized_extended": true,
+        "coherent_pair_retry": true,
+        "shared_transport": "ring",
+        "cached_fir": true
+      },
+      "worker_roles": {
+        "1968310": "dsp",
+        "1968307": "dsp",
+        "1968311": "coherent",
+        "1968314": "coherent"
+      },
+      "workers": {
+        "1968310": [
+          2
+        ],
+        "1968307": [
+          3
+        ],
+        "1968311": [
+          0
+        ],
+        "1968314": [
+          1
+        ]
+      },
+      "pending": 0,
+      "mean_latency_s": 0.06822243693717883,
+      "aligned_seconds": 48,
+      "shed": 1,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "feed": {
+        "stock_connected": true,
+        "fr24_routed": true,
+        "counts": {
+          "stock_bytes_relayed": 221926194,
+          "dsp_frames_relayed": 376825,
+          "relayed_coherent": 115970
+        },
+        "upstream_error": null
+      },
+      "fr24": {
+        "feed_status": "connected",
+        "rx_connected": "1",
+        "feed_last_ac_sent_time": "1793302926",
+        "feed_num_ac_tracked": "44"
+      },
+      "crc_archive": {
+        "disk_bytes": 86802186,
+        "ram_bytes": 509320,
+        "error": null,
+        "saved_files": 10
+      },
+      "config_sha256": {
+        "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+        "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+        "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+        "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+      },
+      "temperature_c": 56.75
+    },
+    {
+      "unix": 1793302964.4067607,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 1968291,
+      "started_unix": 1793302902.723431,
+      "updated_unix": 1793302962.7818253,
+      "feed_updated_unix": 1793302964.2389843,
+      "threads_alive": true,
+      "gain_db": 38.6,
+      "methods": {
+        "energy": true,
+        "crc": true,
+        "timing": true,
+        "soft": true,
+        "matched": true,
+        "coherent": true,
+        "header": false,
+        "sic": false,
+        "neural": true,
+        "pulse": false,
+        "stream1090": true,
+        "sequence": false,
+        "acquisition": false
+      },
+      "worker_config": {
+        "workers": 2,
+        "reserve_cores": 2,
+        "max_workers": 2,
+        "cpus": "2-3",
+        "coherent_cpus": "0-1",
+        "coherent_threshold": 0.35,
+        "coherent_budget": 48,
+        "optimized_dsp": true,
+        "sequence_acquisition": true,
+        "sequence_enabled": false,
+        "acquisition_enabled": false,
+        "optimized_v3": true,
+        "optimized_extended": true,
+        "coherent_pair_retry": true,
+        "shared_transport": "ring",
+        "cached_fir": true
+      },
+      "worker_roles": {
+        "1968310": "dsp",
+        "1968307": "dsp",
+        "1968311": "coherent",
+        "1968314": "coherent"
+      },
+      "workers": {
+        "1968310": [
+          2
+        ],
+        "1968307": [
+          3
+        ],
+        "1968311": [
+          0
+        ],
+        "1968314": [
+          1
+        ]
+      },
+      "pending": 0,
+      "mean_latency_s": 0.06382650957675651,
+      "aligned_seconds": 58,
+      "shed": 1,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "feed": {
+        "stock_connected": true,
+        "fr24_routed": true,
+        "counts": {
+          "stock_bytes_relayed": 222007404,
+          "dsp_frames_relayed": 376958,
+          "relayed_coherent": 116002
+        },
+        "upstream_error": null
+      },
+      "fr24": {
+        "feed_status": "connected",
+        "rx_connected": "1",
+        "feed_last_ac_sent_time": "1793302956",
+        "feed_num_ac_tracked": "42"
+      },
+      "crc_archive": {
+        "disk_bytes": 86802186,
+        "ram_bytes": 642935,
+        "error": null,
+        "saved_files": 10
+      },
+      "config_sha256": {
+        "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+        "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+        "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+        "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+      },
+      "temperature_c": 56.2
+    },
+    {
+      "unix": 1793302974.4656167,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 1968291,
+      "started_unix": 1793302902.723431,
+      "updated_unix": 1793302972.7940207,
+      "feed_updated_unix": 1793302974.3443084,
+      "threads_alive": true,
+      "gain_db": 38.6,
+      "methods": {
+        "energy": true,
+        "crc": true,
+        "timing": true,
+        "soft": true,
+        "matched": true,
+        "coherent": true,
+        "header": false,
+        "sic": false,
+        "neural": true,
+        "pulse": false,
+        "stream1090": true,
+        "sequence": false,
+        "acquisition": false
+      },
+      "worker_config": {
+        "workers": 2,
+        "reserve_cores": 2,
+        "max_workers": 2,
+        "cpus": "2-3",
+        "coherent_cpus": "0-1",
+        "coherent_threshold": 0.35,
+        "coherent_budget": 48,
+        "optimized_dsp": true,
+        "sequence_acquisition": true,
+        "sequence_enabled": false,
+        "acquisition_enabled": false,
+        "optimized_v3": true,
+        "optimized_extended": true,
+        "coherent_pair_retry": true,
+        "shared_transport": "ring",
+        "cached_fir": true
+      },
+      "worker_roles": {
+        "1968310": "dsp",
+        "1968307": "dsp",
+        "1968311": "coherent",
+        "1968314": "coherent"
+      },
+      "workers": {
+        "1968310": [
+          2
+        ],
+        "1968307": [
+          3
+        ],
+        "1968311": [
+          0
+        ],
+        "1968314": [
+          1
+        ]
+      },
+      "pending": 0,
+      "mean_latency_s": 0.061161420673762235,
+      "aligned_seconds": 68,
+      "shed": 1,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "feed": {
+        "stock_connected": true,
+        "fr24_routed": true,
+        "counts": {
+          "stock_bytes_relayed": 222087477,
+          "dsp_frames_relayed": 377107,
+          "relayed_coherent": 116045
+        },
+        "upstream_error": null
+      },
+      "fr24": {
+        "feed_status": "connected",
+        "rx_connected": "1",
+        "feed_last_ac_sent_time": "1793302956",
+        "feed_num_ac_tracked": "42"
+      },
+      "crc_archive": {
+        "disk_bytes": 86802186,
+        "ram_bytes": 769427,
+        "error": null,
+        "saved_files": 10
+      },
+      "config_sha256": {
+        "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+        "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+        "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+        "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+      },
+      "temperature_c": 55.65
+    },
+    {
+      "unix": 1793302984.5419288,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 1968291,
+      "started_unix": 1793302902.723431,
+      "updated_unix": 1793302982.8031917,
+      "feed_updated_unix": 1793302984.4253552,
+      "threads_alive": true,
+      "gain_db": 38.6,
+      "methods": {
+        "energy": true,
+        "crc": true,
+        "timing": true,
+        "soft": true,
+        "matched": true,
+        "coherent": true,
+        "header": false,
+        "sic": false,
+        "neural": true,
+        "pulse": false,
+        "stream1090": true,
+        "sequence": false,
+        "acquisition": false
+      },
+      "worker_config": {
+        "workers": 2,
+        "reserve_cores": 2,
+        "max_workers": 2,
+        "cpus": "2-3",
+        "coherent_cpus": "0-1",
+        "coherent_threshold": 0.35,
+        "coherent_budget": 48,
+        "optimized_dsp": true,
+        "sequence_acquisition": true,
+        "sequence_enabled": false,
+        "acquisition_enabled": false,
+        "optimized_v3": true,
+        "optimized_extended": true,
+        "coherent_pair_retry": true,
+        "shared_transport": "ring",
+        "cached_fir": true
+      },
+      "worker_roles": {
+        "1968310": "dsp",
+        "1968307": "dsp",
+        "1968311": "coherent",
+        "1968314": "coherent"
+      },
+      "workers": {
+        "1968310": [
+          2
+        ],
+        "1968307": [
+          3
+        ],
+        "1968311": [
+          0
+        ],
+        "1968314": [
+          1
+        ]
+      },
+      "pending": 0,
+      "mean_latency_s": 0.05867455311199638,
+      "aligned_seconds": 78,
+      "shed": 1,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "feed": {
+        "stock_connected": true,
+        "fr24_routed": true,
+        "counts": {
+          "stock_bytes_relayed": 222169541,
+          "dsp_frames_relayed": 377281,
+          "relayed_coherent": 116093
+        },
+        "upstream_error": null
+      },
+      "fr24": {
+        "feed_status": "connected",
+        "rx_connected": "1",
+        "feed_last_ac_sent_time": "1793302956",
+        "feed_num_ac_tracked": "43"
+      },
+      "crc_archive": {
+        "disk_bytes": 86802186,
+        "ram_bytes": 956831,
+        "error": null,
+        "saved_files": 10
+      },
+      "config_sha256": {
+        "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+        "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+        "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+        "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+      },
+      "temperature_c": 55.1
+    },
+    {
+      "unix": 1793302994.6250622,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 1968291,
+      "started_unix": 1793302902.723431,
+      "updated_unix": 1793302992.8148968,
+      "feed_updated_unix": 1793302993.6479144,
+      "threads_alive": true,
+      "gain_db": 38.6,
+      "methods": {
+        "energy": true,
+        "crc": true,
+        "timing": true,
+        "soft": true,
+        "matched": true,
+        "coherent": true,
+        "header": false,
+        "sic": false,
+        "neural": true,
+        "pulse": false,
+        "stream1090": true,
+        "sequence": false,
+        "acquisition": false
+      },
+      "worker_config": {
+        "workers": 2,
+        "reserve_cores": 2,
+        "max_workers": 2,
+        "cpus": "2-3",
+        "coherent_cpus": "0-1",
+        "coherent_threshold": 0.35,
+        "coherent_budget": 48,
+        "optimized_dsp": true,
+        "sequence_acquisition": true,
+        "sequence_enabled": false,
+        "acquisition_enabled": false,
+        "optimized_v3": true,
+        "optimized_extended": true,
+        "coherent_pair_retry": true,
+        "shared_transport": "ring",
+        "cached_fir": true
+      },
+      "worker_roles": {
+        "1968310": "dsp",
+        "1968307": "dsp",
+        "1968311": "coherent",
+        "1968314": "coherent"
+      },
+      "workers": {
+        "1968310": [
+          2
+        ],
+        "1968307": [
+          3
+        ],
+        "1968311": [
+          0
+        ],
+        "1968314": [
+          1
+        ]
+      },
+      "pending": 0,
+      "mean_latency_s": 0.05686807290013488,
+      "aligned_seconds": 88,
+      "shed": 1,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "feed": {
+        "stock_connected": true,
+        "fr24_routed": true,
+        "counts": {
+          "stock_bytes_relayed": 222240888,
+          "dsp_frames_relayed": 377436,
+          "relayed_coherent": 116135
+        },
+        "upstream_error": null
+      },
+      "fr24": {
+        "feed_status": "connected",
+        "rx_connected": "1",
+        "feed_last_ac_sent_time": "1793302986",
+        "feed_num_ac_tracked": "44"
+      },
+      "crc_archive": {
+        "disk_bytes": 86802186,
+        "ram_bytes": 1062756,
+        "error": null,
+        "saved_files": 10
+      },
+      "config_sha256": {
+        "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+        "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+        "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+        "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+      },
+      "temperature_c": 56.75
+    },
+    {
+      "unix": 1793303004.7003555,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 1968291,
+      "started_unix": 1793302902.723431,
+      "updated_unix": 1793303002.8279626,
+      "feed_updated_unix": 1793303003.7710688,
+      "threads_alive": true,
+      "gain_db": 38.6,
+      "methods": {
+        "energy": true,
+        "crc": true,
+        "timing": true,
+        "soft": true,
+        "matched": true,
+        "coherent": true,
+        "header": false,
+        "sic": false,
+        "neural": true,
+        "pulse": false,
+        "stream1090": true,
+        "sequence": false,
+        "acquisition": false
+      },
+      "worker_config": {
+        "workers": 2,
+        "reserve_cores": 2,
+        "max_workers": 2,
+        "cpus": "2-3",
+        "coherent_cpus": "0-1",
+        "coherent_threshold": 0.35,
+        "coherent_budget": 48,
+        "optimized_dsp": true,
+        "sequence_acquisition": true,
+        "sequence_enabled": false,
+        "acquisition_enabled": false,
+        "optimized_v3": true,
+        "optimized_extended": true,
+        "coherent_pair_retry": true,
+        "shared_transport": "ring",
+        "cached_fir": true
+      },
+      "worker_roles": {
+        "1968310": "dsp",
+        "1968307": "dsp",
+        "1968311": "coherent",
+        "1968314": "coherent"
+      },
+      "workers": {
+        "1968310": [
+          2
+        ],
+        "1968307": [
+          3
+        ],
+        "1968311": [
+          0
+        ],
+        "1968314": [
+          1
+        ]
+      },
+      "pending": 0,
+      "mean_latency_s": 0.05530593861520482,
+      "aligned_seconds": 98,
+      "shed": 1,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "feed": {
+        "stock_connected": true,
+        "fr24_routed": true,
+        "counts": {
+          "stock_bytes_relayed": 222320381,
+          "dsp_frames_relayed": 377573,
+          "relayed_coherent": 116172
+        },
+        "upstream_error": null
+      },
+      "fr24": {
+        "feed_status": "connected",
+        "rx_connected": "1",
+        "feed_last_ac_sent_time": "1793302986",
+        "feed_num_ac_tracked": "43"
+      },
+      "crc_archive": {
+        "disk_bytes": 86802186,
+        "ram_bytes": 1178043,
+        "error": null,
+        "saved_files": 10
+      },
+      "config_sha256": {
+        "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+        "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+        "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+        "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+      },
+      "temperature_c": 56.2
+    },
+    {
+      "unix": 1793303014.7640371,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 1968291,
+      "started_unix": 1793302902.723431,
+      "updated_unix": 1793303012.8442976,
+      "feed_updated_unix": 1793303013.8375268,
+      "threads_alive": true,
+      "gain_db": 38.6,
+      "methods": {
+        "energy": true,
+        "crc": true,
+        "timing": true,
+        "soft": true,
+        "matched": true,
+        "coherent": true,
+        "header": false,
+        "sic": false,
+        "neural": true,
+        "pulse": false,
+        "stream1090": true,
+        "sequence": false,
+        "acquisition": false
+      },
+      "worker_config": {
+        "workers": 2,
+        "reserve_cores": 2,
+        "max_workers": 2,
+        "cpus": "2-3",
+        "coherent_cpus": "0-1",
+        "coherent_threshold": 0.35,
+        "coherent_budget": 48,
+        "optimized_dsp": true,
+        "sequence_acquisition": true,
+        "sequence_enabled": false,
+        "acquisition_enabled": false,
+        "optimized_v3": true,
+        "optimized_extended": true,
+        "coherent_pair_retry": true,
+        "shared_transport": "ring",
+        "cached_fir": true
+      },
+      "worker_roles": {
+        "1968310": "dsp",
+        "1968307": "dsp",
+        "1968311": "coherent",
+        "1968314": "coherent"
+      },
+      "workers": {
+        "1968310": [
+          2
+        ],
+        "1968307": [
+          3
+        ],
+        "1968311": [
+          0
+        ],
+        "1968314": [
+          1
+        ]
+      },
+      "pending": 1,
+      "mean_latency_s": 0.054031983582636944,
+      "aligned_seconds": 108,
+      "shed": 1,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "feed": {
+        "stock_connected": true,
+        "fr24_routed": true,
+        "counts": {
+          "stock_bytes_relayed": 222396321,
+          "dsp_frames_relayed": 377717,
+          "relayed_coherent": 116210
+        },
+        "upstream_error": null
+      },
+      "fr24": {
+        "feed_status": "connected",
+        "rx_connected": "1",
+        "feed_last_ac_sent_time": "1793302986",
+        "feed_num_ac_tracked": "43"
+      },
+      "crc_archive": {
+        "disk_bytes": 86802186,
+        "ram_bytes": 1315423,
+        "error": null,
+        "saved_files": 10
+      },
+      "config_sha256": {
+        "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+        "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+        "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+        "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+      },
+      "temperature_c": 55.65
+    },
+    {
+      "unix": 1793303024.818732,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 1968291,
+      "started_unix": 1793302902.723431,
+      "updated_unix": 1793303022.8625803,
+      "feed_updated_unix": 1793303023.9497442,
+      "threads_alive": true,
+      "gain_db": 38.6,
+      "methods": {
+        "energy": true,
+        "crc": true,
+        "timing": true,
+        "soft": true,
+        "matched": true,
+        "coherent": true,
+        "header": false,
+        "sic": false,
+        "neural": true,
+        "pulse": false,
+        "stream1090": true,
+        "sequence": false,
+        "acquisition": false
+      },
+      "worker_config": {
+        "workers": 2,
+        "reserve_cores": 2,
+        "max_workers": 2,
+        "cpus": "2-3",
+        "coherent_cpus": "0-1",
+        "coherent_threshold": 0.35,
+        "coherent_budget": 48,
+        "optimized_dsp": true,
+        "sequence_acquisition": true,
+        "sequence_enabled": false,
+        "acquisition_enabled": false,
+        "optimized_v3": true,
+        "optimized_extended": true,
+        "coherent_pair_retry": true,
+        "shared_transport": "ring",
+        "cached_fir": true
+      },
+      "worker_roles": {
+        "1968310": "dsp",
+        "1968307": "dsp",
+        "1968311": "coherent",
+        "1968314": "coherent"
+      },
+      "workers": {
+        "1968310": [
+          2
+        ],
+        "1968307": [
+          3
+        ],
+        "1968311": [
+          0
+        ],
+        "1968314": [
+          1
+        ]
+      },
+      "pending": 1,
+      "mean_latency_s": 0.053080120273137896,
+      "aligned_seconds": 118,
+      "shed": 1,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "feed": {
+        "stock_connected": true,
+        "fr24_routed": true,
+        "counts": {
+          "stock_bytes_relayed": 222478426,
+          "dsp_frames_relayed": 377899,
+          "relayed_coherent": 116254
+        },
+        "upstream_error": null
+      },
+      "fr24": {
+        "feed_status": "connected",
+        "rx_connected": "1",
+        "feed_last_ac_sent_time": "1793303016",
+        "feed_num_ac_tracked": "44"
+      },
+      "crc_archive": {
+        "disk_bytes": 86802186,
+        "ram_bytes": 1431136,
+        "error": null,
+        "saved_files": 10
+      },
+      "config_sha256": {
+        "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+        "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+        "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+        "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+      },
+      "temperature_c": 55.65
+    },
+    {
+      "unix": 1793303034.895285,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 1968291,
+      "started_unix": 1793302902.723431,
+      "updated_unix": 1793303032.8728821,
+      "feed_updated_unix": 1793303034.0725741,
+      "threads_alive": true,
+      "gain_db": 38.6,
+      "methods": {
+        "energy": true,
+        "crc": true,
+        "timing": true,
+        "soft": true,
+        "matched": true,
+        "coherent": true,
+        "header": false,
+        "sic": false,
+        "neural": true,
+        "pulse": false,
+        "stream1090": true,
+        "sequence": false,
+        "acquisition": false
+      },
+      "worker_config": {
+        "workers": 2,
+        "reserve_cores": 2,
+        "max_workers": 2,
+        "cpus": "2-3",
+        "coherent_cpus": "0-1",
+        "coherent_threshold": 0.35,
+        "coherent_budget": 48,
+        "optimized_dsp": true,
+        "sequence_acquisition": true,
+        "sequence_enabled": false,
+        "acquisition_enabled": false,
+        "optimized_v3": true,
+        "optimized_extended": true,
+        "coherent_pair_retry": true,
+        "shared_transport": "ring",
+        "cached_fir": true
+      },
+      "worker_roles": {
+        "1968310": "dsp",
+        "1968307": "dsp",
+        "1968311": "coherent",
+        "1968314": "coherent"
+      },
+      "workers": {
+        "1968310": [
+          2
+        ],
+        "1968307": [
+          3
+        ],
+        "1968311": [
+          0
+        ],
+        "1968314": [
+          1
+        ]
+      },
+      "pending": 1,
+      "mean_latency_s": 0.041889225037351326,
+      "aligned_seconds": 128,
+      "shed": 1,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "feed": {
+        "stock_connected": true,
+        "fr24_routed": true,
+        "counts": {
+          "stock_bytes_relayed": 222559240,
+          "dsp_frames_relayed": 378062,
+          "relayed_coherent": 116299
+        },
+        "upstream_error": null
+      },
+      "fr24": {
+        "feed_status": "connected",
+        "rx_connected": "1",
+        "feed_last_ac_sent_time": "1793303016",
+        "feed_num_ac_tracked": "39"
+      },
+      "crc_archive": {
+        "disk_bytes": 86802186,
+        "ram_bytes": 1662847,
+        "error": null,
+        "saved_files": 10
+      },
+      "config_sha256": {
+        "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+        "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+        "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+        "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+      },
+      "temperature_c": 56.2
+    }
+  ],
+  "activated": true,
+  "backend_markers": {
+    "_coherent.so": "rust-1.99.1/std-sort/ordinary",
+    "_coherent_pair.so": "rust-1.99.1/std-sort/pair"
+  },
+  "mapped_libraries": {
+    "1968311": [
+      "_coherent.so",
+      "_coherent_pair.so"
+    ],
+    "1968314": [
+      "_coherent.so",
+      "_coherent_pair.so"
+    ]
+  }
+}

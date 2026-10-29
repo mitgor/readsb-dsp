@@ -1,0 +1,29 @@
+{
+  "healthy": true,
+  "aligned_seconds": 419,
+  "protected_pids_unchanged": true,
+  "samples": {
+    "samples_lost": 0,
+    "samples_dropped": 0
+  },
+  "guard": {
+    "state": "healthy",
+    "updated_unix": 1793303326.483235,
+    "failures": 0,
+    "aligned_seconds": 419
+  },
+  "mapped": {
+    "1968311": [
+      "_coherent.so",
+      "_coherent_pair.so"
+    ],
+    "1968314": [
+      "_coherent.so",
+      "_coherent_pair.so"
+    ]
+  },
+  "backends": {
+    "_coherent.so": "rust-1.99.1/std-sort/ordinary",
+    "_coherent_pair.so": "rust-1.99.1/std-sort/pair"
+  }
+}

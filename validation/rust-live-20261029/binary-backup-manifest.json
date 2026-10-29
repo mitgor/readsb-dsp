@@ -1,0 +1,26 @@
+{
+  "copies": [
+    {
+      "name": "_coherent.so",
+      "sha256": "4b0ace9ff94b985742ee97b15c7d9472a65ceb3c6603f0d2b82acfc1e4c17cc3",
+      "bytes": 538816
+    },
+    {
+      "name": "_coherent_pair.so",
+      "sha256": "54ae8162e10e029ddf5303762ba5fd3d6e842dcd9c21b17f26430a0ec9055f8d",
+      "bytes": 538816
+    },
+    {
+      "name": "previous-C.so",
+      "sha256": "4f49f8179e46e4836fd4704a89d583cf900baf25024ca79f94b63b64b633faf3",
+      "bytes": 70568
+    },
+    {
+      "name": "previous-C-pair.so",
+      "sha256": "961a2c05cfd90d2a299898351f79f173d96289483ccf54d34526577640b84ba5",
+      "bytes": 70528
+    }
+  ],
+  "private_files_under_ignored_work": true,
+  "receiver_backup_preserved": true
+}
