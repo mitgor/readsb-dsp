@@ -8,7 +8,7 @@ User=pi
 Group=readsb
 WorkingDirectory=/home/pi/adsb-neural-rescue
 Environment=PYTHONPATH=/home/pi/adsb-neural-rescue/src
-ExecStart=/home/pi/adsb-neural-rescue/.venv/bin/python -m rescue.native_phase_shadow --binary /home/pi/readsb-dsp-phase-shadow/libdsp_stream_phase.so --commit b1fce23 --lat 52.4256 --lon 13.1556 --duration 1800
+ExecStart=/home/pi/adsb-neural-rescue/.venv/bin/python -m rescue.native_phase_shadow --binary /home/pi/readsb-dsp-phase-shadow/libdsp_stream_phase.so --old-binary /home/pi/stream1090-shadow/build/stream1090 --commit b1fce23 --lat 52.4256 --lon 13.1556 --duration 1200 --status /run/adsb-rescue/native-phase-direct-status.json
 Restart=no
 Nice=19
 CPUQuota=80%

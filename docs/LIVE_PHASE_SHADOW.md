@@ -2,12 +2,26 @@
 
 This research observer reads the **existing nonblocking IQ copy** on the Pi.
 It does not open an SDR or send a Beast/AVR feed. The working readsb and FR24
-services continue to own reception and output. The observer has a 30-minute
-runtime, low scheduling priority, an 80% one-core CPU ceiling, 256 MB memory
+services continue to own reception and output. The observer has a bounded
+20-minute direct-pairing runtime (the previous validation used 30 minutes),
+low scheduling priority, an 80% one-core CPU ceiling, 256 MB memory
 ceiling, and writes a bounded event log to `/run` (RAM). It is not enabled at
 boot.
 
-The observer compares CRC-valid DF17 candidates with separately read stock
+The observer can run the pinned old Stream1090 executable and native C on each
+identical one-second IQ core. It aligns their sample clocks using at least ten
+shared clean payloads, requires a stable median offset, and pairs exact DF17
+payloads within 120 µs. It reports old-only clean events, how many native
+repairs recover, and residual old-only events. This compares decoder output
+before the production stock-identity and conflict guard; a matched packet is
+not independently verified. The same old executable and flags are used by
+the working Stream1090 integration, which also starts a bounded process per
+RF second. Direct-pairing aggregates are in the RAM-only
+`/run/adsb-rescue/native-phase-direct-status.direct.jsonl` file.
+The [20-minute direct comparison](../validation/stream-phase-live-20261029/native-direct-live/REPORT.md)
+reports its final counts and limitations.
+
+Separately, the observer compares CRC-valid DF17 candidates with read-only stock
 and actual unified Beast streams. Stock-absent counts are distinct from
 unified-absent counts. A candidate absent from the unified stream is only a
 *shadow candidate*: the full production guard knows corrected-bit status, but
@@ -28,9 +42,10 @@ The drop-in requires one restart of `adsb-rescue-shadow`; `readsb`, `fr24feed`
 and `adsb-rescue-feed` are not restarted. After starting, check all of those
 services, `/run/adsb-rescue/feed-status.json` stock age and upstream error,
 the production `/run/adsb-rescue/status.json` input drop counters, and the
-observer's `/run/adsb-rescue/native-phase-status.json` for decoder errors and
-incomplete comparison windows. The event log is
-`/run/adsb-rescue/native-phase-status.events.jsonl`.
+observer's configured `--status` path for decoder errors and incomplete
+comparison windows. The event log uses the same stem with `.events.jsonl`;
+the direct-pairing log uses `.direct.jsonl`. The current service uses
+`/run/adsb-rescue/native-phase-direct-status.json`.
 
 For rollback, stop `adsb-native-phase-shadow`, remove only
 `/etc/systemd/system/adsb-rescue-shadow.service.d/95-native-phase-mirror.conf`,

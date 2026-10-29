@@ -1,0 +1,34 @@
+{
+  "source_commit": "b1fce23",
+  "old_binary": "/home/pi/stream1090-shadow/build/stream1090",
+  "comparison": "same live UC8 one-second cores; exact DF17 payload within 120 us",
+  "duration_s": 1200.1,
+  "paired_rf_seconds": 1148,
+  "processed_rf_seconds": 1148,
+  "research_iq_discontinuities": 115,
+  "research_queue_shed_seconds": 0,
+  "old_decoder_errors": 0,
+  "native_decoder_errors": 0,
+  "clock": {
+    "median_residual_ticks": -1.0,
+    "max_mad_ticks": 1.0,
+    "min_shared_clean_frames_per_window": 54
+  },
+  "counts": {
+    "old_total": 117986,
+    "native_clean_total": 125190,
+    "native_all_total": 159221,
+    "old_only_clean": 17503,
+    "old_only_clean_recovered_by_repair": 15512,
+    "old_only_clean_remaining": 1991,
+    "old_full_matched": 115995,
+    "old_full_missed": 1991,
+    "native_only": 43226,
+    "old_only_clean_beyond_stock": 6740,
+    "old_only_clean_recovered_beyond_stock": 5327,
+    "native_only_beyond_stock": 10105
+  },
+  "old_only_clean_recovered_percent": 88.625,
+  "old_only_beyond_stock_recovered_percent": 79.036,
+  "scope_limit": "Pinned old Stream1090 executable and native C see the same IQ. The comparison is before the production guard and is not independent packet truth."
+}
