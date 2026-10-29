@@ -1,0 +1,15 @@
+{
+  "attempt": 1,
+  "outcome": "safety_abort",
+  "external_shadow_restart_utc": "2026-10-29 20:11:01 to 20:11:03",
+  "observed_error": "Monitor saw None latency during startup; missing-value comparison raised TypeError after two unhealthy observations. Owned benchmark group was terminated.",
+  "our_service_mutations": false,
+  "known_unchanged_services": [
+    "readsb",
+    "fr24feed",
+    "adsb-far-capture"
+  ],
+  "existing_rust_coherent_remained_active": true,
+  "partial_cpu_results_used": false,
+  "next_attempt": "Same frozen code/fixture; new healthy service baseline; detect PID change before interpreting optional latency."
+}

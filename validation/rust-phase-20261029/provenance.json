@@ -1,0 +1,35 @@
+{
+  "source_sha256": {
+    "src/rescue/research_science.c": "ebee838869ffd76a97927cf94e674030e5590f9af22f2c4d36b23dbc24527ebe",
+    "src/rescue/coherent_kernel.c": "7daf390ecb5008444f1e5e3747f99130c33d42fab578b02b55f37a29d60b6384",
+    "src/rescue/coherent_sort.h": "e5757b6c1d206a0c4d742624cbeb3a51f678c98d91448e9831f50541553a6298",
+    "src/rescue/coherent_rust.rs": "d010a6ad488ceb332a71fe1a1e68b47db799362e6135bf6989c62865a28a817f",
+    "experiments/rust-phase/phase.rs": "245aab75525dc78b344681655dc2182bff2d4438df0a6b7392f5ecffef208196",
+    "experiments/rust-phase/driver.c": "433eb3c1d0ace50b0bff738cb3ac8b8c32ccfa754a3e2b678cc75231f87647dd",
+    "experiments/rust-phase/build.py": "7241f34e55b68839854c490cb6d919594570d60f40093cb790acd735ca1b61fe",
+    "experiments/rust-phase/benchmark.py": "02c9a6c7a5ed9466ba897b76e959510ebc95c56394fd9c0343860531636f9e9e",
+    "experiments/rust-phase/controls.py": "7dcc5c929fecfdcac9a48d4efb9b2012c0a1f6bc12fdf190163bffdc0ee36ccd"
+  },
+  "fixture_sha256": "d3fee9a7059c3bbd4e9f65c48c5574ef291a40e2d0973be15024ac1e7f0dbedf",
+  "scope": "EM sf_em only (method 0), not sequence or combined em_sequence; no live routing or model/library changes",
+  "rust_version": "1.99.1",
+  "historical_hardware": "Pi 4",
+  "new_target": "Pi 5",
+  "no_reserved_rf_used": true,
+  "no_training_labels_created": true,
+  "results_sha256": {
+    "mac.json": "5e5dffe19754337c1a4390b238876c5d6a176bace0315b0a2c3421aebdd91ebe",
+    "pi.json": "7cef826b174ca6c13c7b541f8fabb8cbbe2638f1bf893f8a30e9fa20eadfc45f",
+    "pi-health.json": "b3bc6b361cef6345051212a82e7e18c4d09852f1d1662f5ec52661b0abfd6e0c",
+    "pi-controls.json": "16c2aa5a556752cdffbda2b78c2d5f34f04438aebbcddd9e2e796bf52295255f",
+    "mac-controls.json": "16c2aa5a556752cdffbda2b78c2d5f34f04438aebbcddd9e2e796bf52295255f",
+    "input-manifest.json": "9563c0e1f98890e9041940cfdc7d767b623799c7c61f59a4e9a5bc1ab143353c",
+    "interruption.json": "31dbd61b7fdf8eb6c8b26b9b174586cab082c32251542b16030ba5cae7ebc6b2"
+  },
+  "successful_pi_attempt": 2,
+  "additional_source_sha256": {
+    "experiments/rust-phase/protected_job.py": "c7fdb70cf4c0f4dc67293e51b039aec1e886adb2a2ac3ebc5cfeba2189f019a7",
+    "experiments/rust-phase/pi_job.sh": "ad3ce18d09dcc8f305ae9197f5c9c2af4d2cea29deb85e57e6075eae9e7d7e70",
+    "experiments/rust-phase/report.py": "b748b35f40033e69d450f4574181c5996f2e9ccc67124a0bccb325351c38a9d3"
+  }
+}

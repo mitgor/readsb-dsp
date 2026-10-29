@@ -1,0 +1,34 @@
+Started rust-phase-benchmark-20261029.service - /home/pi/adsb-neural-rescue/.venv/bin/python experiments/rust-phase/protected_job.py.
+{
+  "1": {
+    "clean_valid": 48,
+    "weak_valid": 16,
+    "negative_valid": 0,
+    "repairs": 16
+  },
+  "2": {
+    "clean_valid": 48,
+    "weak_valid": 16,
+    "negative_valid": 0,
+    "repairs": 16
+  },
+  "4": {
+    "clean_valid": 48,
+    "weak_valid": 16,
+    "negative_valid": 0,
+    "repairs": 16
+  }
+}
+iterations 1 saving 10.406337783474251
+iterations 2 saving 9.806671441931059
+Traceback (most recent call last):
+  File "/dev/shm/rust-phase-20261029/experiments/rust-phase/protected_job.py", line 10, in <module>
+    s=m['snapshot']();m['healthy'](before,s);assert s['shadow_pid']==before['shadow_pid'],'DSP restarted';samples.append({k:s[k] for k in ['unix','pids','shadow_pid','samples','pending','mean_latency_s','temperature_c']});bad=0
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/sbin/adsb-coherent-rust-mode", line 32, in healthy
+    assert s['mean_latency_s']<.75 and s['pending']<=4 and s['temperature_c']<75,'Worker health bound exceeded'
+           ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'NoneType' and 'float'
+rust-phase-benchmark-20261029.service: Main process exited, code=exited, status=1/FAILURE
+rust-phase-benchmark-20261029.service: Failed with result 'exit-code'.
+rust-phase-benchmark-20261029.service: Consumed 28.682s CPU time.

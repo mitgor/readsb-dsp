@@ -1,0 +1,26 @@
+Started rust-phase-benchmark-v2-20261029.service - /home/pi/adsb-neural-rescue/.venv/bin/python experiments/rust-phase/protected_job.py.
+{
+  "1": {
+    "clean_valid": 48,
+    "weak_valid": 16,
+    "negative_valid": 0,
+    "repairs": 16
+  },
+  "2": {
+    "clean_valid": 48,
+    "weak_valid": 16,
+    "negative_valid": 0,
+    "repairs": 16
+  },
+  "4": {
+    "clean_valid": 48,
+    "weak_valid": 16,
+    "negative_valid": 0,
+    "repairs": 16
+  }
+}
+iterations 1 saving 10.370576308137968
+iterations 2 saving 9.389381935632112
+iterations 4 saving 9.262114812247745
+rust-phase-benchmark-v2-20261029.service: Deactivated successfully.
+rust-phase-benchmark-v2-20261029.service: Consumed 40.535s CPU time.

@@ -1,0 +1,141 @@
+{
+  "historical_source": "results/all-dsp-pi-20261026/pi-result.json in adsb-neural-rescue",
+  "source_sha256": "3f971ddb640c99a989e4ab524d000fa457391a9eb66a920c5c6e89246cad40fe",
+  "historical_hardware": "Raspberry Pi 4 Model B Rev 1.2 (report metadata)",
+  "new_target": "Raspberry Pi 5 (current receiver)",
+  "historical_stages": {
+    "EM decision (includes coherent preparation)": {
+      "captures": 72,
+      "mean_cpu_s_per_approximately_one_rf_second": 0.7189722459861034,
+      "median": 0.7165949779999785
+    },
+    "Coherent kernel": {
+      "captures": 72,
+      "mean_cpu_s_per_approximately_one_rf_second": 0.07061555574999658,
+      "median": 0.06950842599999874
+    },
+    "Shared frontend": {
+      "captures": 72,
+      "mean_cpu_s_per_approximately_one_rf_second": 0.2746475630138927,
+      "median": 0.2740447679999818
+    },
+    "Shared legacy bundle": {
+      "captures": 72,
+      "mean_cpu_s_per_approximately_one_rf_second": 0.5498212229444438,
+      "median": 0.5511173509999994
+    },
+    "Shared selection": {
+      "captures": 72,
+      "mean_cpu_s_per_approximately_one_rf_second": 0.4955435651249963,
+      "median": 0.4940431069999818
+    },
+    "Sequence kernel": {
+      "captures": 72,
+      "mean_cpu_s_per_approximately_one_rf_second": 0.16727693486110357,
+      "median": 0.16707448650004153
+    }
+  },
+  "same_four_capture_total_method_costs": {
+    "energy": {
+      "extra": 5,
+      "far": 0,
+      "additional": 0,
+      "additional_far": 0,
+      "cpu": 0.4987839772613695
+    },
+    "timing": {
+      "extra": 9,
+      "far": 0,
+      "additional": 0,
+      "additional_far": 0,
+      "cpu": 0.7489833724387831
+    },
+    "soft": {
+      "extra": 7,
+      "far": 0,
+      "additional": 0,
+      "additional_far": 0,
+      "cpu": 0.7504855613443321
+    },
+    "matched": {
+      "extra": 11,
+      "far": 0,
+      "additional": 0,
+      "additional_far": 0,
+      "cpu": 0.7439863776861624
+    },
+    "coherent": {
+      "extra": 17,
+      "far": 0,
+      "additional": 0,
+      "additional_far": 0,
+      "cpu": 0.5602592602448672
+    },
+    "sequence": {
+      "extra": 8,
+      "far": 0,
+      "additional": 1,
+      "additional_far": 0,
+      "cpu": 0.713943857571233
+    },
+    "acquisition": {
+      "extra": 23,
+      "far": 0,
+      "additional": 2,
+      "additional_far": 0,
+      "cpu": 0.79873229760121
+    },
+    "em2": {
+      "extra": 13,
+      "far": 0,
+      "additional": 0,
+      "additional_far": 0,
+      "cpu": 1.2081364928785656
+    },
+    "header": {
+      "extra": 1,
+      "far": 0,
+      "additional": 1,
+      "additional_far": 0,
+      "cpu": 1.8459715002498747
+    },
+    "sic": {
+      "extra": 0,
+      "far": 0,
+      "additional": 0,
+      "additional_far": 0,
+      "cpu": 1.0395646727886059
+    },
+    "cfar": {
+      "extra": 1,
+      "far": 0,
+      "additional": 1,
+      "additional_far": 0,
+      "cpu": 1.6979501188155923
+    },
+    "joint": {
+      "extra": 1,
+      "far": 0,
+      "additional": 0,
+      "additional_far": 0,
+      "cpu": 1.6371744982508762
+    },
+    "neural_frozen": {
+      "extra": 4,
+      "far": 0,
+      "additional": 0,
+      "additional_far": 0,
+      "cpu": 0.6585685837081452
+    },
+    "neural_companion": {
+      "extra": 7,
+      "far": 0,
+      "additional": 0,
+      "additional_far": 0,
+      "cpu": 0.7363971458020983
+    }
+  },
+  "selected": "C sf_em, method=0 of rescue_science, default two iterations; also 1 and 4 iteration bounds",
+  "rationale": "EM native-heavy decision work is far above coherent per-window work and the measured frontend/sequence stages in this common historical cohort. Header, CFAR and legacy joint totals cannot rank their C kernels: those branches include extensive Python/NumPy work. This is an evidence-based candidate selection, not an exhaustive all-functions CPU profile.",
+  "excluded_unrelated_costs": "Do not compare whole-method standalone CPU with an isolated C function or mix historic Pi 4 and new Pi 5 rates."
+}

@@ -1,0 +1,20 @@
+{
+  "1": {
+    "clean_valid": 48,
+    "weak_valid": 16,
+    "negative_valid": 0,
+    "repairs": 16
+  },
+  "2": {
+    "clean_valid": 48,
+    "weak_valid": 16,
+    "negative_valid": 0,
+    "repairs": 16
+  },
+  "4": {
+    "clean_valid": 48,
+    "weak_valid": 16,
+    "negative_valid": 0,
+    "repairs": 16
+  }
+}
