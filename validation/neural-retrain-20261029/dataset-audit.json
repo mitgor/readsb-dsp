@@ -1,0 +1,72 @@
+{
+  "splits": {
+    "train": {
+      "windows": 8838,
+      "new": 2615,
+      "new_far180": 8,
+      "sha256": "51265760f82f07cb085d46e2235511c5d0f3c96994876c7277398c294672799e"
+    },
+    "validation": {
+      "windows": 1596,
+      "new": 562,
+      "new_far180": 1,
+      "sha256": "df38f1c1e547c86c48143c2aba4d8c28b1ea228dbb36cb4beb1296349a09af84"
+    },
+    "test": {
+      "windows": 630,
+      "new": 178,
+      "new_far180": 0,
+      "sha256": "7ae07e6c0ec5196d137bbbd54fff5075a2f6f4ac9d433c67585093198abfd9aa"
+    }
+  },
+  "cross_split": {
+    "train_validation": {
+      "icao": 0,
+      "payload": 0,
+      "iq": 0
+    },
+    "train_test": {
+      "icao": 0,
+      "payload": 0,
+      "iq": 0
+    },
+    "validation_test": {
+      "icao": 0,
+      "payload": 0,
+      "iq": 0
+    }
+  },
+  "models": {
+    "raw": {
+      "noise": {
+        "windows": 20000,
+        "valid": 0
+      },
+      "export": {
+        "sha256": "395b55eb8075956514ef2e51b547f2c4e56c1215b3e5e6037f1599fac46f26b1",
+        "max_logit_difference": 3.0517578125e-05,
+        "bit_differences": 0,
+        "packet_bytes_exact": true
+      }
+    },
+    "dsp": {
+      "noise": {
+        "windows": 20000,
+        "valid": 0
+      },
+      "export": {
+        "sha256": "184fd12c076b0c64abe4f496f7781c76d292515b5d191c3078839b7c3f1b5be1",
+        "max_logit_difference": 3.0517578125e-05,
+        "bit_differences": 0,
+        "packet_bytes_exact": true
+      }
+    }
+  },
+  "chronological_rf": {
+    "rf_seconds": 40.650013333333334,
+    "stock_packets": 1304,
+    "stock_packets_with_training_icao": 608,
+    "stock_packets_with_training_payload": 23,
+    "policy": "Temporally held-out RF, not claimed ICAO-disjoint. Windows train/validation/test are ICAO/payload/IQ-disjoint. Field packets matching a training payload cannot establish new-payload generalization. No post-freeze prospective RF was collected."
+  }
+}

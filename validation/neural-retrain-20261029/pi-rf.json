@@ -1,0 +1,529 @@
+{
+  "hardware": "Linux-6.12.109+rpt-rpi-2712-aarch64-with-glibc2.36",
+  "candidate_sha256": "184fd12c076b0c64abe4f496f7781c76d292515b5d191c3078839b7c3f1b5be1",
+  "cases": [
+    {
+      "file": "capture-1793271525030920024-097.uc8",
+      "rf_seconds": 0.05230625,
+      "cpu_seconds": {
+        "dsp": 0.03653755600000008,
+        "coherent": 0.013837666999999998,
+        "stream1090": 0.008752,
+        "extended_dsp": 0.027004387999999935
+      },
+      "raw_baseline": 11,
+      "raw_coherent": 0
+    },
+    {
+      "file": "capture-1793271525030920024-098.uc8",
+      "rf_seconds": 1.9114666666666666,
+      "cpu_seconds": {
+        "dsp": 0.536991091,
+        "coherent": 0.37928312799999997,
+        "stream1090": 0.22260499999999997,
+        "extended_dsp": 0.5917565549999999
+      },
+      "raw_baseline": 109,
+      "raw_coherent": 9
+    },
+    {
+      "file": "capture-1793271525030920024-099.uc8",
+      "rf_seconds": 0.0421125,
+      "cpu_seconds": {
+        "dsp": 0.011552963000000194,
+        "coherent": 0.009421314999999986,
+        "stream1090": 0.007947000000000003,
+        "extended_dsp": 0.014045757999999964
+      },
+      "raw_baseline": 5,
+      "raw_coherent": 0
+    },
+    {
+      "file": "capture-1793271525030920024-100.uc8",
+      "rf_seconds": 1.9387729166666667,
+      "cpu_seconds": {
+        "dsp": 0.572663033,
+        "coherent": 0.3866390750000006,
+        "stream1090": 0.22435800000000003,
+        "extended_dsp": 0.6039009769999995
+      },
+      "raw_baseline": 117,
+      "raw_coherent": 10
+    },
+    {
+      "file": "capture-1793271525030920024-101.uc8",
+      "rf_seconds": 0.05230625,
+      "cpu_seconds": {
+        "dsp": 0.02272773899999958,
+        "coherent": 0.010923647000000258,
+        "stream1090": 0.008901000000000006,
+        "extended_dsp": 0.020883167000000036
+      },
+      "raw_baseline": 8,
+      "raw_coherent": 1
+    },
+    {
+      "file": "capture-1793271525030920024-102.uc8",
+      "rf_seconds": 1.9114666666666666,
+      "cpu_seconds": {
+        "dsp": 0.5347226269999998,
+        "coherent": 0.38830152599999934,
+        "stream1090": 0.22093199999999996,
+        "extended_dsp": 0.6203932070000002
+      },
+      "raw_baseline": 134,
+      "raw_coherent": 19
+    },
+    {
+      "file": "capture-1793271525030920024-103.uc8",
+      "rf_seconds": 0.05230625,
+      "cpu_seconds": {
+        "dsp": 0.01976292500000021,
+        "coherent": 0.010949092999999799,
+        "stream1090": 0.008941999999999846,
+        "extended_dsp": 0.018036314999999803
+      },
+      "raw_baseline": 2,
+      "raw_coherent": 0
+    },
+    {
+      "file": "capture-1793271525030920024-104.uc8",
+      "rf_seconds": 1.9387729166666667,
+      "cpu_seconds": {
+        "dsp": 0.5307069460000005,
+        "coherent": 0.3833728179999998,
+        "stream1090": 0.2275580000000001,
+        "extended_dsp": 0.5963652000000002
+      },
+      "raw_baseline": 129,
+      "raw_coherent": 12
+    },
+    {
+      "file": "capture-1793271525030920024-105.uc8",
+      "rf_seconds": 0.05230625,
+      "cpu_seconds": {
+        "dsp": 0.016165868999999944,
+        "coherent": 0.013041239000000537,
+        "stream1090": 0.009305000000000035,
+        "extended_dsp": 0.01755533499999995
+      },
+      "raw_baseline": 3,
+      "raw_coherent": 0
+    },
+    {
+      "file": "capture-1793271525030920024-106.uc8",
+      "rf_seconds": 1.9114666666666666,
+      "cpu_seconds": {
+        "dsp": 0.5186965680000002,
+        "coherent": 0.3772456299999991,
+        "stream1090": 0.21952700000000006,
+        "extended_dsp": 0.5713389729999996
+      },
+      "raw_baseline": 100,
+      "raw_coherent": 8
+    },
+    {
+      "file": "capture-1793271525030920024-107.uc8",
+      "rf_seconds": 0.05230625,
+      "cpu_seconds": {
+        "dsp": 0.014075111000000362,
+        "coherent": 0.009964499999998822,
+        "stream1090": 0.008759999999999976,
+        "extended_dsp": 0.014540907000000658
+      },
+      "raw_baseline": 4,
+      "raw_coherent": 0
+    },
+    {
+      "file": "capture-1793271525030920024-108.uc8",
+      "rf_seconds": 1.9114666666666666,
+      "cpu_seconds": {
+        "dsp": 0.5349721800000005,
+        "coherent": 0.38631233000000087,
+        "stream1090": 0.22564800000000002,
+        "extended_dsp": 0.5706790369999997
+      },
+      "raw_baseline": 105,
+      "raw_coherent": 9
+    },
+    {
+      "file": "capture-1793271525030920024-109.uc8",
+      "rf_seconds": 0.05230625,
+      "cpu_seconds": {
+        "dsp": 0.0146040739999993,
+        "coherent": 0.01063896299999989,
+        "stream1090": 0.009036000000000113,
+        "extended_dsp": 0.015596999999999639
+      },
+      "raw_baseline": 6,
+      "raw_coherent": 1
+    },
+    {
+      "file": "capture-1793271525030920024-110.uc8",
+      "rf_seconds": 1.9114666666666666,
+      "cpu_seconds": {
+        "dsp": 0.5343591610000011,
+        "coherent": 0.3803446819999987,
+        "stream1090": 0.22317599999999987,
+        "extended_dsp": 0.5896649209999989
+      },
+      "raw_baseline": 99,
+      "raw_coherent": 9
+    },
+    {
+      "file": "capture-1793271525030920024-111.uc8",
+      "rf_seconds": 0.05230625,
+      "cpu_seconds": {
+        "dsp": 0.016313224000001014,
+        "coherent": 0.01107577800000037,
+        "stream1090": 0.008758999999999947,
+        "extended_dsp": 0.018457037999999315
+      },
+      "raw_baseline": 1,
+      "raw_coherent": 0
+    },
+    {
+      "file": "capture-1793271525030920024-112.uc8",
+      "rf_seconds": 1.90916,
+      "cpu_seconds": {
+        "dsp": 0.5276939970000001,
+        "coherent": 0.375264649,
+        "stream1090": 0.22255599999999998,
+        "extended_dsp": 0.5831254609999998
+      },
+      "raw_baseline": 117,
+      "raw_coherent": 16
+    },
+    {
+      "file": "capture-1793271525030920024-113.uc8",
+      "rf_seconds": 0.05230625,
+      "cpu_seconds": {
+        "dsp": 0.012897332999999733,
+        "coherent": 0.012092331999999928,
+        "stream1090": 0.00869899999999997,
+        "extended_dsp": 0.014741796000000917
+      },
+      "raw_baseline": 1,
+      "raw_coherent": 0
+    },
+    {
+      "file": "capture-1793271525030920024-114.uc8",
+      "rf_seconds": 1.9387729166666667,
+      "cpu_seconds": {
+        "dsp": 0.5514598970000009,
+        "coherent": 0.38916380899999936,
+        "stream1090": 0.22238100000000033,
+        "extended_dsp": 0.589030579000001
+      },
+      "raw_baseline": 111,
+      "raw_coherent": 26
+    },
+    {
+      "file": "capture-1793271525030920024-115.uc8",
+      "rf_seconds": 0.05230625,
+      "cpu_seconds": {
+        "dsp": 0.01815488700000145,
+        "coherent": 0.012868682000000575,
+        "stream1090": 0.009909000000000084,
+        "extended_dsp": 0.018202948000000774
+      },
+      "raw_baseline": 0,
+      "raw_coherent": 0
+    },
+    {
+      "file": "capture-1793271525030920024-116.uc8",
+      "rf_seconds": 1.9114666666666666,
+      "cpu_seconds": {
+        "dsp": 0.5148617050000013,
+        "coherent": 0.40714605399999826,
+        "stream1090": 0.23471400000000006,
+        "extended_dsp": 0.5674901969999979
+      },
+      "raw_baseline": 71,
+      "raw_coherent": 5
+    },
+    {
+      "file": "capture-1793271525030920024-117.uc8",
+      "rf_seconds": 0.05230625,
+      "cpu_seconds": {
+        "dsp": 0.01732626200000098,
+        "coherent": 0.012697926000001303,
+        "stream1090": 0.009143000000000012,
+        "extended_dsp": 0.019571406000000735
+      },
+      "raw_baseline": 7,
+      "raw_coherent": 1
+    },
+    {
+      "file": "capture-1793271525030920024-118.uc8",
+      "rf_seconds": 1.9387729166666667,
+      "cpu_seconds": {
+        "dsp": 0.5729840569999993,
+        "coherent": 0.3925229449999996,
+        "stream1090": 0.2246729999999998,
+        "extended_dsp": 0.5805309049999998
+      },
+      "raw_baseline": 112,
+      "raw_coherent": 14
+    },
+    {
+      "file": "capture-1793271525030920024-119.uc8",
+      "rf_seconds": 0.05230625,
+      "cpu_seconds": {
+        "dsp": 0.015585148999999632,
+        "coherent": 0.011304296999998797,
+        "stream1090": 0.009912999999999866,
+        "extended_dsp": 0.017690129999998305
+      },
+      "raw_baseline": 1,
+      "raw_coherent": 0
+    },
+    {
+      "file": "capture-1793271525030920024-120.uc8",
+      "rf_seconds": 1.9137733333333333,
+      "cpu_seconds": {
+        "dsp": 0.5260454960000018,
+        "coherent": 0.38006773800000104,
+        "stream1090": 0.21944700000000042,
+        "extended_dsp": 0.5755568130000022
+      },
+      "raw_baseline": 68,
+      "raw_coherent": 9
+    },
+    {
+      "file": "capture-1793271525030920024-121.uc8",
+      "rf_seconds": 0.05230625,
+      "cpu_seconds": {
+        "dsp": 0.014446481000000233,
+        "coherent": 0.010675870000000032,
+        "stream1090": 0.009760000000000185,
+        "extended_dsp": 0.015789036999997563
+      },
+      "raw_baseline": 0,
+      "raw_coherent": 0
+    },
+    {
+      "file": "capture-1793271525030920024-122.uc8",
+      "rf_seconds": 0.05230625,
+      "cpu_seconds": {
+        "dsp": 0.014338333999997843,
+        "coherent": 0.01156611100000049,
+        "stream1090": 0.008642000000000233,
+        "extended_dsp": 0.013643352000002551
+      },
+      "raw_baseline": 3,
+      "raw_coherent": 0
+    },
+    {
+      "file": "capture-1793271525030920024-123.uc8",
+      "rf_seconds": 1.9114658333333334,
+      "cpu_seconds": {
+        "dsp": 0.5223566470000023,
+        "coherent": 0.37626318000000225,
+        "stream1090": 0.22259400000000015,
+        "extended_dsp": 0.5837509319999974
+      },
+      "raw_baseline": 50,
+      "raw_coherent": 8
+    },
+    {
+      "file": "capture-1793271525030920024-124.uc8",
+      "rf_seconds": 0.0421125,
+      "cpu_seconds": {
+        "dsp": 0.011545129000001708,
+        "coherent": 0.009382647999998994,
+        "stream1090": 0.007561000000000095,
+        "extended_dsp": 0.013015535999997496
+      },
+      "raw_baseline": 1,
+      "raw_coherent": 1
+    },
+    {
+      "file": "capture-1793271525030920024-125.uc8",
+      "rf_seconds": 0.05230625,
+      "cpu_seconds": {
+        "dsp": 0.01584405599999883,
+        "coherent": 0.01417675899999793,
+        "stream1090": 0.010323000000000249,
+        "extended_dsp": 0.019256779999999196
+      },
+      "raw_baseline": 5,
+      "raw_coherent": 1
+    },
+    {
+      "file": "capture-1793271525030920024-126.uc8",
+      "rf_seconds": 1.8841591666666666,
+      "cpu_seconds": {
+        "dsp": 0.5021632270000005,
+        "coherent": 0.37448994099999666,
+        "stream1090": 0.21876399999999993,
+        "extended_dsp": 0.6018464009999995
+      },
+      "raw_baseline": 81,
+      "raw_coherent": 10
+    },
+    {
+      "file": "capture-1793271525030920024-127.uc8",
+      "rf_seconds": 0.05230625,
+      "cpu_seconds": {
+        "dsp": 0.016874465000000782,
+        "coherent": 0.010741795999997805,
+        "stream1090": 0.009232000000000046,
+        "extended_dsp": 0.01700216600000104
+      },
+      "raw_baseline": 2,
+      "raw_coherent": 0
+    },
+    {
+      "file": "capture-1793271525030920024-128.uc8",
+      "rf_seconds": 1.8841591666666666,
+      "cpu_seconds": {
+        "dsp": 0.5136097799999995,
+        "coherent": 0.373965455999997,
+        "stream1090": 0.21807800000000035,
+        "extended_dsp": 0.5625415780000012
+      },
+      "raw_baseline": 49,
+      "raw_coherent": 5
+    },
+    {
+      "file": "capture-1793271525030920024-129.uc8",
+      "rf_seconds": 0.05230625,
+      "cpu_seconds": {
+        "dsp": 0.014940684999999121,
+        "coherent": 0.011237834000002778,
+        "stream1090": 0.008893000000000206,
+        "extended_dsp": 0.016492148000001094
+      },
+      "raw_baseline": 3,
+      "raw_coherent": 0
+    },
+    {
+      "file": "capture-1793271525030920024-130.uc8",
+      "rf_seconds": 1.9387733333333332,
+      "cpu_seconds": {
+        "dsp": 0.5149551629999998,
+        "coherent": 0.3828528690000006,
+        "stream1090": 0.22294399999999975,
+        "extended_dsp": 0.5592538880000006
+      },
+      "raw_baseline": 49,
+      "raw_coherent": 7
+    },
+    {
+      "file": "capture-1793271525030920024-131.uc8",
+      "rf_seconds": 0.05230625,
+      "cpu_seconds": {
+        "dsp": 0.016276590000000368,
+        "coherent": 0.011971776999999406,
+        "stream1090": 0.010498000000000035,
+        "extended_dsp": 0.01856420399999692
+      },
+      "raw_baseline": 4,
+      "raw_coherent": 1
+    },
+    {
+      "file": "capture-1793271525030920024-132.uc8",
+      "rf_seconds": 9.011199583333333,
+      "cpu_seconds": {
+        "dsp": 2.4456174190000013,
+        "coherent": 1.791368681999998,
+        "stream1090": 1.0184890000000002,
+        "extended_dsp": 2.6998102400000015
+      },
+      "raw_baseline": 359,
+      "raw_coherent": 38
+    }
+  ],
+  "rf_seconds": 40.65001333333334,
+  "effective_rf_seconds": 40.57801333333332,
+  "baseline_methods": {
+    "energy": true,
+    "crc": true,
+    "timing": true,
+    "soft": true,
+    "matched": true,
+    "coherent": true,
+    "header": false,
+    "sic": false,
+    "neural": true,
+    "pulse": false,
+    "stream1090": true,
+    "sequence": false,
+    "acquisition": false
+  },
+  "baseline_models": [
+    "2422633f33e600eaa295dbd3cc48639573b2741adf641d6ad834b01f0be445d9",
+    "fe10fdc4ff4f71da03aae5b5a76106a42ce9cbbda5f27a917c8f7fd9e07429aa",
+    "18285149351966395b859a150e8bdc494576ecdc7ca17c7d3043226e899c0eb9"
+  ],
+  "alignment": {
+    "matches": 1144,
+    "median_abs_error_us": 0.08333333333333333,
+    "verified": true
+  },
+  "stream_alignment": {
+    "anchors": 1128,
+    "offset": -1629,
+    "mad": 0.0
+  },
+  "guards": {
+    "duplicate_120us": 2868,
+    "added_energy": 40,
+    "added_timing": 51,
+    "added_soft": 39,
+    "added_matched": 11,
+    "no_prior_stock_icao": 11,
+    "added_coherent": 60,
+    "added_neural": 1,
+    "added_stream1090": 22
+  },
+  "candidate_guards": {
+    "pulse_valid_candidates": 1687,
+    "already_stock": 1467,
+    "already_actual_pipeline": 186,
+    "no_prior_stock_icao": 2,
+    "already_accepted_dsp": 32
+  },
+  "baseline_guarded_extras": 224,
+  "raw_extension_losses": 0,
+  "raw_extension_loss_events": [],
+  "add_only_baseline_losses": 0,
+  "unique_additions_beyond_complete_pipeline": 0,
+  "distance_bins": {
+    "50-100": {
+      "current_guarded_dsp_extras": 60
+    },
+    "100-150": {
+      "current_guarded_dsp_extras": 121
+    },
+    "150-180": {
+      "current_guarded_dsp_extras": 16
+    },
+    "0-50": {
+      "current_guarded_dsp_extras": 1
+    },
+    "unknown": {
+      "current_guarded_dsp_extras": 22
+    },
+    "200-250": {
+      "current_guarded_dsp_extras": 4
+    }
+  },
+  "extras": [],
+  "baseline_digest": "d7d48a94b052d5f68ff5cd2495172607dc1630080c686f4522bafe9c108eee4c",
+  "extra_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+  "cpu_seconds": {
+    "dsp": 11.27482782600001,
+    "coherent": 8.143172745999989,
+    "stream1090": 4.761419,
+    "extended_dsp": 12.377125274999994
+  },
+  "baseline_cpu_seconds_per_rf_second": 0.5948194745651578,
+  "incremental_inference_cpu_seconds_per_rf_second": 0.02172592773237206,
+  "incremental_inference_percent_of_baseline": 3.652524616524161,
+  "candidate_windows": 18747,
+  "candidate_valid_window_outputs": 4,
+  "scope": "Chronological RF held out before fitting; captured before candidate freeze, not post-freeze prospective RF. Full enabled replay union incl Stream1090 plus recorded stock/unified masks. Broad CRC computation included, quarantined CRC output excluded. All candidate outputs quarantined. Serial algorithm CPU excludes live transport and is not electrical power.",
+  "working_setup_changed": false
+}

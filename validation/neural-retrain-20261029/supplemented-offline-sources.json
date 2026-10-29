@@ -1,0 +1,178 @@
+[
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/pulse_comparison.py",
+    "sha256": "73a53a81eae9508f158e6a6bfae385d7d8609f1c29e546df86062b10487d1206"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/capture_schedule.py",
+    "sha256": "40d454baff69c598ae9aa293a9af00178aaba19d12370f4bb3faf5c80db4e896"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/research_bundles.py",
+    "sha256": "b3a21baaf984e565896d73a642569cfc57d6d2493d0eb8ac98be1d68b2f71238"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/research_sequence.c",
+    "sha256": "837b1ff18c88d73ce68d58af51b04ac9bf51d8ac24147e97416d1b0cd983a7a2"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/pulse_tail_research.c",
+    "sha256": "cf4e4e203f3b1d66fdddee894bcb6277b146c834652229ef4b30f65a9ca08017"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/research_timing_retry.py",
+    "sha256": "ca73ee3b6e66cdb0f558f956fdf5d29a248fc16136132409cc4dc12a3e162477"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/candidate_context.c",
+    "sha256": "36f0ef42804d870d4e939bc9e49768d65a6c1c194df32752bc64b93cc5464183"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/research_acquisition.py",
+    "sha256": "e2b0c47be7014df0e07374c235dc87d8831cf089e66eec38c3fe301ea6081e3b"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/coherent_compact.py",
+    "sha256": "014d67e064ec01114c2035814ff88567ee13eb51b8c156355ee5639c365af7eb"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/research_fast.py",
+    "sha256": "e3290f55573b8a28b28bda6559ba3a617eeac2896c399e8f2b99779d45da2c1c"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/acquisition_candidate.py",
+    "sha256": "018c854c3b5d3756684a1ed1fa4db2673e16d1fc82adfb02b016b4d6638243d1"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/soft_feedback.c",
+    "sha256": "69ee8c957a5b561a37ce38e936cea10a661117b28621c10aca8dbef584225483"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/overlap_research.py",
+    "sha256": "f36308067554d12db3d2fb182cc86236f71abba843fd6b63449bb01425fe1ffc"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/research_interp.c",
+    "sha256": "b79e94661ef3d61a426207c70c85c58f016e4be8b8d9d3a50d7e42659ca5bed0"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/learning_splits.py",
+    "sha256": "a1e97efd66ac44f4dd303a6fc2f2b3afdf1d0d6ed3d55d3e3c8c0d09f1c12afa"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/candidate_context.py",
+    "sha256": "ba3173e9ad9839e5751fa12749ca0a4a11b0c63f9654f74715909fa5b4e3c83d"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/research_runtime.py",
+    "sha256": "49f0e586050a9462742684ff335fe14fed9d86d13f815d7dc9517eeb1bfaba4a"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/pulse_discriminant.py",
+    "sha256": "4404419ac95e237c5e4354a7e109bb236b1397de19a5b533c46ce274cb6bd3d3"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/research_science.c",
+    "sha256": "ebee838869ffd76a97927cf94e674030e5590f9af22f2c4d36b23dbc24527ebe"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/cheap_joint.c",
+    "sha256": "1dadc87d618cdf795e2a2caedc0c42b5ec8abed35ad0a4678022abe010b946f6"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/research_context.py",
+    "sha256": "b0f87405b27b11c0a0a8302f7e48034522470f69beb1fed13f899d6f19b28a29"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/shared_feedback_engine.py",
+    "sha256": "ed9000f2cdf045bb21cf93c62b1af89c24bcc25374d8c84739977ca7b02ac0dd"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/pulse_tail_research.py",
+    "sha256": "cc48891707c5bf4daafd4e1cea1de1de67bccdf1506e791ad572940ad667440e"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/research_reservations.py",
+    "sha256": "55b6fd7919a67cc92b0db050fc0c6c7cf3c8fe4bf935d55f68e16b6a824dc80a"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/coherent_compact_candidate.py",
+    "sha256": "9f326876a05ac35c88721e0d7a4873d12b01976e089f495b3278a47ce21633cf"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/shared_pulse_retry.py",
+    "sha256": "658001c09d48c95b447d6d1f9a5ce30a9fb654c40a332b2d4c59d5c46988965c"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/coherent_compact_ring.py",
+    "sha256": "8e20d43f04974b45017de2b4e7a5893fe0ac1b81a723aed0fb7dbf8d9eafe9cd"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/joint_channel.py",
+    "sha256": "a52ae455ff507b9de0d497f68fdcab6abb007487e9d1ec0c364898ce8802419c"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/acquisition_native.c",
+    "sha256": "1e38666165fffae42e7047adae7c05f167ca37e3c1f32813e554754cfaec7483"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/pipeline_native.c",
+    "sha256": "bffe3dd3cdd017c06b3d7df474c0b808464c4b456bbbef86e6afb213c6b8ca0c"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/pipeline_extended_neon.c",
+    "sha256": "ff98031bac8b24749e19c454c8472484cb44dc78023ef6c5fb6a927389126702"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/feedback_experiment.py",
+    "sha256": "8716413d62c481c7188994f2d3fcccf428a81b6dfb362bda70095f35fbc9c308"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/acquisition_native.py",
+    "sha256": "96e27242d90f5f8afc7b332ecf84bc6d3c297a0a8908b38a73e43f8b75ae2ded"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/joint_channel.c",
+    "sha256": "4b6e637b162590ef149ce0320ff5e292bf3f6d49f5b61014d7fb442776b010e5"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/candidate_native.py",
+    "sha256": "48333b086aa65bc76890bda2bf7b6c0c03a973c1dce88dd2c3cd003a074b1af7"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/pipeline_buffers.c",
+    "sha256": "3960a69c4f15f4ef730a8f4920ca67584b7ae9e2aedfc02cbf30fddf5baf25f2"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/overlap_research.c",
+    "sha256": "6ca4f39dec8fa4806a09b0c6fed89a68b8922a4d180f8749abb5972d57fdace9"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/pipeline_buffers.py",
+    "sha256": "b1ad9f65e864d4894523f5046c41129764fc8d043ffe6d16e4807622c8f81352"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/cheap_joint.py",
+    "sha256": "249b9a8c8d316a58374715d6606336d33f6e16eff808fa0b0aae88f10d662915"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/fir_cached.c",
+    "sha256": "5a3e30ebd3afa5480152e833cf24307e88193442ea58d0a2573f1e7a90678c02"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/coherent_compact.c",
+    "sha256": "ec00f3eeb01f18edd2eebd72ca30da0e928edd93f739390bc41af6015d8bb1bf"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/coherent_robust.py",
+    "sha256": "30aa3689bf073f90693ed6be7aa879d5db5dfc87522f3025bc2e0d16da2a875c"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/phase_companion.py",
+    "sha256": "5a0c0209197d7915ba92f2202a09b66757b701c40fad835c1e25bd28ef535c1c"
+  },
+  {
+    "source": "/Users/mit/Documents/!project/readsb-dsp/src/rescue/research_dsp.py",
+    "sha256": "297e24d7cd5c394e458fcc81e7a370eb6efc7d3d2504a222eee0ab82e3eef095"
+  }
+]

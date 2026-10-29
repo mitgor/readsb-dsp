@@ -1,0 +1,901 @@
+{
+  "before": {
+    "unix": 1793311827.964072,
+    "pids": {
+      "readsb": 4694,
+      "fr24feed": 1193167,
+      "adsb-rescue-feed": 1622165,
+      "adsbexchange-feed": 1235929,
+      "adsb-far-capture": 757
+    },
+    "shadow_pid": 2113770,
+    "started_unix": 1793309667.5144923,
+    "updated_unix": 1793311822.7708085,
+    "feed_updated_unix": 1793311827.3767576,
+    "threads_alive": true,
+    "gain_db": 38.6,
+    "methods": {
+      "energy": true,
+      "crc": true,
+      "timing": true,
+      "soft": true,
+      "matched": true,
+      "coherent": true,
+      "header": false,
+      "sic": false,
+      "neural": true,
+      "pulse": false,
+      "stream1090": true,
+      "sequence": false,
+      "acquisition": false
+    },
+    "worker_config": {
+      "workers": 2,
+      "reserve_cores": 2,
+      "max_workers": 2,
+      "cpus": "2-3",
+      "coherent_cpus": "0-1",
+      "coherent_threshold": 0.35,
+      "coherent_budget": 48,
+      "optimized_dsp": true,
+      "sequence_acquisition": true,
+      "sequence_enabled": false,
+      "acquisition_enabled": false,
+      "optimized_v3": true,
+      "optimized_extended": true,
+      "coherent_pair_retry": true,
+      "shared_transport": "ring",
+      "cached_fir": true
+    },
+    "worker_roles": {
+      "2113794": "dsp",
+      "2113798": "coherent",
+      "2113797": "dsp",
+      "2113801": "coherent"
+    },
+    "workers": {
+      "2113794": [
+        2
+      ],
+      "2113798": [
+        0
+      ],
+      "2113797": [
+        3
+      ],
+      "2113801": [
+        1
+      ]
+    },
+    "pending": 0,
+    "mean_latency_s": 0.041859237281787504,
+    "aligned_seconds": 2153,
+    "shed": 1,
+    "samples": {
+      "samples_lost": 0,
+      "samples_dropped": 0
+    },
+    "feed": {
+      "stock_connected": true,
+      "fr24_routed": true,
+      "counts": {
+        "stock_bytes_relayed": 315234153,
+        "dsp_frames_relayed": 536028,
+        "relayed_coherent": 162850
+      },
+      "upstream_error": null
+    },
+    "fr24": {
+      "feed_status": "connected",
+      "rx_connected": "1",
+      "feed_last_ac_sent_time": "1793311811",
+      "feed_num_ac_tracked": "36"
+    },
+    "crc_archive": {
+      "disk_bytes": 120247232,
+      "ram_bytes": 7832321,
+      "error": null,
+      "saved_files": 14
+    },
+    "config_sha256": {
+      "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+      "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+      "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+      "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+    },
+    "temperature_c": 53.45
+  },
+  "after": {
+    "unix": 1793311951.5511076,
+    "pids": {
+      "readsb": 4694,
+      "fr24feed": 1193167,
+      "adsb-rescue-feed": 1622165,
+      "adsbexchange-feed": 1235929,
+      "adsb-far-capture": 757
+    },
+    "shadow_pid": 2113770,
+    "started_unix": 1793309667.5144923,
+    "updated_unix": 1793311943.0334527,
+    "feed_updated_unix": 1793311951.0299177,
+    "threads_alive": true,
+    "gain_db": 38.6,
+    "methods": {
+      "energy": true,
+      "crc": true,
+      "timing": true,
+      "soft": true,
+      "matched": true,
+      "coherent": true,
+      "header": false,
+      "sic": false,
+      "neural": true,
+      "pulse": false,
+      "stream1090": true,
+      "sequence": false,
+      "acquisition": false
+    },
+    "worker_config": {
+      "workers": 2,
+      "reserve_cores": 2,
+      "max_workers": 2,
+      "cpus": "2-3",
+      "coherent_cpus": "0-1",
+      "coherent_threshold": 0.35,
+      "coherent_budget": 48,
+      "optimized_dsp": true,
+      "sequence_acquisition": true,
+      "sequence_enabled": false,
+      "acquisition_enabled": false,
+      "optimized_v3": true,
+      "optimized_extended": true,
+      "coherent_pair_retry": true,
+      "shared_transport": "ring",
+      "cached_fir": true
+    },
+    "worker_roles": {
+      "2113794": "dsp",
+      "2113798": "coherent",
+      "2113797": "dsp",
+      "2113801": "coherent"
+    },
+    "workers": {
+      "2113794": [
+        2
+      ],
+      "2113798": [
+        0
+      ],
+      "2113797": [
+        3
+      ],
+      "2113801": [
+        1
+      ]
+    },
+    "pending": 0,
+    "mean_latency_s": 0.0446191271924666,
+    "aligned_seconds": 2273,
+    "shed": 1,
+    "samples": {
+      "samples_lost": 0,
+      "samples_dropped": 0
+    },
+    "feed": {
+      "stock_connected": true,
+      "fr24_routed": true,
+      "counts": {
+        "stock_bytes_relayed": 316173088,
+        "dsp_frames_relayed": 537518,
+        "relayed_coherent": 163262
+      },
+      "upstream_error": null
+    },
+    "fr24": {
+      "feed_status": "connected",
+      "rx_connected": "1",
+      "feed_last_ac_sent_time": "1793311931",
+      "feed_num_ac_tracked": "34"
+    },
+    "crc_archive": {
+      "disk_bytes": 120247232,
+      "ram_bytes": 7855012,
+      "error": null,
+      "saved_files": 14
+    },
+    "config_sha256": {
+      "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+      "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+      "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+      "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+    },
+    "temperature_c": 55.1
+  },
+  "samples": [
+    {
+      "unix": 1793311831.0780933,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.041859237281787504,
+      "temperature_c": 53.45
+    },
+    {
+      "unix": 1793311834.369188,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.0420679359184093,
+      "temperature_c": 53.45
+    },
+    {
+      "unix": 1793311837.6595926,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.0420679359184093,
+      "temperature_c": 54.55
+    },
+    {
+      "unix": 1793311840.87522,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.0420679359184093,
+      "temperature_c": 54.0
+    },
+    {
+      "unix": 1793311844.1610405,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 1,
+      "mean_latency_s": 0.04248167913173044,
+      "temperature_c": 55.1
+    },
+    {
+      "unix": 1793311847.462971,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 1,
+      "mean_latency_s": 0.04248167913173044,
+      "temperature_c": 54.0
+    },
+    {
+      "unix": 1793311850.744489,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 1,
+      "mean_latency_s": 0.04248167913173044,
+      "temperature_c": 55.1
+    },
+    {
+      "unix": 1793311853.9620626,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.04277851084836584,
+      "temperature_c": 55.65
+    },
+    {
+      "unix": 1793311857.172884,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.04277851084836584,
+      "temperature_c": 55.65
+    },
+    {
+      "unix": 1793311860.4592974,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.04277851084836584,
+      "temperature_c": 55.1
+    },
+    {
+      "unix": 1793311863.6662116,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.043126794005863,
+      "temperature_c": 54.55
+    },
+    {
+      "unix": 1793311866.9444342,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.043126794005863,
+      "temperature_c": 54.55
+    },
+    {
+      "unix": 1793311870.1583362,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.043126794005863,
+      "temperature_c": 54.55
+    },
+    {
+      "unix": 1793311873.4472957,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.0433953220792561,
+      "temperature_c": 53.45
+    },
+    {
+      "unix": 1793311876.6621084,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.0433953220792561,
+      "temperature_c": 54.0
+    },
+    {
+      "unix": 1793311879.8719695,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.0433953220792561,
+      "temperature_c": 52.9
+    },
+    {
+      "unix": 1793311883.1444256,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 1,
+      "mean_latency_s": 0.04381296459756413,
+      "temperature_c": 55.1
+    },
+    {
+      "unix": 1793311886.3715215,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 1,
+      "mean_latency_s": 0.04381296459756413,
+      "temperature_c": 56.2
+    },
+    {
+      "unix": 1793311889.6611056,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 1,
+      "mean_latency_s": 0.04381296459756413,
+      "temperature_c": 55.1
+    },
+    {
+      "unix": 1793311892.873205,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 1,
+      "mean_latency_s": 0.04381296459756413,
+      "temperature_c": 54.0
+    },
+    {
+      "unix": 1793311896.1562877,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.04378298843015121,
+      "temperature_c": 55.1
+    },
+    {
+      "unix": 1793311899.456919,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.04378298843015121,
+      "temperature_c": 56.2
+    },
+    {
+      "unix": 1793311902.6744325,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.04378298843015121,
+      "temperature_c": 55.65
+    },
+    {
+      "unix": 1793311905.9578946,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.043952874554258115,
+      "temperature_c": 55.65
+    },
+    {
+      "unix": 1793311909.2456284,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.043952874554258115,
+      "temperature_c": 56.2
+    },
+    {
+      "unix": 1793311912.4723225,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.043952874554258115,
+      "temperature_c": 54.55
+    },
+    {
+      "unix": 1793311915.752295,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.04401704291592372,
+      "temperature_c": 54.55
+    },
+    {
+      "unix": 1793311918.9604497,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.04401704291592372,
+      "temperature_c": 56.2
+    },
+    {
+      "unix": 1793311922.1809323,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.04401704291592372,
+      "temperature_c": 55.1
+    },
+    {
+      "unix": 1793311925.469923,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.044230342264272623,
+      "temperature_c": 54.0
+    },
+    {
+      "unix": 1793311928.7483764,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.044230342264272623,
+      "temperature_c": 56.75
+    },
+    {
+      "unix": 1793311932.0568871,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.044230342264272623,
+      "temperature_c": 55.65
+    },
+    {
+      "unix": 1793311935.2785492,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 1,
+      "mean_latency_s": 0.044444451191702684,
+      "temperature_c": 55.1
+    },
+    {
+      "unix": 1793311938.551716,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 1,
+      "mean_latency_s": 0.044444451191702684,
+      "temperature_c": 54.55
+    },
+    {
+      "unix": 1793311941.7626853,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 1,
+      "mean_latency_s": 0.044444451191702684,
+      "temperature_c": 55.1
+    },
+    {
+      "unix": 1793311944.9769216,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.0446191271924666,
+      "temperature_c": 56.75
+    },
+    {
+      "unix": 1793311948.2781897,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.0446191271924666,
+      "temperature_c": 56.2
+    },
+    {
+      "unix": 1793311951.4870107,
+      "pids": {
+        "readsb": 4694,
+        "fr24feed": 1193167,
+        "adsb-rescue-feed": 1622165,
+        "adsbexchange-feed": 1235929,
+        "adsb-far-capture": 757
+      },
+      "shadow_pid": 2113770,
+      "samples": {
+        "samples_lost": 0,
+        "samples_dropped": 0
+      },
+      "pending": 0,
+      "mean_latency_s": 0.0446191271924666,
+      "temperature_c": 55.1
+    }
+  ],
+  "live_unchanged": true
+}

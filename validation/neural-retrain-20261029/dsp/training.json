@@ -1,0 +1,265 @@
+{
+  "variant": "dsp",
+  "steps": 1000,
+  "selected_step": 900,
+  "history": [
+    {
+      "step": 100,
+      "validation": {
+        "windows": 1596,
+        "candidate_exact": 1169,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 1244,
+        "combined_exact": 1245,
+        "additions": 1,
+        "losses": 0,
+        "new_windows": 562,
+        "new_additions": 0,
+        "qualified_far180_windows": 1,
+        "qualified_far180_additions": 0,
+        "bit_errors": 946
+      },
+      "loss": 0.13479255139827728,
+      "wall_s": 10.595825124997646
+    },
+    {
+      "step": 200,
+      "validation": {
+        "windows": 1596,
+        "candidate_exact": 1164,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 1244,
+        "combined_exact": 1250,
+        "additions": 6,
+        "losses": 0,
+        "new_windows": 562,
+        "new_additions": 1,
+        "qualified_far180_windows": 1,
+        "qualified_far180_additions": 0,
+        "bit_errors": 956
+      },
+      "loss": 0.1398741453886032,
+      "wall_s": 21.523754791822284
+    },
+    {
+      "step": 300,
+      "validation": {
+        "windows": 1596,
+        "candidate_exact": 1167,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 1244,
+        "combined_exact": 1246,
+        "additions": 2,
+        "losses": 0,
+        "new_windows": 562,
+        "new_additions": 0,
+        "qualified_far180_windows": 1,
+        "qualified_far180_additions": 0,
+        "bit_errors": 955
+      },
+      "loss": 0.16128288209438324,
+      "wall_s": 32.07511945767328
+    },
+    {
+      "step": 400,
+      "validation": {
+        "windows": 1596,
+        "candidate_exact": 1167,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 1244,
+        "combined_exact": 1248,
+        "additions": 4,
+        "losses": 0,
+        "new_windows": 562,
+        "new_additions": 1,
+        "qualified_far180_windows": 1,
+        "qualified_far180_additions": 0,
+        "bit_errors": 958
+      },
+      "loss": 0.14693409204483032,
+      "wall_s": 41.1920402077958
+    },
+    {
+      "step": 500,
+      "validation": {
+        "windows": 1596,
+        "candidate_exact": 1168,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 1244,
+        "combined_exact": 1247,
+        "additions": 3,
+        "losses": 0,
+        "new_windows": 562,
+        "new_additions": 1,
+        "qualified_far180_windows": 1,
+        "qualified_far180_additions": 0,
+        "bit_errors": 956
+      },
+      "loss": 0.1398404985666275,
+      "wall_s": 51.655503457877785
+    },
+    {
+      "step": 600,
+      "validation": {
+        "windows": 1596,
+        "candidate_exact": 1167,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 1244,
+        "combined_exact": 1249,
+        "additions": 5,
+        "losses": 0,
+        "new_windows": 562,
+        "new_additions": 1,
+        "qualified_far180_windows": 1,
+        "qualified_far180_additions": 0,
+        "bit_errors": 961
+      },
+      "loss": 0.145945206284523,
+      "wall_s": 62.22217366658151
+    },
+    {
+      "step": 700,
+      "validation": {
+        "windows": 1596,
+        "candidate_exact": 1165,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 1244,
+        "combined_exact": 1248,
+        "additions": 4,
+        "losses": 0,
+        "new_windows": 562,
+        "new_additions": 0,
+        "qualified_far180_windows": 1,
+        "qualified_far180_additions": 0,
+        "bit_errors": 971
+      },
+      "loss": 0.16398140788078308,
+      "wall_s": 73.22678691660985
+    },
+    {
+      "step": 800,
+      "validation": {
+        "windows": 1596,
+        "candidate_exact": 1164,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 1244,
+        "combined_exact": 1247,
+        "additions": 3,
+        "losses": 0,
+        "new_windows": 562,
+        "new_additions": 1,
+        "qualified_far180_windows": 1,
+        "qualified_far180_additions": 0,
+        "bit_errors": 959
+      },
+      "loss": 0.12798050045967102,
+      "wall_s": 83.80764037463814
+    },
+    {
+      "step": 900,
+      "validation": {
+        "windows": 1596,
+        "candidate_exact": 1168,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 1244,
+        "combined_exact": 1252,
+        "additions": 8,
+        "losses": 0,
+        "new_windows": 562,
+        "new_additions": 1,
+        "qualified_far180_windows": 1,
+        "qualified_far180_additions": 0,
+        "bit_errors": 956
+      },
+      "loss": 0.12498363852500916,
+      "wall_s": 94.30058012483642
+    },
+    {
+      "step": 1000,
+      "validation": {
+        "windows": 1596,
+        "candidate_exact": 1163,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 1244,
+        "combined_exact": 1249,
+        "additions": 5,
+        "losses": 0,
+        "new_windows": 562,
+        "new_additions": 1,
+        "qualified_far180_windows": 1,
+        "qualified_far180_additions": 0,
+        "bit_errors": 962
+      },
+      "loss": 0.13321997225284576,
+      "wall_s": 103.86949854157865
+    }
+  ],
+  "wall_s": 103.8702488746494,
+  "selection": "Validation only, wrong-CRC first, qualified new far additions, total additions, bit errors. Never select using test/RF holdout.",
+  "model_references": {
+    "/Users/mit/Documents/!project/adsb-neural-rescue/models/tiny-fp32.onnx": "2422633f33e600eaa295dbd3cc48639573b2741adf641d6ad834b01f0be445d9",
+    "/Users/mit/Documents/!project/adsb-neural-rescue/models/candidates/dsp-20261025/tiny-rf-v1.onnx": "fe10fdc4ff4f71da03aae5b5a76106a42ce9cbbda5f27a917c8f7fd9e07429aa",
+    "/Users/mit/Documents/!project/adsb-neural-rescue/models/candidates/improvement-raw-20261027/tiny-rf-v1.onnx": "18285149351966395b859a150e8bdc494576ecdc7ca17c7d3043226e899c0eb9"
+  },
+  "metrics": {
+    "train": {
+      "windows": 8838,
+      "candidate_exact": 6465,
+      "candidate_wrong_crc": 0,
+      "baseline_exact": 6901,
+      "combined_exact": 6959,
+      "additions": 58,
+      "losses": 0,
+      "new_windows": 2615,
+      "new_additions": 8,
+      "qualified_far180_windows": 8,
+      "qualified_far180_additions": 0,
+      "bit_errors": 5246
+    },
+    "validation": {
+      "windows": 1596,
+      "candidate_exact": 1168,
+      "candidate_wrong_crc": 0,
+      "baseline_exact": 1244,
+      "combined_exact": 1252,
+      "additions": 8,
+      "losses": 0,
+      "new_windows": 562,
+      "new_additions": 1,
+      "qualified_far180_windows": 1,
+      "qualified_far180_additions": 0,
+      "bit_errors": 956
+    },
+    "test": {
+      "windows": 630,
+      "candidate_exact": 442,
+      "candidate_wrong_crc": 0,
+      "baseline_exact": 474,
+      "combined_exact": 478,
+      "additions": 4,
+      "losses": 0,
+      "new_windows": 178,
+      "new_additions": 1,
+      "qualified_far180_windows": 0,
+      "qualified_far180_additions": 0,
+      "bit_errors": 392
+    }
+  },
+  "synthetic": {
+    "windows": 4096,
+    "exact": 1009,
+    "other_crc_valid": 1,
+    "limitation": "A secondary real synthetic interferer is not necessarily a false decode; non-target valid outputs remain quarantined."
+  },
+  "noise": {
+    "windows": 20000,
+    "valid": 0
+  },
+  "export": {
+    "sha256": "184fd12c076b0c64abe4f496f7781c76d292515b5d191c3078839b7c3f1b5be1",
+    "max_logit_difference": 3.0517578125e-05,
+    "bit_differences": 0,
+    "packet_bytes_exact": true
+  },
+  "eligible_for_rf_evaluation": true
+}

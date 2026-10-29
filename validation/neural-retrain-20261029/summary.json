@@ -1,0 +1,117 @@
+{
+  "decision": "Keep both companions offline; no unique additions beyond the full current pipeline on the chronological RF holdout. No live changes.",
+  "selected": "dsp",
+  "qualified_recent_windows": 5359,
+  "new_split_windows": {
+    "test": 178,
+    "validation": 562,
+    "train": 2615
+  },
+  "new_qualified_far180": {
+    "test": 0,
+    "validation": 1,
+    "train": 8
+  },
+  "quarantined_crc_windows": 16509,
+  "selected_window_metrics": {
+    "train": {
+      "windows": 8838,
+      "candidate_exact": 6465,
+      "candidate_wrong_crc": 0,
+      "baseline_exact": 6901,
+      "combined_exact": 6959,
+      "additions": 58,
+      "losses": 0,
+      "new_windows": 2615,
+      "new_additions": 8,
+      "qualified_far180_windows": 8,
+      "qualified_far180_additions": 0,
+      "bit_errors": 5246
+    },
+    "validation": {
+      "windows": 1596,
+      "candidate_exact": 1168,
+      "candidate_wrong_crc": 0,
+      "baseline_exact": 1244,
+      "combined_exact": 1252,
+      "additions": 8,
+      "losses": 0,
+      "new_windows": 562,
+      "new_additions": 1,
+      "qualified_far180_windows": 1,
+      "qualified_far180_additions": 0,
+      "bit_errors": 956
+    },
+    "test": {
+      "windows": 630,
+      "candidate_exact": 442,
+      "candidate_wrong_crc": 0,
+      "baseline_exact": 474,
+      "combined_exact": 478,
+      "additions": 4,
+      "losses": 0,
+      "new_windows": 178,
+      "new_additions": 1,
+      "qualified_far180_windows": 0,
+      "qualified_far180_additions": 0,
+      "bit_errors": 392
+    }
+  },
+  "rf_seconds": 40.65001333333334,
+  "baseline_guarded_extras": 224,
+  "unique_additions": 0,
+  "beyond180_additions": 0,
+  "losses": 0,
+  "pi_baseline_cpu_s_per_rf_s": 0.5948194745651578,
+  "pi_extra_inference_cpu_s_per_rf_s": 0.02172592773237206,
+  "pi_extra_inference_percent": 3.652524616524161,
+  "mac_extra_inference_percent": 2.9145543646875285,
+  "controls": {
+    "overlap": {
+      "raw": {
+        "windows": 4096,
+        "primary": 962,
+        "secondary_valid": 1,
+        "unaccounted_valid": 0
+      },
+      "dsp": {
+        "windows": 4096,
+        "primary": 1009,
+        "secondary_valid": 1,
+        "unaccounted_valid": 0
+      }
+    },
+    "clean": {
+      "raw": {
+        "windows": 4096,
+        "exact": 2809,
+        "wrong_crc_valid": 0
+      },
+      "dsp": {
+        "windows": 4096,
+        "exact": 2845,
+        "wrong_crc_valid": 0
+      }
+    },
+    "noise": {
+      "raw": {
+        "windows": 20000,
+        "valid": 0
+      },
+      "dsp": {
+        "windows": 20000,
+        "valid": 0
+      }
+    }
+  },
+  "limitations": [
+    "Only eight new qualifying >=180nm train windows, one validation window, zero new test windows; no far-range generalization claim. Historical far-range labels were not used for new far weighting.",
+    "Field RF was reserved before fitting but recorded before checkpoint freeze; not post-freeze prospective data. Field RF is chronological, not ICAO-disjoint; 23 stock packets repeat a training payload. Window splits are ICAO/payload/IQ-disjoint.",
+    "Stock-assisted CRC-valid labels are not independent physical ground truth. All CRC research candidates remain quarantined; none had same-transmission stock confirmation.",
+    "Some archives contain open/unclosed packet journals; only individually closed, stream-complete continuous RF bursts enter this experiment.",
+    "Baseline is full enabled serial replay plus actual stock/unified masks, not a claim that historical archive routing matched current routing. Replay includes all three old neural models, coherent pair retries and Stream1090.",
+    "Serial algorithm CPU includes duplicate frontend work across replay branches and Stream1090 children; excludes live transport/network overhead and is not whole-device electrical power.",
+    "No hyperparameter or model tuning followed the chronological RF replay. Additional controls only audited the already frozen candidates."
+  ],
+  "live_changed": false
+}

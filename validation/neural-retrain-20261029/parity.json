@@ -1,0 +1,8 @@
+{
+  "baseline_packet_timestamp_signature_exact": true,
+  "extra_signature_exact": true,
+  "distance_bins_exact": true,
+  "protected_receiver_health": true,
+  "download_checksums_verified": true,
+  "note": "Full-pipeline accepted packet parity on this RF; intermediate floating diagnostics are not claimed bit-identical."
+}
