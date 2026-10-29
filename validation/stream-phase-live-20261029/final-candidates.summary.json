@@ -1,0 +1,16 @@
+{
+  "processed_rf_seconds": 1195,
+  "input_frames": 131495,
+  "discontinuities": 5,
+  "totals": {
+    "both": 129031.0,
+    "native_only": 31983.0,
+    "old_only": 20604.0,
+    "native_cpu_s": 21.844422999999956,
+    "old_cpu_s": 64.95620699999998
+  },
+  "analysis_wall_s": 97.55989654175937,
+  "capture": "validation/stream-phase-live-20261029/live-rf.framed",
+  "old_binary": "/tmp/stream1090-native-build/stream1090",
+  "native_lib": "validation/stream-phase-live-20261029/libdsp_stream_phase.dylib"
+}

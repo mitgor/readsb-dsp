@@ -1,0 +1,736 @@
+{
+  "candidate_counts": {
+    "both_all": 129031,
+    "both_outside_paired_coverage": 1022,
+    "native_only_all": 31983,
+    "native_only_outside_paired_coverage": 259,
+    "old_only_all": 20604,
+    "old_only_outside_paired_coverage": 126,
+    "both": 128009,
+    "both_in_stock": 126519,
+    "both_in_unified": 127891,
+    "both_beyond_stock": 1490,
+    "both_beyond_unified": 118,
+    "native_only": 31724,
+    "native_only_in_stock": 31073,
+    "native_only_in_unified": 31419,
+    "old_only": 20478,
+    "old_only_in_stock": 12559,
+    "old_only_in_unified": 19909,
+    "both_beyond_unified_with_prior_stock_address": 115,
+    "old_only_beyond_stock": 7919,
+    "old_only_beyond_unified": 569,
+    "old_only_beyond_unified_with_prior_stock_address": 531,
+    "native_only_beyond_stock": 651,
+    "native_only_beyond_unified": 305,
+    "native_only_beyond_unified_with_prior_stock_address": 283
+  },
+  "segments": {
+    "before_restart": {
+      "both": 84744,
+      "both_beyond_stock": 988,
+      "both_beyond_unified": 46,
+      "native_only": 20760,
+      "old_only": 12821,
+      "old_only_beyond_stock": 4961,
+      "old_only_beyond_unified": 151,
+      "native_only_beyond_stock": 409,
+      "native_only_beyond_unified": 241
+    },
+    "after_restart": {
+      "both": 43265,
+      "both_beyond_stock": 502,
+      "both_beyond_unified": 72,
+      "native_only": 10964,
+      "old_only": 7657,
+      "old_only_beyond_stock": 2958,
+      "old_only_beyond_unified": 418,
+      "native_only_beyond_stock": 242,
+      "native_only_beyond_unified": 64
+    }
+  },
+  "ranges": {
+    "both": {
+      "<100nm": 52089,
+      "<50nm": 57677,
+      "<150nm": 15412,
+      "unknown": 1770,
+      "<200nm": 73,
+      "<180nm": 988
+    },
+    "both_beyond_stock": {
+      "unknown": 45,
+      "<50nm": 441,
+      "<100nm": 643,
+      "<150nm": 328,
+      "<180nm": 30,
+      "<200nm": 3
+    },
+    "native_only": {
+      "<100nm": 11981,
+      "<50nm": 12556,
+      "unknown": 728,
+      "<150nm": 5888,
+      "<200nm": 38,
+      "<180nm": 533
+    },
+    "old_only": {
+      "<100nm": 8019,
+      "<50nm": 4684,
+      "unknown": 936,
+      "<150nm": 6088,
+      "<200nm": 74,
+      "<180nm": 677
+    },
+    "both_beyond_unified_with_prior_stock_address": {
+      "<50nm": 16,
+      "<100nm": 56,
+      "<150nm": 35,
+      "<180nm": 2,
+      "unknown": 6
+    },
+    "old_only_beyond_stock": {
+      "<50nm": 1760,
+      "<100nm": 3025,
+      "<150nm": 2382,
+      "unknown": 436,
+      "<180nm": 295,
+      "<200nm": 21
+    },
+    "old_only_beyond_unified_with_prior_stock_address": {
+      "<50nm": 69,
+      "<100nm": 250,
+      "<150nm": 166,
+      "unknown": 28,
+      "<180nm": 18
+    },
+    "native_only_beyond_stock": {
+      "unknown": 56,
+      "<100nm": 215,
+      "<50nm": 129,
+      "<150nm": 220,
+      "<180nm": 28,
+      "<200nm": 3
+    },
+    "native_only_beyond_unified_with_prior_stock_address": {
+      "<100nm": 87,
+      "<150nm": 107,
+      "<50nm": 68,
+      "unknown": 12,
+      "<180nm": 8,
+      "<200nm": 1
+    }
+  },
+  "stock_offset_ticks_median": 2400,
+  "stock_offset_ticks_mad": 1,
+  "paired_chunks": {
+    "J": 240,
+    "S": 43944,
+    "U": 37948
+  },
+  "stock_payloads": 170057,
+  "unified_payloads": 181677,
+  "snapshots": 240,
+  "examples": [
+    {
+      "family": "both",
+      "tick": 1286690685543,
+      "message": "8d46b82f990c702038081688d1df",
+      "range": "<50nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286692727624,
+      "message": "8d3c56f1583f929b24c449453d3f",
+      "range": "<50nm"
+    },
+    {
+      "family": "both",
+      "tick": 1286701082926,
+      "message": "8d4ca84a60bf05f0726672d6aee8",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286701537830,
+      "message": "8d4aca76ea486860015f8847b37b",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286719583592,
+      "message": "8f440132f80300060049b85fbaa3",
+      "range": "<150nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286726500257,
+      "message": "8d48ada599158f9950081fa79251",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286741262462,
+      "message": "8d440daf58b185826645d8f7dec8",
+      "range": "<150nm"
+    },
+    {
+      "family": "both",
+      "tick": 1286749344166,
+      "message": "8d440132f82300060049b84b2e8a",
+      "range": "<150nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286751236231,
+      "message": "8d3c64aa5883e599d4b05af803ca",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286763900858,
+      "message": "8d502d9fea44785cc97c080292a8",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286785531442,
+      "message": "8d440536990cf824600821c51fbc",
+      "range": "<50nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286786611821,
+      "message": "8d4ca80f60bf0642943b0a58431a",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286798919810,
+      "message": "8d3c648e990c27b9d064197ff68d",
+      "range": "<100nm"
+    },
+    {
+      "family": "both",
+      "tick": 1286812309579,
+      "message": "8d48ada558c383a9a2989fc76e7c",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286810871407,
+      "message": "8d744822ea485858013c08351c33",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286812770323,
+      "message": "8d471d6658b3f5f77719b19cb089",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286813287374,
+      "message": "8d502d5f990c75bd40041c13b225",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286825207690,
+      "message": "8d48ada599158f9958081fc93059",
+      "range": "<100nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1286833829434,
+      "message": "8d503c922210d4f249682033a5b1",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286834467536,
+      "message": "8d4402e899093e1db80421b4519f",
+      "range": "<150nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286839603104,
+      "message": "8d48ac81f8230002004bb8edc0d5",
+      "range": "<50nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1286849452224,
+      "message": "8d4ca660990877bf80281a39b716",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286848600034,
+      "message": "8d3c648e990c27b9f064193a8aa4",
+      "range": "<100nm"
+    },
+    {
+      "family": "both",
+      "tick": 1286858402458,
+      "message": "8d49d3d458d30242a5375490792e",
+      "range": "<150nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286857096977,
+      "message": "8d4bbd0a99118490708018edcff9",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286860614543,
+      "message": "8d44053658dd026e90c0acb2bdce",
+      "range": "<50nm"
+    },
+    {
+      "family": "both",
+      "tick": 1286870328783,
+      "message": "8d3c56ef231571f6160820a43b95",
+      "range": "<100nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1286872424923,
+      "message": "8d4cad5499142ebc1004185fe42e",
+      "range": "<150nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286874399855,
+      "message": "8d3c648e586d65c640a4bb593a80",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286881956051,
+      "message": "8d3c56ea99085f2918781c882fc4",
+      "range": "<50nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286896600649,
+      "message": "8d502d89990d67a1a0081e3ccb81",
+      "range": "<150nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286905845536,
+      "message": "8d502d5fea42885e1f7c08c96c89",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286907103071,
+      "message": "8d3c56eff82300020049b876fb9e",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286923291967,
+      "message": "8d48ada599158f9950081fa79251",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286932881908,
+      "message": "8d74482258856c4e2f83decf931e",
+      "range": "<100nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1286947498497,
+      "message": "8d4bcdd458c384e0b4d0ab19b331",
+      "range": "<150nm"
+    },
+    {
+      "family": "both",
+      "tick": 1286954567380,
+      "message": "8d48ada458b981a13cdfcbc2a1ef",
+      "range": "<150nm"
+    },
+    {
+      "family": "both",
+      "tick": 1286968331895,
+      "message": "8d4401b35991862d3c7d5549d622",
+      "range": "<50nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286982284831,
+      "message": "8d4a08ee90c38188a2cae381f202",
+      "range": "<150nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286982468873,
+      "message": "8d4bcdd4ea4a5867593c082e6342",
+      "range": "<150nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286991133209,
+      "message": "8d4841666017d6650cb61405d6d0",
+      "range": "<50nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1286996866308,
+      "message": "8d46b82f583782b994d1be053116",
+      "range": "<50nm"
+    },
+    {
+      "family": "both",
+      "tick": 1287005940343,
+      "message": "8d48ada958b505c8c0d7939c03a5",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287006807141,
+      "message": "8d3c6669600ff65a62aa8b360a92",
+      "range": "<50nm"
+    },
+    {
+      "family": "both",
+      "tick": 1287015584275,
+      "message": "8d471d6658b3f5f8791c639f45cc",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287029790456,
+      "message": "8d440536990cf924a00821a6e98d",
+      "range": "<50nm"
+    },
+    {
+      "family": "both",
+      "tick": 1287052062958,
+      "message": "8d440daf58afa586f04914abb52e",
+      "range": "<150nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287050645789,
+      "message": "8d48ada9ea447860015f48cc7042",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287074187728,
+      "message": "8d3c6669ea05f908013c08f45706",
+      "range": "<50nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287075465396,
+      "message": "8d4a08eeea4a5867501c0879422c",
+      "range": "<150nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287075884886,
+      "message": "8d4a08ee9915801a70081e249b5f",
+      "range": "<150nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287085547274,
+      "message": "8d3c648e586fa25258b746571f4d",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287089363156,
+      "message": "8d744822990950a8503c18c7ed6c",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287089379449,
+      "message": "8d48ada958b5025bfcece6d73ffd",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287091197374,
+      "message": "8d3c64aa587f05a198b147ce68a8",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287109414932,
+      "message": "8d3c674858c90377241ff9f0bc56",
+      "range": "<100nm"
+    },
+    {
+      "family": "both",
+      "tick": 1287133623859,
+      "message": "8d48ada49915af99f0041d5f2f2c",
+      "range": "<150nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287134931837,
+      "message": "8d3c56f1f82300020049b894985d",
+      "range": "<50nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287169345583,
+      "message": "8d48ada558c3870cd681317315bd",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287169755798,
+      "message": "8d502d9fea44785cc97c080292a8",
+      "range": "<100nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287181119687,
+      "message": "8d4ca76660b985b0a09153a13a40",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287184515471,
+      "message": "8d4b990c581d12fdacd0ea758e01",
+      "range": "<50nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287207533973,
+      "message": "8d744822990950a8705c18c05d5e",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287213322208,
+      "message": "8d4cad5458bf0691db57ad6d8039",
+      "range": "<150nm"
+    },
+    {
+      "family": "both",
+      "tick": 1287243906714,
+      "message": "8d4ca76660b985b0da906a36582c",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287243718823,
+      "message": "8d3c64aaea1b7858013c081fbc3b",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287243887069,
+      "message": "8d48ada458b9850de0c87a97e2f0",
+      "range": "<150nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287243909792,
+      "message": "8d3d545358539621d675280dbc7c",
+      "range": "<50nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287245447123,
+      "message": "8d3c56ef58a1a68a9648a1e77006",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287245604404,
+      "message": "8d74482299094fa87068180739ad",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287246035687,
+      "message": "8d48c125990da213d0081ad17df9",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287247297092,
+      "message": "8d3c674858c9037a9e20aaabc7e5",
+      "range": "<100nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287287023378,
+      "message": "8d440daf99094c1c585c21c1ce42",
+      "range": "<100nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287287178736,
+      "message": "8d74482258a7b28a371f5daf6b25",
+      "range": "<100nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287335681955,
+      "message": "8d3c648e5873124aa6b6fdfed246",
+      "range": "<100nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287348134317,
+      "message": "8d49d3d4ea5028658f7c08d058e4",
+      "range": "<150nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287348282196,
+      "message": "8d48c125990da113d8041af29aa3",
+      "range": "<100nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287369435828,
+      "message": "8d4b990c581ba2fee2cfd390b5fb",
+      "range": "<50nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287405991763,
+      "message": "8d48ada49915b09a18081d019efd",
+      "range": "<150nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287407602941,
+      "message": "8d503c929908d0182004151ac962",
+      "range": "<50nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287420655939,
+      "message": "8d3c56f1583be614c0b218eb36ca",
+      "range": "<50nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287465937146,
+      "message": "8d3c674858c906e8ae122c10cd24",
+      "range": "<100nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287490854106,
+      "message": "8d3c56f1583bb6160cb23f89cd6b",
+      "range": "<50nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287506760156,
+      "message": "8d48ae04990d6623e02c157c5c6c",
+      "range": "<150nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287539124583,
+      "message": "8d502d9f58b503cfd4a5cdcdcb13",
+      "range": "<100nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287572844220,
+      "message": "8d4bcdac5805665396a202f31b0a",
+      "range": "<50nm"
+    },
+    {
+      "family": "both",
+      "tick": 1287585949840,
+      "message": "8d3c648e990c26bbf0481ae78cd7",
+      "range": "<100nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287587708733,
+      "message": "8d502d9fea44785ccb7c08193a2a",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287622135563,
+      "message": "8d3c56f1231571f92058201d25d3",
+      "range": "<50nm"
+    },
+    {
+      "family": "both",
+      "tick": 1287645993529,
+      "message": "8d48ada9f8230002004ab816c416",
+      "range": "<100nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287646428603,
+      "message": "8d4bcdacea09d90eb77c00998413",
+      "range": "<50nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287646801591,
+      "message": "8d3c64aa99085d2ef89c1b94efe2",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287658014554,
+      "message": "8d3c48ea589b81fa705da639f21b",
+      "range": "<150nm"
+    },
+    {
+      "family": "both",
+      "tick": 1287754108453,
+      "message": "8d744822990949a810541854457b",
+      "range": "<100nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287744866100,
+      "message": "8d4ca80f9909be82100420c3c357",
+      "range": "<100nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287746454480,
+      "message": "8d502d5fea42885e1d7c08d2c40b",
+      "range": "<100nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287767097258,
+      "message": "8d3c56f1ea13a85c153c088c8810",
+      "range": "<50nm"
+    },
+    {
+      "family": "both",
+      "tick": 1287802050664,
+      "message": "8d4ca80f60bf02d65059c7b79231",
+      "range": "<100nm"
+    },
+    {
+      "family": "native_only",
+      "tick": 1287839601874,
+      "message": "8d4aca7658bf03601e7294c7be4e",
+      "range": "<100nm"
+    },
+    {
+      "family": "old_only",
+      "tick": 1287874168299,
+      "message": "8d4bcdd4990d831a58081cfb74c5",
+      "range": "<150nm"
+    }
+  ]
+}
