@@ -1,0 +1,23 @@
+{
+  "files": [
+    {
+      "remote_owned_file": "pi-binaries.tar",
+      "bytes": 5847040,
+      "sha256": "30b6bdd0a717116f0bd6e3f655036dda6351fcf6ed06ffaf613628a23a66f3ea",
+      "verified": true
+    },
+    {
+      "remote_owned_file": "pi.json",
+      "bytes": 28858,
+      "sha256": "7cef826b174ca6c13c7b541f8fabb8cbbe2638f1bf893f8a30e9fa20eadfc45f",
+      "verified": true
+    },
+    {
+      "remote_owned_file": "experiments/rust-phase/.work/windows.bin",
+      "bytes": 2122632,
+      "sha256": "d3fee9a7059c3bbd4e9f65c48c5574ef291a40e2d0973be15024ac1e7f0dbedf",
+      "verified": true
+    }
+  ],
+  "private_files_kept_under_ignored_work": true
+}
