@@ -26,6 +26,111 @@ integration and nonblocking tap. [Provenance](docs/INTEGRATION_PROVENANCE.json)
 records exact source commits and imported runtime/model hashes. No private RF,
 receiver coordinates, feeder sharing keys or installed configuration are bundled.
 
+## Filters, decoders and the science behind them
+
+ADS-B DF17 uses pulse-position modulation: an early half-microsecond pulse
+represents a one, and a late pulse represents a zero within each one-microsecond
+bit. An eight-microsecond preamble precedes 112 data/parity bits. Our rescue
+frontend represents that 120-microsecond window as 480 complex samples at
+4 MS/s. The methods below offer different ways to detect the preamble, estimate
+pulse timing and decide those same received bits; they do not create aircraft
+messages from tracks or external flight data. See the [signal definitions](src/rescue/dsp.py)
+and [stock demodulator](readsb/demod_2400.c).
+
+### Shared frontend and pulse timing
+
+The RTL-SDR input is complex I/Q at 2.4 MS/s. A Kaiser-windowed low-pass FIR and
+5:3 polyphase resampling produce the 4 MS/s working grid. This makes the two
+halves of a bit easier to compare and allows several decoders to reuse the same
+samples, power envelope and preamble scores. Resampling interpolates existing
+band-limited information: it does **not** increase the receiver's RF bandwidth
+or recover information lost to clipping. The reference construction follows
+[SciPy's polyphase FIR resampling](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.resample_poly.html).
+
+The preamble detector correlates received power with the known pulse pattern,
+normalizes the score and selects bounded candidate windows. Overlapping FIR and
+packet context protect block boundaries. Absolute sample positions preserve
+resampler phase and Beast timestamps; a packet crossing a worker boundary must
+not become a duplicate or a newly invented transmission. The [shared ring](src/rescue/ring_transport.py)
+and [cached FIR](src/rescue/fir_cached.py) reuse frontend work across DSP and
+coherent workers.
+
+### What each method does
+
+“On” below means enabled by the supplied full-bundle configuration. CPU admission
+may reduce its budget or suspend it. Optional methods require explicit operator
+configuration and appropriate validation before feeding.
+
+| Method | Scientific idea and implementation | Supplied configuration |
+|---|---|---|
+| **Energy slicer** | Compare integrated power in the early and late halves of each bit. Normalized/clipped energy reduces sensitivity to absolute gain and extreme peaks. A cheap alternate slicing path can recover packets missed by stock candidate selection or bit decisions. [Code](src/rescue/dsp.py) | On |
+| **Fractional timing** | Retry a bounded set of nearby sample alignments using windowed-sinc interpolation. This addresses pulses arriving between sample instants; it adds timing hypotheses, not RF bandwidth. [Code](src/rescue/classical.py) | On |
+| **Soft-bit repair** | Use decision confidence to select at most six weak payload/parity bits and test unique one/two-bit CRC syndrome solutions. Up to 21 hypotheses are considered; DF/CA/ICAO bits 0–31 remain protected. Native lookup accelerates the same restricted policy rather than searching arbitrary packet variants. [Code](src/rescue/classical.py) | On |
+| **Matched filtering** | Estimate carrier offset and a short complex pulse template from the known preamble, then compare early/late complex correlations. Matching a known waveform integrates its energy coherently instead of treating each power sample independently. [Code](src/rescue/classical.py) | On |
+| **Coherent decoding** | Estimate carrier rotation and phase from usable received pulses, reject outliers, and form phase-aligned bit decisions. A bounded alternate preamble-pair estimate can retry difficult windows. This uses complex I/Q phase; it does not change ADS-B's pulse-position modulation. [Code](src/rescue/coherent_kernel.c) | On |
+| **Neural companion cascade** | A small residual convolutional network learns corrections to the conventional energy decision. Later frozen companions run only on windows unresolved by earlier models; valid original output wins. The current production input is normalized power plus log-power, with preamble context—not raw complex I/Q phase. [Architecture](src/rescue/model.py), [cascade](src/rescue/model_cascade.py) | On |
+| **Learned pulse filter** | An eight-sample linear energy discriminant uses class means and shrinkage covariance learned from stock-confirmed bits. Neighboring samples can distinguish distorted early/late pulses. This is a compact learned filter, separate from the convolutional neural cascade. [Code](src/rescue/pulse_discriminant.py) | Off |
+| **Pulse-aware sequence detection** | Score neighboring bit hypotheses using a short pulse-response model, accounting for pulse tails and intersymbol interference. It reuses coherent carrier work instead of making every bit decision independently. [Code](src/rescue/research_sequence.py) | Off |
+| **Extended acquisition** | Search additional candidates with a longer known preamble/DF pattern, then use the existing carrier/decoder path. It targets missed candidate starts rather than repairing already decoded positions. [Code](src/rescue/research_sequence.py) | Off |
+| **Header retry** | A separate, bounded research path relaxes initial header screening. Because it changes an important admission gate, it is not part of the default protected-header repair policy. [Code](src/rescue/classical.py) | Off |
+| **Successive interference cancellation (SIC)** | Fit a separately known valid packet's waveform and subtract it from a copy of the I/Q window, then decode the residual. Reject poor fits; subtraction errors can otherwise create misleading structure. This is an overlap experiment, not a universal collision solution. [Code](src/rescue/classical.py) | Off |
+
+For a known waveform in additive white Gaussian noise, matched filtering
+maximizes the sampled output signal-to-noise ratio. Actual ADS-B reception also
+contains unknown pulse shapes, multipath, clipping and overlapping transmissions,
+so that result motivates the method but does not guarantee a field improvement.
+[MIT's matched-filter lecture](https://www.ocw.mit.edu/courses/6-011-signals-systems-and-inference-spring-2018/dfe2855f36e44436678bfd3736c937fe_MIT6_011S18lec24.pdf)
+explains the assumptions and detection trade-off.
+
+Pulse-tail decision-feedback retries and joint channel estimation are additional
+[research modules](src/rescue/pulse_tail_research.py), not default feeder sources.
+Their presence in the source tree does not enable them. A phase-aware neural
+receiver is also distinct from the magnitude-based models shipped here.
+
+### Acceptance, overlap and CPU cost
+
+A plausible bit sequence is not automatically an accepted extra. The established
+full-pipeline guards require a valid DF17 CRC, verified sample-clock alignment,
+a recent **stock-established** aircraft address, and no nearby stock/accepted
+payload duplicate or same-aircraft timing conflict. Additional packets cannot
+establish their own identity. Broad CRC hypotheses remain quarantined. CRC and
+address checks reduce false acceptance; they are not independent RF ground truth.
+See [comparison guards](src/rescue/shadow.py) and [relay policy](src/rescue/feed.py).
+
+Different methods often recover the **same transmission**. The total improvement
+is the deduplicated, accepted union beyond stock, with one method attribution
+per extra—not the sum of separate unmerged benchmark runs. Repeated identical
+payloads at different valid transmission times can still be separate packets;
+packet counts are not counts of unique aircraft. A counterfactual replay with a
+method removed is needed to measure that method's unique marginal contribution.
+
+Shared FIR, power, preamble and carrier calculations make per-method CPU costs
+partly interdependent. The dashboard reports attributed CPU and CPU milliseconds
+per extra; neither is a wattage measurement or proof of optimal efficiency.
+The [CPU governor](src/deadsb/governor.py) uses conservative admission profiles
+and measured system utilization. Its 60% ceiling is a cooperative control target,
+not a guarantee against stock load, unrelated activity or brief spikes.
+
+## Example reception statistics
+
+![Historical receiver statistics by distance: stock DF17, energy and neural extras, total improvement and DSP attribution](docs/images/reception-statistics-2026-10-25.png)
+
+*User-provided receiver screenshot, 25 October 2026. This is an earlier dashboard
+and decoder configuration, not a benchmark of this release or its CPU governor.*
+
+The screenshot records **128,908 stock DF17 transmissions** and **10,716 counted
+extras**, or **8.313%** additional transmissions relative to stock. Its recorded
+attribution is 3,746 energy + 3,179 timing + 2,743 soft + 1,048 matched; neural,
+header and SIC extras are zero in this snapshot. The older table has no separate
+coherent column and provides no evidence of a neural gain in that interval.
+
+The displayed percentage is `100 × total extras / stock DF17`. The 180–200 nm
+row's 102% is 51 extras against only 50 stock packets: a small denominator, not a
+claim of doubled maximum range. The 200–250 and 250+ nm rows contain no packets.
+“Unknown” distance stays separate from verified range bins. The screenshot does
+not establish independent packet truth, a false-positive rate, a representative
+long-term gain, or the performance of methods added after it was taken.
+
 ## Build locally
 
 Python 3.11+, a C compiler, make, zstd, zlib and ncurses development headers are
