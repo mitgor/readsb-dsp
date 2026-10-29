@@ -1,0 +1,71 @@
+{
+  "methods": {
+    "energy": {
+      "cpu_seconds": 287.1650889320009,
+      "mean_core_percent": 4.0044733294127015,
+      "additional_packets": 27803
+    },
+    "timing": {
+      "cpu_seconds": 79.8855520000002,
+      "mean_core_percent": 1.1139918281123746,
+      "additional_packets": 18933
+    },
+    "soft": {
+      "cpu_seconds": 30.8831966840087,
+      "mean_core_percent": 0.43066146343925604,
+      "additional_packets": 19842
+    },
+    "matched": {
+      "cpu_seconds": 82.62259103400288,
+      "mean_core_percent": 1.152159419632598,
+      "additional_packets": 7284
+    },
+    "coherent": {
+      "cpu_seconds": 1029.1971029360557,
+      "mean_core_percent": 14.351996493529814,
+      "additional_packets": 48648
+    },
+    "sequence": {
+      "cpu_seconds": 0.0,
+      "mean_core_percent": 0.0,
+      "additional_packets": 0
+    },
+    "acquisition": {
+      "cpu_seconds": 0.0,
+      "mean_core_percent": 0.0,
+      "additional_packets": 0
+    },
+    "pulse": {
+      "cpu_seconds": 0.0,
+      "mean_core_percent": 0.0,
+      "additional_packets": 0
+    },
+    "header": {
+      "cpu_seconds": 0.0,
+      "mean_core_percent": 0.0,
+      "additional_packets": 0
+    },
+    "sic": {
+      "cpu_seconds": 0.0,
+      "mean_core_percent": 0.0,
+      "additional_packets": 0
+    },
+    "neural": {
+      "cpu_seconds": 918.3204034940293,
+      "mean_core_percent": 12.80583784513631,
+      "additional_packets": 10484
+    },
+    "stream1090": {
+      "cpu_seconds": 843.2578100000005,
+      "mean_core_percent": 11.759101437165203,
+      "additional_packets": 21899
+    },
+    "crc": {
+      "cpu_seconds": 115.94950624099037,
+      "mean_core_percent": 1.6168981648412184,
+      "additional_packets": 19263
+    }
+  },
+  "shared_overhead_cpu_seconds": 1958.7834293168758,
+  "choice": "Largest attributed active C decoder branch is coherent. Shared frontend/overhead is separately measured, so this is not a proof of the single largest C function system-wide. Ordinary 41-bin kernel only; pair retry not included."
+}

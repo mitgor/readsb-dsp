@@ -1,0 +1,29 @@
+{
+  "goose_release": "v2026.3",
+  "compiler_asset": "goose-v2026.3-macos-arm64.tar.gz",
+  "compiler_sha256": "2ffaaf46b3edde27aed03fcd9ebe73e9b6639cac30d8a6915f7dc00795b7aedf",
+  "generated_c_sha256": "577b6266653fcaca1d28c79f82481f106d6a8c47cecabeebeaa6b5d4ec7171ed",
+  "goose_source_sha256": "a13dc28823eb0d659ab94b4c6648d57b7a45e0bee547c5880c5eb9284bb9e81d",
+  "reference_c_sha256": "8e24d380722d93f4fc00b25b2276b398495938b9a36ffafe50740507e6570c7f",
+  "generated_c_bytes": 346425,
+  "flags": "Goose -O2 inlining, both languages C compiler -O3 -std=c11 -ffp-contract=off; no fast-math, ordinary 41-bin version; bounds checks enabled for Goose",
+  "goose_tag_commit": "acc6310a83df7a322d3f8264a808f675348c4260",
+  "pi_protected_health_unchanged": true,
+  "measurement_audit": "Preliminary Linux inherited ru_maxrss measurements discarded; complete seven-trial rerun with exec-local VmHWM and current RSS.",
+  "experiment_sources_sha256": {
+    "experiments/goose-coherent/build.py": "a34263e73def9820c40e0d631472c2f60667e52e8a8b6c3eb51e58f138a0ce6d",
+    "experiments/goose-coherent/benchmark.py": "3d9cb3c24f89f8780087bb2414fa19ab18212b63e72233ff7594e6e64891e52c",
+    "experiments/goose-coherent/README.md": "363db7c961135e4f79c6f642a3b8541317fe347baa68046988174deb612ea2b9",
+    "experiments/goose-coherent/.gitignore": "035be897b00b2e4df85234618e91ae2c91213ba53b2bf492fc890efec505f2ae",
+    "experiments/goose-coherent/sort_control.c": "40853ce26c06eb315af60fd968bed9a31f5a6d208ec326f17d34145e52b8fa38",
+    "experiments/goose-coherent/coherent.goose": "a13dc28823eb0d659ab94b4c6648d57b7a45e0bee547c5880c5eb9284bb9e81d",
+    "experiments/goose-coherent/report.py": "35fa7ce83c84d3c2f46d8896410c2f2a7a9b55f5f222379502ba82734e317775",
+    "experiments/goose-coherent/prepare.py": "afb3d0a5a705df1a634b47712c67047012786fff1920f46d92ed9c57586adde2",
+    "experiments/goose-coherent/driver.c": "b5bf88000fe4ff910c06a24ea85dc243a534a955505ba894c629163fc2baef90"
+  },
+  "result_sha256": {
+    "mac.json": "5077353af2f98e9b0bd91fe97e97bac911310ba007883443ec2c21cbb59ca5f6",
+    "pi.json": "58c8dc4bd4b58106cbc3d25b5eafc920b741592f249171a75efddb38cc30ca03",
+    "input-manifest.json": "a116f780cb92e7aa959f621a3a1c154429d9253cb8fd83c748166f1a3babb2e8"
+  }
+}
