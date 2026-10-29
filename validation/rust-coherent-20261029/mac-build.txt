@@ -1,0 +1,66 @@
+warning: unused import: `c_void`
+ --> /Users/mit/Documents/!project/readsb-dsp/experiments/rust-coherent/coherent.rs:4:38
+  |
+4 | use std::{cmp::Ordering, ffi::{c_int,c_void}, slice, sync::OnceLock};
+  |                                      ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: 1 warning emitted
+
+warning: unused import: `cmp::Ordering`
+ --> /Users/mit/Documents/!project/readsb-dsp/experiments/rust-coherent/coherent.rs:4:11
+  |
+4 | use std::{cmp::Ordering, ffi::{c_int,c_void}, slice, sync::OnceLock};
+  |           ^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: 1 warning emitted
+
+warning: unused import: `cmp::Ordering`
+ --> /Users/mit/Documents/!project/readsb-dsp/experiments/rust-coherent/coherent.rs:4:11
+  |
+4 | use std::{cmp::Ordering, ffi::{c_int,c_void}, slice, sync::OnceLock};
+  |           ^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: 1 warning emitted
+
+warning: unused import: `c_void`
+ --> /Users/mit/Documents/!project/readsb-dsp/experiments/rust-coherent/coherent.rs:4:38
+  |
+4 | use std::{cmp::Ordering, ffi::{c_int,c_void}, slice, sync::OnceLock};
+  |                                      ^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: 1 warning emitted
+
+
+running 3 tests
+test tests::bad_bounds ... ok
+test tests::known_crc ... ok
+test tests::crc_table ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+warning: unused import: `cmp::Ordering`
+ --> /Users/mit/Documents/!project/readsb-dsp/experiments/rust-coherent/coherent.rs:4:11
+  |
+4 | use std::{cmp::Ordering, ffi::{c_int,c_void}, slice, sync::OnceLock};
+  |           ^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: 1 warning emitted
+
+
+running 4 tests
+test tests::bad_bounds ... ok
+test tests::known_crc ... ok
+test tests::crc_table ... ok
+test matched_sort::tests::sort_cases ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s

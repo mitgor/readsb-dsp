@@ -1,0 +1,23 @@
+{
+  "files": [
+    {
+      "remote_owned_file": "pi-binaries.tar",
+      "sha256": "8f23e70bd3352b9303b8483f70fa7fe1257dd0fa1a836381628f5b70a8353b9d",
+      "bytes": 17530880,
+      "verified": true
+    },
+    {
+      "remote_owned_file": "pi.json",
+      "sha256": "cad378947b64b8ac817002800dd9b7b3f40d235a4625b7943d9590c874b4abe5",
+      "bytes": 37163,
+      "verified": true
+    },
+    {
+      "remote_owned_file": "experiments/rust-coherent/.work/windows.bin",
+      "sha256": "5e95c0a0ed5eaf0074332dd14a5ba528ab191be4665e57223e3b104d9e159c46",
+      "bytes": 12552968,
+      "verified": true
+    }
+  ],
+  "private_binaries_and_fixture_kept_under_ignored_work": true
+}

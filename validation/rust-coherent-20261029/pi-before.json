@@ -1,0 +1,106 @@
+{
+  "unix": 1793299894.0686924,
+  "pids": {
+    "readsb": 4694,
+    "fr24feed": 1193167,
+    "adsb-rescue-feed": 1622165,
+    "adsbexchange-feed": 1235929,
+    "adsb-far-capture": 757
+  },
+  "shadow_pid": 1783053,
+  "started_unix": 1793293312.6862807,
+  "updated_unix": 1793299891.8819904,
+  "feed_updated_unix": 1793299893.9441671,
+  "threads_alive": true,
+  "gain_db": 38.6,
+  "methods": {
+    "energy": true,
+    "crc": true,
+    "timing": true,
+    "soft": true,
+    "matched": true,
+    "coherent": true,
+    "header": false,
+    "sic": false,
+    "neural": true,
+    "pulse": false,
+    "stream1090": true,
+    "sequence": false,
+    "acquisition": false
+  },
+  "worker_config": {
+    "workers": 2,
+    "reserve_cores": 2,
+    "max_workers": 2,
+    "cpus": "2-3",
+    "coherent_cpus": "0-1",
+    "coherent_threshold": 0.35,
+    "coherent_budget": 48,
+    "optimized_dsp": true,
+    "sequence_acquisition": true,
+    "sequence_enabled": false,
+    "acquisition_enabled": false,
+    "optimized_v3": true,
+    "optimized_extended": true,
+    "coherent_pair_retry": true,
+    "shared_transport": "ring",
+    "cached_fir": true
+  },
+  "worker_roles": {
+    "1783069": "dsp",
+    "1783073": "coherent",
+    "1783076": "coherent",
+    "1783072": "dsp"
+  },
+  "workers": {
+    "1783069": [
+      2
+    ],
+    "1783073": [
+      0
+    ],
+    "1783076": [
+      1
+    ],
+    "1783072": [
+      3
+    ]
+  },
+  "pending": 1,
+  "mean_latency_s": 0.04619746637134085,
+  "aligned_seconds": 6575,
+  "shed": 4,
+  "samples": {
+    "samples_lost": 0,
+    "samples_dropped": 0
+  },
+  "feed": {
+    "stock_connected": true,
+    "fr24_routed": true,
+    "counts": {
+      "stock_bytes_relayed": 188336336,
+      "dsp_frames_relayed": 321332,
+      "relayed_coherent": 99612
+    },
+    "upstream_error": null
+  },
+  "fr24": {
+    "feed_status": "connected",
+    "rx_connected": "1",
+    "feed_last_ac_sent_time": "1793299864",
+    "feed_num_ac_tracked": "51"
+  },
+  "crc_archive": {
+    "disk_bytes": 72396533,
+    "ram_bytes": 10106619,
+    "error": null,
+    "saved_files": 8
+  },
+  "config_sha256": {
+    "/etc/default/adsb-rescue-workers.json": "32176d3d34d9e23aed621bc390151c9c52b8a8aad4bc47ebd58decf9a7b8b26f",
+    "/etc/default/adsb-rescue.json": "bcec353f20e463f38bfda1b57127d82716b1e6cc583880b0f23d57c7688073b6",
+    "/etc/default/readsb": "9154046e386f46e7549c0286120b53e8a2d9194a2956412221887553b126b1c6",
+    "/etc/fr24feed.ini": "ef70fcb94c70791289578792da4d301304afd4e8e501704bcf12fa4cd0502eaf"
+  },
+  "temperature_c": 55.65
+}

@@ -1,0 +1,34 @@
+{
+  "rust_version": "1.99.1",
+  "goose_release": "v2026.3",
+  "source_hashes": {
+    "experiments/rust-coherent/coherent.rs": "8341f057e94dce5a0c776707ecb82d00b856c2267c45f69c551b0a00470bc656",
+    "experiments/rust-coherent/matched_sort.rs": "b8ef939fb2729308cf72a62e0a6241b12889fd3964c72a30a574a9f0d33a1d3a",
+    "experiments/rust-coherent/build.py": "0eaccb782d2d14a912bc632315ce9f4c9ebb17263149c12cc643aca7d39db853",
+    "experiments/rust-coherent/benchmark.py": "16b76dc5c1783e23828438a6062929876ce5fcdbd48b602006400586c486caa3",
+    "experiments/goose-coherent/coherent.goose": "a13dc28823eb0d659ab94b4c6648d57b7a45e0bee547c5880c5eb9284bb9e81d",
+    "experiments/goose-coherent/driver.c": "b5bf88000fe4ff910c06a24ea85dc243a534a955505ba894c629163fc2baef90",
+    "experiments/goose-coherent/benchmark.py": "3d9cb3c24f89f8780087bb2414fa19ab18212b63e72233ff7594e6e64891e52c",
+    "src/rescue/coherent_kernel.c": "7daf390ecb5008444f1e5e3747f99130c33d42fab578b02b55f37a29d60b6384",
+    "src/rescue/coherent_sort.h": "e5757b6c1d206a0c4d742624cbeb3a51f678c98d91448e9831f50541553a6298"
+  },
+  "generated_goose_c_sha256": "577b6266653fcaca1d28c79f82481f106d6a8c47cecabeebeaa6b5d4ec7171ed",
+  "fixture_sha256": "5e95c0a0ed5eaf0074332dd14a5ba528ab191be4665e57223e3b104d9e159c46",
+  "pi_rustc_archive_sha256": "acdcdfe09ae1f103aa9a2b7f88903a9588bc2e99288af10e6fbf5514e2e49f25",
+  "pi_rust_std_archive_sha256": "e25668477083d6a9ddb87b9beb9c00742225f38233ccb4bfba3afa7a07427f52",
+  "live_changes": false,
+  "result_sha256": {
+    "mac.json": "4b752cab27d4677c342a6a1be016eab8c15dbc9416a8a10a373a6830e6458594",
+    "pi.json": "cad378947b64b8ac817002800dd9b7b3f40d235a4625b7943d9590c874b4abe5",
+    "mac-size.json": "92bfdf5c4432db738b34f92d1535a2c161aea558f0e552a0672c7442b07d4b0a",
+    "pi-size.json": "33b625c7d1b4fb76af0b2ae415b3a171c6186282411336a9d852e0d735f54357",
+    "input-manifest.json": "2077c66033ac70bc211eec593bc6e71a5bcccef3fba4cc7ae647735b3f33f635",
+    "health-check.json": "1a8cf70720de750313dff6f0a93a79dcb2d67f7648298fd9a8926398ac6eaa49"
+  },
+  "pi_health_unchanged": true,
+  "additional_sources_sha256": {
+    "experiments/rust-coherent/report.py": "0994c3be154e3c34b5d0295292632b860cd8653c7978ab8611288269b52ec092",
+    "experiments/rust-coherent/size_audit.py": "7c4f8c79db3d11613d046a8683cbc7bb6db6e2e7ab7f68e8516ba2055dcb7924",
+    "experiments/rust-coherent/pi_job.sh": "a769a78e8399d7d1efd29fda3d74364a5d095edbdcd347e880418a55f53f8e1c"
+  }
+}
