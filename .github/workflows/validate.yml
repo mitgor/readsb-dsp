@@ -47,6 +47,12 @@ jobs:
           python -m pip install -e .
       - name: Build integrated native frontend and readsb
         run: deadsb build
+      - name: Coherent typed-sort regression and sanitizers
+        run: |
+          cc -O3 -std=c11 -Isrc/rescue experiments/coherent-sort/check_sort.c -lm -o /tmp/coherent-sort-check
+          /tmp/coherent-sort-check
+          cc -O1 -g -fsanitize=address,undefined -Isrc/rescue experiments/coherent-sort/check_sort.c -lm -o /tmp/coherent-sort-sanitize
+          /tmp/coherent-sort-sanitize
       - name: Controller, dashboard and worker integration
         env:
           OPENBLAS_NUM_THREADS: '1'

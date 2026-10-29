@@ -1,0 +1,10 @@
+{
+  "state": "active",
+  "backup": "/var/backups/adsb-coherent-sort-1793293309506017842",
+  "installed_sha256": {
+    "src/rescue/_coherent.so": "4f49f8179e46e4836fd4704a89d583cf900baf25024ca79f94b63b64b633faf3",
+    "src/rescue/_coherent_pair.so": "961a2c05cfd90d2a299898351f79f173d96289483ccf54d34526577640b84ba5",
+    "src/rescue/coherent_kernel.c": "7daf390ecb5008444f1e5e3747f99130c33d42fab578b02b55f37a29d60b6384",
+    "src/rescue/coherent_sort.h": "e5757b6c1d206a0c4d742624cbeb3a51f678c98d91448e9831f50541553a6298"
+  }
+}
