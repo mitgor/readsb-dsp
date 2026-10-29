@@ -246,3 +246,7 @@ The 60% policy has simulation and isolated replay tests; it does not yet have a
 sustained live overload/thermal qualification. No automatic deployment, new RF
 capture or feeder restart is performed by any build/benchmark command.
 Read [validation](validation/DEADSB.md) for the current evidence and limitations.
+
+### Rust acquisition and EM defaults
+
+Optional Rust backends retain the C fallback and preserve method switches. See the [release and rollback guide](experiments/rust-methods-live/README.md). Installing the EM backend does not enable a live EM feed stage.

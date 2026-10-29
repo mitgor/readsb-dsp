@@ -1,0 +1,43 @@
+{
+  "em": {
+    "1": {
+      "exact_all_arrays": true,
+      "windows": 368,
+      "noise_valid": 0,
+      "cpu_seconds_per_batch": {
+        "c": 0.014387999999999993,
+        "rust": 0.008655000000000005
+      }
+    },
+    "2": {
+      "exact_all_arrays": true,
+      "windows": 368,
+      "noise_valid": 0,
+      "cpu_seconds_per_batch": {
+        "c": 0.013808666666666691,
+        "rust": 0.012114666666666682
+      }
+    },
+    "4": {
+      "exact_all_arrays": true,
+      "windows": 368,
+      "noise_valid": 0,
+      "cpu_seconds_per_batch": {
+        "c": 0.024258999999999992,
+        "rust": 0.022213999999999994
+      }
+    }
+  },
+  "wrapper_parity": true,
+  "c_sequence_and_combined_smoke": true,
+  "acquisition_backend": "rust",
+  "science_backends": {
+    "em": "rust",
+    "sequence": "c",
+    "em_sequence": "c"
+  },
+  "candidate_sha256": {
+    "_science_em_rust.so": "71fb2b4c8a190436f18fb3ef3a9dfc2e828927bd5c2911bd82558616b527f494",
+    "_acquisition_rust.so": "c2954f79312d274ff9854f1145d814cfb018dc7da4c953f52bb019f1605f92b0"
+  }
+}

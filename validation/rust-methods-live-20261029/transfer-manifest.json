@@ -1,0 +1,10 @@
+{
+  "blocks.bin": "1cfaababc186ddddd824428b491457583ec033d8a376e4bc12cfddaf39232958",
+  "iq-blocks.bin": "a9c470ce0c880993d91f552f949a13952d74f8e11ddcb7bcf57481e0de61fbd8",
+  "windows.bin": "d3fee9a7059c3bbd4e9f65c48c5574ef291a40e2d0973be15024ac1e7f0dbedf",
+  "candidate/build.json": "c418a3f3a0bc0d458fe6387e9f1f0d8310c0e923fd8edd26252092db12c063cb",
+  "candidate/_pipeline_extended_neon.so": "b9afc46971acfce8cf0fd76cdd8f1d9797cef6df9dbdc1fe6d4e150d4955b189",
+  "candidate/_science.so": "bacfc18ec2a1813ba36219062b732939a93218a72b04eaf845aef50ada1583fc",
+  "candidate/_science_em_rust.so": "28b6ebda9fe12a114448572ad9369d46790fb330c9c930134ff97e68c1045131",
+  "candidate/_acquisition_rust.so": "323c0f4c7723d9bfb6f37996620d04585aa9eb3daba9d2935c89f306e6686497"
+}
