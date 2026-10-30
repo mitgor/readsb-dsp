@@ -1,0 +1,15 @@
+{
+  "rf_sha256": "c58828bdbb0b60b6da7d1146b7e3310aed1b559d080329bb852f2016de2dcd45",
+  "scope": "One historical reserved RF second. File transport, energy/CRC/timing/soft/matched only. Not full live pipeline or fresh admission validation.",
+  "whole_second_exact_parity": true,
+  "baseline_events": 100,
+  "tapped_events": 100,
+  "early_union_exact_parity": true,
+  "early_union_events": 100,
+  "early_batches": 10,
+  "first_early_batch_s": 0.6349427080713212,
+  "whole_ready_s": 1.502942125312984,
+  "baseline_whole_ready_s": 1.5017280410975218,
+  "baseline_worker_cpu_s": 0.08741600000000016,
+  "tap_worker_cpu_s": 0.08464299999999991
+}

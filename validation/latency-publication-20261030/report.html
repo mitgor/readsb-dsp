@@ -1,0 +1,26 @@
+<!doctype html><meta charset="utf-8"><title>Latency reduction prototype</title><main style="max-width:1000px;margin:3em auto;font:17px/1.6 system-ui"><pre style="white-space:pre-wrap"># Latency reduction prototype — 30 October 2026
+
+Implemented an isolated completed-batch tap, a stock-progress/rolling-alignment validation gate and immediate stock relay with shared five-second transmission history. Production source/configuration, FR24, readsb, DSP, capture and ADS-B Exchange were unchanged. The stock-only baseline still runs until 20:00 Berlin.
+
+## Fresh observations
+
+A 45-second read-only localhost probe measured current relay delay: median 3.0166 s, p95 3.0804 s, p99 3.1268 s. All 22,123 stock frame instances in the interior comparison window were present in the relay. These measurements use client chunk receipt times, not RF-to-cloud timestamps.
+
+The feeder explicitly reports `send_interval: 30s/30s`. Across 142 log intervals its median was 30.0100 s (range 29.0104–31.0072 s). Every retained startup configuration line since October 29 reports 30s/30s. We cannot establish the October 27 transition from these retained logs. Stock Beast delivery is continuous; this is the feeder upload-batch cadence, not the aircraft transmission rate or map refresh rate. FR24 forum users have documented both five- and thirty-second configurations; there is no single observed cadence for all feeders. No uploader setting changed.
+
+## Implemented and tested
+
+Seven tests pass on Mac and target Pi under nice19/core3/35% quota/1 GiB/finite runtime. They cover immediate opaque/stock preservation, 48-bit timestamp wrap, repeated legitimate payloads, shared source dedup, disabled sources, batch/RF age limits, epochs, late-stock races, stock watermark, alignment failure and unchanged whole-second assembly.
+
+On one historical reserved RF second, both unmodified and tapped worker pools produced exactly 100 identical events. The union of all ten completed batch outputs also matched all 100. First batch available: 0.635 s including process startup; complete settled group: 1.503 s. This is file-transport energy/CRC/timing/soft/matched coverage only; it does not establish full enabled-pipeline accuracy or steady-state packet latency. Worker CPU was 0.0874 s baseline versus 0.0846 s tapped: one short run is not an efficiency claim.
+
+The rolling gate retains the existing 20 alignment matches/median &lt;=2 us, CRC validity, prior-stock identity, conflict and 120 us duplicate gates. It adds a causal stock-progress watermark and 250 ms maximum pending wait; extras may be discarded rather than delivered stale. All original stock survives. A five-second cache retains history; it does not impose five seconds of waiting or suppress repeated payloads from distinct transmissions. Counters expose extra-before-stock races, which no emitted-message cache can undo.
+
+## Remaining before activation
+
+Measure additions/losses, source attribution, RF age tails and CPU using fresh reserved RF through the complete current enabled pipeline including coherent, neural and Stream1090, with the original full-second acceptance ledger. Test queue stalls, changing epochs and slow consumers. Then replay measured output arrival schedules in the actual isolated FR24 binary. Review the ongoing stock-only trial before a bounded live/cloud condition; no automatic activation is installed.
+
+The initial target-test launch failed before importing tests because the intended code staging directory was root-owned. A separate owned staging directory fixed it; failed and successful attempt logs are preserved. No production permission or service configuration was changed.
+
+Source: [FR24 forum send-interval example](https://forum.flightradar24.com/forum/radar-forums/flightradar24-feeding-data-to-flightradar24/225434-send-interval-question). Primary evidence for this receiver is the freshly collected local journal/packet probe.
+</pre></main>

@@ -1,0 +1,25 @@
+{
+  "protected_health_unchanged": true,
+  "probe_seconds": 45,
+  "stock_records": 24959,
+  "combined_records": 25657,
+  "stock_core_records": 22123,
+  "missing_stock_core_records": 0,
+  "measured_existing_relay_delay_seconds": {
+    "count": 22123,
+    "min": 2.8887588539801072,
+    "median": 3.016594594984781,
+    "p95": 3.0804432410222944,
+    "p99": 3.1268262380035594,
+    "max": 3.2045495960046537
+  },
+  "measured_fr24_send_log_interval_seconds": {
+    "count": 142,
+    "min": 29.010380029678345,
+    "median": 30.010032415390015,
+    "p95": 30.037158012390137,
+    "p99": 30.064768075942993,
+    "max": 31.007209062576294
+  },
+  "scope": "Read-only current relay measurement, chunk-receipt timing. Unmatched boundaries are not extra recovery claims. FR24 send log cadence is not per-aircraft/backend credit cadence."
+}

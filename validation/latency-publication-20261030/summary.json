@@ -1,0 +1,63 @@
+{
+  "stage": "isolated_prototype_not_live",
+  "fresh_probe": {
+    "protected_health_unchanged": true,
+    "probe_seconds": 45,
+    "stock_records": 24959,
+    "combined_records": 25657,
+    "stock_core_records": 22123,
+    "missing_stock_core_records": 0,
+    "measured_existing_relay_delay_seconds": {
+      "count": 22123,
+      "min": 2.8887588539801072,
+      "median": 3.016594594984781,
+      "p95": 3.0804432410222944,
+      "p99": 3.1268262380035594,
+      "max": 3.2045495960046537
+    },
+    "measured_fr24_send_log_interval_seconds": {
+      "count": 142,
+      "min": 29.010380029678345,
+      "median": 30.010032415390015,
+      "p95": 30.037158012390137,
+      "p99": 30.064768075942993,
+      "max": 31.007209062576294
+    },
+    "scope": "Read-only current relay measurement, chunk-receipt timing. Unmatched boundaries are not extra recovery claims. FR24 send log cadence is not per-aircraft/backend credit cadence."
+  },
+  "pool_parity": {
+    "rf_sha256": "c58828bdbb0b60b6da7d1146b7e3310aed1b559d080329bb852f2016de2dcd45",
+    "scope": "One historical reserved RF second. File transport, energy/CRC/timing/soft/matched only. Not full live pipeline or fresh admission validation.",
+    "whole_second_exact_parity": true,
+    "baseline_events": 100,
+    "tapped_events": 100,
+    "early_union_exact_parity": true,
+    "early_union_events": 100,
+    "early_batches": 10,
+    "first_early_batch_s": 0.6349427080713212,
+    "whole_ready_s": 1.502942125312984,
+    "baseline_whole_ready_s": 1.5017280410975218,
+    "baseline_worker_cpu_s": 0.08741600000000016,
+    "tap_worker_cpu_s": 0.08464299999999991
+  },
+  "tests": {
+    "mac": 7,
+    "pi": 7
+  },
+  "protected_pipeline_unchanged": true,
+  "stock_only_trial_unchanged": true,
+  "limitations": [
+    "No full current enabled-pipeline fresh RF admission parity yet",
+    "Rolling alignment/watermark may discard extra packets",
+    "Late stock can follow an emitted DSP counterpart; all stock preserved",
+    "No proven FR24 cloud improvement",
+    "One historical RF second uses only energy/CRC/timing/soft/matched/file transport",
+    "Early batch time includes process startup, not steady-state packet latency"
+  ],
+  "next_steps": [
+    "Complete current stock-only FR24 baseline at 20:00 Berlin",
+    "Validate real small-batch output through complete current enabled pipeline on fresh reserved RF, with CPU and additions/losses",
+    "Replay resulting measured packet arrival schedules in isolated actual FR24 decoder",
+    "Then bounded reversible live/cloud comparison"
+  ]
+}

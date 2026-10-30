@@ -1,0 +1,12 @@
+test_batch_gates_match_current_admission_with_watermark (test_prototype.Tests.test_batch_gates_match_current_admission_with_watermark) ... ok
+test_closed_source_epoch_discards_identity (test_prototype.Tests.test_closed_source_epoch_discards_identity) ... ok
+test_late_stock_always_preserved_and_race_visible (test_prototype.Tests.test_late_stock_always_preserved_and_race_visible) ... ok
+test_repeated_payload_dedup_disabled_age_and_epoch_guards (test_prototype.Tests.test_repeated_payload_dedup_disabled_age_and_epoch_guards) ... ok
+test_stock_immediate_opaque_and_timestamp_wrap (test_prototype.Tests.test_stock_immediate_opaque_and_timestamp_wrap) ... ok
+test_tap_preserves_one_second_assembly (test_prototype.Tests.test_tap_preserves_one_second_assembly) ... ok
+test_unaligned_expired_or_wrong_epoch_fail_closed (test_prototype.Tests.test_unaligned_expired_or_wrong_epoch_fail_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.414s
+
+OK
