@@ -1,0 +1,18 @@
+{
+  "protected_pids_unchanged": true,
+  "fr24_pid_unchanged": true,
+  "fr24_host": "127.0.0.1:30005",
+  "trial": "stock_test_running",
+  "planned_restore_unix": 1793559600,
+  "guard_units_active": [
+    "adsb-fr24-stock-extended-v2-20261030",
+    "adsb-fr24-stock-cadence-v2-20261030",
+    "adsb-fr24-stock-extended-deadline-20261030.timer",
+    "adsb-fr24-stock-extended-safety-20261030.timer"
+  ],
+  "capture_cap": 5000000000,
+  "samples": {
+    "samples_lost": 0,
+    "samples_dropped": 0
+  }
+}

@@ -1,0 +1,14 @@
+test_all_sources_deliver_without_waiting_for_other_streams (test_async_relay.AsyncTests.test_all_sources_deliver_without_waiting_for_other_streams) ... ok
+test_disabled_quarantined_and_cross_channel_spoof_rejected (test_async_relay.AsyncTests.test_disabled_quarantined_and_cross_channel_spoof_rejected) ... ok
+test_expired_bad_alignment_wrong_epoch_and_conflict (test_async_relay.AsyncTests.test_expired_bad_alignment_wrong_epoch_and_conflict) ... ok
+test_finite_server_real_tcp_and_unix_ipc (test_async_relay.AsyncTests.test_finite_server_real_tcp_and_unix_ipc) ... ok
+test_shared_duplicate_cache_and_legitimate_repeat (test_async_relay.AsyncTests.test_shared_duplicate_cache_and_legitimate_repeat) ... ok
+test_slow_absent_neural_does_not_delay_energy_or_stock (test_async_relay.AsyncTests.test_slow_absent_neural_does_not_delay_energy_or_stock) ... ok
+test_slow_subscriber_cannot_block_good_consumer (test_async_relay.AsyncTests.test_slow_subscriber_cannot_block_good_consumer) ... ok
+test_completed_cheap_future_visible_while_coherent_pending (test_async_relay.Tests.test_completed_cheap_future_visible_while_coherent_pending) ... ok
+test_ttl_capacity_and_rf_event_identity (test_async_relay.Tests.test_ttl_capacity_and_rf_event_identity) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 1.628s
+
+OK

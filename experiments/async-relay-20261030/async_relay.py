@@ -32,8 +32,8 @@ class Subscriber:
   finally:self.close()
 
 class AsyncFanIn:
- def __init__(self,switches,queue_capacity=64):
-  self.relay=ImmediateRelay(HistoryMerge,allowed_sources=SOURCES);self.switches=switches;self.clients=set();self.queues={s:asyncio.Queue(queue_capacity) for s in SOURCES};self.count=Counter();self.tasks=[]
+ def __init__(self,switches,queue_capacity=64,max_extra_age=.250):
+  self.relay=ImmediateRelay(HistoryMerge,allowed_sources=SOURCES,max_extra_age=max_extra_age);self.switches=switches;self.clients=set();self.queues={s:asyncio.Queue(queue_capacity) for s in SOURCES};self.count=Counter();self.tasks=[]
  def start(self):self.tasks=[asyncio.create_task(self.worker(s)) for s in sorted(SOURCES)]
  def publish(self,raw):
   if not raw:return
