@@ -1,0 +1,100 @@
+{
+  "decision": "not_ready_no_deployment",
+  "hardware": "Raspberry Pi 5 Model B",
+  "rf_seconds": 8,
+  "methods": [
+    {
+      "method": "energy",
+      "baseline": 32,
+      "retained_any_method": 11,
+      "under250": 0,
+      "median_retained_age_s": 1.7962032709960938,
+      "first_completion_attribution": 11,
+      "exclusive_worker_cpu_s": 0.2875651839999993
+    },
+    {
+      "method": "timing",
+      "baseline": 25,
+      "retained_any_method": 6,
+      "under250": 0,
+      "median_retained_age_s": 2.1412309040120445,
+      "first_completion_attribution": 1,
+      "exclusive_worker_cpu_s": 0.089325
+    },
+    {
+      "method": "soft",
+      "baseline": 28,
+      "retained_any_method": 11,
+      "under250": 0,
+      "median_retained_age_s": 2.128725891031901,
+      "first_completion_attribution": 3,
+      "exclusive_worker_cpu_s": 0.03844244099999683
+    },
+    {
+      "method": "matched",
+      "baseline": 17,
+      "retained_any_method": 3,
+      "under250": 0,
+      "median_retained_age_s": 1.972568223002116,
+      "first_completion_attribution": 2,
+      "exclusive_worker_cpu_s": 0.09339871799999871
+    },
+    {
+      "method": "coherent",
+      "baseline": 68,
+      "retained_any_method": 21,
+      "under250": 0,
+      "median_retained_age_s": 1.8000890830078125,
+      "first_completion_attribution": 41,
+      "exclusive_worker_cpu_s": 0.8759961919999941
+    },
+    {
+      "method": "neural",
+      "baseline": 18,
+      "retained_any_method": 6,
+      "under250": 0,
+      "median_retained_age_s": 1.1461948460286457,
+      "first_completion_attribution": 0,
+      "exclusive_worker_cpu_s": 0.9481269340000065
+    }
+  ],
+  "total": {
+    "full_replay": 188,
+    "bridge": 58,
+    "under250ms": 0,
+    "baseline_missing": 130,
+    "early_not_in_full": 0,
+    "actual_producer": 210,
+    "actual_producer_retained": 58
+  },
+  "worker_cpu_s": 4.224412503000003,
+  "bridge_cpu_s": 1.0572279389999955,
+  "wall_s": 22.607176986028207,
+  "reference": {
+    "production_pool": 188,
+    "full_replay": 188,
+    "exact_transmission_set_equal": true,
+    "exact_attribution_set_equal": true,
+    "separate_stream1090": 22
+  },
+  "protected": {
+    "error": null,
+    "protected_pids_unchanged": true,
+    "fr24_pid_unchanged": true,
+    "configs_unchanged": true,
+    "fr24_host": "127.0.0.1:30005",
+    "gain_db": 38.6,
+    "samples_lost": 0,
+    "samples_dropped": 0,
+    "protected_samples": 8
+  },
+  "tests_mac": 9,
+  "tests_pi": 9,
+  "fr24_stock_test_end_berlin": "2026-11-01T20:00:00+01:00",
+  "limits": [
+    "35%one-core quota is below standalone DSP replay CPU requirement",
+    "Repeated engineering RF, not independent prospective evidence",
+    "Stream1090 is a separate producer, not covered",
+    "Timing is pre-transport replay estimation; no USB or RF-to-cloud latency measurement"
+  ]
+}

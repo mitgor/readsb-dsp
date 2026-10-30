@@ -1,0 +1,7 @@
+{
+  "production_pool": 188,
+  "full_replay": 188,
+  "exact_transmission_set_equal": true,
+  "exact_attribution_set_equal": true,
+  "separate_stream1090": 22
+}

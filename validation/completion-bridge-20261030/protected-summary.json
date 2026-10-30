@@ -1,0 +1,11 @@
+{
+  "error": null,
+  "protected_pids_unchanged": true,
+  "fr24_pid_unchanged": true,
+  "configs_unchanged": true,
+  "fr24_host": "127.0.0.1:30005",
+  "gain_db": 38.6,
+  "samples_lost": 0,
+  "samples_dropped": 0,
+  "protected_samples": 8
+}

@@ -1,0 +1,10 @@
+Running as unit: adsb-completion-final-tests-20261030.service
+.........
+----------------------------------------------------------------------
+Ran 9 tests in 0.003s
+
+OK
+Finished with result: success
+Main processes terminated with: code=exited/status=0
+Service runtime: 3.910s
+CPU time consumed: 1.385s
