@@ -1,0 +1,7 @@
+test_callback_failure_does_not_damage_decoder (test_event_tap.Tests.test_callback_failure_does_not_damage_decoder) ... ok
+test_energy_published_before_later_stage_and_output_unchanged (test_event_tap.Tests.test_energy_published_before_later_stage_and_output_unchanged) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK

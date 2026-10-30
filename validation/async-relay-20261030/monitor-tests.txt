@@ -1,0 +1,8 @@
+test_active_aircraft_require_relay_progress (test_monitor.Tests.test_active_aircraft_require_relay_progress) ... ok
+test_quiet_rf_does_not_require_alignment_or_aircraft (test_monitor.Tests.test_quiet_rf_does_not_require_alignment_or_aircraft) ... ok
+test_real_dsp_stall_still_fails_closed (test_monitor.Tests.test_real_dsp_stall_still_fails_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK

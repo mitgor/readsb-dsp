@@ -1,0 +1,23 @@
+{
+  "stock_core_records": 31793,
+  "missing_stock_core_records": 0,
+  "delay_seconds": {
+    "count": 31793,
+    "min": 0.00011428000289015472,
+    "median": 0.001097314991056919,
+    "p95": 0.003398021013708785,
+    "p99": 0.052567733015166596,
+    "max": 0.07069970699376427
+  },
+  "process_cpu_s": 4.86073295,
+  "wall_s": 50.15466151401051,
+  "equivalent_one_core_percent": 9.691487896179249,
+  "peak_rss_kib": 114560,
+  "dedup_history_entries": 1581,
+  "cache_capacity_evictions": 0,
+  "protected_health_unchanged": true,
+  "real_dsp_forwarded": 0,
+  "fr24_attached": false,
+  "scope": "Process includes dual TCP recording, relay, RAM status and periodic health checks; no DSP inference/producer/FR24 connection. Peak RSS includes imports.",
+  "limits": "Arrival-time difference between independent localhost clients, not RF-to-cloud latency. Slight negative deltas are possible from socket scheduling. No live DSP producer was connected, so this cannot measure real-extra retention or complete-pipeline accuracy."
+}

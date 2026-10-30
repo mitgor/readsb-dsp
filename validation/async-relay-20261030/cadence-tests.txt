@@ -1,0 +1,8 @@
+test_config_does_not_retain_identity_or_servers (test_cadence.Tests.test_config_does_not_retain_identity_or_servers) ... ok
+test_send_fields_remain_literal (test_cadence.Tests.test_send_fields_remain_literal) ... ok
+test_unrelated_credentials_never_logged (test_cadence.Tests.test_unrelated_credentials_never_logged) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.000s
+
+OK

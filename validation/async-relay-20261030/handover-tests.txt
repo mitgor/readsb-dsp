@@ -1,0 +1,8 @@
+test_handover_stock_route_does_not_reenable_guard (test_handover.Tests.test_handover_stock_route_does_not_reenable_guard) ... ok
+test_original_restore_still_returns_combined_and_guard (test_handover.Tests.test_original_restore_still_returns_combined_and_guard) ... ok
+test_restore_respects_human_manual_stock_intent (test_handover.Tests.test_restore_respects_human_manual_stock_intent) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.006s
+
+OK

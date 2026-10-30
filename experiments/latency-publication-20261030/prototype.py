@@ -71,8 +71,9 @@ class ImmediateRelay(Relay):
     Five-second shared transmission cache; no payload-only suppression. Every
     stock byte survives, including late stock. Original Beast timestamps remain.
     """
-    def __init__(self,history_class,**kwargs):
+    def __init__(self,history_class,allowed_sources=None,**kwargs):
         super().__init__(holdback=0,**kwargs);self.cache=history_class();self.epoch=None
+        self.allowed_sources=set(ALLOWED if allowed_sources is None else allowed_sources)
     def stock(self,wire,frame,now,epoch=None):
         if epoch is not None and epoch!=self.epoch:
             if self.heap:raise RuntimeError('Drain previous epoch before reset')
@@ -89,7 +90,7 @@ class ImmediateRelay(Relay):
             self.count['stale_batch_rejected']+=1;return
         for e in batch.get('extra',[])[:5000]:
             p=e.get('message_hex');source=e.get('source')
-            if source not in ALLOWED or not enabled.get(source,False) or not valid(p):self.count['policy_rejected']+=1;continue
+            if source not in self.allowed_sources or not enabled.get(source,False) or not valid(p):self.count['policy_rejected']+=1;continue
             t=unwrap((int(e['ticks'])+CORRECTION)%MOD,self.anchor)
             # Compare RF age against causal stock sample clock, not CPU wall time.
             if not 0<=self.anchor-t<=3000000:self.count['rf_age_rejected']+=1;continue

@@ -1,0 +1,14 @@
+{
+  "rf_sha256": "c58828bdbb0b60b6da7d1146b7e3310aed1b559d080329bb852f2016de2dcd45",
+  "rf_seconds": 1.0005,
+  "raw_decoder_events": 113,
+  "callback_events": 92,
+  "full_returned_event_dictionary_parity": true,
+  "allowed_event_multiset_parity": true,
+  "baseline_cpu_s": 0.059894999999999976,
+  "tap_cpu_s": 0.05315000000000003,
+  "callback_counts": {
+    "published": 92
+  },
+  "scope": "Historical reserved RF, raw candidate regression with energy/CRC/timing/soft/matched only, not full current enabled pipeline or new detections. No model fitting or output forwarding; BroadCRC excluded from callbacks."
+}
