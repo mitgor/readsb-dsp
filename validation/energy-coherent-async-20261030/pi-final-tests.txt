@@ -1,0 +1,10 @@
+Running as unit: adsb-energy-coherent-final-tests-20261030.service
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+OK
+Finished with result: success
+Main processes terminated with: code=exited/status=0
+Service runtime: 4.349s
+CPU time consumed: 1.551s

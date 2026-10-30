@@ -1,0 +1,11 @@
+{
+  "stock_frame_order_payload_signal_timestamp_preserved": true,
+  "stock_records": 5655,
+  "output_records": 5742,
+  "baseline_two_method_outside_recorded_full": 0,
+  "emitted_outside_recorded_full": 0,
+  "live_stock_only_fr24_unchanged": true,
+  "protected_pids_configs_models_sources_unchanged": true,
+  "sdrlost": 0,
+  "sdrdropped": 0
+}

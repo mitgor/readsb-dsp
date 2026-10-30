@@ -1,0 +1,101 @@
+{
+  "methods": {
+    "energy": {
+      "grouped_baseline": 32,
+      "retained_any_method": 22,
+      "under250_any_method": 5,
+      "emitted_attribution": 22,
+      "retained_age_s": {
+        "n": 22,
+        "median": 0.2841224900004069,
+        "p95": 0.3550859299926758,
+        "max": 0.3610884630126953
+      },
+      "completion_after_input_ready_s": {
+        "n": 112,
+        "median": 0.25272121499897904,
+        "p95": 0.3592404630037489,
+        "max": 0.38942015498783444
+      },
+      "queue_wait_s": {
+        "n": 112,
+        "median": 0.12423693951859605,
+        "p95": 0.21155115001602098,
+        "max": 0.28513686198857613
+      },
+      "worker_cpu_s": 0.952475399999998
+    },
+    "coherent": {
+      "grouped_baseline": 135,
+      "retained_any_method": 65,
+      "under250_any_method": 0,
+      "emitted_attribution": 65,
+      "retained_age_s": {
+        "n": 65,
+        "median": 0.4045518960164388,
+        "p95": 0.4814454470214844,
+        "max": 0.5559955889892578
+      },
+      "completion_after_input_ready_s": {
+        "n": 81,
+        "median": 0.3661138400146742,
+        "p95": 0.45974678001389835,
+        "max": 0.535299588990398
+      },
+      "queue_wait_s": {
+        "n": 81,
+        "median": 0.215489311987767,
+        "p95": 0.3050108249881305,
+        "max": 0.3219706569798291
+      },
+      "worker_cpu_s": 0.9740336780000007
+    }
+  },
+  "rf_seconds": 8,
+  "total": {
+    "baseline": 167,
+    "emitted": 87,
+    "retained_baseline": 87,
+    "under250": 5,
+    "not_in_grouped_baseline": 0,
+    "not_in_recorded_full_pipeline": 0,
+    "not_in_actual_relay": 0
+  },
+  "wall_s": 8.31718394299969,
+  "admission_cpu_s": 0.4180535119999993,
+  "final_dedup_cpu_s": 0.04044725999999721,
+  "final_dedup": {
+    "ttl_expired": 5028,
+    "epoch_resets": 1,
+    "cross_stream_duplicate_rejected": 10,
+    "emitted_stock": 5655,
+    "emitted_energy": 22,
+    "emitted_coherent": 65
+  },
+  "final_history_entries": 714,
+  "stock_records": 5655,
+  "stock_byte_hash": "7680d859b4e80f0123b3cd08a67d7871a2ef00848d3d61ea797a32a0b6469057",
+  "stock_preserved": true,
+  "counts": {
+    "energy_completed": 112,
+    "coherent_queue_shed": 79,
+    "coherent_completed": 81,
+    "energy_queue_shed": 48
+  },
+  "admission_counts": {
+    "epoch_reset": 1,
+    "alignment_wait": 320,
+    "duplicate_120us": 12951,
+    "added_energy": 465,
+    "added_coherent": 65,
+    "no_prior_stock_icao": 2,
+    "pending_expired": 20
+  },
+  "complete_baseline_jobs": 320,
+  "complete_baseline_worker_cpu_s": {
+    "energy": 1.3638394489999996,
+    "coherent": 1.9019760840000053
+  },
+  "scheduled_jobs_per_method": 160,
+  "scope": "Reserved engineering RF; fully independent energy/coherent frontends and futures; core3/35%one-core quota; original pipeline/FR24 untouched; estimated pre-feeder RF ages, not cloud latency."
+}

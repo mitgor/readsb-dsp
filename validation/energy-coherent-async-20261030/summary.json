@@ -1,0 +1,102 @@
+{
+  "mode": "isolated_not_deployed",
+  "methods": {
+    "energy": {
+      "grouped_baseline": 32,
+      "retained_any_method": 22,
+      "under250_any_method": 5,
+      "emitted_attribution": 22,
+      "retained_age_s": {
+        "n": 22,
+        "median": 0.2841224900004069,
+        "p95": 0.3550859299926758,
+        "max": 0.3610884630126953
+      },
+      "completion_after_input_ready_s": {
+        "n": 112,
+        "median": 0.25272121499897904,
+        "p95": 0.3592404630037489,
+        "max": 0.38942015498783444
+      },
+      "queue_wait_s": {
+        "n": 112,
+        "median": 0.12423693951859605,
+        "p95": 0.21155115001602098,
+        "max": 0.28513686198857613
+      },
+      "worker_cpu_s": 0.952475399999998
+    },
+    "coherent": {
+      "grouped_baseline": 135,
+      "retained_any_method": 65,
+      "under250_any_method": 0,
+      "emitted_attribution": 65,
+      "retained_age_s": {
+        "n": 65,
+        "median": 0.4045518960164388,
+        "p95": 0.4814454470214844,
+        "max": 0.5559955889892578
+      },
+      "completion_after_input_ready_s": {
+        "n": 81,
+        "median": 0.3661138400146742,
+        "p95": 0.45974678001389835,
+        "max": 0.535299588990398
+      },
+      "queue_wait_s": {
+        "n": 81,
+        "median": 0.215489311987767,
+        "p95": 0.3050108249881305,
+        "max": 0.3219706569798291
+      },
+      "worker_cpu_s": 0.9740336780000007
+    }
+  },
+  "total": {
+    "baseline": 167,
+    "emitted": 87,
+    "retained_baseline": 87,
+    "under250": 5,
+    "not_in_grouped_baseline": 0,
+    "not_in_recorded_full_pipeline": 0,
+    "not_in_actual_relay": 0
+  },
+  "stock": {
+    "stock_frame_order_payload_signal_timestamp_preserved": true,
+    "stock_records": 5655,
+    "output_records": 5742,
+    "baseline_two_method_outside_recorded_full": 0,
+    "emitted_outside_recorded_full": 0,
+    "live_stock_only_fr24_unchanged": true,
+    "protected_pids_configs_models_sources_unchanged": true,
+    "sdrlost": 0,
+    "sdrdropped": 0
+  },
+  "complete_worker_cpu_s": {
+    "energy": 1.3638394489999996,
+    "coherent": 1.9019760840000053
+  },
+  "admission_cpu_s": 0.4180535119999993,
+  "dedup_cpu_s": 0.04044725999999721,
+  "rust_microbenchmark_cpu_reduction_percent": 16.135366723954437,
+  "source_queue_shed": {
+    "energy_completed": 112,
+    "coherent_queue_shed": 79,
+    "coherent_completed": 81,
+    "energy_queue_shed": 48
+  },
+  "earlier_repeat": {
+    "baseline": 167,
+    "emitted": 90,
+    "retained_baseline": 90,
+    "under250": 0,
+    "not_in_grouped_baseline": 0,
+    "not_in_recorded_full_pipeline": 0,
+    "not_in_actual_relay": 0
+  },
+  "cpu_quota_one_core_percent": 35,
+  "rf_seconds": 8,
+  "rf_kind": "previously_reserved_engineering_replay",
+  "hardware": "Pi5",
+  "fr24_stock_test_end_berlin": "2026-11-01T20:00:00+01:00"
+}

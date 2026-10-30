@@ -1,0 +1,14 @@
+{
+  "randomized_events": 50007,
+  "reference_decisions_and_counters_exact": true,
+  "throughput_events": 100000,
+  "cpu_s": {
+    "python": 0.4532968679999998,
+    "rust": 0.3801557560000002
+  },
+  "accepted": {
+    "python": 100000,
+    "rust": 100000
+  },
+  "rust_includes_ctypes": true
+}
