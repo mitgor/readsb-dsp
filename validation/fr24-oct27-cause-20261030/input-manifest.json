@@ -1,0 +1,62 @@
+[
+  {
+    "path": "results/fr24-cloud-20261030/hourly-comparison.json",
+    "sha256": "f456a68bac40ecc6f22a2196129b9751cda12d9b69eee803f92fb70d466f9ad2"
+  },
+  {
+    "path": "results/fr24-oct27-cause-20261030/rrd-history.json",
+    "sha256": "bbfc825f7496a2dfde5f2e27724392406da3ca73169460d6eda107c276b6315f"
+  },
+  {
+    "path": "incidents/fr24-drop-20261027/private/live-20261030/pi-source-config-backups-rrd.tar",
+    "sha256": "1734b518ff75241d7b2b3485d93d0ac19cde2876dcc803e7d845423e57b58c2e"
+  },
+  {
+    "path": "results/dashboard-capture-20261027/pi-first-attempt-audit.json",
+    "sha256": "2851eeb6e8685997641a06c3e21618574830d31fa086e098a3da1666c193ff3e"
+  },
+  {
+    "path": "results/dashboard-capture-20261027/pi-audit.json",
+    "sha256": "5dfbe8dac229df450c747ce58c37c925251756a9480dc1a3dc79c269df2aa41b"
+  },
+  {
+    "path": "results/relay-recovery-20261027/first-attempt.json",
+    "sha256": "ce39d0d059f5078811f7fb259b807811276d425fd702dc3012004de22185248e"
+  },
+  {
+    "path": "results/relay-recovery-20261027/activation.json",
+    "sha256": "1cd2bba66770a6da086742affac3a8eacc3bdad0d208dc458333b548d5aafd39"
+  },
+  {
+    "path": "results/dashboard-capture-20261027/pi-final-verification.json",
+    "sha256": "8488381357760d354714f3d4c0c08bc3059ed1d3dadc78b050fd1dffdcb6534e"
+  },
+  {
+    "path": "results/relay-recovery-20261027/recovery-test.json",
+    "sha256": "0ce205b105a51755f1b5b300b1c1c7ac66919fd4d3dcb16e0052b5d0217b6bdc"
+  },
+  {
+    "path": "results/relay-recovery-20261027/steady-audit.json",
+    "sha256": "94685d83b59ecfeb2ffa33cb0105e012b642cd4be56671e28882cae37c9fba8a"
+  },
+  {
+    "path": "results/capture-threshold-200-20261027/activation.json",
+    "sha256": "8131bfbe1cd669c234c11e983663c685fd7d61cb1bc193ce4dfb54e16ca8a86e"
+  },
+  {
+    "path": "results/capture-triggers-20261027/activation.json",
+    "sha256": "ad6aaecd0f933eb19175734aeb1ed3f44492b3ab3699bdc3b1442a9e6d692628"
+  },
+  {
+    "path": "results/burst-ledger-20261027/activation.json",
+    "sha256": "51d100119a1e8ad8925d33b785d5446622086da52992075ce941659d120d5bbf"
+  },
+  {
+    "path": "results/fr24-consistency-20261028/upload-history.json",
+    "sha256": "d012a63f91fc1fe48ada55fd1fd444671fd53eeb6bec41a8374fa746a3dddca3"
+  },
+  {
+    "path": "results/bel7pj-track-20261028/summary.json",
+    "sha256": "4a4d5740d8a954917bca58c397ac6c3b9f973aa612f78d3ae04393c72809c201"
+  }
+]

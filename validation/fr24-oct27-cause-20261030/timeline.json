@@ -1,0 +1,135 @@
+[
+  {
+    "utc": "2026-10-27T10:00:00+00:00",
+    "berlin": "2026-10-27T11:00:00+01:00",
+    "action": "FR24 chart point:hits=744473,positions=135166",
+    "evidence_kind": "chart label; bucket start/end unresolved",
+    "source": "results/fr24-cloud-20261030/cloud-hourly.json"
+  },
+  {
+    "utc": "2026-10-27T10:08:54.814562+00:00",
+    "berlin": "2026-10-27T11:08:54.814562+01:00",
+    "action": "Dashboard deployment first attempt failed lighttpd preflight; rollout restored",
+    "evidence_kind": "saved activation timestamp",
+    "source": "results/dashboard-capture-20261027/pi-first-attempt-audit.json"
+  },
+  {
+    "utc": "2026-10-27T10:10:36.312143+00:00",
+    "berlin": "2026-10-27T11:10:36.312143+01:00",
+    "action": "Dashboard/method switches and 230nm far RF capture activation audit began",
+    "evidence_kind": "saved activation timestamp",
+    "source": "results/dashboard-capture-20261027/pi-audit.json"
+  },
+  {
+    "utc": "2026-10-27T10:14:52.865713+00:00",
+    "berlin": "2026-10-27T11:14:52.865713+01:00",
+    "action": "Final dashboard-era DSP runtime start; readsb/FR24 preserved",
+    "evidence_kind": "runtime start",
+    "source": "results/dashboard-capture-20261027/pi-final-verification.json"
+  },
+  {
+    "utc": "2026-10-27T11:00:00+00:00",
+    "berlin": "2026-10-27T12:00:00+01:00",
+    "action": "FR24 chart point:hits=630121,positions=118821",
+    "evidence_kind": "chart label; bucket start/end unresolved",
+    "source": "results/fr24-cloud-20261030/cloud-hourly.json"
+  },
+  {
+    "utc": "2026-10-27T11:13:55.189327+00:00",
+    "berlin": "2026-10-27T12:13:55.189327+01:00",
+    "action": "First relay repair attempt; readiness assertion failed and direct-stock route restored",
+    "evidence_kind": "saved activation timestamp",
+    "source": "results/relay-recovery-20261027/first-attempt.json"
+  },
+  {
+    "utc": "2026-10-27T11:15:56.296399+00:00",
+    "berlin": "2026-10-27T12:15:56.296399+01:00",
+    "action": "Successful relay repair activation began; FR24 stock30005 -> combined31005, existing3s holdback",
+    "evidence_kind": "saved activation timestamp",
+    "source": "results/relay-recovery-20261027/activation.json"
+  },
+  {
+    "utc": "2026-10-27T11:21:00.571490+00:00",
+    "berlin": "2026-10-27T12:21:00.571490+01:00",
+    "action": "Controlled sustained-outage recovery observation: 127.0.0.1:31005, relay PID 0",
+    "evidence_kind": "saved test trace",
+    "source": "results/relay-recovery-20261027/recovery-test.json"
+  },
+  {
+    "utc": "2026-10-27T11:21:07.998973+00:00",
+    "berlin": "2026-10-27T12:21:07.998973+01:00",
+    "action": "Controlled sustained-outage recovery observation: 127.0.0.1:30005, relay PID 0",
+    "evidence_kind": "saved test trace",
+    "source": "results/relay-recovery-20261027/recovery-test.json"
+  },
+  {
+    "utc": "2026-10-27T11:21:15.364504+00:00",
+    "berlin": "2026-10-27T12:21:15.364504+01:00",
+    "action": "Controlled sustained-outage recovery observation: 127.0.0.1:30005, relay PID 2448789",
+    "evidence_kind": "saved test trace",
+    "source": "results/relay-recovery-20261027/recovery-test.json"
+  },
+  {
+    "utc": "2026-10-27T11:21:28.519162+00:00",
+    "berlin": "2026-10-27T12:21:28.519162+01:00",
+    "action": "Controlled sustained-outage recovery observation: 127.0.0.1:31005, relay PID 2448789",
+    "evidence_kind": "saved test trace",
+    "source": "results/relay-recovery-20261027/recovery-test.json"
+  },
+  {
+    "utc": "2026-10-27T11:23:17.919846+00:00",
+    "berlin": "2026-10-27T12:23:17.919846+01:00",
+    "action": "60s steady audit:26,484 stock /0 missing /853 CRC-valid extra records",
+    "evidence_kind": "saved audit timestamp",
+    "source": "results/relay-recovery-20261027/steady-audit.json"
+  },
+  {
+    "utc": "2026-10-27T11:52:26.569840+00:00",
+    "berlin": "2026-10-27T12:52:26.569840+01:00",
+    "action": "Lower far RF/packet capture230->200nm",
+    "evidence_kind": "backup-directory timestamp (activation start proxy)",
+    "source": "results/capture-threshold-200-20261027/activation.json"
+  },
+  {
+    "utc": "2026-10-27T12:00:00+00:00",
+    "berlin": "2026-10-27T13:00:00+01:00",
+    "action": "FR24 chart point:hits=477695,positions=81459",
+    "evidence_kind": "chart label; bucket start/end unresolved",
+    "source": "results/fr24-cloud-20261030/cloud-hourly.json"
+  },
+  {
+    "utc": "2026-10-27T13:00:00+00:00",
+    "berlin": "2026-10-27T14:00:00+01:00",
+    "action": "FR24 chart point:hits=33071,positions=5130",
+    "evidence_kind": "chart label; bucket start/end unresolved",
+    "source": "results/fr24-cloud-20261030/cloud-hourly.json"
+  },
+  {
+    "utc": "2026-10-27T13:27:56.738008+00:00",
+    "berlin": "2026-10-27T14:27:56.738008+01:00",
+    "action": "Local holdover/external capture triggers, recorder only",
+    "evidence_kind": "backup-directory timestamp (activation start proxy)",
+    "source": "results/capture-triggers-20261027/activation.json"
+  },
+  {
+    "utc": "2026-10-27T14:00:00+00:00",
+    "berlin": "2026-10-27T15:00:00+01:00",
+    "action": "FR24 chart point:hits=65118,positions=7672",
+    "evidence_kind": "chart label; bucket start/end unresolved",
+    "source": "results/fr24-cloud-20261030/cloud-hourly.json"
+  },
+  {
+    "utc": "2026-10-27T15:00:00+00:00",
+    "berlin": "2026-10-27T16:00:00+01:00",
+    "action": "FR24 chart point:hits=30236,positions=4633",
+    "evidence_kind": "chart label; bucket start/end unresolved",
+    "source": "results/fr24-cloud-20261030/cloud-hourly.json"
+  },
+  {
+    "utc": "2026-10-27T15:50:53.495436+00:00",
+    "berlin": "2026-10-27T16:50:53.495436+01:00",
+    "action": "Synchronized burst stock/DSP journal capture",
+    "evidence_kind": "backup-directory timestamp (activation start proxy)",
+    "source": "results/burst-ledger-20261027/activation.json"
+  }
+]

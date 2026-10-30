@@ -1,0 +1,4178 @@
+[
+  {
+    "chart_hour_utc": 0,
+    "berlin_hour": 1,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -19.7316666666,
+        "min": -28.211111111,
+        "max": -11.119444444,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -35.15722222215,
+        "min": -36.0,
+        "max": -33.183333333,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 49.66953703705,
+        "min": 47.599074074,
+        "max": 51.305555556,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 27.0252314815,
+        "min": 26.435185185,
+        "max": 27.586574074,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 5.1254861111,
+        "min": 1.4069444444,
+        "max": 7.4555555556,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 68.98782407395001,
+        "min": 67.228703704,
+        "max": 70.788657407,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 1.70854166666,
+        "min": 1.6020833333,
+        "max": 1.8111111111,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 3.07974537038,
+        "min": 2.7206018519,
+        "max": 3.3523148148,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.002222222222216,
+        "min": 0.0,
+        "max": 0.011111111111,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.1264814814821,
+        "min": 0.033333333333,
+        "max": 0.19861111111,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 25.2281944444,
+        "min": 24.091898148,
+        "max": 26.486111111,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 47508.4069444,
+        "min": 47035.611111,
+        "max": 48063.722222,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 710.93400463,
+        "min": 322.26157407,
+        "max": 993.70555556,
+        "points": 20
+      },
+      {
+        "mean": 567.8960185165,
+        "min": 545.79259259,
+        "max": 586.03009259,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.053888888895,
+        "min": 1.0337962963,
+        "max": 1.0925925926,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 1,
+    "berlin_hour": 2,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -12.34625000005,
+        "min": -20.372222222,
+        "max": -6.6222222222,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -33.435000000049996,
+        "min": -35.591666667,
+        "max": -30.308333333,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 4.23888888888816,
+        "min": 0.0,
+        "max": 20.68287037,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 50.134050926,
+        "min": 49.313888889,
+        "max": 51.04537037,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 27.6198611111,
+        "min": 27.181481481,
+        "max": 27.965740741,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 7.200069444435,
+        "min": 6.0782407407,
+        "max": 7.837037037,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 69.27733796285,
+        "min": 68.6375,
+        "max": 69.767592593,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 1.70175925926,
+        "min": 1.5171296296,
+        "max": 1.7560185185,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 3.26483796297,
+        "min": 3.0069444444,
+        "max": 3.412037037,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.00111111111112,
+        "min": 0.0,
+        "max": 0.0055555555556,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.1193981481485,
+        "min": 0.10046296296,
+        "max": 0.14398148148,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 24.88201388885,
+        "min": 24.578240741,
+        "max": 25.219675926,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 47371.77638895,
+        "min": 46602.722222,
+        "max": 48009.611111,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 615.1708333345,
+        "min": 330.67175926,
+        "max": 930.29305556,
+        "points": 20
+      },
+      {
+        "mean": 565.9794444445,
+        "min": 558.76342593,
+        "max": 571.50185185,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.051967592595,
+        "min": 1.0333333333,
+        "max": 1.0888888889,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 2,
+    "berlin_hour": 3,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -11.156944444465,
+        "min": -18.375,
+        "max": -6.8888888889,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -32.50625,
+        "min": -35.466666667,
+        "max": -28.802777778,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 6.68222222221,
+        "min": 0.0,
+        "max": 21.973148148,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 50.93300925935,
+        "min": 49.621759259,
+        "max": 52.475925926,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 28.28673611115,
+        "min": 27.740740741,
+        "max": 29.068518519,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 7.91798611111,
+        "min": 7.425,
+        "max": 8.4384259259,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 68.63991898155,
+        "min": 68.043518519,
+        "max": 70.302314815,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 1.73483796296,
+        "min": 1.6189814815,
+        "max": 1.8064814815,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 3.525868055555,
+        "min": 3.2851851852,
+        "max": 3.6972222222,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.0019328703703820002,
+        "min": 0.0,
+        "max": 0.0055555555556,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.129479166667,
+        "min": 0.11203703704,
+        "max": 0.15,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 25.2003356482,
+        "min": 24.734722222,
+        "max": 25.480092593,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 48148.94722225,
+        "min": 47360.277778,
+        "max": 48997.138889,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 552.7787268515,
+        "min": 387.63240741,
+        "max": 1076.0449074,
+        "points": 20
+      },
+      {
+        "mean": 573.373541666,
+        "min": 564.00648148,
+        "max": 584.25601852,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.04611111111,
+        "min": 1.0171296296,
+        "max": 1.0824074074,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 3,
+    "berlin_hour": 4,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -12.030972222159999,
+        "min": -17.205555556,
+        "max": -7.9444444444,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -32.70250000005,
+        "min": -35.297222222,
+        "max": -29.4,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 3.586782407374648,
+        "min": 0.0,
+        "max": 19.831944444,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 51.8173611112,
+        "min": 49.398148148,
+        "max": 53.865277778,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 28.50173611105,
+        "min": 27.833333333,
+        "max": 29.497222222,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 8.00027777778,
+        "min": 6.262037037,
+        "max": 8.6481481481,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 68.31679398135,
+        "min": 67.389814815,
+        "max": 69.165509259,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 1.7493750000000001,
+        "min": 1.6706018519,
+        "max": 1.8587962963,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 3.5085995370350003,
+        "min": 3.1145833333,
+        "max": 3.7256944444,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.0016782407407480002,
+        "min": 0.0,
+        "max": 0.0055555555556,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.1307986111105,
+        "min": 0.10324074074,
+        "max": 0.14606481481,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 25.3046643518,
+        "min": 23.173611111,
+        "max": 26.094444444,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 48435.05972225,
+        "min": 47874.333333,
+        "max": 49321.805556,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 625.4154861075,
+        "min": 350.66111111,
+        "max": 1414.8958333,
+        "points": 20
+      },
+      {
+        "mean": 649.0508564805,
+        "min": 560.3462963,
+        "max": 1603.6310185,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.05469907408,
+        "min": 1.0180555556,
+        "max": 1.1217592593,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 4,
+    "berlin_hour": 5,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -12.963194444345,
+        "min": -19.819444444,
+        "max": -7.9,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -31.1845833333,
+        "min": -34.363888889,
+        "max": -27.280555556,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 8.0135879629409,
+        "min": 0.0,
+        "max": 28.1,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 55.3446527778,
+        "min": 53.059722222,
+        "max": 58.309722222,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 29.3793981481,
+        "min": 28.338425926,
+        "max": 30.280886243,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 8.696851851865,
+        "min": 8.5143518519,
+        "max": 8.9166666667,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 67.36287037035,
+        "min": 66.646296296,
+        "max": 68.055787037,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 1.83155092592,
+        "min": 1.7277777778,
+        "max": 1.9703703704,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 3.56462962963,
+        "min": 3.412037037,
+        "max": 3.6865740741,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.001388888888897,
+        "min": 0.0,
+        "max": 0.0055555555556,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.1388888888875,
+        "min": 0.11712962963,
+        "max": 0.15509259259,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 26.20766203715,
+        "min": 25.615740741,
+        "max": 26.62962963,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 48588.6000001,
+        "min": 47860.805556,
+        "max": 49457.083333,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 468.486550926,
+        "min": 327.16759259,
+        "max": 645.39398148,
+        "points": 20
+      },
+      {
+        "mean": 637.719074074,
+        "min": 591.7087963,
+        "max": 856.25231481,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.055787037045,
+        "min": 1.0226851852,
+        "max": 1.0861111111,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 5,
+    "berlin_hour": 6,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -9.74875000004,
+        "min": -13.441666667,
+        "max": -8.0777777778,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -28.49083333345,
+        "min": -31.666666667,
+        "max": -25.0,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 26.63697089951,
+        "min": 1.3313492063,
+        "max": 51.889417989,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 57.49398148155,
+        "min": 53.275462963,
+        "max": 61.584722222,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 30.052119709,
+        "min": 29.019775132,
+        "max": 31.23207672,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 8.671084656085,
+        "min": 8.5462301587,
+        "max": 8.919973545,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 66.78064814815,
+        "min": 65.719907407,
+        "max": 67.935416667,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 1.89349537037,
+        "min": 1.7384259259,
+        "max": 2.0944444444,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 3.57430555554,
+        "min": 3.4194444444,
+        "max": 3.7046296296,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.003055555555555,
+        "min": 0.0,
+        "max": 0.035648148148,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.1391898148155,
+        "min": 0.12222222222,
+        "max": 0.14953703704,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 26.679837963,
+        "min": 25.863425926,
+        "max": 27.419907407,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 48231.4666666,
+        "min": 47252.055556,
+        "max": 48794.222222,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 514.6979629625,
+        "min": 370.33148148,
+        "max": 772.89212963,
+        "points": 20
+      },
+      {
+        "mean": 638.100277778,
+        "min": 350.12546296,
+        "max": 694.2125,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.0580787036900001,
+        "min": 1.0398148148,
+        "max": 1.0837962963,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 6,
+    "berlin_hour": 7,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -10.149166666725,
+        "min": -11.45,
+        "max": -8.3388888889,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -26.8227777778,
+        "min": -27.763888889,
+        "max": -25.844444444,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 28.81536706355,
+        "min": 11.451388889,
+        "max": 54.998611111,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 62.3728009259,
+        "min": 60.131018519,
+        "max": 64.954166667,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 30.66954695775,
+        "min": 30.213425926,
+        "max": 31.134722222,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 8.654910714295,
+        "min": 8.5055555556,
+        "max": 8.8143518519,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 65.9755555556,
+        "min": 65.028240741,
+        "max": 68.926388889,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 2.08592592592,
+        "min": 1.9574074074,
+        "max": 2.2851851852,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 3.62523148148,
+        "min": 3.5231481481,
+        "max": 3.7273148148,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.002222222222222,
+        "min": 0.0,
+        "max": 0.010648148148,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.143333333332,
+        "min": 0.13287037037,
+        "max": 0.15555555556,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 27.47414351855,
+        "min": 26.994444444,
+        "max": 28.012037037,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 48717.1138889,
+        "min": 47238.527778,
+        "max": 49998.194444,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 491.0202314815,
+        "min": 302.26111111,
+        "max": 669.67824074,
+        "points": 20
+      },
+      {
+        "mean": 581.566203703,
+        "min": 163.84814815,
+        "max": 750.9,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.06358796296,
+        "min": 1.0203703704,
+        "max": 1.1291666667,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 7,
+    "berlin_hour": 8,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -10.321805555625,
+        "min": -12.144444444,
+        "max": -8.525,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -26.4995833332,
+        "min": -27.888888889,
+        "max": -23.144444444,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 31.5403240741,
+        "min": 10.284259259,
+        "max": 93.087962963,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 63.57405092575,
+        "min": 60.97962963,
+        "max": 68.862962963,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 30.8968981481,
+        "min": 30.396759259,
+        "max": 32.221296296,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 8.705439814805,
+        "min": 8.5356481481,
+        "max": 8.8657407407,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 65.59800925915,
+        "min": 64.231481481,
+        "max": 68.583796296,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 2.08879629629,
+        "min": 1.9555555556,
+        "max": 2.3134259259,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 3.620277777775,
+        "min": 3.5083333333,
+        "max": 3.7680555556,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.0011111111111180001,
+        "min": 0.0,
+        "max": 0.0055555555556,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.1424768518515,
+        "min": 0.1287037037,
+        "max": 0.16574074074,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 27.58530092595,
+        "min": 25.598148148,
+        "max": 28.525925926,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 51836.61944455,
+        "min": 49321.805556,
+        "max": 53028.416667,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 546.773703703,
+        "min": 348.46157407,
+        "max": 870.95787037,
+        "points": 20
+      },
+      {
+        "mean": 735.0455324075,
+        "min": 690.09027778,
+        "max": 786.56990741,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.05837962963,
+        "min": 1.012962963,
+        "max": 1.1115740741,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 8,
+    "berlin_hour": 9,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -10.100972222215,
+        "min": -12.997222222,
+        "max": -7.8416666667,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -26.40138888895,
+        "min": -29.511111111,
+        "max": -21.930555556,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 36.909861110915,
+        "min": 9.2188492063,
+        "max": 110.21574074,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 63.77787037035,
+        "min": 59.527314815,
+        "max": 70.904166667,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 30.5241203705,
+        "min": 29.137037037,
+        "max": 32.741666667,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 8.742824074065,
+        "min": 8.5069444444,
+        "max": 8.9550925926,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 65.41057870384999,
+        "min": 62.964814815,
+        "max": 68.060648148,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 2.177546296295,
+        "min": 2.000462963,
+        "max": 2.437962963,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 3.646111111105,
+        "min": 3.5180555556,
+        "max": 4.3708333333,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.030555555555808,
+        "min": 0.0,
+        "max": 0.57268518519,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.159444444444,
+        "min": 0.12731481481,
+        "max": 0.47314814815,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 27.73905092595,
+        "min": 27.018055556,
+        "max": 28.749537037,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 53400.430555599996,
+        "min": 52460.25,
+        "max": 54692.333333,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 1320.5959259515,
+        "min": 300.59814815,
+        "max": 12448.731019,
+        "points": 20
+      },
+      {
+        "mean": 125845.60537129601,
+        "min": 220.02731481,
+        "max": 2505149.2565,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.06222222224,
+        "min": 1.0212962963,
+        "max": 1.1203703704,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 9,
+    "berlin_hour": 10,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -10.30625,
+        "min": -12.130555556,
+        "max": -8.6361111111,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -26.1826388889,
+        "min": -28.95,
+        "max": -24.644444444,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 34.6918683863,
+        "min": 11.326388889,
+        "max": 60.077777778,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 64.29021825395,
+        "min": 61.435185185,
+        "max": 67.133664021,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 30.15762896835,
+        "min": 29.422222222,
+        "max": 30.791203704,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 8.65652777778,
+        "min": 8.3893518519,
+        "max": 8.8412037037,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 65.4116435185,
+        "min": 64.751157407,
+        "max": 65.960648148,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 2.1225,
+        "min": 2.0333333333,
+        "max": 2.3173611111,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 3.57680555556,
+        "min": 3.4199074074,
+        "max": 3.8104166667,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.0013888888888980001,
+        "min": 0.0,
+        "max": 0.0055555555556,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.144467592592,
+        "min": 0.12268518519,
+        "max": 0.1662037037,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 27.7359722223,
+        "min": 27.36087963,
+        "max": 28.140277778,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 55112.3708334,
+        "min": 53867.138889,
+        "max": 56315.666667,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 881.108888893,
+        "min": 350.1712963,
+        "max": 2045.0462963,
+        "points": 20
+      },
+      {
+        "mean": 4404.175925918,
+        "min": 713.55694444,
+        "max": 52107.972685,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.0228240740795,
+        "min": 0.96666666667,
+        "max": 1.100462963,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 10,
+    "berlin_hour": 11,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -9.848750000045,
+        "min": -10.955555556,
+        "max": -8.4194444444,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -24.66486111105,
+        "min": -25.769444444,
+        "max": -22.947222222,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 48.5863260581,
+        "min": 30.148611111,
+        "max": 74.63994709,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 68.14417989425,
+        "min": 64.693055556,
+        "max": 71.365542328,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 31.3871395503,
+        "min": 30.267592593,
+        "max": 32.033333333,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 9.010625000005,
+        "min": 8.4204365079,
+        "max": 9.2490740741,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 61.0532870371,
+        "min": 59.253935185,
+        "max": 65.381944444,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 2.422731481485,
+        "min": 2.1949074074,
+        "max": 3.1023148148,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 4.498101851855,
+        "min": 3.6231481481,
+        "max": 4.8490740741,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.041666666666775,
+        "min": 0.0,
+        "max": 0.77777777778,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.17631944444449998,
+        "min": 0.14444444444,
+        "max": 0.2,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 30.6632407408,
+        "min": 27.685185185,
+        "max": 32.805787037,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 57571.72083335,
+        "min": 55977.472222,
+        "max": 58250.138889,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 4575.1903935395,
+        "min": 699.88888889,
+        "max": 59242.365741,
+        "points": 20
+      },
+      {
+        "mean": 6088.504097225,
+        "min": 2116.4574074,
+        "max": 9159.0958333,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 0.9995138888915,
+        "min": 0.96157407407,
+        "max": 1.0328703704,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 11,
+    "berlin_hour": 12,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -11.095833333285,
+        "min": -13.044444444,
+        "max": -8.9555555556,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -26.7043055556,
+        "min": -28.963888889,
+        "max": -23.863888889,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 22.856273148178,
+        "min": 0.97546296296,
+        "max": 49.498611111,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 63.857453703750004,
+        "min": 60.994907407,
+        "max": 66.939351852,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 31.68574074075,
+        "min": 31.002314815,
+        "max": 32.320833333,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 8.407939814815,
+        "min": 7.9486111111,
+        "max": 9.3134259259,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 55.25623842595,
+        "min": 51.71875,
+        "max": 61.555092593,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 2.606469907395,
+        "min": 2.2747685185,
+        "max": 3.75,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 5.08232638889,
+        "min": 4.5490740741,
+        "max": 5.7375,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.0022222222222290002,
+        "min": 0.0,
+        "max": 0.011574074074,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.2340740740745,
+        "min": 0.17777777778,
+        "max": 0.28310185185,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 35.3144560186,
+        "min": 30.249537037,
+        "max": 38.946064815,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 61613.8208333,
+        "min": 57614.333333,
+        "max": 65054.611111,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 1670.507152776,
+        "min": 512.20601852,
+        "max": 4744.2694444,
+        "points": 20
+      },
+      {
+        "mean": 14324.57194434,
+        "min": 1348.6662037,
+        "max": 116341.71759,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.002175925923,
+        "min": 0.97175925926,
+        "max": 1.0416666667,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 12,
+    "berlin_hour": 13,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -10.118611111175,
+        "min": -11.666666667,
+        "max": -8.25,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -25.227222222199998,
+        "min": -27.336111111,
+        "max": -22.727777778,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 38.41449074075,
+        "min": 10.559722222,
+        "max": 76.778240741,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 66.88136574079999,
+        "min": 64.272222222,
+        "max": 69.699537037,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 32.90502314815,
+        "min": 31.608796296,
+        "max": 34.131018519,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 8.040879629635,
+        "min": 7.8930555556,
+        "max": 8.1282407407,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 49.47443287035,
+        "min": 46.99375,
+        "max": 52.584490741,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 2.51001157407,
+        "min": 2.3925925926,
+        "max": 2.6203703704,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 5.076099537035,
+        "min": 4.9064814815,
+        "max": 5.2634259259,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.001388888888897,
+        "min": 0.0,
+        "max": 0.0055555555556,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.2203472222225,
+        "min": 0.18333333333,
+        "max": 0.24814814815,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 40.9857175926,
+        "min": 37.304166667,
+        "max": 43.295833333,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 63691.0111111,
+        "min": 61375.055556,
+        "max": 65406.333333,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 1206.808981485,
+        "min": 1027.350463,
+        "max": 1928.275,
+        "points": 20
+      },
+      {
+        "mean": 9911.988356505,
+        "min": 9547.4365741,
+        "max": 13743.979167,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.005231481484,
+        "min": 0.9787037037,
+        "max": 1.0388888889,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 13,
+    "berlin_hour": 14,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -10.499583333355,
+        "min": -13.291666667,
+        "max": -8.5944444444,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -26.9523611112,
+        "min": -30.030555556,
+        "max": -24.411111111,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 27.828055555575,
+        "min": 7.0962962963,
+        "max": 53.418518519,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 61.82421296295,
+        "min": 58.037037037,
+        "max": 65.644444444,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 30.94969907405,
+        "min": 29.592592593,
+        "max": 32.119907407,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 8.061597222225,
+        "min": 7.9023148148,
+        "max": 8.2162037037,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 52.9170486111,
+        "min": 47.425694444,
+        "max": 57.836111111,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 3.03469907407,
+        "min": 2.2377314815,
+        "max": 3.9884259259,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 5.82916666667,
+        "min": 4.9300925926,
+        "max": 6.9791666667,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.082222222223898,
+        "min": 0.0,
+        "max": 1.6166666667,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.274305555554,
+        "min": 0.21782407407,
+        "max": 0.33194444444,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 36.1594560186,
+        "min": 33.146990741,
+        "max": 39.39537037,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 61272.92083345,
+        "min": 59548.805556,
+        "max": 63147.194444,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 8470.103449025,
+        "min": 1047.9365741,
+        "max": 14879.337963,
+        "points": 20
+      },
+      {
+        "mean": 146927.761782355,
+        "min": 9575.8111111,
+        "max": 338144.7625,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.0044212962974999,
+        "min": 0.98287037037,
+        "max": 1.0467592593,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 14,
+    "berlin_hour": 15,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -9.3555555556,
+        "min": -11.580555556,
+        "max": -8.2388888889,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -24.40208333335,
+        "min": -27.316666667,
+        "max": -22.966666667,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 54.10685185185,
+        "min": 19.884259259,
+        "max": 82.652314815,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 66.77909722215,
+        "min": 64.022222222,
+        "max": 69.89537037,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 32.97428240735,
+        "min": 31.730555556,
+        "max": 33.468981481,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 8.132847222215,
+        "min": 7.9625,
+        "max": 8.2472222222,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 49.17542824075,
+        "min": 46.722453704,
+        "max": 51.000231481,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 2.58553240742,
+        "min": 2.4342592593,
+        "max": 3.2212962963,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 5.180625,
+        "min": 4.9782407407,
+        "max": 6.0273148148,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.0013888888888920002,
+        "min": 0.0,
+        "max": 0.0055555555556,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.23150462963000001,
+        "min": 0.2162037037,
+        "max": 0.26851851852,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 41.08837962965,
+        "min": 38.808796296,
+        "max": 43.494675926,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 61020.62777785,
+        "min": 59061.805556,
+        "max": 61983.805556,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 13713.4111574,
+        "min": 11461.289815,
+        "max": 14880.62963,
+        "points": 20
+      },
+      {
+        "mean": 15302.865740479001,
+        "min": 249.26990741,
+        "max": 159817.75231,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.0186574073985,
+        "min": 0.9712962963,
+        "max": 1.1138888889,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 15,
+    "berlin_hour": 16,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -10.08125000001,
+        "min": -11.402777778,
+        "max": -8.3916666667,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -25.9834722223,
+        "min": -27.686111111,
+        "max": -24.827777778,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 32.90590277765,
+        "min": 10.326388889,
+        "max": 64.696759259,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 64.41240740745,
+        "min": 62.783796296,
+        "max": 66.583333333,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 31.9220833333,
+        "min": 31.389351852,
+        "max": 32.689814815,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 8.25805555555,
+        "min": 7.9768518519,
+        "max": 9.499537037,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 50.52675925925,
+        "min": 39.025925926,
+        "max": 54.403240741,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 3.06060185185,
+        "min": 2.4430555556,
+        "max": 9.5252314815,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 5.5387962963,
+        "min": 4.9342592593,
+        "max": 9.8287037037,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.18638888889211,
+        "min": 0.0,
+        "max": 2.0877314815,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.292569444445,
+        "min": 0.23240740741,
+        "max": 0.60347222222,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 38.80212962965,
+        "min": 37.167592593,
+        "max": 40.7375,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 60371.2944445,
+        "min": 59684.083333,
+        "max": 63904.75,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 14357.8692592,
+        "min": 11299.78287,
+        "max": 23458.333333,
+        "points": 20
+      },
+      {
+        "mean": 233362.294351241,
+        "min": 690.07222222,
+        "max": 2209053.0352,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.006134259262,
+        "min": 0.98611111111,
+        "max": 1.0689814815,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 16,
+    "berlin_hour": 17,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -9.66111111109,
+        "min": -10.983333333,
+        "max": -7.4972222222,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -26.26222222225,
+        "min": -28.119444444,
+        "max": -23.95,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 39.30178240745,
+        "min": 13.74537037,
+        "max": 86.304166667,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 61.99814814815,
+        "min": 59.662037037,
+        "max": 65.298611111,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 31.84372685175,
+        "min": 31.156944444,
+        "max": 32.712962963,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 9.08895833334,
+        "min": 8.9800925926,
+        "max": 9.3111111111,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 51.805069444349996,
+        "min": 49.643981481,
+        "max": 53.483333333,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 2.45148148148,
+        "min": 2.3351851852,
+        "max": 2.5981481481,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 5.386365740735,
+        "min": 5.1796296296,
+        "max": 5.4671296296,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.0016666666666750002,
+        "min": 0.0,
+        "max": 0.0055555555556,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.3255787037045,
+        "min": 0.27939814815,
+        "max": 0.34444444444,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 38.40935185185,
+        "min": 36.798611111,
+        "max": 40.361574074,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 59685.436111,
+        "min": 59075.333333,
+        "max": 60685.138889,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 11619.9088426,
+        "min": 10392.766667,
+        "max": 12331.622222,
+        "points": 20
+      },
+      {
+        "mean": 27478.82807865,
+        "min": 27097.022685,
+        "max": 29437.135185,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.0005555555535,
+        "min": 0.96712962963,
+        "max": 1.0333333333,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 17,
+    "berlin_hour": 18,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -9.91749999992,
+        "min": -12.394444444,
+        "max": -8.0305555556,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -25.85638888885,
+        "min": -28.269444444,
+        "max": -23.047222222,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 35.87671296297,
+        "min": 6.1694444444,
+        "max": 67.143518519,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 63.957129629549996,
+        "min": 61.138425926,
+        "max": 67.909722222,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 32.1795833333,
+        "min": 31.117592593,
+        "max": 33.393981481,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 9.11789351853,
+        "min": 9.0351851852,
+        "max": 9.2217592593,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 50.4694444445,
+        "min": 48.156712963,
+        "max": 52.639583333,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 2.475138888895,
+        "min": 2.3453703704,
+        "max": 2.6319444444,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 5.43414351852,
+        "min": 5.3037037037,
+        "max": 5.5303240741,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.0013888888888920002,
+        "min": 0.0,
+        "max": 0.0053240740741,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.3134490740735,
+        "min": 0.29537037037,
+        "max": 0.33333333333,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 39.590254629549996,
+        "min": 37.523148148,
+        "max": 41.669212963,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 59790.2763888,
+        "min": 58913.0,
+        "max": 60414.583333,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 11346.112615755,
+        "min": 9756.9861111,
+        "max": 12066.874074,
+        "points": 20
+      },
+      {
+        "mean": 27365.8348842,
+        "min": 27237.565278,
+        "max": 27529.246759,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.007476851859,
+        "min": 0.99444444444,
+        "max": 1.0333333333,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 18,
+    "berlin_hour": 19,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -10.589722222265,
+        "min": -12.3,
+        "max": -8.8583333333,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -27.5581944444,
+        "min": -29.472222222,
+        "max": -24.705555556,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 24.585370370365,
+        "min": 4.1226851852,
+        "max": 52.54728836,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 60.5389583333,
+        "min": 58.406018519,
+        "max": 64.449537037,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 31.23180555545,
+        "min": 30.424074074,
+        "max": 32.924867725,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 9.009189814825,
+        "min": 8.8324074074,
+        "max": 9.1773809524,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 53.0864236111,
+        "min": 49.70787037,
+        "max": 55.841666667,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 2.342638888885,
+        "min": 2.2423611111,
+        "max": 2.5564814815,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 5.392835648135,
+        "min": 5.174537037,
+        "max": 5.487037037,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.001111111111119,
+        "min": 0.0,
+        "max": 0.0055555555556,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.33187500000000003,
+        "min": 0.31712962963,
+        "max": 0.35555555556,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 37.24351851865,
+        "min": 34.651388889,
+        "max": 40.250462963,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 58183.1763889,
+        "min": 57154.388889,
+        "max": 59237.666667,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 9741.57856486,
+        "min": 8404.6324074,
+        "max": 10925.768519,
+        "points": 20
+      },
+      {
+        "mean": 27451.4599537,
+        "min": 27338.581019,
+        "max": 27580.385185,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.010578703694,
+        "min": 0.98981481481,
+        "max": 1.0634259259,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 19,
+    "berlin_hour": 20,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -9.61194444438,
+        "min": -10.808333333,
+        "max": -7.7222222222,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -26.1081944444,
+        "min": -27.772222222,
+        "max": -24.244444444,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 41.76995370355,
+        "min": 10.583796296,
+        "max": 76.697222222,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 61.9788194444,
+        "min": 60.697685185,
+        "max": 65.082407407,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 31.96893518515,
+        "min": 31.116666667,
+        "max": 32.879166667,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 9.136921296295,
+        "min": 8.8736111111,
+        "max": 9.9601851852,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 49.75528935195,
+        "min": 38.032407407,
+        "max": 54.421759259,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 2.506481481475,
+        "min": 2.3305555556,
+        "max": 3.0731481481,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 5.606979166655,
+        "min": 5.2976851852,
+        "max": 6.5902777778,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.002500000000027,
+        "min": 0.0,
+        "max": 0.016666666667,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.38692129629600003,
+        "min": 0.30717592593,
+        "max": 1.2849537037,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 40.1301851852,
+        "min": 35.873148148,
+        "max": 51.27962963,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 59228.1972223,
+        "min": 57966.055556,
+        "max": 61997.333333,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 116023.37312259499,
+        "min": 8381.4347222,
+        "max": 1744126.6356,
+        "points": 20
+      },
+      {
+        "mean": 28308.47069435,
+        "min": 27371.094444,
+        "max": 39280.056944,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.0069444444485,
+        "min": 0.98796296296,
+        "max": 1.0662037037,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 20,
+    "berlin_hour": 21,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -9.868194444495,
+        "min": -11.791666667,
+        "max": -8.5527777778,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -26.11680555545,
+        "min": -28.433333333,
+        "max": -24.125,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 34.11351851855,
+        "min": 13.503240741,
+        "max": 60.071759259,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 62.4264814815,
+        "min": 60.114814815,
+        "max": 65.988888889,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 32.09770833345,
+        "min": 30.978703704,
+        "max": 33.143518519,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 9.216412037025,
+        "min": 8.9185185185,
+        "max": 10.7,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 49.4973842591,
+        "min": 33.185185185,
+        "max": 53.622685185,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 2.484872685175,
+        "min": 2.3231481481,
+        "max": 2.7736111111,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 5.614756944445,
+        "min": 5.2368055556,
+        "max": 7.4377314815,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.001666666666677,
+        "min": 0.0,
+        "max": 0.0055555555556,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.333506944444,
+        "min": 0.26689814815,
+        "max": 0.40717592593,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 40.2677546296,
+        "min": 36.018981481,
+        "max": 54.310185185,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 58691.14444445,
+        "min": 57303.194444,
+        "max": 61496.805556,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 10407.62740731,
+        "min": 8965.7175926,
+        "max": 13388.433796,
+        "points": 20
+      },
+      {
+        "mean": 27125.73490745,
+        "min": 23029.911111,
+        "max": 28176.757407,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.0152777777755,
+        "min": 0.98888888889,
+        "max": 1.1388888889,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 21,
+    "berlin_hour": 22,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -10.30069444449,
+        "min": -14.752777778,
+        "max": -8.6694444444,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -28.3655555555,
+        "min": -33.027777778,
+        "max": -25.619444444,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 21.996666666758,
+        "min": 0.0,
+        "max": 47.831018519,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 58.22745370365,
+        "min": 53.049074074,
+        "max": 62.085648148,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 31.662569444349998,
+        "min": 28.779166667,
+        "max": 32.893981481,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 9.88615740752,
+        "min": 8.6578703704,
+        "max": 10.834259259,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 43.71275462975,
+        "min": 32.478009259,
+        "max": 59.403703704,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 3.052604166665,
+        "min": 2.1523148148,
+        "max": 4.5831018519,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 7.01684027778,
+        "min": 5.1009259259,
+        "max": 7.6986111111,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.0016666666666680001,
+        "min": 0.0,
+        "max": 0.011111111111,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.4056828703705,
+        "min": 0.32175925926,
+        "max": 0.45023148148,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 43.8397453703,
+        "min": 31.658796296,
+        "max": 54.85,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 59199.11249985,
+        "min": 54530.0,
+        "max": 62146.138889,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 14394.19291653,
+        "min": 6264.7837963,
+        "max": 123371.79583,
+        "points": 20
+      },
+      {
+        "mean": 106522.01314855,
+        "min": 14604.916204,
+        "max": 348074.52315,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.011134259253,
+        "min": 0.97916666667,
+        "max": 1.0550925926,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 22,
+    "berlin_hour": 23,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -13.56680555561,
+        "min": -23.930555556,
+        "max": -7.0944444444,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -33.4461111111,
+        "min": -35.9,
+        "max": -28.197222222,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 5.8161342592326,
+        "min": 0.0,
+        "max": 28.148148148,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 50.32863425925,
+        "min": 47.949537037,
+        "max": 52.591203704,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 28.41442129625,
+        "min": 27.314351852,
+        "max": 29.553703704,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 7.404166666665001,
+        "min": 4.2722222222,
+        "max": 8.6277777778,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 62.08983796295,
+        "min": 59.069907407,
+        "max": 64.517824074,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 2.02789351853,
+        "min": 1.9324074074,
+        "max": 2.1287037037,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 4.7897222222249995,
+        "min": 4.337962963,
+        "max": 5.0648148148,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.0016666666666645,
+        "min": 0.0,
+        "max": 0.010185185185,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.268402777777,
+        "min": 0.13194444444,
+        "max": 0.34699074074,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 29.5331250001,
+        "min": 27.759259259,
+        "max": 32.011574074,
+        "points": 20
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 52214.04444435,
+        "min": 50512.25,
+        "max": 54083.583333,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 4410.5094213,
+        "min": 2907.2893519,
+        "max": 6398.8166667,
+        "points": 20
+      },
+      {
+        "mean": 3191.88842584275,
+        "min": 79.326388889,
+        "max": 12642.844444,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.0526157407385,
+        "min": 0.98888888889,
+        "max": 1.1,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  },
+  {
+    "chart_hour_utc": 23,
+    "berlin_hour": 0,
+    "dump1090-localhost/dump1090_misc-gain_db.rrd": [
+      {
+        "mean": 38.6,
+        "min": 38.6,
+        "max": 38.6,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-signal.rrd": [
+      {
+        "mean": -14.725138889,
+        "min": -21.852777778,
+        "max": -9.85,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_dbfs-noise.rrd": [
+      {
+        "mean": -34.3616666666,
+        "min": -35.836111111,
+        "max": -32.041666667,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_messages-strong_signals.rrd": [
+      {
+        "mean": 1.61108796298,
+        "min": 0.0,
+        "max": 12.175462963,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-demod.rrd": [
+      {
+        "mean": 50.1626157406,
+        "min": 48.468981481,
+        "max": 51.5875,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-reader.rrd": [
+      {
+        "mean": 28.42324074075,
+        "min": 27.799537037,
+        "max": 28.811574074,
+        "points": 20
+      }
+    ],
+    "dump1090-localhost/dump1090_cpu-background.rrd": [
+      {
+        "mean": 7.600300925945,
+        "min": 6.0643518519,
+        "max": 8.4699074074,
+        "points": 20
+      }
+    ],
+    "aggregation-cpu-average/cpu-idle.rrd": [
+      {
+        "mean": 62.023849902578945,
+        "min": 59.510925926,
+        "max": 63.794814815,
+        "points": 19
+      }
+    ],
+    "aggregation-cpu-average/cpu-user.rrd": [
+      {
+        "mean": 1.9881920078,
+        "min": 1.917037037,
+        "max": 2.0777777778,
+        "points": 19
+      }
+    ],
+    "aggregation-cpu-average/cpu-system.rrd": [
+      {
+        "mean": 4.90000974658421,
+        "min": 4.652962963,
+        "max": 5.1412962963,
+        "points": 19
+      }
+    ],
+    "aggregation-cpu-average/cpu-wait.rrd": [
+      {
+        "mean": 0.09120857699747052,
+        "min": 0.0,
+        "max": 1.7111111111,
+        "points": 19
+      }
+    ],
+    "aggregation-cpu-average/cpu-softirq.rrd": [
+      {
+        "mean": 0.27460038986421054,
+        "min": 0.21444444444,
+        "max": 0.3162962963,
+        "points": 19
+      }
+    ],
+    "aggregation-cpu-average/cpu-interrupt.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 19
+      }
+    ],
+    "aggregation-cpu-average/cpu-steal.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 19
+      }
+    ],
+    "aggregation-cpu-average/cpu-nice.rrd": [
+      {
+        "mean": 29.416354775842105,
+        "min": 27.412962963,
+        "max": 30.18,
+        "points": 19
+      }
+    ],
+    "table-localhost/gauge-cpu_temp.rrd": [
+      {
+        "mean": 51095.97361105,
+        "min": 50349.916667,
+        "max": 51797.388889,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_octets.rrd": [
+      {
+        "mean": 2929.150004625,
+        "min": 2426.7269444,
+        "max": 3348.899537,
+        "points": 20
+      },
+      {
+        "mean": 728.42762500065,
+        "min": 69.528703704,
+        "max": 1641.1085185,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_errors.rrd": [
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ],
+    "interface-wlan0/if_dropped.rrd": [
+      {
+        "mean": 1.05593518518,
+        "min": 1.017037037,
+        "max": 1.0981481481,
+        "points": 20
+      },
+      {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "points": 20
+      }
+    ]
+  }
+]

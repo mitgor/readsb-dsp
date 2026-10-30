@@ -1,0 +1,262 @@
+{
+  "pre_existing_stock_quality": {
+    "flight": "SN2372 / BEL7PJ",
+    "icao": "44ce62",
+    "date": "2026-10-26",
+    "local_utc_interval": [
+      "2026-10-26T17:23:37.296000+00:00",
+      "2026-10-26T17:35:02.870000+00:00"
+    ],
+    "position_separation_nm": {
+      "min": 211.6076041441393,
+      "median": 230.14090371311738,
+      "max": 245.29607019830033
+    },
+    "stock_crc_valid_df17": 2330,
+    "nic_counts": {
+      "0": 687
+    },
+    "nacp_counts": {
+      "0": 687
+    },
+    "independent_cpr_snapshot_matches_within_0_1nm": 568,
+    "independent_cpr_vs_snapshot_matched": 570,
+    "limits": [
+      "FR24 CSV lacks per-point sensor provenance and position quality; it is an external comparison, not surveyed ground truth.",
+      "FR24 coordinates are linearly interpolated only between bracketing exports <=60 s apart; compare with native exported rows when interpreting extrema.",
+      "Independent CPR verifies decoding of the reported bits, not physical aircraft position or absence of stock pre-output corrections.",
+      "NIC/NACp zero indicates no usable claimed position quality here; it alone does not identify jamming, spoofing or avionics failure.",
+      "No decoder, feeder or collection changes."
+    ]
+  },
+  "metrics": {
+    "fr24_hits": {
+      "pre_hours_utc": "05\u201311",
+      "post_hours_utc": "13\u201321",
+      "pre_cloud_per_local": 0.28099445774438137,
+      "post_cloud_per_local": 0.02189930486874156,
+      "relative_decline": 0.9220649935784029,
+      "best_descriptive_split": [
+        {
+          "split_chart_hour": 13,
+          "log_ratio_sse": 5.135239489491596
+        },
+        {
+          "split_chart_hour": 12,
+          "log_ratio_sse": 8.521292143671094
+        },
+        {
+          "split_chart_hour": 14,
+          "log_ratio_sse": 10.765752719577199
+        }
+      ],
+      "policy": "Different counter definitions: ratio is an index of change, not a packet delivery fraction. Descriptive fit does not establish exact onset, significance or causation."
+    },
+    "fr24_positions": {
+      "pre_hours_utc": "05\u201311",
+      "post_hours_utc": "13\u201321",
+      "pre_cloud_per_local": 0.6294110136658544,
+      "post_cloud_per_local": 0.03452799485205814,
+      "relative_decline": 0.9451423726271359,
+      "best_descriptive_split": [
+        {
+          "split_chart_hour": 13,
+          "log_ratio_sse": 3.60321845844864
+        },
+        {
+          "split_chart_hour": 12,
+          "log_ratio_sse": 8.217376358866648
+        },
+        {
+          "split_chart_hour": 14,
+          "log_ratio_sse": 10.25716625631231
+        }
+      ],
+      "policy": "Different counter definitions: ratio is an index of change, not a packet delivery fraction. Descriptive fit does not establish exact onset, significance or causation."
+    }
+  },
+  "config_comparison": [
+    {
+      "archive_member": "var/backups/adsb-relay-recovery-1793099635188663267/fr24feed.ini",
+      "changed_key_names": [],
+      "all_nonhost_bytes_equal": true,
+      "sharing_key_equal": true,
+      "receiver": "beast-tcp",
+      "host": "127.0.0.1:30005",
+      "mlat": "no"
+    },
+    {
+      "archive_member": "var/backups/adsb-feed-20261025/fr24feed.ini",
+      "changed_key_names": [],
+      "all_nonhost_bytes_equal": true,
+      "sharing_key_equal": true,
+      "receiver": "beast-tcp",
+      "host": "127.0.0.1:30005",
+      "mlat": "no"
+    },
+    {
+      "archive_member": "var/backups/adsb-relay-recovery-1793099756295713735/fr24feed.ini",
+      "changed_key_names": [],
+      "all_nonhost_bytes_equal": true,
+      "sharing_key_equal": true,
+      "receiver": "beast-tcp",
+      "host": "127.0.0.1:30005",
+      "mlat": "no"
+    },
+    {
+      "archive_member": "var/backups/adsbx-feeder-20261028/fr24feed.ini",
+      "changed_key_names": [
+        "host"
+      ],
+      "all_nonhost_bytes_equal": true,
+      "sharing_key_equal": true,
+      "receiver": "beast-tcp",
+      "host": "127.0.0.1:31005",
+      "mlat": "no"
+    },
+    {
+      "archive_member": "etc/fr24feed.ini",
+      "changed_key_names": [
+        "host"
+      ],
+      "all_nonhost_bytes_equal": true,
+      "sharing_key_equal": true,
+      "receiver": "beast-tcp",
+      "host": "127.0.0.1:31005",
+      "mlat": "no"
+    },
+    {
+      "archive_member": "var/lib/adsb-feed-test/fr24feed.ini",
+      "changed_key_names": [],
+      "all_nonhost_bytes_equal": true,
+      "sharing_key_equal": true,
+      "receiver": "beast-tcp",
+      "host": "127.0.0.1:30005",
+      "mlat": "no"
+    }
+  ],
+  "oct27_commits": [
+    {
+      "commit": "5721cf1ae0423c667820020811e484444f584d2c",
+      "commit_date": "2026-10-27T22:55:16+01:00",
+      "title": "Experiment with additive coherent DSP optimization and strict replay gates"
+    },
+    {
+      "commit": "d2e2d163829355ce3cdde5e50380f76395b15dfc",
+      "commit_date": "2026-10-27T22:34:43+01:00",
+      "title": "Measure live C pulse additions against current DSP and actual relay"
+    },
+    {
+      "commit": "dd4901cac9d1d81c050af3f05967a9060b9ac027",
+      "commit_date": "2026-10-27T20:43:25+01:00",
+      "title": "Benchmark native pulse DSP on Pi 4 with exact RF parity and health audit"
+    },
+    {
+      "commit": "68536808e73ce585939709b3d4b8bf1c8f87fd44",
+      "commit_date": "2026-10-27T17:45:25+01:00",
+      "title": "Add offline neural cascade and learned pulse DSP with held-out RF audits"
+    },
+    {
+      "commit": "3076281600c1afeaa6fe73277b24ac109c638b5e",
+      "commit_date": "2026-10-27T17:00:19+01:00",
+      "title": "Capture complete synchronized stock and relay journals for RF bursts"
+    },
+    {
+      "commit": "863fab1b541ca2e9a6df2911e97498e07a00ed7e",
+      "commit_date": "2026-10-27T16:24:40+01:00",
+      "title": "Offload verified receiver datasets and audit RF and Beast suitability"
+    },
+    {
+      "commit": "b7fbd2c12d50d7787f773ae1384f24abbe601ad6",
+      "commit_date": "2026-10-27T14:29:45+01:00",
+      "title": "Add bounded local holdover and free external RF capture triggers"
+    },
+    {
+      "commit": "6628a8fe5963ce151aa3a762b16c439a24f3b945",
+      "commit_date": "2026-10-27T12:52:37+01:00",
+      "title": "Lower packet and continuous RF capture threshold to 200 nm"
+    },
+    {
+      "commit": "03c69d52e4a60fc282ce228428d926c118a47651",
+      "commit_date": "2026-10-27T12:32:41+01:00",
+      "title": "Restore validated DSP feeding with automatic relay fallback and recovery"
+    },
+    {
+      "commit": "4667a5205de99408cdaa3e855a56be54a8e6ef11",
+      "commit_date": "2026-10-27T11:33:56+01:00",
+      "title": "Document verified direct SSH access to ADS-B receiver"
+    },
+    {
+      "commit": "788ba209f3774963e0a92093d23ed410f2c5b9cb",
+      "commit_date": "2026-10-27T11:30:13+01:00",
+      "title": "Add DSP dashboard controls and bounded 5 GB far-range RF capture"
+    },
+    {
+      "commit": "9bee1696dc7f932a79d274163d0fde33a252ae30",
+      "commit_date": "2026-10-27T09:29:30+01:00",
+      "title": "Complete final archive harvest and fixed-holdout companion audit after logging disabled"
+    }
+  ],
+  "protected_pid_comparison": [
+    {
+      "source": "results/capture-threshold-200-20261027/activation.json",
+      "comparison_available": true,
+      "pids_equal": true,
+      "before": {
+        "readsb": "208827",
+        "adsb-rescue-shadow": "2388172",
+        "fr24feed": "2449471",
+        "adsb-rescue-feed": "2448890"
+      },
+      "after": {
+        "readsb": "208827",
+        "adsb-rescue-shadow": "2388172",
+        "fr24feed": "2449471",
+        "adsb-rescue-feed": "2448890"
+      }
+    },
+    {
+      "source": "results/capture-triggers-20261027/activation.json",
+      "comparison_available": true,
+      "pids_equal": true,
+      "before": {
+        "readsb": "208827",
+        "adsb-rescue-shadow": "2388172",
+        "fr24feed": "2449471",
+        "adsb-rescue-feed": "2448890"
+      },
+      "after": {
+        "readsb": "208827",
+        "adsb-rescue-shadow": "2388172",
+        "fr24feed": "2449471",
+        "adsb-rescue-feed": "2448890"
+      }
+    },
+    {
+      "source": "results/burst-ledger-20261027/activation.json",
+      "comparison_available": false,
+      "pids_equal": null,
+      "before": null,
+      "after": null
+    }
+  ],
+  "upload_cadence": {
+    "first_saved_send_utc": "2026-10-28T12:32:53.775288+00:00",
+    "median_gap_s": 30.014631986618042,
+    "max_gap_s": 30.13734221458435,
+    "sent_events": 314,
+    "overlap_events": 152,
+    "policy": "Already30s by Oct28. No Oct27 cadence/configuration transition is retained, so no5->30s change is established."
+  },
+  "findings": [
+    "Cloud/local divergence persists after normalizing observed traffic; largest descriptive hourly break is13UTC chart point for both metrics",
+    "Input counter progresses ~554messages/s across11:52\u201313:28UTC; not uninterrupted minute-by-minute proof",
+    "Gain38.6dB across observed10\u201315UTC; average idle~49\u201361% and no sustained host saturation",
+    "Only host key/effective input route differs in incident-period feeder backups; key and MLAT unchanged",
+    "Neural was off and excluded from the Oct27 feeder policy; later neural/Rust/Stream1090 changes cannot initiate the Oct27 drop",
+    "Restored delayed combined route is the principal local candidate; pre-existing good Oct26 combined feeding and current short stock bypass weaken a simple universal delay-only explanation",
+    "No specific root cause proven; long direct-stock cloud result and FR24 historical filtering/configuration records remain needed"
+  ],
+  "working_setup_changes": "none",
+  "browser_check": "Existing FR24 tab could be listed but could not be read; no fresh cloud result asserted"
+}

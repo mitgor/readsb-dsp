@@ -1,0 +1,51 @@
+{
+  "configurations_checked": 6,
+  "incident_configs_nonhost_identical": true,
+  "metrics": {
+    "fr24_hits": {
+      "pre_hours_utc": "05\u201311",
+      "post_hours_utc": "13\u201321",
+      "pre_cloud_per_local": 0.28099445774438137,
+      "post_cloud_per_local": 0.02189930486874156,
+      "relative_decline": 0.9220649935784029,
+      "best_descriptive_split": [
+        {
+          "split_chart_hour": 13,
+          "log_ratio_sse": 5.135239489491596
+        },
+        {
+          "split_chart_hour": 12,
+          "log_ratio_sse": 8.521292143671094
+        },
+        {
+          "split_chart_hour": 14,
+          "log_ratio_sse": 10.765752719577199
+        }
+      ],
+      "policy": "Different counter definitions: ratio is an index of change, not a packet delivery fraction. Descriptive fit does not establish exact onset, significance or causation."
+    },
+    "fr24_positions": {
+      "pre_hours_utc": "05\u201311",
+      "post_hours_utc": "13\u201321",
+      "pre_cloud_per_local": 0.6294110136658544,
+      "post_cloud_per_local": 0.03452799485205814,
+      "relative_decline": 0.9451423726271359,
+      "best_descriptive_split": [
+        {
+          "split_chart_hour": 13,
+          "log_ratio_sse": 3.60321845844864
+        },
+        {
+          "split_chart_hour": 12,
+          "log_ratio_sse": 8.217376358866648
+        },
+        {
+          "split_chart_hour": 14,
+          "log_ratio_sse": 10.25716625631231
+        }
+      ],
+      "policy": "Different counter definitions: ratio is an index of change, not a packet delivery fraction. Descriptive fit does not establish exact onset, significance or causation."
+    }
+  },
+  "timeline_events": 19
+}
