@@ -1,0 +1,17 @@
+# Daily ADS-B collection — 31 October 2026 (Europe/Berlin)
+
+Four saved archives (206,436,101 bytes; 206.4 MB) were transferred to Mac. File sizes and SHA-256 were verified, Mac data/manifests fsynced, then the exact allowlisted Pi files were rechecked for inode/device/size/mtime/hash and open writers before deletion. No active/partial files or persistent configurations/graphs were deleted. Data remains at data/raw/pi-offload-20261031; the previous Mac datasets are preserved.
+
+Two far-training archives offered 471 original stock windows. Independent pinned no-correction decoding confirmed 190: 169 at 180–200nm and 21 at 200–250nm. 281 failed same-transmission waveform confirmation and remain quarantined. Reported stock positions pass quality/causality checks but are not independently surveyed physical range truth. The separate 3207 CRC candidates have verified I/Q hashes and remain unverified research, never labels. All 810 new continuous-RF segments are globally reserved evaluation-only.
+
+After historical-payload/IQ/transmission deduplication and fixed-ICAO/RF split checks, cumulative new data since the October29 training run contains:
+
+| Split | Windows | Aircraft | UTC hours |
+|---|---:|---:|---:|
+| Train | 114 | 69 | 20 |
+| Validation | 41 | 23 | 14 |
+| Fixed test, evaluation only | 35 | 15 | 14 |
+
+Training needs 500 train windows from 10 aircraft / 3 UTC hours and 100 validation windows from 3 aircraft. It did not run: 386train and59validation windows are still missing, alongside any diversity shortfalls in summary.json. Do not lower those thresholds. No candidate benchmark, full-pipeline recovery improvement or range gain is claimed. The checksum-backed ledger preserves all qualified records and excluded/test provenance for the next run.
+
+Protected service PIDs, gain, method switches, source/native-library/model/config hashes and SDR loss/drop counters match before/after. FR24 remains stock-only for its current trial. Logging remains disabled in the main decoder as requested; the separate far-training collector is running. RF cap remains 5,000,000,000 bytes, normal 12-hour saves unchanged. No flush, restart, routing change, inference switch, model fitting or deployment occurred. Existing incomplete/budget-limited continuous journals are evaluation-only and still require complete reference coverage before a future full-pipeline benchmark.

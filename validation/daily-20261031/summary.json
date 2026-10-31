@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-31",
+  "timezone": "Europe/Berlin",
+  "archives": 4,
+  "verified_deleted_bytes": 206436101,
+  "qualification": {
+    "offered": 471,
+    "qualified": 190,
+    "qualified_180_200": 169,
+    "qualified_200_250": 21,
+    "uncorrected_rf_not_confirmed": 281
+  },
+  "new_counts": {
+    "qualified_new": 190,
+    "new_unique_train": 114,
+    "new_unique_test": 34,
+    "new_unique_validation": 41,
+    "duplicate_excluded": 1
+  },
+  "coverage": {
+    "train": {
+      "windows": 114,
+      "aircraft": 69,
+      "utc_hours": 20,
+      "bands": {
+        "180-200": 102,
+        "200-250": 12
+      }
+    },
+    "validation": {
+      "windows": 41,
+      "aircraft": 23,
+      "utc_hours": 14,
+      "bands": {
+        "180-200": 36,
+        "200-250": 5
+      }
+    },
+    "test": {
+      "windows": 35,
+      "aircraft": 15,
+      "utc_hours": 14,
+      "bands": {
+        "180-200": 31,
+        "200-250": 4
+      }
+    }
+  },
+  "training": "not_run_insufficient_new_qualified_distant_data",
+  "thresholds": {
+    "train_windows": 500,
+    "train_aircraft": 10,
+    "train_utc_hours": 3,
+    "validation_windows": 100,
+    "validation_aircraft": 3
+  },
+  "shortfall": {
+    "train_windows": 386,
+    "train_aircraft": 0,
+    "train_utc_hours": 0,
+    "validation_windows": 59,
+    "validation_aircraft": 0
+  },
+  "crc_quarantined": 3207,
+  "reserved_continuous_segments": 810,
+  "pipeline_unchanged": true,
+  "health_checks": {
+    "pids": true,
+    "methods": true,
+    "workers": true,
+    "model_sha256": true,
+    "logging_enabled": true,
+    "samples": true,
+    "gain_db": true,
+    "source_hashes": true,
+    "configs": true,
+    "trial": true
+  },
+  "model_deployed": false,
+  "learning_ledger_sha256": "41775211c1f4f43e2555210aec8371ed01f7af711bd9e5ad18c0fffd8a8bd55a"
+}
