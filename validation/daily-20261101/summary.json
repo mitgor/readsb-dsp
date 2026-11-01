@@ -1,0 +1,93 @@
+{
+  "stock_trial": {
+    "ended_early": true,
+    "reason": "AssertionError('SDR loss/drop changed')",
+    "closed_unix": 1793440332.7296643,
+    "restored_host": "127.0.0.1:31005",
+    "routing_guard_active": true,
+    "current_host": "127.0.0.1:31005",
+    "lost_samples": 262144,
+    "lost_rf_seconds": 0.10922666666666667
+  },
+  "date": "2026-11-01",
+  "timezone": "Europe/Berlin",
+  "archives": 4,
+  "verified_deleted_bytes": 194298864,
+  "qualification": {
+    "offered": 426,
+    "uncorrected_rf_not_confirmed": 233,
+    "qualified": 193,
+    "qualified_200_250": 13,
+    "qualified_180_200": 179,
+    "qualified_250_plus": 1
+  },
+  "new_counts": {
+    "qualified_new": 193,
+    "new_unique_train": 130,
+    "new_unique_validation": 48,
+    "new_unique_test": 13,
+    "duplicate_excluded": 2
+  },
+  "coverage": {
+    "train": {
+      "windows": 244,
+      "aircraft": 138,
+      "utc_hours": 39,
+      "bands": {
+        "180-200": 223,
+        "200-250": 20,
+        "250+": 1
+      }
+    },
+    "validation": {
+      "windows": 89,
+      "aircraft": 44,
+      "utc_hours": 29,
+      "bands": {
+        "180-200": 79,
+        "200-250": 10
+      }
+    },
+    "test": {
+      "windows": 48,
+      "aircraft": 20,
+      "utc_hours": 19,
+      "bands": {
+        "180-200": 44,
+        "200-250": 4
+      }
+    }
+  },
+  "training": "not_run_insufficient_new_qualified_distant_data",
+  "thresholds": {
+    "train_windows": 500,
+    "train_aircraft": 10,
+    "train_utc_hours": 3,
+    "validation_windows": 100,
+    "validation_aircraft": 3
+  },
+  "shortfall": {
+    "train_windows": 256,
+    "train_aircraft": 0,
+    "train_utc_hours": 0,
+    "validation_windows": 11,
+    "validation_aircraft": 0
+  },
+  "crc_quarantined": 3172,
+  "reserved_continuous_segments": 455,
+  "pipeline_unchanged": true,
+  "health_checks": {
+    "pids": true,
+    "methods": true,
+    "workers": true,
+    "model_sha256": true,
+    "logging_enabled": true,
+    "samples": true,
+    "gain_db": true,
+    "source_hashes": true,
+    "configs": true,
+    "trial": true
+  },
+  "model_deployed": false,
+  "learning_ledger_sha256": "69cf2d80484a104ab3586d2e772b8777e0c5390a33ead9e1a52e939618b8729e"
+}
