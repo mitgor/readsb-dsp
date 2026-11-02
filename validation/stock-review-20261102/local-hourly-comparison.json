@@ -1,0 +1,402 @@
+[
+  {
+    "date": "2026-10-30",
+    "hour": 8,
+    "hits": 55246,
+    "positions": 6560,
+    "local": {
+      "label_is_start": {
+        "messages": 2249661.711977273,
+        "positions": 182884.7990902774
+      },
+      "label_is_end": {
+        "messages": 2365548.7492473274,
+        "positions": 185110.40052681416
+      }
+    }
+  },
+  {
+    "date": "2026-10-30",
+    "hour": 9,
+    "hits": 59097,
+    "positions": 7949,
+    "local": {
+      "label_is_start": {
+        "messages": 2581314.5097840726,
+        "positions": 200871.37756305188
+      },
+      "label_is_end": {
+        "messages": 2249661.711977273,
+        "positions": 182884.7990902774
+      }
+    }
+  },
+  {
+    "date": "2026-10-30",
+    "hour": 10,
+    "hits": 64500,
+    "positions": 8105,
+    "local": {
+      "label_is_start": {
+        "messages": 2653753.6956215203,
+        "positions": 201144.27030759864
+      },
+      "label_is_end": {
+        "messages": 2581314.5097840726,
+        "positions": 200871.37756305188
+      }
+    }
+  },
+  {
+    "date": "2026-10-30",
+    "hour": 11,
+    "hits": 69262,
+    "positions": 7709,
+    "local": {
+      "label_is_start": {
+        "messages": 2595717.4295514077,
+        "positions": 199858.92224875186
+      },
+      "label_is_end": {
+        "messages": 2653753.6956215203,
+        "positions": 201144.27030759864
+      }
+    }
+  },
+  {
+    "date": "2026-10-30",
+    "hour": 12,
+    "hits": 82403,
+    "positions": 9331,
+    "local": {
+      "label_is_start": {
+        "messages": 2578349.4742439836,
+        "positions": 204391.02376235463
+      },
+      "label_is_end": {
+        "messages": 2595717.4295514077,
+        "positions": 199858.92224875186
+      }
+    }
+  },
+  {
+    "date": "2026-10-30",
+    "hour": 13,
+    "hits": 51507,
+    "positions": 6530,
+    "local": {
+      "label_is_start": {
+        "messages": 2410185.952394888,
+        "positions": 185513.11047849152
+      },
+      "label_is_end": {
+        "messages": 2578349.4742439836,
+        "positions": 204391.02376235463
+      }
+    }
+  },
+  {
+    "date": "2026-10-30",
+    "hour": 14,
+    "hits": 58986,
+    "positions": 7114,
+    "local": {
+      "label_is_start": {
+        "messages": 2549609.42878063,
+        "positions": 202778.55458609667
+      },
+      "label_is_end": {
+        "messages": 2410185.952394888,
+        "positions": 185513.11047849152
+      }
+    }
+  },
+  {
+    "date": "2026-10-30",
+    "hour": 15,
+    "hits": 59979,
+    "positions": 7074,
+    "local": {
+      "label_is_start": {
+        "messages": 2733916.1727950275,
+        "positions": 203940.75451219175
+      },
+      "label_is_end": {
+        "messages": 2549609.42878063,
+        "positions": 202778.55458609667
+      }
+    }
+  },
+  {
+    "date": "2026-10-30",
+    "hour": 16,
+    "hits": 63789,
+    "positions": 6885,
+    "local": {
+      "label_is_start": {
+        "messages": 2263502.0446154773,
+        "positions": 178775.7852098355
+      },
+      "label_is_end": {
+        "messages": 2733916.1727950275,
+        "positions": 203940.75451219175
+      }
+    }
+  },
+  {
+    "date": "2026-10-30",
+    "hour": 17,
+    "hits": 58802,
+    "positions": 6744,
+    "local": {
+      "label_is_start": {
+        "messages": 2468656.9203205556,
+        "positions": 197295.1466447385
+      },
+      "label_is_end": {
+        "messages": 2263502.0446154773,
+        "positions": 178775.7852098355
+      }
+    }
+  },
+  {
+    "date": "2026-10-30",
+    "hour": 18,
+    "hits": 58011,
+    "positions": 6010,
+    "local": {
+      "label_is_start": {
+        "messages": 2165044.767145425,
+        "positions": 175442.0746980207
+      },
+      "label_is_end": {
+        "messages": 2468656.9203205556,
+        "positions": 197295.1466447385
+      }
+    }
+  },
+  {
+    "date": "2026-10-30",
+    "hour": 19,
+    "hits": 51023,
+    "positions": 5847,
+    "local": {
+      "label_is_start": {
+        "messages": 2148810.785801232,
+        "positions": 169442.33333586808
+      },
+      "label_is_end": {
+        "messages": 2165044.767145425,
+        "positions": 175442.0746980207
+      }
+    }
+  },
+  {
+    "date": "2026-10-30",
+    "hour": 20,
+    "hits": 45702,
+    "positions": 5343,
+    "local": {
+      "label_is_start": {
+        "messages": 2412785.087749243,
+        "positions": 167966.0356607698
+      },
+      "label_is_end": {
+        "messages": 2148810.785801232,
+        "positions": 169442.33333586808
+      }
+    }
+  },
+  {
+    "date": "2026-10-30",
+    "hour": 21,
+    "hits": 50589,
+    "positions": 4824,
+    "local": {
+      "label_is_start": {
+        "messages": 2028999.737874329,
+        "positions": 152396.9415219212
+      },
+      "label_is_end": {
+        "messages": 2412785.087749243,
+        "positions": 167966.0356607698
+      }
+    }
+  },
+  {
+    "date": "2026-10-30",
+    "hour": 22,
+    "hits": 23582,
+    "positions": 2500,
+    "local": {
+      "label_is_start": {
+        "messages": 1006018.909329325,
+        "positions": 73106.4949099496
+      },
+      "label_is_end": {
+        "messages": 2028999.737874329,
+        "positions": 152396.9415219212
+      }
+    }
+  },
+  {
+    "date": "2026-10-30",
+    "hour": 23,
+    "hits": 22703,
+    "positions": 2264,
+    "local": {
+      "label_is_start": {
+        "messages": 632414.587842837,
+        "positions": 46667.85353722796
+      },
+      "label_is_end": {
+        "messages": 1006018.909329325,
+        "positions": 73106.4949099496
+      }
+    }
+  },
+  {
+    "date": "2026-10-31",
+    "hour": 0,
+    "hits": 11893,
+    "positions": 1182,
+    "local": {
+      "label_is_start": {
+        "messages": 244936.4634217322,
+        "positions": 18135.151242932305
+      },
+      "label_is_end": {
+        "messages": 632414.587842837,
+        "positions": 46667.85353722796
+      }
+    }
+  },
+  {
+    "date": "2026-10-31",
+    "hour": 1,
+    "hits": 8163,
+    "positions": 809,
+    "local": {
+      "label_is_start": {
+        "messages": 394379.1702351272,
+        "positions": 25256.453192532063
+      },
+      "label_is_end": {
+        "messages": 244936.4634217322,
+        "positions": 18135.151242932305
+      }
+    }
+  },
+  {
+    "date": "2026-10-31",
+    "hour": 2,
+    "hits": 7959,
+    "positions": 949,
+    "local": {
+      "label_is_start": {
+        "messages": 309943.236291036,
+        "positions": 21115.00491621904
+      },
+      "label_is_end": {
+        "messages": 394379.1702351272,
+        "positions": 25256.453192532063
+      }
+    }
+  },
+  {
+    "date": "2026-10-31",
+    "hour": 3,
+    "hits": 9427,
+    "positions": 1073,
+    "local": {
+      "label_is_start": {
+        "messages": 462869.5798024535,
+        "positions": 24119.523286163807
+      },
+      "label_is_end": {
+        "messages": 309943.236291036,
+        "positions": 21115.00491621904
+      }
+    }
+  },
+  {
+    "date": "2026-10-31",
+    "hour": 4,
+    "hits": 16192,
+    "positions": 1771,
+    "local": {
+      "label_is_start": {
+        "messages": 564752.0909341574,
+        "positions": 31401.94237791188
+      },
+      "label_is_end": {
+        "messages": 462869.5798024535,
+        "positions": 24119.523286163807
+      }
+    }
+  },
+  {
+    "date": "2026-10-31",
+    "hour": 5,
+    "hits": 46321,
+    "positions": 4754,
+    "local": {
+      "label_is_start": {
+        "messages": 1638234.9858157933,
+        "positions": 109714.66692188196
+      },
+      "label_is_end": {
+        "messages": 564752.0909341574,
+        "positions": 31401.94237791188
+      }
+    }
+  },
+  {
+    "date": "2026-10-31",
+    "hour": 6,
+    "hits": 54608,
+    "positions": 6622,
+    "local": {
+      "label_is_start": {
+        "messages": 2004805.5076738,
+        "positions": 154403.67480145767
+      },
+      "label_is_end": {
+        "messages": 1638234.9858157933,
+        "positions": 109714.66692188196
+      }
+    }
+  },
+  {
+    "date": "2026-10-31",
+    "hour": 7,
+    "hits": 65445,
+    "positions": 7626,
+    "local": {
+      "label_is_start": {
+        "messages": 2173860.8927963823,
+        "positions": 173170.75799882784
+      },
+      "label_is_end": {
+        "messages": 2004805.5076738,
+        "positions": 154403.67480145767
+      }
+    }
+  },
+  {
+    "date": "2026-10-31",
+    "hour": 8,
+    "hits": 64187,
+    "positions": 6451,
+    "local": {
+      "label_is_start": {
+        "messages": 2279321.3396846503,
+        "positions": 179096.3006385509
+      },
+      "label_is_end": {
+        "messages": 2173860.8927963823,
+        "positions": 173170.75799882784
+      }
+    }
+  }
+]

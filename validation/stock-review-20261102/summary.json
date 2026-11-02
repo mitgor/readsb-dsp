@@ -1,0 +1,123 @@
+{
+  "trial_completed": false,
+  "planned_hours": 60,
+  "verified_last_sample_utc": "2026-10-31T09:51:02.633984+00:00",
+  "restored_utc": "2026-10-31T09:52:12.729664+00:00",
+  "measured_until_last_saved_sample_hours": 26.850731662246915,
+  "error": "AssertionError('SDR loss/drop changed')",
+  "conservative_cloud_point_hours": 25,
+  "stock_cloud": {
+    "hits": 1159376,
+    "positions": 132026
+  },
+  "local_normalized_indices": {
+    "label_is_start": {
+      "local": {
+        "messages": 45551844.48248236,
+        "positions": 3478888.953443623
+      },
+      "hit_local_index": 0.025451790441676964,
+      "position_local_index": 0.03795062209999901,
+      "versus_good_oct26_hit_index_change_percent": -88.97123665782125,
+      "versus_good_oct26_position_index_change_percent": -92.46047280671101
+    },
+    "label_is_end": {
+      "local": {
+        "messages": 45638071.892045036,
+        "positions": 3484903.0533318864
+      },
+      "hit_local_index": 0.02540370247766943,
+      "position_local_index": 0.03788512850415482,
+      "versus_good_oct26_hit_index_change_percent": -88.99207412211916,
+      "versus_good_oct26_position_index_change_percent": -92.47348420730287
+    }
+  },
+  "good_oct26_same_point_hour_weighting": {
+    "hits": 10665957,
+    "positions": 1836387,
+    "local_messages": 46217697.66665748,
+    "local_positions": 3648290.58333216,
+    "hit_local_index": 0.2307764674243968,
+    "position_local_index": 0.5033554641699454
+  },
+  "cloud_daily": [
+    {
+      "date": "2026-10-30",
+      "aircraft": 1718,
+      "hits": 1076713,
+      "positions": 127515
+    },
+    {
+      "date": "2026-10-31",
+      "aircraft": 1538,
+      "hits": 1006358,
+      "positions": 113033
+    },
+    {
+      "date": "2026-11-01",
+      "aircraft": 1696,
+      "hits": 789671,
+      "positions": 113032
+    }
+  ],
+  "daily_sum_checks": {
+    "2026-10-30 hits": {
+      "hourly_sum": 1076713,
+      "daily_total": 1076713,
+      "exact": true
+    },
+    "2026-10-30 positions": {
+      "hourly_sum": 127515,
+      "daily_total": 127515,
+      "exact": true
+    },
+    "2026-10-31 hits": {
+      "hourly_sum": 1006358,
+      "daily_total": 1006358,
+      "exact": true
+    },
+    "2026-10-31 positions": {
+      "hourly_sum": 113033,
+      "daily_total": 113033,
+      "exact": true
+    },
+    "2026-11-01 hits": {
+      "hourly_sum": 789671,
+      "daily_total": 789671,
+      "exact": true
+    },
+    "2026-11-01 positions": {
+      "hourly_sum": 113032,
+      "daily_total": 113032,
+      "exact": true
+    }
+  },
+  "saved_monitor_samples": 1607,
+  "max_sample_gap_s": 60.66060256958008,
+  "protected_pid_sets": 1,
+  "fr24_pid_sets": 1,
+  "config_sets": 1,
+  "gain_db": [
+    38.6
+  ],
+  "recorded_hosts": [
+    "127.0.0.1:30005"
+  ],
+  "restoration": {
+    "unix": 1793440332.7038465,
+    "reason": "AssertionError('SDR loss/drop changed')",
+    "host": "127.0.0.1:31005",
+    "intent": "dsp",
+    "guard_active": true
+  },
+  "current_remote_reachable": false,
+  "cadence_daily_comparison": "pending_receiver_archive_fetch",
+  "limits": [
+    "Exact chart bucket start/end semantics unresolved;25selected point labels are fully inside stock under either mapping",
+    "Local boundaries linearly interpolated from roughly60s cumulative snapshots; historical local values are180s RRD integrals with different counter definitions",
+    "Indices are diagnostic change indices, not packet loss or FR24 credit fractions",
+    "No cloud recovery to pre-drop level during observed direct stock; persistent state and delayed behavior remain unresolved",
+    "Oct31restoration was combined; later Oct31/Nov1 are not verified stock-only and excluded from that condition; complete route logs pending; no60h comparison completed",
+    "Pi outside LAN, cannot freshly verify current health, fetch final cadence/journal or cancel redundant timers"
+  ]
+}

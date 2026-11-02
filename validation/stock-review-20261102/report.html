@@ -1,0 +1,43 @@
+<!doctype html><meta charset="utf-8"><title>FR24 stock baseline review</title><main style="max-width:1050px;margin:2em auto;padding:1em;font:17px/1.6 system-ui"><pre style="white-space:pre-wrap"># FR24 stock-only baseline review — 2 November 2026
+
+**The verified stock-only hours did not restore FR24 counts to their pre-drop level.** This weakens a simple immediate relay-delay/extras explanation; it does not prove the server is at fault or establish a permanent source penalty. The proposed 60-hour test was not completed. Receiver-side final collection is pending because the user is outside the LAN today; remaining checks are rescheduled for 3 November at 10:15 Europe/Berlin (same local time in Warsaw).
+
+## Actual experiment boundary
+
+The active extended v2 monitor genuinely aborted on 31 October at09:52 UTC/10:52 Berlin after cumulative SDR samples_lost increased from 0 to 262144 (about 0.109 RF seconds). This is distinct from the earlier intentional monitor handovers. Its durable result records automatic combined 31005 restoration, DSP intent and active normal routing guard. Those were independently confirmed healthy on1 November. No source, gain, decoder, relay, capture or ADS-B Exchange PID changes were observed during the stock phase; the feeder restarted only on restoration.
+
+The saved successful samples extend from 30 October06:57:48 UTC through 31 October09:51:02 UTC, encompassing 26.85 measured hours after the 07:00 UTC start. They contain 1607 snapshots, maximum 60.66 seconds apart, one protected PID/configuration set, one FR24 PID and gain 38.6 dB. Every saved phase sample reports direct-stock 30005. The RAM status retains the aborted_restoring wording; the durable final result additionally records restoration and closure.
+
+Do not treat the planned31 October09:52 UTC–1 November19:00 UTC period as stock. Later31 October and1 November are excluded from the verified stock condition. The last confirmed route was combined; complete later route/journal coverage is pending. The independent deadline/safety timers were deliberately left untouched until current route/manual intent and recovery can be freshly verified.
+
+## Authenticated cloud evidence
+
+Read the signed-in FR24 page with CUA on2 November. Only visible daily totals, rendered SVG path coordinates/UTC axes and visible point tooltips were used. No hidden Highcharts/session state or network responses were read. Only chart/date observations were retained; the account sharing key is excluded. All24 hourly points for each date reconstruct both daily totals exactly: **six successful daily-sum checks**. Explicit point tooltips verified30 October07:00,31 October08:00/10:00 and1 November16:00. Numeric geometry/axes, hourly values and checks are preserved in cloud-hourly.json; extraction and offline comparison scripts are alongside it.
+
+| UTC date | Aircraft | Hits | Positions | Condition |
+|---|---:|---:|---:|---|
+| 26 October, earlier reference | 1,806 | 10,153,060 | 1,748,894 | Earlier good day; not a contemporaneous control |
+| 30 October | 1,718 | 1,076,713 | 127,515 | Stock from 06:57 UTC; daily total also includes earlier hours |
+| 31 October | 1,538 | 1,006,358 | 113,033 | Stock until 09:52 UTC, then automatic combined restoration |
+| 1 November | 1,696 | 789,671 | 113,032 | Not a verified stock-only day; last confirmed route combined |
+
+The daily totals alone are not matched condition comparisons. Cloud counts stayed in the depressed range, but traffic/day/season and counter definitions differ.
+
+## Conservative stock-hour comparison
+
+Exact chart bucket start/end semantics remain unconfirmed. Select only point labels fully within the stock phase under either convention: 30 October08–23 UTC and31 October00–08 UTC,25 points. Exclude30 October07:00 because an end-labelled bucket could include startup; exclude31 October09:00/10:00 from a pure-condition comparison because one convention can overlap restoration.
+
+These 25 points sum to **1,159,376 hits and 132,026 positions**. Matching saved local cumulative counters, interpolated at hour boundaries, gives approximately **45.55–45.64 million local messages and 3.479–3.485 million local positions**, depending on label convention. No interpolation spans more than180 seconds; actual sample spacing is at most60.66 seconds.
+
+Compared with the same UTC point-hour weighting on the earlier good26 October reference, the cloud/local change indices remain approximately **89%lower for hits and 92.5%lower for positions**. These are diagnostic indices, not packet-loss percentages, upload fractions or a documented FR24 credit formula. Historical local values are180 second RRD rate integrals; current values are interpolated readsb cumulative counters. Their definitions/aggregation and the noncontemporaneous comparison limit precision. The very large discrepancy is robust to the tested label shift.
+
+This supports **no large observed recovery during the verified direct-stock exposure**, including a UTC midnight. It does not rule out longer adaptation, persistent source-quality/filtering state, different server configuration, quality problems originating in stock data or statistics accounting. Nor does it prove a daily server adaptation mechanism. No extra live condition, model or asynchronous relay has been enabled.
+
+## Remaining receiver evidence
+
+SSH to the established local alias timed out on2 November, consistent with the user&#x27;s explicit statement that they are outside the LAN today. No networking/auth changes, service restarts, restore action, timer cancellation, forced recorder saves, archive deletion or support messages occurred in this review.
+
+Final cadence-audit-v2, baseline-config, failed initial cadence-audit, complete trial-period journal, extension/restoration receipts and fresh receiver/source/relay/capture status still need checksum-copying. Their day-by-day sender interval/configuration/overlap comparison cannot yet be reported. Earlier saved evidence confirms30s/30s and ~30 second sends after the original drop; it does not establish an October27 cadence change. The currently missing daily sender audit must not be inferred from hits alone.
+
+Existing private evidence already includes the closed v2 trial result/scripts/state/hourly logs/schedule and abort journal, with verified receipts. The frozen9.73GBcase archive remains untouched. This review is appended in a separate verified binary addendum; raw diagnostics/configuration/journals remain private. Only aggregate review files are eligible for later HTTP publication. The remaining one-time follow-up is retained for a bounded retry tomorrow; it will be removed after final receiver verification/evidence collection and authorized timer cleanup.
+</pre></main>
