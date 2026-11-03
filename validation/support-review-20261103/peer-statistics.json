@@ -1,0 +1,24 @@
+{
+  "method": "visible shared FR24 UI/date selector",
+  "radar": "T-EDDS1060",
+  "id": 24228,
+  "observations": [
+    {
+      "date": "2026-10-28",
+      "aircraft": 3777,
+      "hits": 9856448,
+      "positions": 1124452
+    },
+    {
+      "date": "2026-11-02",
+      "aircraft": 3758,
+      "hits": 8781658,
+      "positions": 1038239
+    }
+  ],
+  "limits": [
+    "Not nearby matched receiver",
+    "No pre27October history in visible selector",
+    "No network-wide incident established"
+  ]
+}
