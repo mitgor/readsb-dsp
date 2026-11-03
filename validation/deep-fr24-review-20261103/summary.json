@@ -1,0 +1,28 @@
+{
+  "archives": 10,
+  "verified_bytes": 500813642,
+  "deleted_bytes": 500813642,
+  "rf_archives": 5,
+  "offered_training": 903,
+  "crc_quarantined": 7841,
+  "reserved_evaluation_segments": 1685,
+  "fr24_route": {
+    "build_version": "1.0.57-1",
+    "cfg_host": "127.0.0.1:31005",
+    "cfg_receiver": "beast-tcp",
+    "feed_status": "connected",
+    "rx_connected": "1",
+    "num_messages": "110822537",
+    "timing_is_valid": "1",
+    "msg_ring_full": "false"
+  },
+  "stock_records_checked": 15413,
+  "missing_stock": 0,
+  "relay_delay_s": {
+    "min": 2.9950202610343695,
+    "median": 3.0158239760203287,
+    "p99": 3.0926917970646173,
+    "max": 3.1246401770040393
+  },
+  "no_live_configuration_change": true
+}
