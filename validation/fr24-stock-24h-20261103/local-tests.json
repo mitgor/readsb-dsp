@@ -1,0 +1,8 @@
+{
+  "passed": [
+    "quiet RF does not abort due to old last-aircraft send",
+    "sample loss triggers restoration",
+    "wrong FR24 route rejected",
+    "stale sends with active aircraft rejected"
+  ]
+}

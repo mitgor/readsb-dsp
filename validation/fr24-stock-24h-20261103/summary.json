@@ -1,0 +1,24 @@
+{
+  "state": "stock_test_running",
+  "stock_started": "2026-11-03T18:10:51.393120+01:00",
+  "startup_exclusion_end": "2026-11-03T18:12:51.393120+01:00",
+  "planned_combined_restore": "2026-11-04T18:10:51.393120+01:00",
+  "duration_s": 86400,
+  "host": "127.0.0.1:30005",
+  "restore_host": "127.0.0.1:31005",
+  "preserved_services": {
+    "readsb": 4694,
+    "adsb-rescue-shadow": 2242783,
+    "adsb-rescue-feed": 1622165,
+    "adsb-far-capture": 2191342,
+    "adsbexchange-feed": 1235929
+  },
+  "gain_db": 38.6,
+  "disk_cap_bytes": 5000000000,
+  "startup_excluded_s": 120,
+  "early_restore": "Health failure, unexpected config/PID/route change, further SDR sample loss/drop or reboot",
+  "independent_restore_timers_s_after_deadline": [
+    120,
+    600
+  ]
+}
