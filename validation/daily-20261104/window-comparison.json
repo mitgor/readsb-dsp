@@ -1,0 +1,62 @@
+{
+  "validation": {
+    "windows": 1756,
+    "new_distant_windows": 160,
+    "methods": {
+      "frozen_original": {
+        "exact": 1142,
+        "wrong_crc_valid": 0,
+        "cpu_seconds": 0.013456999999999997
+      },
+      "production_neural": {
+        "exact": 1361,
+        "wrong_crc_valid": 0,
+        "cpu_seconds": 0.020911000000000013
+      },
+      "production_plus_previous_best": {
+        "exact": 1371,
+        "wrong_crc_valid": 0,
+        "cpu_seconds": 0.022756
+      },
+      "production_plus_previous_best_plus_candidate": {
+        "exact": 1381,
+        "wrong_crc_valid": 0,
+        "cpu_seconds": 0.02390700000000001
+      }
+    },
+    "incremental_over_previous_best": 10,
+    "distant_incremental_over_previous_best": 2,
+    "losses": 0,
+    "scope": "Supplied packet windows only, NOT full pipeline field detections."
+  },
+  "test": {
+    "windows": 739,
+    "new_distant_windows": 109,
+    "methods": {
+      "frozen_original": {
+        "exact": 457,
+        "wrong_crc_valid": 0,
+        "cpu_seconds": 0.004751000000000061
+      },
+      "production_neural": {
+        "exact": 557,
+        "wrong_crc_valid": 0,
+        "cpu_seconds": 0.008352000000000026
+      },
+      "production_plus_previous_best": {
+        "exact": 561,
+        "wrong_crc_valid": 0,
+        "cpu_seconds": 0.00963499999999995
+      },
+      "production_plus_previous_best_plus_candidate": {
+        "exact": 564,
+        "wrong_crc_valid": 0,
+        "cpu_seconds": 0.010244999999999949
+      }
+    },
+    "incremental_over_previous_best": 3,
+    "distant_incremental_over_previous_best": 2,
+    "losses": 0,
+    "scope": "Supplied packet windows only, NOT full pipeline field detections."
+  }
+}

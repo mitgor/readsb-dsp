@@ -1,0 +1,340 @@
+{
+  "date": "2026-11-04",
+  "timezone": "Europe/Berlin",
+  "new_verified_deleted_archives": 2,
+  "new_verified_deleted_bytes": 99283753,
+  "prior_20261103_archives_qualified_today": 10,
+  "qualification": {
+    "offered": 1091,
+    "qualified": 466,
+    "qualified_180_200": 433,
+    "uncorrected_rf_not_confirmed": 625,
+    "qualified_200_250": 33
+  },
+  "coverage_before_training": {
+    "train": {
+      "windows": 571,
+      "aircraft": 291,
+      "utc_hours": 92,
+      "bands": {
+        "180-200": 528,
+        "200-250": 42,
+        "250+": 1
+      }
+    },
+    "validation": {
+      "windows": 163,
+      "aircraft": 81,
+      "utc_hours": 64,
+      "bands": {
+        "180-200": 147,
+        "200-250": 16
+      }
+    },
+    "test": {
+      "windows": 109,
+      "aircraft": 48,
+      "utc_hours": 44,
+      "bands": {
+        "180-200": 100,
+        "200-250": 9
+      }
+    }
+  },
+  "prepared_new": {
+    "prepared_test": 109,
+    "prepared_train": 568,
+    "prepared_validation": 160,
+    "preamble_alignment_rejected": 6
+  },
+  "candidate": {
+    "variant": "dsp",
+    "model": "models/candidates/daily-20261104/dsp/tiny-rf-v1.onnx",
+    "sha256": "38f15bc328c3705e36a7a098f6f7a523d9781641e6e3b2aac467374ffd20c8d9",
+    "frozen_unix": 1793779849.2346911,
+    "criteria": "Validation only: zero wrong CRC, qualified far additions, total additions, bit errors. Test and chronological RF not used.",
+    "validation": {
+      "raw": {
+        "windows": 1756,
+        "candidate_exact": 1195,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 1371,
+        "combined_exact": 1379,
+        "additions": 8,
+        "losses": 0,
+        "new_windows": 160,
+        "new_additions": 0,
+        "qualified_far180_windows": 160,
+        "qualified_far180_additions": 0,
+        "bit_errors": 1317
+      },
+      "dsp": {
+        "windows": 1756,
+        "candidate_exact": 1277,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 1371,
+        "combined_exact": 1381,
+        "additions": 10,
+        "losses": 0,
+        "new_windows": 160,
+        "new_additions": 2,
+        "qualified_far180_windows": 160,
+        "qualified_far180_additions": 2,
+        "bit_errors": 1060
+      }
+    },
+    "reservation_sha256": "8d57120984560eeb6f79d50eed79b4a5db240657ff133209b78eab5419233fdf",
+    "live_changes": false
+  },
+  "window_comparison": {
+    "validation": {
+      "windows": 1756,
+      "new_distant_windows": 160,
+      "methods": {
+        "frozen_original": {
+          "exact": 1142,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.013456999999999997
+        },
+        "production_neural": {
+          "exact": 1361,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.020911000000000013
+        },
+        "production_plus_previous_best": {
+          "exact": 1371,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.022756
+        },
+        "production_plus_previous_best_plus_candidate": {
+          "exact": 1381,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.02390700000000001
+        }
+      },
+      "incremental_over_previous_best": 10,
+      "distant_incremental_over_previous_best": 2,
+      "losses": 0,
+      "scope": "Supplied packet windows only, NOT full pipeline field detections."
+    },
+    "test": {
+      "windows": 739,
+      "new_distant_windows": 109,
+      "methods": {
+        "frozen_original": {
+          "exact": 457,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.004751000000000061
+        },
+        "production_neural": {
+          "exact": 557,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.008352000000000026
+        },
+        "production_plus_previous_best": {
+          "exact": 561,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.00963499999999995
+        },
+        "production_plus_previous_best_plus_candidate": {
+          "exact": 564,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.010244999999999949
+        }
+      },
+      "incremental_over_previous_best": 3,
+      "distant_incremental_over_previous_best": 2,
+      "losses": 0,
+      "scope": "Supplied packet windows only, NOT full pipeline field detections."
+    }
+  },
+  "controls": {
+    "overlap": {
+      "raw": {
+        "windows": 4096,
+        "primary": 954,
+        "secondary_valid": 1,
+        "unaccounted_valid": 0
+      },
+      "dsp": {
+        "windows": 4096,
+        "primary": 1010,
+        "secondary_valid": 1,
+        "unaccounted_valid": 0
+      }
+    },
+    "clean": {
+      "raw": {
+        "windows": 4096,
+        "exact": 2808,
+        "wrong_crc_valid": 0
+      },
+      "dsp": {
+        "windows": 4096,
+        "exact": 2847,
+        "wrong_crc_valid": 0
+      }
+    },
+    "noise": {
+      "raw": {
+        "windows": 20000,
+        "valid": 0
+      },
+      "dsp": {
+        "windows": 20000,
+        "valid": 0
+      }
+    }
+  },
+  "training_variants": {
+    "raw": {
+      "steps": 1000,
+      "selected_step": 1000,
+      "metrics": {
+        "train": {
+          "windows": 9406,
+          "candidate_exact": 6264,
+          "candidate_wrong_crc": 0,
+          "baseline_exact": 7353,
+          "combined_exact": 7392,
+          "additions": 39,
+          "losses": 0,
+          "new_windows": 568,
+          "new_additions": 4,
+          "qualified_far180_windows": 568,
+          "qualified_far180_additions": 4,
+          "bit_errors": 7393
+        },
+        "validation": {
+          "windows": 1756,
+          "candidate_exact": 1195,
+          "candidate_wrong_crc": 0,
+          "baseline_exact": 1371,
+          "combined_exact": 1379,
+          "additions": 8,
+          "losses": 0,
+          "new_windows": 160,
+          "new_additions": 0,
+          "qualified_far180_windows": 160,
+          "qualified_far180_additions": 0,
+          "bit_errors": 1317
+        },
+        "test": {
+          "windows": 739,
+          "candidate_exact": 466,
+          "candidate_wrong_crc": 0,
+          "baseline_exact": 561,
+          "combined_exact": 565,
+          "additions": 4,
+          "losses": 0,
+          "new_windows": 109,
+          "new_additions": 0,
+          "qualified_far180_windows": 109,
+          "qualified_far180_additions": 0,
+          "bit_errors": 636
+        }
+      },
+      "export": {
+        "sha256": "89871594d1900b3f4e3ec99c916d76db804e8e911992670592c4bb77ae0b8b45",
+        "max_logit_difference": 3.0517578125e-05,
+        "bit_differences": 0,
+        "packet_bytes_exact": true
+      },
+      "noise": {
+        "windows": 20000,
+        "valid": 0
+      }
+    },
+    "dsp": {
+      "steps": 1000,
+      "selected_step": 200,
+      "metrics": {
+        "train": {
+          "windows": 9406,
+          "candidate_exact": 6842,
+          "candidate_wrong_crc": 0,
+          "baseline_exact": 7353,
+          "combined_exact": 7383,
+          "additions": 30,
+          "losses": 0,
+          "new_windows": 568,
+          "new_additions": 2,
+          "qualified_far180_windows": 568,
+          "qualified_far180_additions": 2,
+          "bit_errors": 5591
+        },
+        "validation": {
+          "windows": 1756,
+          "candidate_exact": 1277,
+          "candidate_wrong_crc": 0,
+          "baseline_exact": 1371,
+          "combined_exact": 1381,
+          "additions": 10,
+          "losses": 0,
+          "new_windows": 160,
+          "new_additions": 2,
+          "qualified_far180_windows": 160,
+          "qualified_far180_additions": 2,
+          "bit_errors": 1060
+        },
+        "test": {
+          "windows": 739,
+          "candidate_exact": 515,
+          "candidate_wrong_crc": 0,
+          "baseline_exact": 561,
+          "combined_exact": 564,
+          "additions": 3,
+          "losses": 0,
+          "new_windows": 109,
+          "new_additions": 2,
+          "qualified_far180_windows": 109,
+          "qualified_far180_additions": 2,
+          "bit_errors": 460
+        }
+      },
+      "export": {
+        "sha256": "38f15bc328c3705e36a7a098f6f7a523d9781641e6e3b2aac467374ffd20c8d9",
+        "max_logit_difference": 3.62396240234375e-05,
+        "bit_differences": 0,
+        "packet_bytes_exact": true
+      },
+      "noise": {
+        "windows": 20000,
+        "valid": 0
+      }
+    }
+  },
+  "full_pipeline_recovery": "not established: Stream1090 alignment assertion failed on 2.10743 RF seconds; accepted production annotations also best-effort. No assertion bypass. Initial fourth-model provenance-enum error fixed only in offline copy; both failed attempts preserved.",
+  "mac_native_baseline": "Some target libraries differ from prior Mac parity baseline; current Python synced, exact current target parity remains required.",
+  "pi_benchmark": "not run: complete Mac reference comparison not established; active stock-only trial protected",
+  "prospective_evidence": "none: all RF captured before freeze; no post-freeze range improvement claim",
+  "new_data_since_this_completed_fit": {
+    "train": 0,
+    "validation": 0
+  },
+  "production_companion_retained": "recent-20261029 remains previous best comparison; daily candidate not enabled",
+  "health_checks": {
+    "pids": true,
+    "methods": true,
+    "workers": true,
+    "model_sha256": true,
+    "logging_enabled": true,
+    "samples": true,
+    "gain_db": true,
+    "source_hashes": true,
+    "configs": true,
+    "trial": true
+  },
+  "live_pipeline_unchanged": true,
+  "stock_trial": {
+    "state": "stock_test_running",
+    "stock_started_unix": 1793725851.3931203,
+    "measurement_start_unix": 1793725971.3931203,
+    "planned_restore_unix": 1793812251.3931203,
+    "error": null
+  },
+  "rf_cap_bytes": 5000000000,
+  "crc_quarantined_new_today": 1566,
+  "model_deployed": false,
+  "resume_next": "Keep frozen DSP candidate. Obtain unconsumed evaluation RF with complete stock/unified/accepted records and verified Stream1090 sample-clock alignment, refresh current native baseline and replay before any Pi benchmark. Do not retune using failed/consumed RF or retrain these same examples."
+}

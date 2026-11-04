@@ -1,0 +1,35 @@
+<!doctype html><meta charset="utf-8"><title>Daily ADS-B companion trial 4 November</title><main style="font:17px/1.6 system-ui;max-width:1050px;margin:2em auto;padding:1em"><pre style="white-space:pre-wrap"># Daily ADS-B collection and companion trial — 4 November 2026
+
+**Transferred two new archives (99,283,753 bytes, 99.3 MB), verified and durably backed them up on the Mac, then deleted only those exact Pi copies.** No forced saves or receiver changes occurred. Active RAM retains its normal 12-hour schedule and the RF cap remains 5,000,000,000 bytes.
+
+## Qualification and training threshold
+
+This run also qualified yesterday&#x27;s ten transferred archives. Across six RF archives, 1091 offered stock snippets yielded 466 same-transmission independent no-correction confirmations: 433 at 180–200 nm and 33 at 200–250 nm. 625 were not independently confirmed and remain quarantined. Today&#x27;s 1,566 additional CRC research I/Q windows remain quarantined; yesterday&#x27;s 7,841 do too. Continuous RF was globally reserved before fitting, including today&#x27;s 216 additional evaluation segments.
+
+The deduplicated ledger reached 571 qualified train windows from 291 aircraft across 92 UTC hours, and 163 validation windows from 81 aircraft across 64 hours. This exceeded the frozen 500/100 trigger. Preamble-only preparation rejected six examples, leaving **568 new train, 160 new validation and 109 fixed-test windows**, combined with historical replay. Aircraft, payload, transformed/original I/Q and RF-interval split checks passed. NIC/NACp, causal position, MLAT/TIS-B and same-transmission checks remain in force; stock-derived range is not independently surveyed truth.
+
+## Offline model trial
+
+Trained separate raw and DSP-augmented 1,000-step companions using the existing production feature shape, historical and synthetic replay, noise/timing augmentation and preservation distillation. The baseline comparison includes the frozen original, both production companions and the previous best offline October 29 DSP companion. Selection used validation only. The DSP-augmented candidate was frozen at step 200; the raw model selected step 1,000. Models are saved under models/candidates/daily-20261104 and are not production models.
+
+| Candidate | Validation packet-window additions over previous best cascade | New distant validation additions | Test packet-window additions | New distant test additions |
+|---|---:|---:|---:|---:|
+| Raw | 8 | 0 | 4 | 0 |
+| DSP augmented | 10 | 2 | 3 | 2 |
+
+These are **supplied packet-window reconstructions, not additional field detections beyond the full DSP pipeline**. Both additive comparisons lost zero valid baseline packet windows. Both passed 20,000 pure-noise windows with zero valid outputs, clean controls with zero wrong CRC-valid outputs, and bit/packet export parity. Each overlap control produced one valid secondary packet matching its known synthetic interferer, zero unexplained valid packets. The DSP candidate preserves the prior validated companions rather than replacing them.
+
+## Full-pipeline validation is incomplete
+
+The latest globally reserved archive provided 41 closed, aligned RF groups totaling 2.10743 RF seconds. One incomplete burst was excluded. The complete replay attempt stopped at the required Stream1090 alignment assertion; the guard was not bypassed and no full-pipeline additions, distance uplift or Pi CPU claim is made. Saved production annotations are best-effort provisional records, not an independently complete accepted-production ledger. Recorded actual unified output is retained, but does not remove that limitation.
+
+An initial offline diagnostic failed because the provenance display enum only handled three model origins. The offline copy was extended to name the fourth previous-best model; inference/CRC/acceptance arithmetic and the working runtime were unchanged. Both failed attempt logs are preserved. Some current target native-library hashes differ from the prior parity-tested Mac runtime, so exact current target parity also remains outstanding. Pi replay was not justified after the incomplete Mac comparison, particularly during the active FR24 stock-only condition.
+
+The candidate stays frozen and offline. More untouched RF with complete references and verified sample-clock alignment is needed. The supplied-window results do not establish improved reception beyond 180 nm. All current evaluation RF predates checkpoint freeze; none is post-freeze prospective evidence. Consumed train/validation examples are recorded durably so future daily runs do not retrain unchanged data. The prior best companion remains retained.
+
+## Protected state and artifacts
+
+All protected PIDs, sources/libraries/models, configs, method switches, gain 38.6 dB and SDR loss/drop counters matched before/after. The user-requested stock-only FR24 trial is still running with its original deadline; this workflow did not alter routing or reconnect any service. Collection, relay and ADS-B Exchange remain running. No models deployed, no switches/caps changed, no SDR opened, no mirror interrupted and no flush forced.
+
+Private artifacts: results/daily-20261104, data/raw/pi-offload-20261104, data/transfer/daily-20261104 and models/candidates/daily-20261104. They include transfer/delete receipts, source and label hashes, global RF reservations, before/after health, fixed split/consumption ledgers, both checkpoints, controls, freeze receipt and failed reference diagnostics. Only aggregate reports are published.
+</pre></main>
