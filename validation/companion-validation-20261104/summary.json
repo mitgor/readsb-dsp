@@ -1,0 +1,185 @@
+{
+  "candidate_sha256": "38f15bc328c3705e36a7a098f6f7a523d9781641e6e3b2aac467374ffd20c8d9",
+  "diagnosis": "Original failure had29anchors below the unchanged100minimum, not a wandering clock. Expand only globally reserved evaluation RF and independently check each archive against the shared epoch clock.",
+  "alignment": {
+    "anchors": 163,
+    "offset_ticks": -1629,
+    "mad_ticks": 0.0,
+    "by_archive": {
+      "capture-1793530728821004997.tar": {
+        "anchors": 26,
+        "median_ticks": -1629.0,
+        "mad_ticks": 0.0
+      },
+      "capture-1793573929327237891.tar": {
+        "anchors": 27,
+        "median_ticks": -1629.0,
+        "mad_ticks": 0.0
+      },
+      "capture-1793617130264041333.tar": {
+        "anchors": 38,
+        "median_ticks": -1629.0,
+        "mad_ticks": 0.0
+      },
+      "capture-1793660330480264346.tar": {
+        "anchors": 28,
+        "median_ticks": -1629.0,
+        "mad_ticks": 1.0
+      },
+      "capture-1793703530984814803.tar": {
+        "anchors": 15,
+        "median_ticks": -1629.0,
+        "mad_ticks": 0.0
+      },
+      "capture-1793746731180526391.tar": {
+        "anchors": 29,
+        "median_ticks": -1629.0,
+        "mad_ticks": 0.0
+      }
+    }
+  },
+  "rf_seconds": 18.39534708333332,
+  "interior_rf_seconds": 17.883347083333295,
+  "cases": 256,
+  "full_current_methods": {
+    "energy": true,
+    "crc": true,
+    "timing": true,
+    "soft": true,
+    "matched": true,
+    "coherent": true,
+    "header": false,
+    "sic": false,
+    "neural": true,
+    "pulse": false,
+    "stream1090": true,
+    "sequence": false,
+    "acquisition": false
+  },
+  "production_extras": 192,
+  "candidate_additions_beyond_production": 0,
+  "candidate_additions_beyond_previous_best": 0,
+  "baseline_losses": 0,
+  "distance_bins": {
+    "50-100": {
+      "stock": 500,
+      "production_extras": 61,
+      "previous_best_extras": 61
+    },
+    "0-50": {
+      "stock": 488,
+      "production_extras": 39,
+      "previous_best_extras": 39
+    },
+    "100-150": {
+      "stock": 144,
+      "production_extras": 53,
+      "previous_best_extras": 53
+    },
+    "unknown": {
+      "stock": 68,
+      "production_extras": 33,
+      "previous_best_extras": 33
+    },
+    "180-200": {
+      "stock": 1,
+      "production_extras": 2,
+      "previous_best_extras": 2
+    },
+    "150-180": {
+      "stock": 5,
+      "production_extras": 4,
+      "previous_best_extras": 4
+    }
+  },
+  "confirmed_far_aircraft": 1,
+  "cpu": {
+    "mac": {
+      "production_cpu_per_rf_second": {
+        "median": 0.22003460884232187,
+        "min": 0.2188413723189467,
+        "max": 0.2332615949327586
+      },
+      "previous_best_cpu_per_rf_second": {
+        "median": 0.21569019502735237,
+        "min": 0.21171908213293028,
+        "max": 0.22560618080210648
+      },
+      "candidate_bundle_cpu_per_rf_second": {
+        "median": 0.222539916287255,
+        "min": 0.21868557205124758,
+        "max": 0.23210972756629827
+      },
+      "incremental_candidate_inference_cpu_per_rf_second": {
+        "median": 0.006100727509604379,
+        "min": 0.006006573265481251,
+        "max": 0.006354378608376297
+      },
+      "incremental_candidate_percent_of_production": {
+        "median": 2.744715590947342,
+        "min": 2.7241426563202777,
+        "max": 2.7726217896822756
+      }
+    },
+    "pi": {
+      "production_cpu_per_rf_second": {
+        "median": 0.7481608414156733,
+        "min": 0.7421847633616931,
+        "max": 0.7548491609370491
+      },
+      "previous_best_cpu_per_rf_second": {
+        "median": 0.7794566009026773,
+        "min": 0.7760194431413414,
+        "max": 0.782952702102001
+      },
+      "candidate_bundle_cpu_per_rf_second": {
+        "median": 0.8249049524457424,
+        "min": 0.8142373342643042,
+        "max": 0.8251907606436605
+      },
+      "incremental_candidate_inference_cpu_per_rf_second": {
+        "median": 0.032733706478719204,
+        "min": 0.03256198327144855,
+        "max": 0.033501475248507495
+      },
+      "incremental_candidate_percent_of_production": {
+        "median": 4.41045250382847,
+        "min": 4.3137072883577146,
+        "max": 4.477843986744328
+      }
+    }
+  },
+  "parity": {
+    "production_digest": true,
+    "previous_digest": true,
+    "candidate_digest": true,
+    "distance_bins": true,
+    "raw_baseline_losses": true,
+    "candidate_additions_beyond_production": true,
+    "candidate_additions_beyond_previous_best": true,
+    "stream_alignment": true
+  },
+  "unit_tests_passed": 6,
+  "protected_checks": {
+    "pids": true,
+    "methods": true,
+    "workers": true,
+    "model_sha256": true,
+    "samples": true,
+    "gain_db": true,
+    "source_hashes": true,
+    "configs": true,
+    "trial": true
+  },
+  "guard_health_samples": 93,
+  "model_deployed": false,
+  "stock_only_fr24_unchanged": true,
+  "cleanup": "Only owned tmpfs removed after checksum-verified durable Mac input/results backup. No persistent receiver archives deleted.",
+  "limitations": [
+    "18.4 RFseconds across six archives, one quality-confirmed aircraft beyond180nm: inadequate evidence of distant generalization.",
+    "Captured before frozen candidate; no post-freeze prospective evidence.",
+    "Per-burst complete stock/unified references; one incomplete group excluded. DSP annotations are best-effort provisional, conservatively masked, not an authoritative complete production-acceptance ledger.",
+    "Serial replay CPU includes repeated frontends and per-clip Stream1090 startup; excludes live ring transport, admission and statistics overhead; not measured live production CPU or electrical power.",
+    "Requested Pi MemoryMax1G; MemoryCurrent unavailable on kernel. Observed benchmark VmHWM191248KiB; no memory-controller enforcement claim."
+  ]
+}

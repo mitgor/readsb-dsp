@@ -1,0 +1,10 @@
+{
+  "production_digest": true,
+  "previous_digest": true,
+  "candidate_digest": true,
+  "distance_bins": true,
+  "raw_baseline_losses": true,
+  "candidate_additions_beyond_production": true,
+  "candidate_additions_beyond_previous_best": true,
+  "stream_alignment": true
+}

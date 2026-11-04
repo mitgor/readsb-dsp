@@ -1,0 +1,38 @@
+[
+  {
+    "file": "capture-1793530728821004997-references.json",
+    "stock_core_instances": 185,
+    "actual_core_instances": 218,
+    "causal_address_queries_equal": 439
+  },
+  {
+    "file": "capture-1793573929327237891-references.json",
+    "stock_core_instances": 247,
+    "actual_core_instances": 286,
+    "causal_address_queries_equal": 574
+  },
+  {
+    "file": "capture-1793617130264041333-references.json",
+    "stock_core_instances": 184,
+    "actual_core_instances": 216,
+    "causal_address_queries_equal": 433
+  },
+  {
+    "file": "capture-1793660330480264346-references.json",
+    "stock_core_instances": 229,
+    "actual_core_instances": 268,
+    "causal_address_queries_equal": 539
+  },
+  {
+    "file": "capture-1793703530984814803-references.json",
+    "stock_core_instances": 151,
+    "actual_core_instances": 173,
+    "causal_address_queries_equal": 347
+  },
+  {
+    "file": "capture-1793746731180526391-references.json",
+    "stock_core_instances": 210,
+    "actual_core_instances": 249,
+    "causal_address_queries_equal": 501
+  }
+]
