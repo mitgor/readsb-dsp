@@ -1,0 +1,11 @@
+test_gain_and_position_options_preserved (test_trial.Tests.test_gain_and_position_options_preserved) ... ok
+test_only_decoder_launch_fields_changed_key_and_mlat_preserved (test_trial.Tests.test_only_decoder_launch_fields_changed_key_and_mlat_preserved) ... ok
+test_restore_releases_native_before_starting_readsb_and_thaws_buffers (test_trial.Tests.test_restore_releases_native_before_starting_readsb_and_thaws_buffers) ... ok
+test_safety_files_remain_if_original_receiver_fails_to_reconnect (test_trial.Tests.test_safety_files_remain_if_original_receiver_fails_to_reconnect) ... ok
+test_stale_decoder_error_does_not_abort_new_launch (test_trial.Tests.test_stale_decoder_error_does_not_abort_new_launch) ... ok
+test_unknown_runtime_directory_is_not_removed (test_trial.Tests.test_unknown_runtime_directory_is_not_removed) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.006s
+
+OK
