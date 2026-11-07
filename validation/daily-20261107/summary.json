@@ -1,0 +1,87 @@
+{
+  "date_berlin": "2026-11-07",
+  "completed_at_berlin": "2026-11-07T12:31:17.757041+01:00",
+  "archives": 14,
+  "verified_deleted_bytes": 676301359,
+  "rf_archives": 7,
+  "qualification": {
+    "offered": 1520,
+    "uncorrected_rf_not_confirmed": 864,
+    "qualified": 656,
+    "qualified_180_200": 577,
+    "qualified_200_250": 77,
+    "qualified_250_plus": 2
+  },
+  "new_distant_coverage": {
+    "train": {
+      "windows": 417,
+      "aircraft": 208,
+      "utc_hours": 61,
+      "bands": {
+        "200-250": 46,
+        "180-200": 371
+      }
+    },
+    "validation": {
+      "windows": 139,
+      "aircraft": 76,
+      "utc_hours": 47,
+      "bands": {
+        "200-250": 23,
+        "180-200": 114,
+        "250+": 2
+      }
+    },
+    "test": {
+      "windows": 205,
+      "aircraft": 81,
+      "utc_hours": 74,
+      "bands": {
+        "180-200": 188,
+        "200-250": 17
+      }
+    }
+  },
+  "new_unique_counts": {
+    "qualified_new": 656,
+    "new_unique_validation": 139,
+    "new_unique_train": 417,
+    "new_unique_test": 96,
+    "duplicate_excluded": 4
+  },
+  "shortfall": {
+    "train_windows": 83,
+    "validation_windows": 0
+  },
+  "training_trigger": false,
+  "trained": false,
+  "last_completed_training": "daily-20261104",
+  "previous_candidate_full_pipeline_result": {
+    "new_packets": 0,
+    "new_beyond180nm": 0,
+    "report": "companion-validation-20261104"
+  },
+  "reserved_continuous_segments": 1972,
+  "quarantined_crc_iq_windows": 11313,
+  "protected_checks": {
+    "pids": true,
+    "methods": true,
+    "workers": true,
+    "source_hashes": true,
+    "configs": true,
+    "samples": true,
+    "gain_db": true,
+    "trial": true,
+    "model_sha256": true,
+    "logging_enabled": true
+  },
+  "rf_cap_bytes": 5000000000,
+  "pipeline_changed": false,
+  "stock_trial_state": "completed",
+  "limitations": [
+    "Causal stock range is quality-gated, not independent ground truth.",
+    "Unconfirmed RF and all broad-CRC predictions remain quarantined.",
+    "No new model benchmark or range-improvement claim; 83 further qualified TRAIN windows required.",
+    "Preserved evaluation RF is not a supervised label source."
+  ]
+}
