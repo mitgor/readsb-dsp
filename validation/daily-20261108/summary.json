@@ -1,0 +1,19 @@
+{
+  "date_berlin": "2026-11-08",
+  "status": "expected_collection_pause_during_native_fr24_test",
+  "new_archives": 0,
+  "transferred_bytes": 0,
+  "deleted_bytes": 0,
+  "new_qualified_windows": 0,
+  "training_trigger": false,
+  "pending_train_windows": 417,
+  "pending_validation_windows": 139,
+  "train_shortfall": 83,
+  "training_run": false,
+  "last_completed_training": "daily-20261104",
+  "live_changes_by_daily_task": false,
+  "rf_cap_bytes": 5000000000,
+  "intentional_pause_until_berlin": "2026-11-09T13:00:00+01:00",
+  "evidence": "incidents/fr24-drop-20261027/NATIVE-FR24-TEST-20261107.md",
+  "limitation": "Initial old-schema snapshot failed because native decoder stats omit samples_lost; diagnostic-tool failure, not evidence of receiver failure."
+}

@@ -1,0 +1,1 @@
+Read-only daily observation during documented native FR24 test. No new data or training. See validation/daily-20261108/report.md. The snapshot handles missing native-decoder fields as unknown, never zero.
