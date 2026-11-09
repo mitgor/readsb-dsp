@@ -1,0 +1,29 @@
+# Neural companion data update — 9 November 2026, evening
+
+Transferred and checksum-verified **7 archives / 131,471,256 bytes (131.5 MB)** to the Mac. Files, directories and durable manifests were fsynced before rechecking exact remote identity, size, modification time, open-writer state and SHA-256. Only those seven verified Pi copies were removed. Existing Mac data and all active receiver buffers remain preserved. No flush, service restart, gain/model/switch/routing change or cap change occurred.
+
+## Label validation
+
+The RF archive contains **144** stock-assisted distant snippets. **71 passed** original RF/member hashes, stock Beast/payload/sample-clock matching, causal quality-gated positions and independent uncorrected decoding of that same transmission using pinned readsb SHA-256 `9f8a23dad7bf881cffd024e966bb868c2e1c3cc0ff6d198601cb56b249a93b9d`. Of these, 68 are 180–200 nm and three are 200–250 nm. The other 73 remain quarantined; a matching address or later payload repetition does not qualify them.
+
+Aircraft/payload/IQ deduplication, fixed historical split membership, prior-consumption statuses and overlapping RF exclusions were retained. New qualified examples add **45 TRAIN**, **11 VALIDATION**, and **15 fixed evaluation-only TEST** windows. All **246 continuous RF intervals** were reserved globally for evaluation before qualification. **6,168 CRC research I/Q windows** were hash-verified but remain quarantined.
+
+| Pending since the completed November 4 fit | Windows | Aircraft | UTC hours |
+|---|---:|---:|---:|
+| TRAIN | 477 | 237 | 69 |
+| VALIDATION | 151 | 80 | 52 |
+| Fixed TEST, never fitted | 224 | 84 | 77 |
+
+The frozen trigger requires 500 new eligible TRAIN windows from at least ten aircraft/three UTC hours, plus 100 independent VALIDATION windows from at least three aircraft. We remain **23 TRAIN windows short**. No model was retrained and no new-candidate benchmark was run. Previous models and checkpoints are retained. This run does not claim additional recovered transmissions, CPU gains or distant-range improvement.
+
+## Full current comparison baseline recorded
+
+The next eligible companion must beat the complete **enabled** pipeline: stock readsb plus energy, timing, soft, matched, coherent/pair retries, neural original-first three-model cascade, pulse, sequence, improved acquisition and Stream1090. Current optimized native/Rust implementations and worker settings are fingerprinted. SIC/header remain off; broad CRC CPU is retained as research overhead while its predictions remain quarantined. Relay is asynchronous with a shared five-second transmission cache and a three-second extra-age limit.
+
+Saved private baseline metadata includes all current model, source/library and config hashes plus the Stream1090 executable hash. Future replay must use identical RF and verify sample alignment, full stock/relay/accepted-output coverage, unique additions/losses by distance, CPU, noise/clean/overlap controls, export parity, original neural and previous-best companion retention. No incomplete or already-consumed comparison will be called fresh prospective evidence.
+
+## Continuation and preservation
+
+Continue from this run's `learning-ledger.json`, not the earlier November 9 morning ledger. A checksum-backed pointer is saved at `data/processed/learning-ledger-current.json`. New evaluation RF reservations and all source provenance stay in the private workspace. Qualified data is retained without admitting it to fitting until the trigger and complete split audits pass.
+
+All service PIDs, model/source/config hashes, switches, gain and stock sample-loss counters matched before/after. The 5,000,000,000-byte RF cap and 12-hour disk-save cadence are unchanged. Active RAM data was not forced to disk; further saved archives can provide the remaining examples.

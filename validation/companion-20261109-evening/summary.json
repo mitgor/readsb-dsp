@@ -1,0 +1,98 @@
+{
+  "date_berlin": "2026-11-09",
+  "run": "companion-20261109-evening",
+  "verified_archives": 7,
+  "verified_bytes": 131471256,
+  "verified_remote_copies_deleted": 7,
+  "qualification": {
+    "offered": 144,
+    "uncorrected_rf_not_confirmed": 73,
+    "qualified": 71,
+    "qualified_200_250": 3,
+    "qualified_180_200": 68
+  },
+  "new_unique_counts": {
+    "qualified_new": 71,
+    "new_unique_train": 45,
+    "new_unique_validation": 11,
+    "new_unique_test": 15
+  },
+  "pending_since_completed_fit": "daily-20261104",
+  "coverage": {
+    "train": {
+      "windows": 477,
+      "aircraft": 237,
+      "utc_hours": 69,
+      "bands": {
+        "200-250": 50,
+        "180-200": 427
+      }
+    },
+    "validation": {
+      "windows": 151,
+      "aircraft": 80,
+      "utc_hours": 52,
+      "bands": {
+        "200-250": 23,
+        "180-200": 126,
+        "250+": 2
+      }
+    },
+    "test": {
+      "windows": 224,
+      "aircraft": 84,
+      "utc_hours": 77,
+      "bands": {
+        "180-200": 207,
+        "200-250": 17
+      }
+    }
+  },
+  "training_trigger": false,
+  "shortfall": {
+    "train_windows": 23,
+    "validation_windows": 0
+  },
+  "trained": false,
+  "new_candidate_benchmark_run": false,
+  "reason": "23 additional qualified, deduplicated >=180nm TRAIN examples required to meet the frozen 500/100 trigger; validation, aircraft and UTC-hour coverage requirements already met.",
+  "reserved_continuous_segments": 246,
+  "quarantined_crc_iq_windows": 6168,
+  "baseline_methods": {
+    "energy": true,
+    "crc": true,
+    "timing": true,
+    "soft": true,
+    "matched": true,
+    "coherent": true,
+    "header": false,
+    "sic": false,
+    "neural": true,
+    "pulse": true,
+    "stream1090": true,
+    "sequence": true,
+    "acquisition": true
+  },
+  "baseline_production_models": 3,
+  "protected_checks": {
+    "pids": true,
+    "methods": true,
+    "workers": true,
+    "model_sha256": true,
+    "source_hashes": true,
+    "configs": true,
+    "samples": true,
+    "gain_db": true,
+    "logging_enabled": true
+  },
+  "rf_cap_bytes": 5000000000,
+  "forced_flush": false,
+  "live_changes": false,
+  "limitations": [
+    "Stock-derived range is quality-gated, not independent surveyed ground truth.",
+    "73 offered training snippets did not pass independent uncorrected same-transmission confirmation and remain untrusted.",
+    "Continuous RF and fixed ICAO test snippets are evaluation-only. CRC/DSP/neural predictions are not labels.",
+    "No new candidate, recovery additions/losses, CPU benchmark, controls or export result is claimed.",
+    "Active RAM is intentionally left for normal 12-hour saves; saved-archive transfer is not a full RAM snapshot."
+  ]
+}
