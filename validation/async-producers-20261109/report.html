@@ -1,0 +1,59 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>All DSP async integration</title><style>body{font:17px/1.5 system-ui;max-width:1150px;margin:35px auto;padding:20px;background:#101b29;color:#e2ebf4}pre{white-space:pre-wrap;font:inherit}</style><pre># All-source asynchronous relay integration — 9 November 2026
+
+**Experimental integration passed the live admitted-output and complete-algorithm replay checks. Production remains unchanged on the existing three-second relay.**
+
+| Check | Current/full-pipeline extras | Asynchronous extras | Lost | Duplicate extras |
+|---|---:|---:|---:|---:|
+| Actual live producer cohort,90s | 1,668 | 1,668 | 0 | 0 |
+| Mac,16 captured RF seconds | 320 | 320 | 0 | 0 |
+| Pi,16 RF seconds,12x slowed clock | 320 | 320 | 0 | 0 |
+
+All46,834 measured parsed stock records were retained, and the complete captured stock byte-stream hashes match. The producer published1671candidate rows in this cohort; three were absent from both final outputs after the relays&#x27; final admission checks and are not lost existing-relay extras. All68 qualified stock-range-estimated ≥180nm extras in the live cohort were retained. Live source notification/read coverage is complete; no outbox file loss, overflow or unattributed actual-wire extra was observed. Cohort comparison is by producer publication time;1691actual-wire extras arrived during the same90-second wall interval because the existing3-second relay shifts interval boundaries. Do not subtract that arrival-window total from1668.
+
+## Enabled live forwarding methods
+
+| Method | Current relay cohort | Async cohort | ≥180nm retained |
+|---|---:|---:|---:|
+| energy | 323 | 323 | 6 |
+| timing | 217 | 217 | 13 |
+| soft | 177 | 177 | 6 |
+| matched | 98 | 98 | 4 |
+| coherent | 449 | 449 | 20 |
+| header (off) | 0 | 0 | 0 |
+| sic | 4 | 4 | 0 |
+| neural | 125 | 125 | 8 |
+| pulse | 18 | 18 | 0 |
+| stream1090 | 145 | 145 | 7 |
+| sequence | 49 | 49 | 2 |
+| acquisition | 63 | 63 | 2 |
+
+Header retry stays disabled as in production. Broad CRC remains research-only, never a forwarding source. The enabled source set includes energy, timing, soft, matched, coherent, sequence, acquisition, pulse, SIC, neural and Stream1090. Per-source credit in the early-completion path may move to the first arriving method; compare transmission unions rather than treating attribution changes as recovery gains.
+
+## Integration
+
+Raw completed worker futures enter a causal production-equivalent admission bridge without pre-deduplicating seams. Stream1090 has an independent future, launched from the original full RF window without waiting for the other DSP group. Individual sources enter bounded queues and one shared5-second/120us transmission cache, with a100000-entry cap. Original stock bytes serialize immediately; original candidate sample timestamps are preserved. There is no global sorting delay or wait for an unrelated slow source. Fused C/Rust/frontend computation stays shared and can finish several methods together. Original whole-window grouping is still audited unchanged for statistics and baseline comparison.
+
+The original RF epoch, stock-only prior address, CRC, conflict, clock-alignment (20matches, median≤2µs), enabled-source and RF-age gates remain. Old epochs/futures/anchors are cleared or rejected. Unknown addresses, corrupt CRC, unverified candidates and Broad CRC cannot use the forwarding path. Stock always survives; a later original stock copy after an earlier extra is an explicit race, not silently dropped. Nine integration/control tests pass on both Mac and Pi.
+
+## Scope and timing
+
+The read-only live adapter observes the existing admitted producer outbox; it does not make the production decoders themselves publish earlier. Under the isolated observer&#x27;s35%quota, stock enqueue median was0.99ms and extra publication-to-enqueue median was129.0ms. These are local timings after observation, not antenna-to-FR24 latency. Relay validation/dedup calls used9.36% of one core in the whole130-second capture; this excludes DSP inference and is not electrical power.
+
+The separate completion replay connects actual current DSP/neural algorithms and independent Stream1090, and matches unchanged full replay plus recorded production acceptance and actual relay on the same16windows. The target worker CPU was14.190s for16RF seconds. Its clock was slowed12x under nice19/core3/35%one-core/1GiB limits to avoid disrupting production. This is functional parity evidence, not proof of native-speed Pi latency. One RF-copy gap is excluded from the cohort. All32captured intervals across attempts were reserved globally as evaluation-only; no model fitting or labels were created.
+
+Raw Stream1090 stock/nonstock classification can differ when only causal/cached stock rows are available. The final validated transmission set, rather than raw candidate-list equality, is the retention criterion. Mac uses compatible native Mach-O implementations; Pi uses hash-verified copies of the current production Rust/native libraries and models.
+
+## Preserved engineering failures
+
+A first capture could not create its unowned /run destination. A later capture was rejected by an unnecessarily strict contiguity assertion; its IQ is preserved and reserved, and is not used as the successful reference cohort. The final capture saves explicit RF-copy gaps and complete references. A first observer had a copied module path error; its successful retry has complete read-only source coverage.
+
+The target harness first encountered /run noexec, then disappearing user-owned multiprocessing semaphores. Owned code moved to root-owned executable RAM under established access; no mount, network, permission policy or receiver setting changed. An intermediate quota-limited replay lost five extras when one Stream1090 subprocess hit its unchanged1-second timeout. The coordinator now caches unchanged stock snapshots and polls without unnecessarily spending the quota. The final target run retains all320extras with no timeout. Failed/intermediate artifacts and logs are preserved privately. These are repeated engineering checks on the same RF, not separate prospective confirmations.
+
+## Production and next gate
+
+Readsb, FR24, combined relay, ADSBx, DSP and RF collector retain their original protected PIDs. Production code/libraries/models/configuration, gain38.6dB, sample-loss counters and5GB RF cap are unchanged. The optional idle mirror heartbeat was held only by this finite capture, never taking over an active consumer, and was released after reference closure. No recorder flush, persistent archive deletion, feeder packet injection or production activation occurred.
+
+Before a production switch, a longer isolated native-speed target run and a controlled FR24 consumer/backend test should confirm latency and ordering behavior. The per-completion and live-outbox checks establish retained packet identity for these cohorts, not cloud acceptance or range improvement. Existing tests count late-stock-after-extra races; strict retroactive stock-first priority is impossible without waiting.
+
+Raw RF, payload/position cohorts, exact source/model snapshots and checksummed manifests stay in the private workspace. Only redacted aggregate results are published.
+</pre>

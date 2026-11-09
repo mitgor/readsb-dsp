@@ -1,0 +1,1005 @@
+{
+  "measured_seconds": 90.0,
+  "full_capture_wall_s": 130.3272870888468,
+  "source_coverage_complete": true,
+  "observed_batches": 122,
+  "notifications": 122,
+  "actual_wire_extras_in_measured_arrival_window": 1691,
+  "unattributed_actual_wire_extras": 0,
+  "stock_records_measured": 46834,
+  "actual_stock_records_missing": 0,
+  "actual_stock_delay_s": {
+    "n": 46834,
+    "min": 2.540633994154632,
+    "median": 3.014997384045273,
+    "p95": 3.22286161291413,
+    "p99": 3.3792454551439732,
+    "max": 3.5367728108540177
+  },
+  "profiles": {
+    "strict250": {
+      "exact_current_wire_matches": 0,
+      "emissions_measured_cohort": 0,
+      "extras_beyond_final_observed_stock": 0,
+      "actual_relay_matched": 0,
+      "lost_vs_actual": 1668,
+      "new_vs_actual": 0,
+      "queue_to_emit_s": {
+        "n": 0
+      },
+      "by_method": {},
+      "stock_enqueue_s": {
+        "n": 46834,
+        "min": 0.0001276480033993721,
+        "median": 0.0009649499552324414,
+        "p95": 0.06325434893369675,
+        "p99": 0.0751220490783453,
+        "max": 0.08622980490326881
+      },
+      "whole_capture_core_cpu_s": 1.208131704000258,
+      "whole_capture_core_percent": 0.9269982756386618
+    },
+    "compat3000": {
+      "exact_current_wire_matches": 1668,
+      "emissions_measured_cohort": 1668,
+      "extras_beyond_final_observed_stock": 1668,
+      "actual_relay_matched": 1668,
+      "lost_vs_actual": 0,
+      "new_vs_actual": 0,
+      "queue_to_emit_s": {
+        "n": 1668,
+        "min": 0.004957128083333373,
+        "median": 0.12900273711420596,
+        "p95": 0.3567583649419248,
+        "p99": 0.42695425590500236,
+        "max": 0.49471857910975814
+      },
+      "by_method": {
+        "energy": 323,
+        "timing": 217,
+        "soft": 177,
+        "matched": 98,
+        "coherent": 449,
+        "pulse": 18,
+        "neural": 125,
+        "stream1090": 145,
+        "sequence": 49,
+        "acquisition": 63,
+        "sic": 4
+      },
+      "stock_enqueue_s": {
+        "n": 46834,
+        "min": 0.00016007316298782825,
+        "median": 0.0009884674800559878,
+        "p95": 0.06399459787644446,
+        "p99": 0.075138492975384,
+        "max": 0.08624493493698537
+      },
+      "whole_capture_core_cpu_s": 12.199577638999836,
+      "whole_capture_core_percent": 9.360723998408048
+    }
+  },
+  "methods": [
+    {
+      "latency": {
+        "strict250": {
+          "after_observation_s": {
+            "n": 0
+          },
+          "estimated_rf_age_s": {
+            "n": 0
+          }
+        },
+        "compat3000": {
+          "after_observation_s": {
+            "n": 323,
+            "min": 0.004957128083333373,
+            "median": 0.02146904799155891,
+            "p95": 0.08055253396742046,
+            "p99": 0.243407079949975,
+            "max": 0.243407079949975
+          },
+          "estimated_rf_age_s": {
+            "n": 323,
+            "min": 0.6733191922695537,
+            "median": 1.1799731667316655,
+            "p95": 1.635411135008827,
+            "p99": 1.685301212625722,
+            "max": 1.780637079949975
+          }
+        }
+      },
+      "current_relay_after_observation_s": {
+        "n": 323,
+        "min": 1.3182900110259652,
+        "median": 1.8616760710719973,
+        "p95": 2.428594801109284,
+        "p99": 2.4946296219713986,
+        "max": 2.5462570579256862
+      },
+      "current_relay_estimated_rf_age_s": {
+        "n": 323,
+        "min": 2.9677034808754623,
+        "median": 3.0238347640341816,
+        "p95": 3.2805489334169824,
+        "p99": 3.3972416911694854,
+        "max": 3.508380375294422
+      },
+      "far180_actual": 6,
+      "far180_compat": 6,
+      "method": "energy",
+      "enabled": true,
+      "producer_admitted": 323,
+      "final_stock_duplicates": 0,
+      "actual_relay_matched": 323,
+      "strict250": 0,
+      "compat3000": 323,
+      "existing_dsp_cpu_s": 3.3214828300017416,
+      "existing_one_core_percent": 3.674589481073466,
+      "observed_rf_age_s": {
+        "n": 323,
+        "min": 0.6627430833333333,
+        "median": 1.1480405,
+        "p95": 1.612679,
+        "p99": 1.6592194166666667,
+        "max": 1.6903140833333334
+      },
+      "observation_delay_s": {
+        "n": 323,
+        "min": 0.0003383159637451172,
+        "median": 0.0004487037658691406,
+        "p95": 0.001973390579223633,
+        "p99": 0.002625703811645508,
+        "max": 0.00446772575378418
+      }
+    },
+    {
+      "latency": {
+        "strict250": {
+          "after_observation_s": {
+            "n": 0
+          },
+          "estimated_rf_age_s": {
+            "n": 0
+          }
+        },
+        "compat3000": {
+          "after_observation_s": {
+            "n": 0
+          },
+          "estimated_rf_age_s": {
+            "n": 0
+          }
+        }
+      },
+      "current_relay_after_observation_s": {
+        "n": 0
+      },
+      "current_relay_estimated_rf_age_s": {
+        "n": 0
+      },
+      "far180_actual": 0,
+      "far180_compat": 0,
+      "method": "crc",
+      "enabled": true,
+      "producer_admitted": 0,
+      "final_stock_duplicates": 0,
+      "actual_relay_matched": 0,
+      "strict250": 0,
+      "compat3000": 0,
+      "existing_dsp_cpu_s": 1.2054047029981803,
+      "existing_one_core_percent": 1.3335512085339536,
+      "observed_rf_age_s": {
+        "n": 0
+      },
+      "observation_delay_s": {
+        "n": 0
+      }
+    },
+    {
+      "latency": {
+        "strict250": {
+          "after_observation_s": {
+            "n": 0
+          },
+          "estimated_rf_age_s": {
+            "n": 0
+          }
+        },
+        "compat3000": {
+          "after_observation_s": {
+            "n": 217,
+            "min": 0.008735923795029521,
+            "median": 0.04305080487392843,
+            "p95": 0.1449938490986824,
+            "p99": 0.1514213781338185,
+            "max": 0.25217015389353037
+          },
+          "estimated_rf_age_s": {
+            "n": 217,
+            "min": 0.6769989034423282,
+            "median": 1.2297993420130013,
+            "p95": 1.675593515656064,
+            "p99": 1.759782833156988,
+            "max": 1.806334794800485
+          }
+        }
+      },
+      "current_relay_after_observation_s": {
+        "n": 217,
+        "min": 1.3399868020787835,
+        "median": 1.8668448699172586,
+        "p95": 2.433471217053011,
+        "p99": 2.5358846911694854,
+        "max": 2.6661036130972207
+      },
+      "current_relay_estimated_rf_age_s": {
+        "n": 217,
+        "min": 2.9711125836525065,
+        "median": 3.0248100051724665,
+        "p95": 3.3176695788297157,
+        "p99": 3.4300306599684207,
+        "max": 3.546525724592353
+      },
+      "far180_actual": 13,
+      "far180_compat": 13,
+      "method": "timing",
+      "enabled": true,
+      "producer_admitted": 217,
+      "final_stock_duplicates": 0,
+      "actual_relay_matched": 217,
+      "strict250": 0,
+      "compat3000": 217,
+      "existing_dsp_cpu_s": 0.910678000000015,
+      "existing_one_core_percent": 1.0074921264739225,
+      "observed_rf_age_s": {
+        "n": 217,
+        "min": 0.6366638333333333,
+        "median": 1.1516395833333333,
+        "p95": 1.6162586666666667,
+        "p99": 1.6618484166666667,
+        "max": 1.6662670833333333
+      },
+      "observation_delay_s": {
+        "n": 217,
+        "min": 0.00034737586975097656,
+        "median": 0.0004611015319824219,
+        "p95": 0.0025453567504882812,
+        "p99": 0.00446772575378418,
+        "max": 0.00446772575378418
+      }
+    },
+    {
+      "latency": {
+        "strict250": {
+          "after_observation_s": {
+            "n": 0
+          },
+          "estimated_rf_age_s": {
+            "n": 0
+          }
+        },
+        "compat3000": {
+          "after_observation_s": {
+            "n": 177,
+            "min": 0.018000864889472723,
+            "median": 0.0825988098513335,
+            "p95": 0.21996191679500043,
+            "p99": 0.2607456739060581,
+            "max": 0.2607456739060581
+          },
+          "estimated_rf_age_s": {
+            "n": 177,
+            "min": 0.6748682815561394,
+            "median": 1.2904193426588426,
+            "p95": 1.7130770316629806,
+            "p99": 1.799018173906058,
+            "max": 1.8878133334616671
+          }
+        }
+      },
+      "current_relay_after_observation_s": {
+        "n": 177,
+        "min": 1.333341757999733,
+        "median": 1.8519387100823224,
+        "p95": 2.4229153031483293,
+        "p99": 2.5192322919610888,
+        "max": 2.5462570579256862
+      },
+      "current_relay_estimated_rf_age_s": {
+        "n": 177,
+        "min": 2.9823602538788467,
+        "median": 3.02576015066872,
+        "p95": 3.354439224592353,
+        "p99": 3.4133066337196776,
+        "max": 3.471391625294422
+      },
+      "far180_actual": 6,
+      "far180_compat": 6,
+      "method": "soft",
+      "enabled": true,
+      "producer_admitted": 179,
+      "final_stock_duplicates": 0,
+      "actual_relay_matched": 177,
+      "strict250": 0,
+      "compat3000": 177,
+      "existing_dsp_cpu_s": 0.4548874500023885,
+      "existing_one_core_percent": 0.5032465089847333,
+      "observed_rf_age_s": {
+        "n": 179,
+        "min": 0.6568674166666667,
+        "median": 1.1708909166666666,
+        "p95": 1.6096899166666667,
+        "p99": 1.6842345,
+        "max": 1.6866686666666666
+      },
+      "observation_delay_s": {
+        "n": 179,
+        "min": 0.0003383159637451172,
+        "median": 0.0004544258117675781,
+        "p95": 0.0025453567504882812,
+        "p99": 0.00446772575378418,
+        "max": 0.00446772575378418
+      }
+    },
+    {
+      "latency": {
+        "strict250": {
+          "after_observation_s": {
+            "n": 0
+          },
+          "estimated_rf_age_s": {
+            "n": 0
+          }
+        },
+        "compat3000": {
+          "after_observation_s": {
+            "n": 98,
+            "min": 0.017825337825343013,
+            "median": 0.09786139708012342,
+            "p95": 0.20112077984958887,
+            "p99": 0.2275612368248403,
+            "max": 0.2275612368248403
+          },
+          "estimated_rf_age_s": {
+            "n": 98,
+            "min": 0.7126659551877975,
+            "median": 1.3039610438681741,
+            "p95": 1.71157742734011,
+            "p99": 1.8252293273170341,
+            "max": 1.8252293273170341
+          }
+        }
+      },
+      "current_relay_after_observation_s": {
+        "n": 98,
+        "min": 1.3350159779656678,
+        "median": 1.8604649974731728,
+        "p95": 2.3741896299179643,
+        "p99": 2.5192322919610888,
+        "max": 2.5192322919610888
+      },
+      "current_relay_estimated_rf_age_s": {
+        "n": 98,
+        "min": 2.9822193567350306,
+        "median": 3.024317313833155,
+        "p95": 3.3129714296139428,
+        "p99": 3.438638875294422,
+        "max": 3.438638875294422
+      },
+      "far180_actual": 4,
+      "far180_compat": 4,
+      "method": "matched",
+      "enabled": true,
+      "producer_admitted": 98,
+      "final_stock_duplicates": 0,
+      "actual_relay_matched": 98,
+      "strict250": 0,
+      "compat3000": 98,
+      "existing_dsp_cpu_s": 1.0326067270018022,
+      "existing_one_core_percent": 1.1423830895204516,
+      "observed_rf_age_s": {
+        "n": 98,
+        "min": 0.65338325,
+        "median": 1.15830375,
+        "p95": 1.61377875,
+        "p99": 1.6864875833333333,
+        "max": 1.6864875833333333
+      },
+      "observation_delay_s": {
+        "n": 98,
+        "min": 0.0003490447998046875,
+        "median": 0.00044333934783935547,
+        "p95": 0.0019154548645019531,
+        "p99": 0.003146648406982422,
+        "max": 0.003146648406982422
+      }
+    },
+    {
+      "latency": {
+        "strict250": {
+          "after_observation_s": {
+            "n": 0
+          },
+          "estimated_rf_age_s": {
+            "n": 0
+          }
+        },
+        "compat3000": {
+          "after_observation_s": {
+            "n": 449,
+            "min": 0.027546970872208476,
+            "median": 0.21815116703510284,
+            "p95": 0.3570987049024552,
+            "p99": 0.4918815230485052,
+            "max": 0.4918815230485052
+          },
+          "estimated_rf_age_s": {
+            "n": 449,
+            "min": 0.7055276339246481,
+            "median": 1.3818643398881405,
+            "p95": 1.847005993005693,
+            "p99": 1.949999380843714,
+            "max": 2.004933038399135
+          }
+        }
+      },
+      "current_relay_after_observation_s": {
+        "n": 449,
+        "min": 1.2877556530293077,
+        "median": 1.8645078639965504,
+        "p95": 2.433471217053011,
+        "p99": 2.5358846911694854,
+        "max": 2.5462570579256862
+      },
+      "current_relay_estimated_rf_age_s": {
+        "n": 449,
+        "min": 2.9746755258407296,
+        "median": 3.0267224721342028,
+        "p95": 3.3336938055843213,
+        "p99": 3.4558819933089815,
+        "max": 3.523561125294422
+      },
+      "far180_actual": 20,
+      "far180_compat": 20,
+      "method": "coherent",
+      "enabled": true,
+      "producer_admitted": 450,
+      "final_stock_duplicates": 0,
+      "actual_relay_matched": 449,
+      "strict250": 0,
+      "compat3000": 449,
+      "existing_dsp_cpu_s": 6.582360179766056,
+      "existing_one_core_percent": 7.282130516746496,
+      "observed_rf_age_s": {
+        "n": 450,
+        "min": 0.62999525,
+        "median": 1.1469133333333335,
+        "p95": 1.6187825833333334,
+        "p99": 1.6924628333333334,
+        "max": 1.73196875
+      },
+      "observation_delay_s": {
+        "n": 450,
+        "min": 0.0003383159637451172,
+        "median": 0.0004668235778808594,
+        "p95": 0.001973390579223633,
+        "p99": 0.002625703811645508,
+        "max": 0.00446772575378418
+      }
+    },
+    {
+      "latency": {
+        "strict250": {
+          "after_observation_s": {
+            "n": 0
+          },
+          "estimated_rf_age_s": {
+            "n": 0
+          }
+        },
+        "compat3000": {
+          "after_observation_s": {
+            "n": 0
+          },
+          "estimated_rf_age_s": {
+            "n": 0
+          }
+        }
+      },
+      "current_relay_after_observation_s": {
+        "n": 0
+      },
+      "current_relay_estimated_rf_age_s": {
+        "n": 0
+      },
+      "far180_actual": 0,
+      "far180_compat": 0,
+      "method": "header",
+      "enabled": false,
+      "producer_admitted": 0,
+      "final_stock_duplicates": 0,
+      "actual_relay_matched": 0,
+      "strict250": 0,
+      "compat3000": 0,
+      "existing_dsp_cpu_s": 0.0,
+      "existing_one_core_percent": 0.0,
+      "observed_rf_age_s": {
+        "n": 0
+      },
+      "observation_delay_s": {
+        "n": 0
+      }
+    },
+    {
+      "latency": {
+        "strict250": {
+          "after_observation_s": {
+            "n": 0
+          },
+          "estimated_rf_age_s": {
+            "n": 0
+          }
+        },
+        "compat3000": {
+          "after_observation_s": {
+            "n": 4,
+            "min": 0.20749913901090622,
+            "median": 0.2520767975365743,
+            "p95": 0.27919926098547876,
+            "p99": 0.27919926098547876,
+            "max": 0.27919926098547876
+          },
+          "estimated_rf_age_s": {
+            "n": 4,
+            "min": 0.9653985007543365,
+            "median": 1.4376676583315258,
+            "p95": 1.8019900109854787,
+            "p99": 1.8019900109854787,
+            "max": 1.8019900109854787
+          }
+        }
+      },
+      "current_relay_after_observation_s": {
+        "n": 4,
+        "min": 1.51866350392811,
+        "median": 1.929590638494119,
+        "p95": 2.2920438169967383,
+        "p99": 2.2920438169967383,
+        "max": 2.2920438169967383
+      },
+      "current_relay_estimated_rf_age_s": {
+        "n": 4,
+        "min": 3.002839459652851,
+        "median": 3.0344409522984153,
+        "p95": 3.250039066996738,
+        "p99": 3.250039066996738,
+        "max": 3.250039066996738
+      },
+      "far180_actual": 0,
+      "far180_compat": 0,
+      "method": "sic",
+      "enabled": true,
+      "producer_admitted": 4,
+      "final_stock_duplicates": 0,
+      "actual_relay_matched": 4,
+      "strict250": 0,
+      "compat3000": 4,
+      "existing_dsp_cpu_s": 10.662636570000018,
+      "existing_one_core_percent": 11.796180858358007,
+      "observed_rf_age_s": {
+        "n": 4,
+        "min": 0.7404441666666667,
+        "median": 1.1943184583333333,
+        "p95": 1.52279075,
+        "p99": 1.52279075,
+        "max": 1.52279075
+      },
+      "observation_delay_s": {
+        "n": 4,
+        "min": 0.0004553794860839844,
+        "median": 0.0015081167221069336,
+        "p95": 0.001973390579223633,
+        "p99": 0.001973390579223633,
+        "max": 0.001973390579223633
+      }
+    },
+    {
+      "latency": {
+        "strict250": {
+          "after_observation_s": {
+            "n": 0
+          },
+          "estimated_rf_age_s": {
+            "n": 0
+          }
+        },
+        "compat3000": {
+          "after_observation_s": {
+            "n": 125,
+            "min": 0.03331133397296071,
+            "median": 0.24291572510264814,
+            "p95": 0.3835115658584982,
+            "p99": 0.44041054183617234,
+            "max": 0.44041054183617234
+          },
+          "estimated_rf_age_s": {
+            "n": 125,
+            "min": 0.8584070736789504,
+            "median": 1.4804890965966384,
+            "p95": 1.906196470844249,
+            "p99": 1.9753788387449036,
+            "max": 2.0873347918361724
+          }
+        }
+      },
+      "current_relay_after_observation_s": {
+        "n": 125,
+        "min": 1.3501122631132603,
+        "median": 1.8109912360087037,
+        "p95": 2.3741896299179643,
+        "p99": 2.5192322919610888,
+        "max": 2.5462570579256862
+      },
+      "current_relay_estimated_rf_age_s": {
+        "n": 125,
+        "min": 2.97170525094229,
+        "median": 3.0226935880360455,
+        "p95": 3.2654916252944224,
+        "p99": 3.350438602347364,
+        "max": 3.400239474592353
+      },
+      "far180_actual": 8,
+      "far180_compat": 8,
+      "method": "neural",
+      "enabled": true,
+      "producer_admitted": 125,
+      "final_stock_duplicates": 0,
+      "actual_relay_matched": 125,
+      "strict250": 0,
+      "compat3000": 125,
+      "existing_dsp_cpu_s": 11.34017776200244,
+      "existing_one_core_percent": 12.545751416013058,
+      "observed_rf_age_s": {
+        "n": 125,
+        "min": 0.6746566666666667,
+        "median": 1.20819375,
+        "p95": 1.6107505,
+        "p99": 1.647501,
+        "max": 1.6512255
+      },
+      "observation_delay_s": {
+        "n": 125,
+        "min": 0.0003383159637451172,
+        "median": 0.0004730224609375,
+        "p95": 0.003146648406982422,
+        "p99": 0.00446772575378418,
+        "max": 0.00446772575378418
+      }
+    },
+    {
+      "latency": {
+        "strict250": {
+          "after_observation_s": {
+            "n": 0
+          },
+          "estimated_rf_age_s": {
+            "n": 0
+          }
+        },
+        "compat3000": {
+          "after_observation_s": {
+            "n": 18,
+            "min": 0.049776297993957996,
+            "median": 0.23269313562195748,
+            "p95": 0.40852274000644684,
+            "p99": 0.40852274000644684,
+            "max": 0.40852274000644684
+          },
+          "estimated_rf_age_s": {
+            "n": 18,
+            "min": 0.8083768197182367,
+            "median": 1.447912250805301,
+            "p95": 1.981070187103346,
+            "p99": 1.981070187103346,
+            "max": 1.981070187103346
+          }
+        }
+      },
+      "current_relay_after_observation_s": {
+        "n": 18,
+        "min": 1.4316123861353844,
+        "median": 1.8402628225740045,
+        "p95": 2.3665043029468507,
+        "p99": 2.3665043029468507,
+        "max": 2.3665043029468507
+      },
+      "current_relay_estimated_rf_age_s": {
+        "n": 18,
+        "min": 2.9977865464660725,
+        "median": 3.0255509967194523,
+        "p95": 3.2520090529468506,
+        "p99": 3.2520090529468506,
+        "max": 3.2520090529468506
+      },
+      "far180_actual": 0,
+      "far180_compat": 0,
+      "method": "pulse",
+      "enabled": true,
+      "producer_admitted": 18,
+      "final_stock_duplicates": 0,
+      "actual_relay_matched": 18,
+      "strict250": 0,
+      "compat3000": 18,
+      "existing_dsp_cpu_s": 4.823102849999032,
+      "existing_one_core_percent": 5.335846640138316,
+      "observed_rf_age_s": {
+        "n": 18,
+        "min": 0.6833718333333333,
+        "median": 1.1847734583333334,
+        "p95": 1.578532,
+        "p99": 1.578532,
+        "max": 1.578532
+      },
+      "observation_delay_s": {
+        "n": 18,
+        "min": 0.0003490447998046875,
+        "median": 0.00046563148498535156,
+        "p95": 0.0025453567504882812,
+        "p99": 0.0025453567504882812,
+        "max": 0.0025453567504882812
+      }
+    },
+    {
+      "latency": {
+        "strict250": {
+          "after_observation_s": {
+            "n": 0
+          },
+          "estimated_rf_age_s": {
+            "n": 0
+          }
+        },
+        "compat3000": {
+          "after_observation_s": {
+            "n": 145,
+            "min": 0.06617539189755917,
+            "median": 0.2911515759769827,
+            "p95": 0.4215510571375489,
+            "p99": 0.49471857910975814,
+            "max": 0.49471857910975814
+          },
+          "estimated_rf_age_s": {
+            "n": 145,
+            "min": 0.7492945295972029,
+            "median": 1.2788301385483394,
+            "p95": 1.8218691404708822,
+            "p99": 1.888430391071096,
+            "max": 1.8988024219631106
+          }
+        }
+      },
+      "current_relay_after_observation_s": {
+        "n": 145,
+        "min": 1.4562556520104408,
+        "median": 2.0378401030320674,
+        "p95": 2.428594801109284,
+        "p99": 2.4946296219713986,
+        "max": 2.5462570579256862
+      },
+      "current_relay_estimated_rf_age_s": {
+        "n": 145,
+        "min": 2.9676441765471946,
+        "median": 3.0291317753647613,
+        "p95": 3.3257764996789794,
+        "p99": 3.4213784677759507,
+        "max": 3.493000409975648
+      },
+      "far180_actual": 7,
+      "far180_compat": 7,
+      "method": "stream1090",
+      "enabled": true,
+      "producer_admitted": 145,
+      "final_stock_duplicates": 0,
+      "actual_relay_matched": 145,
+      "strict250": 0,
+      "compat3000": 145,
+      "existing_dsp_cpu_s": 10.186741000000069,
+      "existing_one_core_percent": 11.269692857331563,
+      "observed_rf_age_s": {
+        "n": 145,
+        "min": 0.6426405833333333,
+        "median": 1.03230825,
+        "p95": 1.4875095,
+        "p99": 1.5227691666666667,
+        "max": 1.62189475
+      },
+      "observation_delay_s": {
+        "n": 145,
+        "min": 0.00034737586975097656,
+        "median": 0.0004525184631347656,
+        "p95": 0.001973390579223633,
+        "p99": 0.00446772575378418,
+        "max": 0.00446772575378418
+      }
+    },
+    {
+      "latency": {
+        "strict250": {
+          "after_observation_s": {
+            "n": 0
+          },
+          "estimated_rf_age_s": {
+            "n": 0
+          }
+        },
+        "compat3000": {
+          "after_observation_s": {
+            "n": 49,
+            "min": 0.04292070004157722,
+            "median": 0.2243958420585841,
+            "p95": 0.33119964599609375,
+            "p99": 0.33119964599609375,
+            "max": 0.33119964599609375
+          },
+          "estimated_rf_age_s": {
+            "n": 49,
+            "min": 0.8426410034007331,
+            "median": 1.3143557968828827,
+            "p95": 1.8485743126627605,
+            "p99": 1.8785149733408144,
+            "max": 1.8785149733408144
+          }
+        }
+      },
+      "current_relay_after_observation_s": {
+        "n": 49,
+        "min": 1.3764998118858784,
+        "median": 1.9078045159112662,
+        "p95": 2.3938674088567495,
+        "p99": 2.4620662690140307,
+        "max": 2.4620662690140307
+      },
+      "current_relay_estimated_rf_age_s": {
+        "n": 49,
+        "min": 2.987678228552545,
+        "median": 3.0317644894447078,
+        "p95": 3.3017431588567496,
+        "p99": 3.369652852347364,
+        "max": 3.369652852347364
+      },
+      "far180_actual": 2,
+      "far180_compat": 2,
+      "method": "sequence",
+      "enabled": true,
+      "producer_admitted": 49,
+      "final_stock_duplicates": 0,
+      "actual_relay_matched": 49,
+      "strict250": 0,
+      "compat3000": 49,
+      "existing_dsp_cpu_s": 9.784774354769809,
+      "existing_one_core_percent": 10.824993160869568,
+      "observed_rf_age_s": {
+        "n": 49,
+        "min": 0.7357463333333333,
+        "median": 1.1097311666666667,
+        "p95": 1.6111784166666667,
+        "p99": 1.6589088333333333,
+        "max": 1.6589088333333333
+      },
+      "observation_delay_s": {
+        "n": 49,
+        "min": 0.00034737586975097656,
+        "median": 0.0004668235778808594,
+        "p95": 0.00446772575378418,
+        "p99": 0.00446772575378418,
+        "max": 0.00446772575378418
+      }
+    },
+    {
+      "latency": {
+        "strict250": {
+          "after_observation_s": {
+            "n": 0
+          },
+          "estimated_rf_age_s": {
+            "n": 0
+          }
+        },
+        "compat3000": {
+          "after_observation_s": {
+            "n": 63,
+            "min": 0.030345680890604854,
+            "median": 0.2386284621898085,
+            "p95": 0.33884383901022375,
+            "p99": 0.39341872511431575,
+            "max": 0.39341872511431575
+          },
+          "estimated_rf_age_s": {
+            "n": 63,
+            "min": 0.8429389597419152,
+            "median": 1.3834341426552335,
+            "p95": 1.8556108933631976,
+            "p99": 1.892752323162829,
+            "max": 1.892752323162829
+          }
+        }
+      },
+      "current_relay_after_observation_s": {
+        "n": 63,
+        "min": 1.388374401954934,
+        "median": 1.8593390330206603,
+        "p95": 2.3695883119944483,
+        "p99": 2.5358846911694854,
+        "max": 2.5358846911694854
+      },
+      "current_relay_estimated_rf_age_s": {
+        "n": 63,
+        "min": 2.9910795440744757,
+        "median": 3.022992955734233,
+        "p95": 3.2109025088502863,
+        "p99": 3.4649256911694852,
+        "max": 3.4649256911694852
+      },
+      "far180_actual": 2,
+      "far180_compat": 2,
+      "method": "acquisition",
+      "enabled": true,
+      "producer_admitted": 63,
+      "final_stock_duplicates": 0,
+      "actual_relay_matched": 63,
+      "strict250": 0,
+      "compat3000": 63,
+      "existing_dsp_cpu_s": 9.116566820461998,
+      "existing_one_core_percent": 10.0857485215287,
+      "observed_rf_age_s": {
+        "n": 63,
+        "min": 0.7081913333333333,
+        "median": 1.16579275,
+        "p95": 1.5532353333333333,
+        "p99": 1.6269939166666667,
+        "max": 1.6269939166666667
+      },
+      "observation_delay_s": {
+        "n": 63,
+        "min": 0.0003383159637451172,
+        "median": 0.0004668235778808594,
+        "p95": 0.0018155574798583984,
+        "p99": 0.002625703811645508,
+        "max": 0.002625703811645508
+      }
+    }
+  ],
+  "distance_bins": {
+    "0-50": {
+      "compat3000": 483
+    },
+    "unknown": {
+      "compat3000": 283
+    },
+    "180-200": {
+      "compat3000": 68
+    },
+    "100-150": {
+      "compat3000": 377
+    },
+    "50-100": {
+      "compat3000": 414
+    },
+    "150-180": {
+      "compat3000": 43
+    }
+  },
+  "observed_aircraft": 55,
+  "estimated_distant_aircraft": 2,
+  "estimated_distant_opportunities": 68,
+  "metric_elapsed_s": 90.39058232516982,
+  "existing_total_worker_cpu_s": 90.82359908599574,
+  "existing_shared_cpu_s": 21.40217983899197,
+  "observer_cpu_s": 20.674973284,
+  "observer_one_core_percent": 15.863886792875112,
+  "stock_byte_hashes_equal": true,
+  "working_pipeline_unchanged": true,
+  "fr24_route": "127.0.0.1:31005",
+  "scope": "Observed producer-admitted packet cohort at original publication times, method attribution not ablation; no extra DSP inference. No FR24/backend acceptance claim. Range is causal quality-screened stock context, not surveyed truth."
+}

@@ -1,0 +1,195 @@
+{
+  "stage": "integrated_experimental_only",
+  "production_changed": false,
+  "fr24_or_adsbx_experimental_input": false,
+  "live": {
+    "seconds": 90.0,
+    "producer_admitted_rows": 1671,
+    "not_forwarded_by_either_final_relay": 3,
+    "complete_source_coverage": true,
+    "extras_current": 1668,
+    "extras_async": 1668,
+    "lost_extras": 0,
+    "duplicate_extras": 0,
+    "exact_current_wire_matches": 1668,
+    "stock_records": 46834,
+    "stock_missing": 0,
+    "stock_byte_hash_equal": true,
+    "far180_retained": 68,
+    "source_methods": [
+      {
+        "method": "energy",
+        "enabled": true,
+        "current": 323,
+        "asynchronous": 323,
+        "far180": 6
+      },
+      {
+        "method": "timing",
+        "enabled": true,
+        "current": 217,
+        "asynchronous": 217,
+        "far180": 13
+      },
+      {
+        "method": "soft",
+        "enabled": true,
+        "current": 177,
+        "asynchronous": 177,
+        "far180": 6
+      },
+      {
+        "method": "matched",
+        "enabled": true,
+        "current": 98,
+        "asynchronous": 98,
+        "far180": 4
+      },
+      {
+        "method": "coherent",
+        "enabled": true,
+        "current": 449,
+        "asynchronous": 449,
+        "far180": 20
+      },
+      {
+        "method": "header",
+        "enabled": false,
+        "current": 0,
+        "asynchronous": 0,
+        "far180": 0
+      },
+      {
+        "method": "sic",
+        "enabled": true,
+        "current": 4,
+        "asynchronous": 4,
+        "far180": 0
+      },
+      {
+        "method": "neural",
+        "enabled": true,
+        "current": 125,
+        "asynchronous": 125,
+        "far180": 8
+      },
+      {
+        "method": "pulse",
+        "enabled": true,
+        "current": 18,
+        "asynchronous": 18,
+        "far180": 0
+      },
+      {
+        "method": "stream1090",
+        "enabled": true,
+        "current": 145,
+        "asynchronous": 145,
+        "far180": 7
+      },
+      {
+        "method": "sequence",
+        "enabled": true,
+        "current": 49,
+        "asynchronous": 49,
+        "far180": 2
+      },
+      {
+        "method": "acquisition",
+        "enabled": true,
+        "current": 63,
+        "asynchronous": 63,
+        "far180": 2
+      }
+    ],
+    "stock_enqueue_latency_s": {
+      "n": 46834,
+      "min": 0.00016007316298782825,
+      "median": 0.0009884674800559878,
+      "p95": 0.06399459787644446,
+      "p99": 0.075138492975384,
+      "max": 0.08624493493698537
+    },
+    "extra_publication_to_enqueue_latency_s": {
+      "n": 1668,
+      "min": 0.004957128083333373,
+      "median": 0.12900273711420596,
+      "p95": 0.3567583649419248,
+      "p99": 0.42695425590500236,
+      "max": 0.49471857910975814
+    },
+    "relay_cpu_one_core_percent": 9.360723998408048
+  },
+  "replay": {
+    "rf_seconds": 16,
+    "windows": 16,
+    "RF_copy_gaps": [
+      {
+        "after": 159155294976,
+        "before": 159159549954,
+        "missing_samples": 1854978
+      }
+    ],
+    "mac": {
+      "baseline": 320,
+      "emitted": 320,
+      "lost": 0,
+      "duplicates": 0,
+      "stock_duplicates": 0,
+      "clock_scale": 1,
+      "worker_cpu_s": 3.4713520000000004
+    },
+    "pi": {
+      "baseline": 320,
+      "emitted": 320,
+      "lost": 0,
+      "duplicates": 0,
+      "stock_duplicates": 0,
+      "clock_scale": 12,
+      "worker_cpu_s": 14.189643276999995
+    },
+    "grouping_exact_both": true,
+    "production_ledger_and_actual_relay_matched": true,
+    "one_to_one_tolerance_us": 120
+  },
+  "controls": {
+    "mac_tests": 9,
+    "pi_tests": 9,
+    "unknown_address_rejected": true,
+    "invalid_crc_rejected": true,
+    "unverified_or_wrong_epoch_rejected": true,
+    "disabled_and_broad_crc_not_forwarded": true,
+    "legitimate_payload_repeat_preserved": true,
+    "late_stock_race_counted_and_stock_preserved": true,
+    "old_admission_anchors_reset_on_epoch": true
+  },
+  "cache": {
+    "history_seconds": 5,
+    "stock_holdback_seconds": 0,
+    "capacity": 100000,
+    "transmission_tolerance_us": 120
+  },
+  "protected": {
+    "services_pids_unchanged": true,
+    "production_sources_libraries_models_configs_unchanged": true,
+    "gain_db": 38.6,
+    "stock_samples_lost_dropped_unchanged": true,
+    "rf_disk_cap_bytes": 5000000000
+  },
+  "prior_attempts": {
+    "target_v3_lost": 5,
+    "reason": "Stream1090 wall timeout under restricted quota; coordinator stock-snapshot caching reduced unnecessary CPU; timeout and decoder parameters unchanged.",
+    "preserved": true
+  },
+  "limitations": [
+    "Live admitted-output check preserves current whole-second producer grouping. It proves transport retention, not early within-producer completion latency.",
+    "Independent-completion replay exercises actual full algorithms on16 captured RF seconds; repeated engineering tests, not independent prospective trials.",
+    "Pi RF clock slowed12x under35%one-core cap; no real-time Pi latency claim.",
+    "Mac uses native Mach-O equivalents; target uses checksum-matched current production Rust/native libraries and models.",
+    "Stock/body equality for live cohort is exact; independent replay uses one-to-one120us RF transmission identity because first arriving source can change attribution/start estimate.",
+    "Cached causal stock context can change raw Stream1090 stock/nonstock candidate classification; downstream validated transmission union is compared, not raw list equality.",
+    "RF-copy gaps excluded; no interpolation or detections claimed within them.",
+    "No FR24 backend acceptance, range/accuracy improvement or readiness for automatic production activation claimed.",
+    "Five-second cache cannot retract an extra if original stock subsequently arrives; such races are counted while preserving stock."
+  ]
+}
