@@ -1,0 +1,92 @@
+{
+  "state": "active",
+  "verified_unix": 1794261297.8874702,
+  "observation_seconds": 305.1624660450034,
+  "guard": "healthy",
+  "backend_markers": {
+    "_coherent.so": "rust-1.99.1/std-sort/ordinary",
+    "_coherent_pair.so": "rust-1.99.1/std-sort/pair",
+    "_acquisition_rust.so": "rust-1.99.1/acquisition-neon"
+  },
+  "mapped_workers": {
+    "2589401": [
+      "_coherent.so",
+      "_coherent_pair.so",
+      "_acquisition_rust.so"
+    ],
+    "2589404": [
+      "_coherent.so",
+      "_coherent_pair.so",
+      "_acquisition_rust.so"
+    ]
+  },
+  "proof": {
+    "parity_passed": true,
+    "stability_passed": true,
+    "coherent_windows": 3269,
+    "coherent_ordinary_saving_percent": 11.849586443641137,
+    "coherent_pair_saving_percent": 9.823552770059418,
+    "acquisition_selector_saving_percent": 13.383773606106796,
+    "full_pipeline_RF_seconds_per_cycle": 24,
+    "rust_RF_seconds": 144,
+    "rust_soak_wall_s": 315.70537290978245,
+    "raw_and_guarded_events_exact_all_cycles": true,
+    "baseline_extras": 369,
+    "baseline_worker_cpu_per_RF_s": 0.6260417249166664,
+    "rust_worker_cpu_per_RF_s": 0.6196994515486111,
+    "worker_CPU_change_percent": -1.0130751858272058,
+    "max_test_RSS_MiB": 994.765625,
+    "current_reference_hashes": {
+      "_coherent.so": "4f49f8179e46e4836fd4704a89d583cf900baf25024ca79f94b63b64b633faf3",
+      "_coherent_pair.so": "961a2c05cfd90d2a299898351f79f173d96289483ccf54d34526577640b84ba5",
+      "_pipeline_extended_neon.so": "9bf85dfa4b18af12c4536a85ab9013400b1a28dec83687e481ae0eaa8abfc38b",
+      "coherent_extended_opt.py": "f74f5c1107bf90e384c8502bbb84f2f444725677cff472ececc5d995fba2dc4e"
+    },
+    "candidate_hashes": {
+      "_coherent.so": "4b0ace9ff94b985742ee97b15c7d9472a65ceb3c6603f0d2b82acfc1e4c17cc3",
+      "_coherent_pair.so": "54ae8162e10e029ddf5303762ba5fd3d6e842dcd9c21b17f26430a0ec9055f8d",
+      "_acquisition_rust.so": "323c0f4c7723d9bfb6f37996620d04585aa9eb3daba9d2935c89f306e6686497",
+      "coherent_extended_opt.py": "b3b337ec7f4b3116b7f4399330cf30029521ef8c86382ced6bea73d358a60bd6"
+    },
+    "production_unchanged": true,
+    "scope": "Kernel parity/controls and six-cycle full enabled pipeline replay. Finite stability evidence, not lifetime proof or fresh range improvement. Unmodified Stream1090/stock output stays original-first."
+  },
+  "live": {
+    "counter_deltas": {
+      "completed": 12016,
+      "aligned": 300,
+      "stock_bytes": 1808566,
+      "extras": 3803,
+      "coherent_extras": 991,
+      "acquisition_extras": 215
+    },
+    "protected_pids_unchanged": true,
+    "config_hashes_unchanged": true,
+    "sample_loss_unchanged": true,
+    "gain": 38.6,
+    "processing_proxy_s": [
+      1.188366612419486,
+      1.2552164813969284
+    ],
+    "capture_cap_bytes": 5000000000,
+    "fr24_connected": true,
+    "capture_error": null
+  },
+  "historical_rollback": {
+    "recorded_reason": "watchdog: AssertionError('DSP RF processing stalled')",
+    "conclusion": "Both guards deliberately restored C after three failed alignment-progress checks. Low-level cause not recoverable from preserved evidence; no service-log Rust crash demonstrated. Incoming readsb traffic continued. Do not claim this proves either a Rust bug or a false alarm.",
+    "source_journal_sha256": "dd2f1e9dcd8f49277a164cbc33776a62c901f087b69f7058b0010af5b41dea38"
+  },
+  "target_receipt": {
+    "bytes": 233267200,
+    "sha256": "522007593881e172c66b99272508685323b5b48e7cdc255688bf12035de1dd86",
+    "members": 376,
+    "durable": true
+  },
+  "activation_receipt": {
+    "sha256": "fcdfc72480f060423efbf9960a703d04e701b5da9e77a82946a4d645c1f84c3e",
+    "bytes": 2007040,
+    "members": 24,
+    "verified": true
+  }
+}
