@@ -1,0 +1,53 @@
+{
+  "previous_discussion": "2026-10-30",
+  "production_changed": false,
+  "producer_integration_complete": false,
+  "real_dsp_extras_tested": false,
+  "fr24_or_adsbx_attached": false,
+  "tests_mac": 9,
+  "tests_pi": 9,
+  "history_s": 5,
+  "async_stock_holdback_s": 0,
+  "production_holdback_s": 3,
+  "comparison": {
+    "asynchronous": {
+      "core_records": 23230,
+      "missing_core_records": 0,
+      "arrival_delay_s": {
+        "min": 0.00010107597336173058,
+        "median": 0.0010338618885725737,
+        "p95": 0.0038432928267866373,
+        "p99": 0.008133361814543605,
+        "max": 0.13850486697629094
+      }
+    },
+    "production": {
+      "core_records": 23230,
+      "missing_core_records": 0,
+      "arrival_delay_s": {
+        "min": 2.909103887854144,
+        "median": 3.0192662191111594,
+        "p95": 3.1218711289111525,
+        "p99": 3.1700350570026785,
+        "max": 3.226369446842
+      }
+    }
+  },
+  "protected_health_unchanged": true,
+  "probe_cpu_s": 5.06276582,
+  "wall_s": 50.09763470501639,
+  "equivalent_one_core_percent": 10.105798107656076,
+  "peak_rss_kib": 113328,
+  "cache_entries": 1456,
+  "cache_capacity_evictions": 0,
+  "first_attempt": "Failed: owned /dev/shm tree disappeared before final write; no usable capture retained. Cause unconfirmed; not counted as validation.",
+  "retry": "Successful isolated /run tmpfs probe; 45s capture, no production config changes.",
+  "limitations": [
+    "Stock-only async test: no real DSP producer attached, no full-current-pipeline extras-retention proof.",
+    "Arrival deltas between independent local TCP clients, not RF-to-cloud latency; small negative values can occur from scheduling.",
+    "Test CPU/RSS includes imports, three socket recordings, history, status and health checks, not just dedup.",
+    "Existing prototype250ms extra age gate can reject valid slow results from current production; it is not a universal FR24 limit.",
+    "Production producer admission/epoch mapping and full-enabled-pipeline RF parity remain required.",
+    "Stock-first cannot retract an already-sent extra if stock arrives later; race is counted."
+  ]
+}

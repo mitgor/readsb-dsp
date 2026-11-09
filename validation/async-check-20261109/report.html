@@ -1,0 +1,21 @@
+<!doctype html><meta charset="utf-8"><title>Asynchronous relay check</title><style>body{font:17px/1.5 system-ui;max-width:1100px;margin:35px auto;padding:20px;background:#101b29;color:#e2ebf4}pre{font:inherit;white-space:pre-wrap}</style><pre># Asynchronous output review — 9 November 2026
+
+We discussed this on30 October and built a separate test relay, not a production deployment. Current production still uses its3-second global timestamp holdback.
+
+The prototype immediately queues stock and accepts independent validated source queues. A shared5-second bounded dedup cache covers all sources. It matches payload plus RF transmission timestamp and receiver epoch, preserving legitimate later repeats. Five seconds is memory retention, not a wait. Per-source-only caches would leave duplicates between DSP methods.
+
+Nine tests pass on both Mac and Pi, including slow/absent producers, cross-stream duplicates, repeated payloads at distinct RF times, bounded history, forbidden/disabled sources and isolated clients. A new finite Pi probe used a read-only stock client, isolated loopback output and a separate production-output observer: no SDR/mirror consumer, configuration/model/gain changes, or feeder route change. Nice19, core3,35% quota,256MiB and120s maximum bound the owned process.
+
+| Output | Matching core stock records | Missing | Median arrival delay | P95 | P99 |
+|---|---:|---:|---:|---:|---:|
+| Isolated async stock | 23,230 | 0 | 1.034ms | 3.843ms | 8.133ms |
+| Current production | 23,230 | 0 | 3019.266ms | 3121.871ms | 3170.035ms |
+
+These are local arrival differences, not RF-to-FR24 latency. Protected process IDs, method/config hashes, gain and stock sample-loss counters remained unchanged; FR24 stayed connected at health checks. The prototype&#x27;s45-second recording/50-second runtime consumed5.063 CPU seconds (10.11% of one core), including recording/import/status overhead. Peak RSS110.7MiB. No cache-capacity evictions.
+
+**No live DSP producers were attached to the asynchronous output.** Consequently these results prove stock transport behavior and synthetic queue/dedup behavior, not complete-pipeline DSP recovery or FR24 cloud acceptance. Current all-method configuration (except header) stayed active in production.
+
+The remaining work is to connect per-completion producers through causal CRC/address/conflict/alignment admission with the genuine radio epoch, then compare retained/lost extras and timing against the full current enabled pipeline on identical fresh RF. The old250ms candidate-age gate must not be mistaken for a universal FR24 rule; current valid methods can take longer. Preserve original transmission timestamps and audit late-stock-after-extra races. Closely coupled C/Rust stages can reuse computation while publishing completed results; do not duplicate their frontend just to claim independence.
+
+The first probe&#x27;s /dev/shm tree disappeared during execution and no usable capture remains; cause unconfirmed. Its journal is preserved as a failed attempt. The retry used a new isolated /run RAM directory and succeeded. Checksum-verified raw transport evidence and code snapshots are private. Production routing is unchanged.
+</pre>
