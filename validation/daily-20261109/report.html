@@ -1,0 +1,27 @@
+<!doctype html><meta charset="utf-8"><title>Daily ADS-B — 9 November</title><pre style="white-space:pre-wrap;font:16px/1.6 system-ui;max-width:1000px;margin:40px auto"># Daily ADS-B collection — 9 November 2026
+
+Verified two immutable archives (18,992,548 bytes) on the Mac, fsynced the backups and manifest, rechecked the precise remote identities/checksums and deleted only those exact Pi copies. No collector flush or production service/configuration change was made by this run.
+
+## Native FR24 trial ended early
+
+The saved v4 state records a health-monitor disconnection and automatic restoration at **2026-11-09T00:00:40.943807+01:00**. Result: restored_original_setup. This was before the planned 9 November 13:00 Berlin deadline; the planned 48-hour condition was not completed. The safety monitor recorded FR24 link/receiver disconnected; this daily audit does not establish the underlying cause or duration.
+
+Readsb and both frozen DSP/capture cgroups are running again. A fresh read-only monitor check reports FR24 connected, receiver connected and valid timing. No restoration or retry was initiated by the daily task. The separate trial review should account for the actual early closure rather than the planned deadline.
+
+## New labels and training readiness
+
+The RF archive offered 34 stock-assisted windows; 20 passed independent uncorrected same-transmission decoding, original Beast/payload/sample-clock checks and stock position quality gates. Four new examples remain fixed evaluation-only; 15 add to TRAIN and one to VALIDATION. Unconfirmed examples remain quarantined in original data.
+
+| Pending split since completed November 4 trial | Windows | Aircraft | UTC hours |
+|---|---:|---:|---:|
+| Train | 432 | 213 | 62 |
+| Validation | 140 | 76 | 48 |
+
+Another **68 TRAIN windows** are needed to reach the frozen threshold. No retraining on unchanged data, no model deployment and no repeat of consumed candidate evaluation RF. Existing fixed holdouts, consumed-example statuses and all RF reservations are preserved.
+
+Reserved 22 new continuous RF intervals for evaluation only and verified/quarantined 1,285 CRC/IQ research windows. All new archive member and IQ checksums passed.
+
+## Protected state
+
+All observed service PIDs, sources/libraries/models/config hashes, switches, gain and SDR loss counters match before/after this task. Changes caused by the prior trial restoration are recorded as the initial current baseline. The RF cap remains 5,000,000,000 bytes; normal 12-hour saves and existing retention limits are unchanged. Raw diagnostics, addresses and RF remain private.
+</pre>

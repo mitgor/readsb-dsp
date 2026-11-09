@@ -1,0 +1,1 @@
+Dated daily offload, same-transmission qualification and incremental ledger. Frozen output paths: do not rerun in place. No training below threshold and no production changes. See validation/daily-20261109/report.md.
