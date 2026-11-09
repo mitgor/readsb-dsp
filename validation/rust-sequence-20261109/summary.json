@@ -1,0 +1,163 @@
+{
+  "parity_passed": true,
+  "windows": 3840,
+  "exact_all_arrays": true,
+  "prepare_models": 35,
+  "controls": {
+    "noise": {
+      "windows": 64,
+      "valid": 0
+    },
+    "zero": {
+      "windows": 8,
+      "valid": 0
+    },
+    "frequency": {
+      "windows": 128,
+      "valid": 0
+    },
+    "generic": {
+      "windows": 128,
+      "valid": 0
+    }
+  },
+  "augmented_windows": 128,
+  "kernel_median_cpu_s": {
+    "c": 0.1405399235,
+    "rust": 0.11100320249999977,
+    "actual": 0.15892594016666658
+  },
+  "kernel_saving_vs_optimized_C_percent": 20.505306671640923,
+  "kernel_saving_vs_actual_C_percent": 29.90730683565993,
+  "kernel_trials": [
+    {
+      "trial": 0,
+      "cpu_s": {
+        "c": 0.14138199599999998,
+        "rust": 0.1106119648333334,
+        "actual": 0.15868143833333334
+      },
+      "saving_percent": 21.763754959766302
+    },
+    {
+      "trial": 1,
+      "cpu_s": {
+        "rust": 0.11057245849999993,
+        "actual": 0.15775176199999988,
+        "c": 0.1405399235
+      },
+      "saving_percent": 21.323097560957528
+    },
+    {
+      "trial": 2,
+      "cpu_s": {
+        "actual": 0.15843738266666665,
+        "c": 0.1393897091666667,
+        "rust": 0.11080742183333332
+      },
+      "saving_percent": 20.505306671640923
+    },
+    {
+      "trial": 3,
+      "cpu_s": {
+        "c": 0.14059718466666649,
+        "rust": 0.11316501033333341,
+        "actual": 0.15893467600000002
+      },
+      "saving_percent": 19.511183241947826
+    },
+    {
+      "trial": 4,
+      "cpu_s": {
+        "rust": 0.11145810716666678,
+        "actual": 0.15892594016666658,
+        "c": 0.13967999599999992
+      },
+      "saving_percent": 20.204674714719463
+    },
+    {
+      "trial": 5,
+      "cpu_s": {
+        "actual": 0.1589332128333334,
+        "c": 0.14157027133333333,
+        "rust": 0.11100320249999977
+      },
+      "saving_percent": 21.59144610337157
+    },
+    {
+      "trial": 6,
+      "cpu_s": {
+        "c": 0.14074333266666628,
+        "rust": 0.10985180533333327,
+        "actual": 0.1590709231666665
+      },
+      "saving_percent": 21.9488388885148
+    },
+    {
+      "trial": 7,
+      "cpu_s": {
+        "rust": 0.1112552761666669,
+        "actual": 0.15831247466666612,
+        "c": 0.13927614033333313
+      },
+      "saving_percent": 20.11892640017392
+    },
+    {
+      "trial": 8,
+      "cpu_s": {
+        "actual": 0.15894190033333308,
+        "c": 0.13977603200000033,
+        "rust": 0.11171531816666658
+      },
+      "saving_percent": 20.07548320826111
+    }
+  ],
+  "full_RF_seconds": 24,
+  "full_native_extras": 369,
+  "full_raw_guarded_events_decisions_exact": true,
+  "full_native_worker_CPU_per_RF_second": {
+    "actual_C": 0.6112556414166666,
+    "optimized_C": 0.5662569391666666,
+    "Rust": 0.603934216
+  },
+  "no_lost_or_added_packets": true,
+  "production_sequence_unchanged": true,
+  "library_sha256": {
+    "c": "3444b384155070f985ec6ed8ed4614a952a0f0b4f7b897c516b2c759f92d9c76",
+    "rust": "73c6798eed64768b2003769ea386ead7ea34616348fe5a682d2a0fd3414260a1",
+    "actual": "57ac72e45502fac7e296004bb0efbe8508a44d98aa9541f43ef40451b44dc528"
+  },
+  "library_sizes": {
+    "c": 71416,
+    "actual": 71376,
+    "rust": 4687664
+  },
+  "max_recorded_RSS_MiB": 976.25,
+  "limits": "Historical consumed regression RF; finite one-cycle whole-pipeline CPU per mode is descriptive, not repeated end-to-end timing or fresh range evidence. Stream child unchanged by sequence experiment and excluded from native-worker CPU. Initial sequential full-pipeline timings are retained but confounded by common-stage variation; use paired shared-worker timing for sequence-only worker-cost comparison.",
+  "paired_full_pipeline": {
+    "RF_seconds_per_mode": 48,
+    "warmup_RF_seconds": 2,
+    "all_raw_and_guarded_events_exact": true,
+    "worker_CPU_per_RF_second": {
+      "optimized_C": 0.5731042562708337,
+      "rust": 0.5703457075833326
+    },
+    "worker_CPU_reduction_percent": 0.4813345316000528,
+    "median_paired_reduction_percent": 0.6642477750890052,
+    "cluster_bootstrap_95_percent_interval": [
+      -0.3378036299780396,
+      1.2407713335414683
+    ],
+    "interval_scope": "24 RF-case clusters including both repeats; descriptive replay CPU interval, not prospective RF/energy or cross-device evidence."
+  },
+  "mac_sequence_CPU_reduction_percent": 13.567818356185747,
+  "target_receipt": {
+    "bytes": 895283200,
+    "sha256": "66ca5527a29fa8ee1666c7d7297909a3fbb0691f643d6f88c623c484901355b0",
+    "members": 792,
+    "verified": true,
+    "durable": true
+  },
+  "decision": "Production sequence remains C. Rust kernel is faster in isolation; complete worker CPU improvement not established by paired interval.",
+  "hardware": "Pi 5 / Cortex-A76; no Pi 4 performance claim."
+}
