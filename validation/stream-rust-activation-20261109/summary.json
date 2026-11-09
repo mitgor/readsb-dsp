@@ -1,0 +1,22 @@
+{
+  "state": "active",
+  "observation_seconds": 300.17328324494883,
+  "before_sha256": "2b80c33e6e4142c359297139b6443aa55ec0b33e3ab87af8fed68509e58ac766",
+  "after_sha256": "a1830358b7d7addb1f09835ab5fd07b7f895e7de5a7e9ee6afd4af52344c24cd",
+  "verified_live_exec_samples": 386,
+  "stream_RF_seconds": 300,
+  "stream_extras_forwarded": 76,
+  "stock_bytes_forwarded": 640920,
+  "all_production_PIDs_unchanged": true,
+  "models_methods_configs_gain_unchanged": true,
+  "SDR_loss_unchanged": true,
+  "capture_cap_bytes": 5000000000,
+  "gain": 38.6,
+  "automatic_rollback": true,
+  "receipt": {
+    "bytes": 1669120,
+    "sha256": "6b4bb6e653b7303daa62fe01cbf2475fd11d11789e482089107fa5c32eaaa3f2",
+    "members": 17,
+    "verified": true
+  }
+}
