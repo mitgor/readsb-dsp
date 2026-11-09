@@ -1,0 +1,193 @@
+{
+  "production_changed": false,
+  "hardware": "Current receiver: Raspberry Pi 5 / Cortex-A76; not Pi 4",
+  "live_core_percent": {
+    "sequence": 11.091374855604705,
+    "pulse": 1.7117820660143699,
+    "stream1090": 12.353961214597227
+  },
+  "live_interval_s": 60.16353678703308,
+  "port_scope": "Stream1090 eight-stream shift-register/CRC update kernel only; surrounding decoder remains C++",
+  "state_parity": {
+    "state_updates": 1200000,
+    "all_registers_crc_df_masks_exact": true
+  },
+  "RF_seconds": 24,
+  "raw_output_byte_exact": true,
+  "controls": {
+    "dc": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clipping": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "noise": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "pi_CPU": {
+    "RF_seconds_per_trial": 24,
+    "trials": [
+      {
+        "trial": 0,
+        "cpu_s": {
+          "original": 2.903214,
+          "c": 2.872680999999999,
+          "rust": 2.514316
+        },
+        "rust_saving_vs_production_percent": 13.395430030304356,
+        "rust_saving_vs_control_percent": 12.474931953808976
+      },
+      {
+        "trial": 1,
+        "cpu_s": {
+          "original": 2.9139239999999993,
+          "c": 2.8691510000000005,
+          "rust": 2.51734
+        },
+        "rust_saving_vs_production_percent": 13.60996374648067,
+        "rust_saving_vs_control_percent": 12.261850282540044
+      },
+      {
+        "trial": 2,
+        "cpu_s": {
+          "original": 2.930066,
+          "c": 2.8888789999999998,
+          "rust": 2.547399
+        },
+        "rust_saving_vs_production_percent": 13.06001298264271,
+        "rust_saving_vs_control_percent": 11.820502000949151
+      },
+      {
+        "trial": 3,
+        "cpu_s": {
+          "original": 2.907980999999999,
+          "c": 2.877259,
+          "rust": 2.5107809999999993
+        },
+        "rust_saving_vs_production_percent": 13.658961320586338,
+        "rust_saving_vs_control_percent": 12.737052868719879
+      },
+      {
+        "trial": 4,
+        "cpu_s": {
+          "original": 2.924915000000001,
+          "c": 2.8826540000000005,
+          "rust": 2.5179799999999997
+        },
+        "rust_saving_vs_production_percent": 13.912711993340011,
+        "rust_saving_vs_control_percent": 12.650633756253814
+      },
+      {
+        "trial": 5,
+        "cpu_s": {
+          "original": 2.935987,
+          "c": 2.891278999999999,
+          "rust": 2.5306069999999994
+        },
+        "rust_saving_vs_production_percent": 13.807281844231623,
+        "rust_saving_vs_control_percent": 12.474479287540207
+      },
+      {
+        "trial": 6,
+        "cpu_s": {
+          "original": 2.9165730000000005,
+          "c": 2.8738039999999994,
+          "rust": 2.5354060000000005
+        },
+        "rust_saving_vs_production_percent": 13.069002558825026,
+        "rust_saving_vs_control_percent": 11.775263727101738
+      }
+    ],
+    "median_CPU_s": {
+      "original": 2.9165730000000005,
+      "c": 2.877259,
+      "rust": 2.5179799999999997
+    },
+    "median_rust_saving_vs_production_percent": 13.60996374648067,
+    "median_rust_saving_vs_control_percent": 12.474479287540207,
+    "binary_sha256": {
+      "original": "2b80c33e6e4142c359297139b6443aa55ec0b33e3ab87af8fed68509e58ac766",
+      "c": "9892ee2cd4f95727ea5e6689a4137172daba3bd661f77121cb6f85490f97057d",
+      "rust": "a1830358b7d7addb1f09835ab5fd07b7f895e7de5a7e9ee6afd4af52344c24cd"
+    },
+    "all_raw_output_exact": true
+  },
+  "pi_kernel_saving_percent": 46.15804889893915,
+  "pi_decoder_RSS": {
+    "original": {
+      "samples_kib": [
+        4752,
+        4752,
+        4752
+      ],
+      "max_kib": 4752
+    },
+    "c": {
+      "samples_kib": [
+        4800,
+        4800,
+        4800
+      ],
+      "max_kib": 4800
+    },
+    "rust": {
+      "samples_kib": [
+        4800,
+        4784,
+        4800
+      ],
+      "max_kib": 4800
+    }
+  },
+  "mac_CPU_saving_percent": 2.514151346078919,
+  "protected_unchanged": true,
+  "max_owned_test_RSS_MiB": 356.671875,
+  "corpus_preserved_extras": {
+    "full_union": 403,
+    "stream_incremental": 34,
+    "distance_bins": {
+      "0-180": {
+        "stock": 2191,
+        "baseline_full": 324,
+        "full": 324,
+        "stream_only": 31
+      },
+      "180-200": {
+        "stock": 9,
+        "baseline_full": 10,
+        "full": 10,
+        "stream_only": 1
+      },
+      "unknown": {
+        "stock": 53,
+        "baseline_full": 65,
+        "full": 65,
+        "stream_only": 2
+      },
+      "200-250": {
+        "stock": 1,
+        "baseline_full": 4,
+        "full": 4
+      }
+    },
+    "lost": 0,
+    "added": 0
+  },
+  "target_receipt": {
+    "bytes": 818984960,
+    "sha256": "22e91ff18885164bf4bddeb97eeda24242c8c83cec33f9410581b10777e1bc8d",
+    "members": 1263,
+    "verified": true,
+    "durable": true
+  },
+  "limits": [
+    "Historical regression corpus; ten distant stock packets from three aircraft, one distant Stream-only extra. No fresh range-improvement claim.",
+    "Exact raw output means the prior full-pipeline corpus union is preserved; this task did not replay every unrelated producer again.",
+    "Live CPU attribution is exclusive and excludes shared frontend overhead; kernel savings are not whole-Pi savings.",
+    "Peak RSS samples are three full decoder invocations per binary through the small C launcher; raw wait4 spawn RSS retained privately."
+  ]
+}

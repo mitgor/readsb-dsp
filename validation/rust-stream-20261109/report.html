@@ -1,0 +1,56 @@
+<!doctype html><meta charset="utf-8"><title>Stream1090 Rust benchmark</title><style>body{max-width:1050px;margin:40px auto;padding:20px;background:#101b29;color:#dfebf7;font:16px/1.6 system-ui}pre{white-space:pre-wrap}</style><pre># Stream1090 Rust kernel comparison — 9 November 2026
+
+Production remains unchanged. Stream1090 was the most CPU-expensive of the three requested methods in a simultaneous 60.2-second live sample:
+
+| Method | CPU as % of one core |
+|---|---:|
+| Stream1090 | 12.35% |
+| Pulse sequence | 11.09% |
+| C pulse discriminant filter | 1.71% |
+
+These are exclusive attributed method costs, including the Stream child, excluding shared frontend/coordination. They are not whole-system percentages or an ablation. The current physical receiver is a Pi 5 (Cortex-A76), not a Pi 4.
+
+## Port and parity
+
+Ported the eight-stream `ShiftRegisters::shiftInNewBits` frame-shift/56-bit-CRC/112-bit-CRC/handled-format-mask recurrence from Stream1090 C++ to Rust 1.99.1, with explicit ARM NEON. This is a kernel substitution, not a rewrite of the complete Stream1090 decoder. Filtering, resampling, trust/cache, repairs, timestamps and output logic remain C++. No live library or binary was replaced.
+
+- 1,200,000 update steps: every register, both CRC arrays and handled-format mask bit-exact across zero, one, alternating, random and seeded-extreme states.
+- 24 historical RF seconds: byte-for-byte complete output parity between the actual production binary, rebuilt C++ and Rust candidate. Payloads, timestamps, RSSI and ordering agree.
+- DC, clipping and deterministic RF-noise controls match exactly; no relaxed CRC, trust or guard settings.
+- Five alternating C++/Rust whole-decoder trials, seven additional counterbalanced production/C++/Rust trials, and seven ABI-matched kernel trials. Every timed output rechecked.
+
+## Pi performance
+
+Median child CPU seconds per 24 RF seconds; isolated decoder RSS is the maximum of three separate measurements per binary:
+
+| Binary | CPU seconds | CPU seconds / RF second | Peak RSS MiB |
+|---|---:|---:|---:|
+| Actual production C++ ELF | 2.9166 | 0.12152 | 4.64 |
+| Rebuilt C++ control | 2.8773 | 0.11989 | 4.69 |
+| Rust kernel + unchanged C++ decoder | 2.5180 | 0.10492 | 4.69 |
+
+Rust uses **13.61% less CPU versus the actual production Stream1090 binary**, and 12.47% less versus the rebuilt C++ control (median paired trial reductions). The standalone update kernel saves 46.16% in ABI-matched microbenchmarks, including identical deterministic bit-generation overhead. End-to-end measurements include FFI calls, process startup and all unchanged C++ stages. Mac whole-Stream reduction was 2.51% and does not substitute for target evidence. Timing variance and raw trials are retained in summary.json.
+
+RSS excludes the inherited Python launch high-water, which inflated raw Linux wait4 RSS; the separate small-launcher measurement avoids attributing that to Stream1090. Gprof is diagnostic only: it forces the update out of line and cannot supply production speed percentages.
+
+## Preserved packet recovery and limits
+
+Exact Stream output preserves the prior corpus comparison&#x27;s **34 Stream-only additions** and **403 complete-union extras**, with **zero added or lost packets**. The prior complete native pipeline comparison was subsequently checked for Rust coherent/acquisition parity. We did not rerun every unrelated producer in this task.
+
+| Distance | Stock opportunities | Full-union extras | Stream-only extras |
+|---|---:|---:|---:|
+| &lt;180 nm | 2,191 | 324 | 31 |
+| 180–200 nm | 9 | 10 | 1 |
+| 200–250 nm | 1 | 4 | 0 |
+| Unknown | 53 | 65 | 2 |
+
+Only ten distant stock opportunities from three aircraft, including one Stream-only distant extra: sufficient for those regression checks, insufficient to claim general far-range robustness or improved range. These are already consumed historical evaluation RF, not prospective data or training labels.
+
+## Protected operation and evidence
+
+All tests ran in owned tmpfs, nice 19, core 3, 35% CPU quota and finite runtime. A conservative summed-process RSS ceiling below 1 GiB was checked independently because this kernel lacks a working memory controller. Highest recorded supervised RSS was 356.7 MiB, including compilation/launcher context; raw launch RSS is conservative. FR24, readsb, DSP, relay, ADS-B Exchange and collection retained PIDs; production source/library/model/config hashes, methods, 38.6 dB gain, SDR-loss counters and 5,000,000,000-byte capture cap remained unchanged. No live RF tap, packet injection, recorder flush, production restart or persistent archive deletion.
+
+The full source/RF/toolchain/binary/results/log bundle was checksum-verified and fsynced on Mac before exact owned tmpfs cleanup. Development failures and early slower ports are preserved separately. The final implementation makes polynomial deltas explicit compile-time constants, avoiding repeated fixed computation in the initial Rust port. No decoder thresholds or model decisions were tuned to this RF.
+
+Reproducible code: experiments/rust-stream-20261109. Private evidence: adsb-neural-rescue/results/rust-stream-20261109. Candidate is **not enabled**.
+</pre>
