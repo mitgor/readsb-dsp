@@ -1,0 +1,63 @@
+{
+  "verified_utc": "2026-11-09T16:57:43.355933+00:00",
+  "enabled": [
+    "energy",
+    "crc",
+    "timing",
+    "soft",
+    "matched",
+    "coherent",
+    "sic",
+    "neural",
+    "pulse",
+    "stream1090",
+    "sequence",
+    "acquisition"
+  ],
+  "disabled": [
+    "header"
+  ],
+  "observed_wall_seconds": 184.79791259765625,
+  "completed_rf_seconds": 185,
+  "worker_mean_latency_s": 0.6268412565736956,
+  "worker_max_recent_latency_s": 1.0107048193458468,
+  "max_sampled_stream1090_latency_s": 0.1706724229734391,
+  "last_stream1090_latency_s": 0.15539837907999754,
+  "sampled_margin_proxy_max_s": 1.1813772423192859,
+  "three_second_relay_deadline": true,
+  "persistent_guard": true,
+  "guard_margin_threshold_s": 2.7,
+  "guard_poll_seconds": 10,
+  "first_all_on_max_worker_s": 2.5725903189741075,
+  "first_all_on_result": {
+    "result": "restored_previous_profile",
+    "reason": "processing_margin_exceeded",
+    "unix": 1794243134.8193557
+  },
+  "relayed_method_attribution_deltas": {
+    "sequence": 108,
+    "acquisition": 162,
+    "pulse": 33,
+    "sic": 9,
+    "stream1090": 404,
+    "header": 0
+  },
+  "relay_observed_seconds": 184.79791259765625,
+  "late_relay_rejections_delta": 0,
+  "stream1090_skipped_late": 0,
+  "protected_pids_unchanged": true,
+  "fr24_connected": true,
+  "collector_healthy": true,
+  "rf_disk_cap_bytes": 5000000000,
+  "stock_sample_loss_unchanged": true,
+  "broad_crc_forwarded": false,
+  "logging_enabled": false,
+  "tests_passed": 5,
+  "limitations": [
+    "Short live operational check, not a long traffic-stress or frozen RF ablation.",
+    "Method-attribution counts are not net marginal additions over a complete baseline on identical RF.",
+    "The sampled sum of recent worker maximum and last Stream1090 runtime is a budget proxy; no exact same-transmission end-to-end timer added.",
+    "Guard polls every10seconds and cannot prevent every transient late result; relay independently rejects late candidates.",
+    "No FR24 cloud-credit improvement claim."
+  ]
+}
