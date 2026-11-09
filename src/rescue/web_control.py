@@ -40,7 +40,9 @@ class Controls:
    m=data['methods'];c=data['capture']
    if not isinstance(m,dict) or set(m)!=set(METHODS) or any(type(v) is not bool for v in m.values()) or not m['energy']:raise ValueError('Invalid methods; energy is required')
    if not isinstance(c,dict) or set(c)!={'packet_capture','continuous_capture'} or any(type(v) is not bool for v in c.values()):raise ValueError('Invalid capture switches')
-   old=[p.read_bytes() if p.exists() else None for p in self.paths];w=json.loads(old[1]);current=self.read();changed=m!=current['methods']
+   current=self.read()
+   if m==current['methods'] and all(c[k]==current['capture'][k] for k in c):return current
+   old=[p.read_bytes() if p.exists() else None for p in self.paths];w=json.loads(old[1]);changed=m!=current['methods']
    # Preserve every transport, CPU, native and FIR optimization in worker config.
    if (m['sequence'] or m['acquisition']) and not w.get('sequence_acquisition'):raise ValueError('Sequence/acquisition engine is unavailable')
    if m['pulse']:

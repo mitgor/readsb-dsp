@@ -18,7 +18,7 @@ def build(shadow,dest):
     from .ring_transport import RingStreamingPool
     class Tapped(CompletionPool,RingStreamingPool):pass
     pool=Tapped(model,methods,a.runtime,selection,dispatch_ms=a.dispatch_ms)''')
- replace("    live.start();modelsha=", "    from .async_live_engine import Engine\n    engine=Engine(live,a.runtime/'feed-outbox',{**methods,'sequence':selection['config']['sequence_enabled'],'acquisition':selection['config']['acquisition_enabled']},a.stream1090_binary)\n    live.start();modelsha=")
+ replace("    live.start();modelsha=", "    from .async_live_engine import Engine\n    engine=Engine(live,a.runtime/'feed-outbox',{**methods,'sequence':selection['config']['sequence_enabled'],'acquisition':selection['config']['acquisition_enabled']},a.stream1090_binary,metrics=metrics)\n    live.start();modelsha=")
  replace("return {'method_metrics':metrics", "return {'async_output':engine.report(),'method_metrics':metrics")
  replace('                        pool.submit(item,references)', '                        engine.begin(item)\n                        pool.submit(item,references)')
  replace('            result=pool.pop()', '            result=pool.pop()\n            for batch,rows,detail in pool.take_completed():engine.offer(batch,rows,detail)\n            engine.tick()\n            result=engine.grouped(result)')

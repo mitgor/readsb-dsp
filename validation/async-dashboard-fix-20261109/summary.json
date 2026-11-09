@@ -1,0 +1,23 @@
+{
+  "before": {
+    "cpu_seconds": 3.6179900000000007,
+    "mean_core_percent": 12.031181634679834,
+    "cpu_share_percent": 13.604363884692125,
+    "additional_packets": 55,
+    "cpu_ms_per_additional": 65.78163636363638,
+    "relative_cpu_per_detection": 1.4148538440079805
+  },
+  "after": {
+    "cpu_seconds": 4.877224000000001,
+    "mean_core_percent": 12.169178842036176,
+    "cpu_share_percent": 13.534272740417055,
+    "additional_packets": 72,
+    "cpu_ms_per_additional": 67.73922222222224,
+    "relative_cpu_per_detection": 1.528244963605426
+  },
+  "elapsed_wall_s": 40.07849718793295,
+  "settings_GET": 200,
+  "settings_noop_POST": 200,
+  "revision_unchanged": true,
+  "stream_cpu_matches_engine": true
+}

@@ -13,8 +13,8 @@ class Outbox:
   self.serial+=1;tmp=self.path/('async-'+str(os.getpid())+'.tmp');dest=self.path/f'async-{time.monotonic_ns()}-{self.serial}.json'
   tmp.write_text(json.dumps(dict(created_unix=time.time(),epoch=epoch,admission='production_guarded_v1',producer=source,alignment=audit,extra=events)));tmp.replace(dest);self.count['published_'+source]+=len(events);return True
 class Engine:
- def __init__(self,live,path,enabled,binary):
-  self.live=live;self.hub=Outbox(path,enabled);self.admit=Admission(self.hub);self.stream=Stream1090Method(binary) if enabled.get('stream1090') else None;self.executor=concurrent.futures.ThreadPoolExecutor(max_workers=1);self.jobs={};self.rows={};self.count=Counter();self.last_tick=0;self.last_context=0;self.frames=[];self.health={};self.wall_time=0;self.waiting={};self.groups=[]
+ def __init__(self,live,path,enabled,binary,metrics=None):
+  self.live=live;self.hub=Outbox(path,enabled);self.admit=Admission(self.hub);self.stream=Stream1090Method(binary) if enabled.get('stream1090') else None;self.executor=concurrent.futures.ThreadPoolExecutor(max_workers=1);self.jobs={};self.rows={};self.count=Counter();self.last_tick=0;self.last_context=0;self.frames=[];self.health={};self.wall_time=0;self.waiting={};self.groups=[];self.metrics=metrics;self.stream_cpu_s=0.
  def begin(self,batch):
   if self.hub.epoch!=batch.epoch:
    self.hub.epoch=batch.epoch;self.admit.sync_epoch();self.rows.clear();self.count['epoch_changes']+=1
@@ -37,6 +37,8 @@ class Engine:
   for key,(future,created) in list(self.jobs.items()):
    if not future.done():continue
    rows,cpu=future.result();del self.jobs[key]
+   self.stream_cpu_s+=cpu
+   if self.metrics is not None:self.metrics.record_external('stream1090',cpu)
    if key[0]!=self.hub.epoch:self.count['old_stream_epoch']+=1;continue
    self.rows[key]=rows
    if now-created<=3:self.admit.offer_stream1090(key[0],key[1],rows,now)
@@ -51,5 +53,5 @@ class Engine:
   item,events,work=self.groups[0];key=(item[0],item[1])
   if self.stream and key not in self.rows and (key in self.jobs or key in self.waiting) and time.monotonic()-item[4]<5:return None
   return self.groups.pop(0)
- def report(self):return dict(enabled=True,epoch=self.hub.epoch,independent_producers=True,stock_holdback_s=0,counts=dict(self.count),published=dict(self.hub.count),admission=dict(self.admit.count),pending=len(self.admit.pending),stream_pending=len(self.jobs)+len(self.waiting),stats_pending=len(self.groups),coordinator_wall_s=self.wall_time)
+ def report(self):return dict(enabled=True,epoch=self.hub.epoch,independent_producers=True,stock_holdback_s=0,counts=dict(self.count),published=dict(self.hub.count),admission=dict(self.admit.count),pending=len(self.admit.pending),stream_pending=len(self.jobs)+len(self.waiting),stats_pending=len(self.groups),coordinator_wall_s=self.wall_time,stream_child_cpu_s=self.stream_cpu_s)
  def close(self):self.executor.shutdown(wait=True,cancel_futures=True)
