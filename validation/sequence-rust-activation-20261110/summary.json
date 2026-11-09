@@ -1,0 +1,48 @@
+{
+  "state": "active",
+  "backend": "rust-1.99.1/pulse-sequence-v3",
+  "observation_seconds": 303.4453802551143,
+  "live_workers": {
+    "2714138": "/home/pi/adsb-neural-rescue/src/rescue/_sequence_rust.so",
+    "2714134": "/home/pi/adsb-neural-rescue/src/rescue/_sequence_rust.so"
+  },
+  "files": [
+    {
+      "path": "/home/pi/adsb-neural-rescue/src/rescue/_sequence_rust.so",
+      "before_sha256": null,
+      "after_sha256": "73c6798eed64768b2003769ea386ead7ea34616348fe5a682d2a0fd3414260a1"
+    },
+    {
+      "path": "/home/pi/adsb-neural-rescue/src/rescue/pipeline_v3.py",
+      "before_sha256": "ea7d1ef64f900e765021190f94ab4f5aae062cfaec8bbfa5b1f0d8d914c86647",
+      "after_sha256": "e495028996df80f03fa1fba1b9808fdcacf1a4a5bab9ca7aeeb2b274e053a507"
+    }
+  ],
+  "protected_PIDs_unchanged": true,
+  "only_DSP_coordinator_restarted": true,
+  "configuration_gain_switches_unchanged": true,
+  "SDR_loss_unchanged": true,
+  "Stream_Rust_unchanged": true,
+  "cap_bytes": 5000000000,
+  "gain": 38.6,
+  "stock_bytes": 955597,
+  "DSP_extras": 1420,
+  "sequence_extras": 40,
+  "aligned_RF_seconds": 259,
+  "Stream_RF_seconds": 299,
+  "processing_proxy_s": [
+    0.8272648758720607,
+    0.9781776936724782
+  ],
+  "automatic_rollback": true,
+  "receipt": {
+    "bytes": 5253120,
+    "sha256": "3442f0074f37de74a08d37fd19e7fe850917d2cbf4dc4515014b73ab6c737d78",
+    "members": 20,
+    "verified": true
+  },
+  "model_verification": {
+    "validated_model_sha256": "51816908db87067332b56b4c065c1b08edc9421026ed839641776e6e82002e0a",
+    "same_as_target_parity_model": true
+  }
+}
