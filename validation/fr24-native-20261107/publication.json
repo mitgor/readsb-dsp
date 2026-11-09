@@ -25,8 +25,8 @@
     "http_verified": true
   },
   "hourly-comparison.csv": {
-    "bytes": 9026,
-    "sha256": "78058fc144499267d3ebbd4deed7fbeef74dd3354debd56d7c0088679dc82b81",
+    "bytes": 8905,
+    "sha256": "c9351941220d758b2e7d96799fc916b76332333b66e42250c03834734f820c16",
     "http_verified": true
   }
 }
