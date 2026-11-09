@@ -1,0 +1,36 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Native async Pi test</title><style>body{font:17px/1.5 system-ui;max-width:1100px;margin:35px auto;padding:20px;background:#101b29;color:#e2ebf4}pre{white-space:pre-wrap;font:inherit}</style><pre># Native-speed Pi asynchronous relay test — SIC off in test only
+
+**The asynchronous SIC-off copy retained 319/319 matching-method extras at native RF speed in both runs, with zero duplicate extras. Production is unchanged, including its SIC switch.**
+
+| Test copy | CPU seconds per RF second | Median extra RF-age estimate | Median stock delay | Emitted per run |
+|---|---:|---:|---:|---|
+| Current synchronous + SIC control | 1.653 | 3.043s | 3030.6ms | 263 / 172 |
+| Synchronous, SIC off | 1.201 | 3.009s | 3003.7ms | 319 / 319 |
+| Asynchronous, SIC off | 1.372 | 0.154s | 9.6ms | 319 / 319 |
+
+CPU values are means of two runs; latency values are means of the two run medians. SIC-on latency covers emitted packets only.
+
+Asynchronous SIC-off reduced measured CPU by17.0% versus the SIC-on control. Disabling SIC alone saved27.3%. Asynchronous admission/dedup added14.2% versus the already-lighter synchronous SIC-off copy. 1.372 CPU seconds/RF second is about 137% of one core, or 34% of a four-core machine; this is the test pipeline, not total device utilization or watts.
+
+The frozen full-current-pipeline reference has 320 extras. SIC-off has 319: the one SIC-only packet was at a qualified causal stock-range estimate of50.1nm. Both asynchronous runs retained all 319, so the deliberate SIC tradeoff is one packet; no additional asynchronous loss was observed. There are zero qualified ≥180 nm extra opportunities in this RF fixture, so this does not demonstrate distant retention. The earlier 90-second live admitted-output check is a separate dataset.
+
+Asynchronous p95 extra RF-age estimates were0.855s and0.812s; maximum across runs1.567s. Stock hashes match in all completed runs. No duplicate extras or final extras matching captured stock were found.
+
+## Interpret the SIC-on control carefully
+
+The low-priority SIC-on shadow control decoded the full 320-reference set but emitted 263 and 172 before its 3-second admission deadlines. Those 57/148 copy deadline misses reflect this duplicate-work, resource-constrained replay. They do not establish packet loss in the unmodified, higher-priority production pipeline. SIC-off synchronous and asynchronous copies each emitted all 319 eligible extras in both runs. The input clock was 1× in every completed condition; no 12× dilation was used.
+
+## Correctness fix discovered at native speed
+
+The former completion tap could miss a future that became ready and was removed by normal grouping during the same pop call. The native test refused a grouping-parity assertion. The replacement snapshots pending future references, collects before and after normal grouping, and preserves raw seam events without pre-deduplication. It still publishes ready producers without waiting for slow unrelated futures. Two targeted regression tests cover this race and independent ready/slow futures. Original decoder grouping matches exactly in all six completed comparisons. No C/Rust decoder, neural model or admission threshold changed.
+
+## Conditions and preservation
+
+Three modes were tested twice on identical 16 captured RF windows with one known RF-copy gap excluded: sync+SIC, sync−SIC and async−SIC. Test topology mirrors production: two DSP workers on 2/3, coherent workers on 0/1. The isolated process uses nice 19, CPUWeight 10, a 200% Linux CPU ceiling across four cores and 1 GiB memory. Models/libraries/source/config identities were checked against the current receiver. Original readsb/FR24/DSP/relay/ADSBx/collector PIDs, gain 38.6 dB, sample-loss counters, configuration and 5 GB RF cap are protected.
+
+The first restrictive test and a test-tail/grouping race failure are preserved and excluded from the completed comparisons. During the repeated sequence FR24 briefly disconnected, causing the owned benchmark guard to stop its child. FR24 reconnected without a restart; the remaining conditions were rerun after reconnect. Evidence logs and numeric feeder events preserve this interruption; it is not silently counted as uninterrupted coverage. Only test copies had SIC disabled; production remains unchanged.
+
+CPU sums measured worker CPU, Stream1090 child CPU and coordinator CPU during native feed/drain; initialization and post-test reference audits are excluded. Stock context here is the captured valid DF17 stream, not every possible ModeS/control byte. Latency is a local replay RF-clock estimate with captured readiness alignment and scheduler quantization, not RF-to-cloud delivery. Repeated engineering RF is evaluation-only, never training labels.
+
+The result supports the lighter SIC-off asynchronous profile for a longer isolated trial. It does not authorize or perform production activation, prove FR24 backend acceptance, establish a distant range gain or measure electrical power.
+</pre>

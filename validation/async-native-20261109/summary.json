@@ -1,0 +1,132 @@
+{
+  "native_clock_scale": 1,
+  "rf_seconds_per_run": 16,
+  "rf_copy_gap_excluded": true,
+  "reused_engineering_RF": true,
+  "conditions": {
+    "sync_sic": {
+      "repeats": 2,
+      "full_matching_methods_reference": 320,
+      "emitted": [
+        263,
+        172
+      ],
+      "deadline_losses_vs_matching_methods": [
+        57,
+        148
+      ],
+      "duplicate_extras": [
+        0,
+        0
+      ],
+      "stock_bytes_retained": true,
+      "cpu_seconds_per_RF_second": 1.6533745107187507,
+      "cpu_range": [
+        1.6481199036250003,
+        1.658629117812501
+      ],
+      "median_extra_RF_age_s": 3.043283346442968,
+      "extra_p95_s": [
+        3.2030969830088907,
+        3.196142203953043
+      ],
+      "extra_max_s": 3.349515274067535,
+      "median_stock_delay_s": 3.0306290258886293,
+      "submission_lag_max_s": 2.0679005108196282,
+      "worker_cpu_seconds_per_RF_second": 1.0083801604062508,
+      "stream_cpu_seconds_per_RF_second": 0.146777375,
+      "coordinator_cpu_seconds_per_RF_second": 0.49821697531250003
+    },
+    "sync_no_sic": {
+      "repeats": 2,
+      "full_matching_methods_reference": 319,
+      "emitted": [
+        319,
+        319
+      ],
+      "deadline_losses_vs_matching_methods": [
+        0,
+        0
+      ],
+      "duplicate_extras": [
+        0,
+        0
+      ],
+      "stock_bytes_retained": true,
+      "cpu_seconds_per_RF_second": 1.2014226930937497,
+      "cpu_range": [
+        1.1852490112500003,
+        1.2175963749374992
+      ],
+      "median_extra_RF_age_s": 3.0086527234746963,
+      "extra_p95_s": [
+        3.0768276891359836,
+        3.072206242842748
+      ],
+      "extra_max_s": 3.176277189135984,
+      "median_stock_delay_s": 3.0036746344994754,
+      "submission_lag_max_s": 0.32864857781119644,
+      "worker_cpu_seconds_per_RF_second": 0.7832943153437497,
+      "stream_cpu_seconds_per_RF_second": 0.13783578124999998,
+      "coordinator_cpu_seconds_per_RF_second": 0.2802925965
+    },
+    "async_no_sic": {
+      "repeats": 2,
+      "full_matching_methods_reference": 319,
+      "emitted": [
+        319,
+        319
+      ],
+      "deadline_losses_vs_matching_methods": [
+        0,
+        0
+      ],
+      "duplicate_extras": [
+        0,
+        0
+      ],
+      "stock_bytes_retained": true,
+      "cpu_seconds_per_RF_second": 1.37238176821875,
+      "cpu_range": [
+        1.3666118953125,
+        1.378151641125
+      ],
+      "median_extra_RF_age_s": 0.15446539198947673,
+      "extra_p95_s": [
+        0.8554283467695374,
+        0.8120910177568454
+      ],
+      "extra_max_s": 1.5674810129956604,
+      "median_stock_delay_s": 0.009610800072550774,
+      "submission_lag_max_s": 0.26187136410176753,
+      "worker_cpu_seconds_per_RF_second": 0.79384792628125,
+      "stream_cpu_seconds_per_RF_second": 0.13967659375000002,
+      "coordinator_cpu_seconds_per_RF_second": 0.43885724818750005
+    }
+  },
+  "async_off_cpu_change_vs_sync_sic_percent": -16.995105505639387,
+  "disable_SIC_cpu_change_percent": -27.335114621340672,
+  "async_cpu_overhead_vs_sync_no_sic_percent": 14.229719157773557,
+  "intentional_SIC_only_packet_loss": 1,
+  "SIC_only_stock_range_estimate_nm": 50.06396949880296,
+  "qualified_far180_reference_extras": 0,
+  "production_changed": false,
+  "production_SIC_disabled": false,
+  "test_SIC_disabled": true,
+  "production_gain_db": 38.6,
+  "rf_cap_bytes": 5000000000,
+  "models_sources_configs_pids_unchanged": true,
+  "completion_race_fixed": true,
+  "completion_regression_tests_mac": 2,
+  "interruption": "A brief FR24 link disconnect stopped the repetition sequence; successful conditions were repeated after reconnect. No production restart or route/config change.",
+  "scope": "Native1x RF replay with exact copied production algorithms on Pi while original receiver remains live. Nice19, CPUWeight 10, max200%one-core-equivalents, four allowed cores,1GiB. Not isolated idle-hardware or RF-to-cloud latency evidence.",
+  "limitations": [
+    "Two repetitions on the same16RF windows; no new model fitting or prospective validation.",
+    "No qualified>=180nm extra opportunities in this fixture; no distant-reception claim.",
+    "SIC-on low-priority shadow control missed57/148deadlines under contention; this is not evidence the higher-priority working pipeline loses those packets. Compare frozen320reference and SIC-off 319 reference separately from timed shadow emissions.",
+    "CPU includes model workers, Stream1090 child and test coordinator during native feed/drain, excludes initialization and post-test reference audits. It is CPU time, not watts.",
+    "Stock timing/hashes cover captured CRC-valid DF17 context; prior live full-Beast byte-stream tests are separate.",
+    "Packet latency uses replay RF-clock mapping and scheduler cadence, not antenna-to-FR24 time.",
+    "SIC remains enabled in production to honor keeping production unchanged."
+  ]
+}
