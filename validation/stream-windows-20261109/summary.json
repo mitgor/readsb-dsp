@@ -1,0 +1,402 @@
+{
+  "valid_rf_seconds": 24,
+  "excluded": [],
+  "variants": {
+    "1000-strict": {
+      "core_ms": 1000,
+      "calibration": "strict",
+      "windows": 24,
+      "full_pipeline_extras": 403,
+      "stream_incremental_extras": 34,
+      "baseline_stream_incremental_extras": 34,
+      "lost_full_pipeline": 0,
+      "added_vs_current": 0,
+      "novel_vs_current_and_actual": 0,
+      "bins": {
+        "0-180": {
+          "stock": 2191,
+          "baseline_full": 324,
+          "full": 324,
+          "stream_only": 31
+        },
+        "180-200": {
+          "stock": 9,
+          "baseline_full": 10,
+          "full": 10,
+          "stream_only": 1
+        },
+        "unknown": {
+          "stock": 53,
+          "baseline_full": 65,
+          "full": 65,
+          "stream_only": 2
+        },
+        "200-250": {
+          "stock": 1,
+          "baseline_full": 4,
+          "full": 4
+        }
+      },
+      "child_cpu_s": 2.926770999999998,
+      "coordinator_cpu_s": 0.05497153599999921,
+      "failed_clips": 0,
+      "invocations": 24,
+      "stock_opportunities": 2254,
+      "far_stock_opportunities": 10,
+      "far_stock_aircraft": 3,
+      "far_stream_aircraft": 1,
+      "candidate_ready_latency": {
+        "n": 34,
+        "median_s": 0.7790061277151084,
+        "p95_s": 1.1689721427688697,
+        "max_s": 1.2058668927688698
+      },
+      "matched_packet_latency_saved": {
+        "n": 34,
+        "median_s": 0.0,
+        "p95_s": 0.0,
+        "max_s": 0.0
+      },
+      "child_cpu_per_rf_s": 0.12194879166666657,
+      "child_cpu_change_percent": 0.0
+    },
+    "500-strict": {
+      "core_ms": 500,
+      "calibration": "strict",
+      "windows": 24,
+      "full_pipeline_extras": 393,
+      "stream_incremental_extras": 24,
+      "baseline_stream_incremental_extras": 34,
+      "lost_full_pipeline": 10,
+      "added_vs_current": 0,
+      "novel_vs_current_and_actual": 0,
+      "bins": {
+        "0-180": {
+          "stock": 2191,
+          "baseline_full": 324,
+          "full": 316,
+          "lost": 8,
+          "stream_only": 23
+        },
+        "180-200": {
+          "stock": 9,
+          "baseline_full": 10,
+          "full": 10,
+          "stream_only": 1
+        },
+        "unknown": {
+          "stock": 53,
+          "baseline_full": 65,
+          "full": 63,
+          "lost": 2
+        },
+        "200-250": {
+          "stock": 1,
+          "baseline_full": 4,
+          "full": 4
+        }
+      },
+      "child_cpu_s": 3.006164000000001,
+      "coordinator_cpu_s": 0.05405238800000228,
+      "failed_clips": 8,
+      "invocations": 48,
+      "stock_opportunities": 2254,
+      "far_stock_opportunities": 10,
+      "far_stock_aircraft": 3,
+      "far_stream_aircraft": 1,
+      "candidate_ready_latency": {
+        "n": 24,
+        "median_s": 0.3669165016953846,
+        "p95_s": 0.5534812116831491,
+        "max_s": 0.5693420894704262
+      },
+      "matched_packet_latency_saved": {
+        "n": 24,
+        "median_s": 0.48337528482079506,
+        "p95_s": 0.7430570051074028,
+        "max_s": 0.7430570051074028
+      },
+      "child_cpu_per_rf_s": 0.12525683333333337,
+      "child_cpu_change_percent": 2.7126481709707884
+    },
+    "250-strict": {
+      "core_ms": 250,
+      "calibration": "strict",
+      "windows": 24,
+      "full_pipeline_extras": 380,
+      "stream_incremental_extras": 11,
+      "baseline_stream_incremental_extras": 34,
+      "lost_full_pipeline": 23,
+      "added_vs_current": 0,
+      "novel_vs_current_and_actual": 0,
+      "bins": {
+        "0-180": {
+          "stock": 2191,
+          "baseline_full": 324,
+          "full": 303,
+          "lost": 21,
+          "stream_only": 10
+        },
+        "180-200": {
+          "stock": 9,
+          "baseline_full": 10,
+          "full": 10,
+          "stream_only": 1
+        },
+        "unknown": {
+          "stock": 53,
+          "baseline_full": 65,
+          "full": 63,
+          "lost": 2
+        },
+        "200-250": {
+          "stock": 1,
+          "baseline_full": 4,
+          "full": 4
+        }
+      },
+      "child_cpu_s": 3.197363000000002,
+      "coordinator_cpu_s": 0.06592473199999926,
+      "failed_clips": 54,
+      "invocations": 96,
+      "stock_opportunities": 2254,
+      "far_stock_opportunities": 10,
+      "far_stock_aircraft": 3,
+      "far_stream_aircraft": 1,
+      "candidate_ready_latency": {
+        "n": 11,
+        "median_s": 0.17800403580080965,
+        "p95_s": 0.2673227287623534,
+        "max_s": 0.2673227287623534
+      },
+      "matched_packet_latency_saved": {
+        "n": 11,
+        "median_s": 0.7801462281495333,
+        "p95_s": 0.9577041179873049,
+        "max_s": 0.9577041179873049
+      },
+      "child_cpu_per_rf_s": 0.1332234583333334,
+      "child_cpu_change_percent": 9.245410727385384
+    },
+    "100-strict": {
+      "core_ms": 100,
+      "calibration": "strict",
+      "windows": 24,
+      "full_pipeline_extras": 369,
+      "stream_incremental_extras": 0,
+      "baseline_stream_incremental_extras": 34,
+      "lost_full_pipeline": 34,
+      "added_vs_current": 0,
+      "novel_vs_current_and_actual": 0,
+      "bins": {
+        "0-180": {
+          "stock": 2191,
+          "baseline_full": 324,
+          "full": 293,
+          "lost": 31
+        },
+        "180-200": {
+          "stock": 9,
+          "baseline_full": 10,
+          "full": 9,
+          "lost": 1
+        },
+        "unknown": {
+          "stock": 53,
+          "baseline_full": 65,
+          "full": 63,
+          "lost": 2
+        },
+        "200-250": {
+          "stock": 1,
+          "baseline_full": 4,
+          "full": 4
+        }
+      },
+      "child_cpu_s": 3.7279300000000006,
+      "coordinator_cpu_s": 0.12896258300000113,
+      "failed_clips": 240,
+      "invocations": 240,
+      "stock_opportunities": 2254,
+      "far_stock_opportunities": 10,
+      "far_stock_aircraft": 3,
+      "far_stream_aircraft": 0,
+      "candidate_ready_latency": {
+        "n": 0
+      },
+      "matched_packet_latency_saved": {
+        "n": 0
+      },
+      "child_cpu_per_rf_s": 0.1553304166666667,
+      "child_cpu_change_percent": 27.37347746031389
+    },
+    "100-rolling": {
+      "core_ms": 100,
+      "calibration": "rolling",
+      "windows": 24,
+      "full_pipeline_extras": 374,
+      "stream_incremental_extras": 5,
+      "baseline_stream_incremental_extras": 34,
+      "lost_full_pipeline": 29,
+      "added_vs_current": 0,
+      "novel_vs_current_and_actual": 0,
+      "bins": {
+        "0-180": {
+          "stock": 2191,
+          "baseline_full": 324,
+          "full": 297,
+          "lost": 27,
+          "stream_only": 4
+        },
+        "180-200": {
+          "stock": 9,
+          "baseline_full": 10,
+          "full": 10,
+          "stream_only": 1
+        },
+        "unknown": {
+          "stock": 53,
+          "baseline_full": 65,
+          "full": 63,
+          "lost": 2
+        },
+        "200-250": {
+          "stock": 1,
+          "baseline_full": 4,
+          "full": 4
+        }
+      },
+      "child_cpu_s": 3.7279300000000006,
+      "coordinator_cpu_s": 0.12896258300000113,
+      "failed_clips": 70,
+      "invocations": 240,
+      "stock_opportunities": 2254,
+      "far_stock_opportunities": 10,
+      "far_stock_aircraft": 3,
+      "far_stream_aircraft": 1,
+      "candidate_ready_latency": {
+        "n": 5,
+        "median_s": 0.03626503565519551,
+        "p95_s": 0.09686098562362289,
+        "max_s": 0.09686098562362289
+      },
+      "matched_packet_latency_saved": {
+        "n": 5,
+        "median_s": 0.9499287416893194,
+        "p95_s": 1.1327071071136743,
+        "max_s": 1.1327071071136743
+      },
+      "child_cpu_per_rf_s": 0.1553304166666667,
+      "child_cpu_change_percent": 27.37347746031389
+    }
+  },
+  "cost_all_RF": {
+    "1000": {
+      "stream_child_cpu_s": 2.9267709999999987,
+      "stream_child_cpu_per_rf_s": 0.12194879166666661,
+      "stream_cpu_change_percent": 0.0,
+      "decoder_kernel_bundle_cpu_per_rf_s": 0.7668452180416664,
+      "decoder_kernel_bundle_cpu_change_percent": 0.0
+    },
+    "500": {
+      "stream_child_cpu_s": 3.006164000000002,
+      "stream_child_cpu_per_rf_s": 0.1252568333333334,
+      "stream_cpu_change_percent": 2.7126481709707884,
+      "decoder_kernel_bundle_cpu_per_rf_s": 0.7701532597083331,
+      "decoder_kernel_bundle_cpu_change_percent": 0.43138322947553487
+    },
+    "250": {
+      "stream_child_cpu_s": 3.1973630000000015,
+      "stream_child_cpu_per_rf_s": 0.1332234583333334,
+      "stream_cpu_change_percent": 9.24541072738534,
+      "decoder_kernel_bundle_cpu_per_rf_s": 0.7781198847083332,
+      "decoder_kernel_bundle_cpu_change_percent": 1.4702662807834388
+    },
+    "100": {
+      "stream_child_cpu_s": 3.7279300000000006,
+      "stream_child_cpu_per_rf_s": 0.1553304166666667,
+      "stream_cpu_change_percent": 27.373477460313843,
+      "decoder_kernel_bundle_cpu_per_rf_s": 0.8002268430416665,
+      "decoder_kernel_bundle_cpu_change_percent": 4.353111190449677
+    }
+  },
+  "latency_scope": "Stream candidate-ready RF age, not final admission/relay/cloud; actual replay wall under target cgroup when paced; CPU-based FIFO estimate on Mac. Historical stock arrival times unavailable; stock clock assumed available at window close.",
+  "native_clock": true,
+  "notes": [
+    "Historical consumed evaluation RF, not prospective range evidence.",
+    "Current complete enabled native/Rust/neural/pulse/sequence/acquisition union recomputed on copied target workers. SIC/header off; Broad CRC quarantined.",
+    "Stock and historical actual-unified records mask discoveries; accepted historical ledger exists for v4 subset only.",
+    "Candidate-ready latency covers Stream computation/calibration, not final admission/transport/cloud; stock arrival times are not saved.",
+    "Core/halo seams owned once, CRC/prior-stock/conflict/alignment guards retained. Rolling offset minimum10/MAD360, 1s memory; final energy alignment20/2us unchanged."
+  ],
+  "production_unchanged": true,
+  "protected_state_unchanged": true,
+  "mac_pi_packet_timestamp_parity": {
+    "1000-strict": {
+      "mac_packets": 111,
+      "pi_packets": 111,
+      "mac_only": 0,
+      "pi_only": 0,
+      "max_timestamp_delta_ticks": 0
+    },
+    "1000-rolling": {
+      "mac_packets": 111,
+      "pi_packets": 111,
+      "mac_only": 0,
+      "pi_only": 0,
+      "max_timestamp_delta_ticks": 0
+    },
+    "500-strict": {
+      "mac_packets": 65,
+      "pi_packets": 65,
+      "mac_only": 0,
+      "pi_only": 0,
+      "max_timestamp_delta_ticks": 0
+    },
+    "500-rolling": {
+      "mac_packets": 69,
+      "pi_packets": 69,
+      "mac_only": 0,
+      "pi_only": 0,
+      "max_timestamp_delta_ticks": 0
+    },
+    "250-strict": {
+      "mac_packets": 32,
+      "pi_packets": 32,
+      "mac_only": 0,
+      "pi_only": 0,
+      "max_timestamp_delta_ticks": 0
+    },
+    "250-rolling": {
+      "mac_packets": 37,
+      "pi_packets": 37,
+      "mac_only": 0,
+      "pi_only": 0,
+      "max_timestamp_delta_ticks": 0
+    },
+    "100-strict": {
+      "mac_packets": 0,
+      "pi_packets": 0,
+      "mac_only": 0,
+      "pi_only": 0,
+      "max_timestamp_delta_ticks": 0
+    },
+    "100-rolling": {
+      "mac_packets": 14,
+      "pi_packets": 14,
+      "mac_only": 0,
+      "pi_only": 0,
+      "max_timestamp_delta_ticks": 0
+    }
+  },
+  "recommendation": "Keep one-second process windows; test a persistent stateful Stream1090 worker with smaller I/O chunks next, preserving trust/filter state and existing guards.",
+  "memory_limit_note": "CPUQuota35%, core3, nice19 and finite runtime used. MemoryMax1G requested, but receiver kernel does not expose the memory controller; not an enforced RSS cap. RF dataset finite and protected health remained unchanged.",
+  "unique_anchor_followup": {
+    "changed_packet_sets": 0,
+    "mac_pi_bytes_and_ticks_equal": true,
+    "minimum_matches": 10,
+    "distinct_stock_anchor_count": true,
+    "decoder_parameters_changed": false,
+    "clock_thresholds_changed": false
+  }
+}

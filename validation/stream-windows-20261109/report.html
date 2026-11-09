@@ -1,0 +1,49 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Stream1090 window comparison</title><style>body{font:17px/1.5 system-ui;max-width:1100px;margin:30px auto;padding:20px;background:#101b29;color:#e2ebf4}pre{white-space:pre-wrap;font:inherit}</style><pre># Smaller Stream1090 RF windows — Pi comparison
+
+**Shorter independent decoder processes reduce candidate-ready delay but lose unique packets and use more CPU. Keep the working one-second version. Production is unchanged.**
+
+The same 24 historical RF seconds were decoded on Mac and Pi. All Stream1090 packet bytes and timestamps match exactly across architectures for every tested variant. The full currently enabled DSP/neural union was recomputed on the Pi with copies of its actual native/Rust libraries, three neural models, method and worker configuration. SIC/header remain off; Broad CRC remains quarantined. Stock, historical actual relay and available accepted-production records mask discoveries.
+
+| RF core / calibration | Stream-only extras beyond other current methods | Lost from full current union | New beyond current | Median candidate-ready age | Stream CPU change |
+|---|---:|---:|---:|---:|---:|
+| 1,000 ms / current | 34 | 0 | 0 | 779 ms | +0.0% |
+| 500 ms / strict | 24 | 10 | 0 | 367 ms | +2.7% |
+| 250 ms / strict | 11 | 23 | 0 | 178 ms | +9.2% |
+| 100 ms / strict | 0 | 34 | 0 | No retained extras | +27.4% |
+| 100 ms / rolling | 5 | 29 | 0 | 36 ms | +27.4% |
+
+The current complete DSP union has 403 extras; 34 depend uniquely on Stream1090. With the best shortened policies, the union falls to 393 (500 ms), 380 (250 ms) and 374 (rolling 100 ms). There are no new packets beyond either the recomputed current union or recorded actual output. The shorter variants retain 24/34, 11/34 and 5/34 Stream-only extras respectively. Losses refer to replacement by the shortened version, after every other enabled method has a chance to cover the packet. Stock output itself is not replaced or lost.
+
+Latency values are measured **Stream1090 candidate-ready RF age**, under the isolated Pi replay quota—not final admission, relay or FR24 cloud latency. Inputs are paced at native RF speed. Recorded stock arrival wall times are unavailable, so alignment stock context is assumed available at clip close. Medians are conditional on surviving extras; low latency obtained by discarding packets is not a throughput improvement. For the same retained packets, median saved time was 483 ms at 500 ms, 780 ms at 250 ms and 950 ms at rolling 100 ms. The rolling-100-ms latency sample contains only five Stream-only packets.
+
+## CPU cost
+
+| RF core | Stream child CPU s / RF s | Change | Full decoder-kernel bundle CPU change |
+|---|---:|---:|---:|
+| 1000 ms | 0.122 | +0.0% | +0.0% |
+| 500 ms | 0.125 | +2.7% | +0.4% |
+| 250 ms | 0.133 | +9.2% | +1.5% |
+| 100 ms | 0.155 | +27.4% | +4.4% |
+
+Bundle estimate combines the identical ring-worker CPU with each Stream1090 child CPU cost; it excludes live relay/capture/control/coordinator overhead and is not a whole-device power measurement. Child CPU includes process startup and all failed/unaligned clips. Strict and rolling policies reuse the exact same decodes, so child CPU is identical. The initial target pass counterbalanced window order across RF cases. The 100-ms condition was repeated after a distinct-anchor calibration audit; final 100-ms timing/CPU values use that repeat. All packet bytes/times stayed unchanged on Mac and Pi. No precision or statistical significance claim for the small 500-ms CPU difference.
+
+## Beyond 180 nm
+
+This corpus has only **10 quality-gated distant stock packets from three aircraft**, and **one uniquely contributing Stream1090 packet beyond 180 nm**. All current methods together contribute 14 distant extras. The 500 ms, 250 ms and rolling 100 ms versions retain that single Stream-only distant packet; strict 100 ms loses it. No new distant packets were recovered. This is insufficient to claim distant reception parity or improvement. Distance uses causal stock positions (NIC/NACp &gt;=5, no MLAT/TIS-B, age &lt;=15 seconds), not independently surveyed ground truth.
+
+## Why smaller processes lose packets
+
+Each process starts with fresh decoder state. Stream1090 source confirms that new aircraft trust requires repeated independent receptions; shortening the process lifetime discards that history more frequently. Short clips also have fewer identical stock frames for clock calibration: all 240 strict 100-ms clips failed the existing ten-match requirement. A bounded rolling one-second calibration improves raw non-stock 100-ms output from zero to 14 packets, but only five are unique beyond the other current DSP methods. It does not restore decoder trust/filter history. The existing 600-sample halo is retained, and each core owns its packets once; boundary/startup effects are included in the replacement losses. We did not weaken CRC, trust, prior-stock, conflict or final energy alignment policy.
+
+The rolling variant is an isolated experiment: at least ten distinct shared stock transmissions in the trailing RF second, deduplicated across overlapping halos before counting, MAD &lt;=360 ticks and rejection of disagreeing clips; final stock/energy alignment still requires 20 matches and median error &lt;=2 microseconds. No cached constant offset or prior aircraft address is used to manufacture a packet.
+
+## Scope, safety and next step
+
+The dataset was selected by recorded stock/range before variant decoding. Four older RF seconds with distant stock, eight nearby controls and twelve previously closed distant-triggered evaluation windows were used. Existing evaluation reservations and training exclusions remain intact. These are consumed historical engineering recordings, not new prospective evidence. The first Pi launcher ran before staging completed and performed no benchmark; its failure log is preserved and excluded. A local result-analysis pass was stopped and rerun after indexing range lookup; no detector parameters or decoder outputs changed. A follow-up corrected the rolling anchor-count implementation to ensure that halo overlap cannot count one stock transmission twice; replays on both platforms produced identical packet sets and timestamps. No match-count or MAD threshold was lowered.
+
+Target runs used copied inputs/sources/models in owned executable tmpfs, nice19, core3, CPUQuota35%, finite runtime and protected receiver/feeder health checks. MemoryMax1G was requested, but this kernel does not expose the memory controller; it was not an enforced RSS limit. All observed production PIDs, configuration/model/source hashes, gain, sample-loss counters and RF cap matched before/after. No SDR or live mirror was opened, no output was injected, no receiver services restarted and no recorder flush or archive deletion occurred. Four calibration unit tests passed on Mac, including repeated-anchor rejection; every Mac/Pi output timestamp and payload matched exactly.
+
+**Next experiment:** keep a persistent Stream1090 decoder and deliver smaller I/O chunks, preserving its internal aircraft trust and filter state. Verify output flushing, exact sample-clock mapping, gaps/restarts and the same safety gates. This has not been implemented or validated here, and no live changes are recommended from the short-process result.
+
+Private source/RF/result evidence is checksum-verified and durably saved on the Mac. Packet payloads, receiver positions and raw RF are not published.
+</pre>
