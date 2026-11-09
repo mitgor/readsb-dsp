@@ -1,0 +1,48 @@
+{
+  "production_asynchronous": true,
+  "SIC_enabled": false,
+  "stock_holdback_s": 0,
+  "dedup_history_s": 5,
+  "max_extra_age_s": 3,
+  "fr24_connected": true,
+  "receiver_feeder_collector_adsbx_pids_unchanged": true,
+  "automatic_rollback_enabled": true,
+  "RF_cap_bytes": 5000000000,
+  "observation": {
+    "observed_seconds": 75.14508226816542,
+    "comparison_edge_seconds_excluded": 5,
+    "stock_records": 35884,
+    "stock_missing": 0,
+    "unique_extra_records": 1321,
+    "duplicate_extras": 0,
+    "extras_matching_stock_within_120us": 0,
+    "stock_socket_arrival_delta_median_s": 0.0012894514948129654,
+    "stock_socket_arrival_delta_p95_s": 0.015103165060281754,
+    "cpu_core_equivalents": {
+      "readsb": 0.054452598579873744,
+      "fr24feed": 0.00661346005619501,
+      "adsb-far-capture": 0.10488414893038107,
+      "adsb-rescue-shadow": 1.3693387896335076,
+      "adsb-rescue-feed": 0.23787428878193706,
+      "adsbexchange-feed": 0.005934826159461571
+    },
+    "sample_loss_before": 262144,
+    "sample_loss_after": 262144
+  },
+  "guard_processing_s": 1.5490140481851995,
+  "tests": {
+    "glue_mac": 9,
+    "glue_pi": 9,
+    "completion_mac": 2,
+    "completion_pi": 2,
+    "rollback_mac": 2,
+    "recorded_native_extra_parity": "319/319"
+  },
+  "limitations": [
+    "Short live transport/health check; no FR24 cloud-credit or distant-reception comparison.",
+    "Five seconds excluded at each observation edge; extra packet total applies to that interior interval.",
+    "Socket arrival delta includes local observer scheduling and can be negative for individual packets; not antenna-to-cloud latency.",
+    "Startup expired 46 unaligned pending batches; count remained stable after startup. One legacy grouped outbox message was rejected during cutover.",
+    "Activation briefly reconnected relay consumers and restarted only the relay and DSP coordinator."
+  ]
+}
