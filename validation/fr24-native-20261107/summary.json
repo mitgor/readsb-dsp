@@ -1,31 +1,301 @@
 {
+  "review_utc": "2026-11-09T13:25:01.472151+00:00",
   "active_attempt": "v4",
-  "fr24_version": "1.0.57-1",
-  "stock_decoder_version": "1.15~20180310.4a16df3+dfsg-8.1",
-  "verified_current_official_stable": true,
-  "gain_db": 38.6,
-  "gain_hardware_report": "Gain reported by device:38.60dB",
-  "measurement_start_unix": 1794052800,
-  "deadline_unix": 1794225600,
-  "paused_process_ids_preserved": {
+  "result": "aborted_early_and_restored",
+  "planned_hours": 48,
+  "actual_measurement_hours": 35.008323718309406,
+  "measurement_start_utc": "2026-11-07T12:00:00+00:00",
+  "health_rollback_utc": "2026-11-08T23:00:29.965386+00:00",
+  "restored_utc": "2026-11-08T23:00:40.943807+00:00",
+  "health_failure": "AssertionError('FR24 link/receiver disconnected')",
+  "nominal_complete_native_hours": 35,
+  "conservative_chart_hours": 34,
+  "missing_planned_hours": 13,
+  "cloud_data_available": true,
+  "cloud_daily_sum_checks": 10,
+  "restoration_files_verified": 14,
+  "all_original_files_match": true,
+  "original_shadow_and_capture_pids_preserved": {
     "adsb-rescue-shadow": true,
     "adsb-far-capture": true
   },
-  "paused_in_ram": [
-    "DSP shadow and worker cgroup",
-    "Far RF collection"
+  "services": {
+    "readsb": "MainPID=1012276\nActiveState=active\nFreezerState=running",
+    "fr24feed": "MainPID=1013359\nActiveState=active\nFreezerState=running",
+    "adsb-rescue-shadow": "MainPID=2242783\nActiveState=active\nFreezerState=running",
+    "adsb-rescue-feed": "MainPID=1622165\nActiveState=active\nFreezerState=running",
+    "adsb-far-capture": "MainPID=2191342\nActiveState=active\nFreezerState=running",
+    "adsbexchange-feed": "MainPID=1235929\nActiveState=active\nFreezerState=running",
+    "adsb-rescue-feed-guard.timer": "ActiveState=active\nFreezerState=running",
+    "adsb-unified-graphs.timer": "ActiveState=active\nFreezerState=running"
+  },
+  "fr24_connected": true,
+  "rf_cap_bytes": 5000000000,
+  "capture_error": null,
+  "gain_db": 38.6,
+  "native_source_sha256": "6a7bab4988d856696c712b6e7d2948ceaeed02da254e9546138a3b25383fbda8",
+  "native_source_matches_canonical": true,
+  "health_samples": 2068,
+  "max_sample_gap_seconds": 61.07440757751465,
+  "single_decoder_pid": true,
+  "native_last_counters": {
+    "messages": 51882134,
+    "local": {
+      "samples_processed": 303262990336,
+      "samples_dropped": 0,
+      "modeac": 0,
+      "modes": 1694842778,
+      "bad": 1013960922,
+      "unknown_icao": 628999722,
+      "accepted": [
+        51882134
+      ],
+      "signal": -9.3,
+      "noise": -26.4,
+      "peak_signal": -0.5,
+      "strong_signals": 3496159
+    },
+    "cpr": {
+      "surface": 2,
+      "airborne": 3735186,
+      "global_ok": 3647427,
+      "global_bad": 190,
+      "global_range": 81,
+      "global_speed": 28,
+      "global_skipped": 4320,
+      "local_ok": 66340,
+      "local_aircraft_relative": 0,
+      "local_receiver_relative": 0,
+      "local_skipped": 21231,
+      "local_range": 5,
+      "local_speed": 2,
+      "filtered": 0
+    },
+    "tracks": {
+      "all": 5251,
+      "single_message": 411
+    },
+    "cpu": {
+      "demod": 4531529,
+      "reader": 668662,
+      "background": 98413
+    }
+  },
+  "native_first_counters": {
+    "messages": 213006,
+    "local": {
+      "samples_processed": 1152122880,
+      "samples_dropped": 0,
+      "modeac": 0,
+      "modes": 6112127,
+      "bad": 3629170,
+      "unknown_icao": 2269951,
+      "accepted": [
+        213006
+      ],
+      "signal": -11.4,
+      "noise": -28.1,
+      "peak_signal": -1.0,
+      "strong_signals": 4951
+    },
+    "cpr": {
+      "surface": 0,
+      "airborne": 14628,
+      "global_ok": 14304,
+      "global_bad": 0,
+      "global_range": 0,
+      "global_speed": 0,
+      "global_skipped": 16,
+      "local_ok": 188,
+      "local_aircraft_relative": 0,
+      "local_receiver_relative": 0,
+      "local_skipped": 136,
+      "local_range": 0,
+      "local_speed": 0,
+      "filtered": 0
+    },
+    "tracks": {
+      "all": 81,
+      "single_message": 4
+    },
+    "cpu": {
+      "demod": 17610,
+      "reader": 2529,
+      "background": 384
+    }
+  },
+  "native_counter_bounds_utc": [
+    "2026-11-07T12:01:21.908434+00:00",
+    "2026-11-08T22:59:28.935915+00:00"
   ],
-  "raw_rf_capture_during_native_test": false,
-  "rf_disk_cap_unchanged_bytes": 5000000000,
-  "fr24_mode": "dvbt",
-  "dsp_extras_to_fr24": false,
-  "automatic_restore": true,
-  "independent_safety_delay_seconds": 600,
-  "review_scheduled": "2026-11-09T13:20:00+01:00",
+  "uploader": {
+    "send_log_events": 4182,
+    "median_interval_seconds": 30.0375759601593,
+    "p95_interval_seconds": 30.14734387397766,
+    "max_interval_seconds": 118.0758957862854,
+    "gaps_over45_seconds": 4,
+    "stream_timeouts": {
+      "count": 15,
+      "utc": [
+        "2026-11-07T20:51:17.857367+00:00",
+        "2026-11-07T20:51:47.895147+00:00",
+        "2026-11-07T21:53:22.841083+00:00",
+        "2026-11-07T22:51:59.259991+00:00",
+        "2026-11-08T01:49:55.012446+00:00",
+        "2026-11-08T01:50:25.048022+00:00",
+        "2026-11-08T04:10:50.164231+00:00",
+        "2026-11-08T04:11:20.257867+00:00",
+        "2026-11-08T04:57:55.540778+00:00",
+        "2026-11-08T05:35:02.214973+00:00",
+        "2026-11-08T08:30:45.302168+00:00",
+        "2026-11-08T08:31:15.343261+00:00",
+        "2026-11-08T09:16:56.921114+00:00",
+        "2026-11-08T09:20:57.224305+00:00",
+        "2026-11-08T23:00:01.099464+00:00"
+      ]
+    },
+    "disconnects": {
+      "count": 5,
+      "utc": [
+        "2026-11-07T21:53:23.841315+00:00",
+        "2026-11-08T01:50:26.048161+00:00",
+        "2026-11-08T04:57:56.540922+00:00",
+        "2026-11-08T08:31:16.343340+00:00",
+        "2026-11-08T23:00:02.099555+00:00"
+      ]
+    },
+    "overlap_filter_events": {
+      "count": 2077,
+      "utc": null
+    },
+    "sync_success": {
+      "count": 4162,
+      "utc": null
+    }
+  },
+  "comparisons": [
+    {
+      "baseline_date": "2026-11-05",
+      "hours": 35,
+      "conservative": false,
+      "hits": {
+        "trial": 1178517,
+        "baseline_same_hour_weighted": 924230,
+        "change_percent": 27.513389524252617
+      },
+      "positions": {
+        "trial": 147702,
+        "baseline_same_hour_weighted": 149991,
+        "change_percent": -1.5260915654939256
+      },
+      "rrd_accepted": {
+        "trial": 51696821,
+        "baseline": 62424174,
+        "trial_coverage_seconds": 126000.0,
+        "baseline_coverage_seconds": 126000.0
+      },
+      "rrd_positions": {
+        "trial": 3701187,
+        "baseline": 4534230,
+        "trial_coverage_seconds": 126000.0,
+        "baseline_coverage_seconds": 126000.0
+      }
+    },
+    {
+      "baseline_date": "2026-11-05",
+      "hours": 34,
+      "conservative": true,
+      "hits": {
+        "trial": 1149173,
+        "baseline_same_hour_weighted": 884369,
+        "change_percent": 29.942704911637552
+      },
+      "positions": {
+        "trial": 142983,
+        "baseline_same_hour_weighted": 143660,
+        "change_percent": -0.47125156619797215
+      },
+      "rrd_accepted": {
+        "trial": 49687141,
+        "baseline": 60015980,
+        "trial_coverage_seconds": 122400.0,
+        "baseline_coverage_seconds": 122400.0
+      },
+      "rrd_positions": {
+        "trial": 3554954,
+        "baseline": 4350242,
+        "trial_coverage_seconds": 122400.0,
+        "baseline_coverage_seconds": 122400.0
+      }
+    },
+    {
+      "baseline_date": "2026-11-06",
+      "hours": 35,
+      "conservative": false,
+      "hits": {
+        "trial": 1178517,
+        "baseline_same_hour_weighted": 1511046,
+        "change_percent": -22.006543811373046
+      },
+      "positions": {
+        "trial": 147702,
+        "baseline_same_hour_weighted": 173589,
+        "change_percent": -14.91281129564661
+      },
+      "rrd_accepted": {
+        "trial": 51696821,
+        "baseline": 65844318,
+        "trial_coverage_seconds": 126000.0,
+        "baseline_coverage_seconds": 126000.0
+      },
+      "rrd_positions": {
+        "trial": 3701187,
+        "baseline": 5008205,
+        "trial_coverage_seconds": 126000.0,
+        "baseline_coverage_seconds": 126000.0
+      }
+    },
+    {
+      "baseline_date": "2026-11-06",
+      "hours": 34,
+      "conservative": true,
+      "hits": {
+        "trial": 1149173,
+        "baseline_same_hour_weighted": 1449086,
+        "change_percent": -20.69670123098284
+      },
+      "positions": {
+        "trial": 142983,
+        "baseline_same_hour_weighted": 166768,
+        "change_percent": -14.262328504269405
+      },
+      "rrd_accepted": {
+        "trial": 49687141,
+        "baseline": 62933879,
+        "trial_coverage_seconds": 122400.0,
+        "baseline_coverage_seconds": 122400.0
+      },
+      "rrd_positions": {
+        "trial": 3554954,
+        "baseline": 4785206,
+        "trial_coverage_seconds": 122400.0,
+        "baseline_coverage_seconds": 122400.0
+      }
+    }
+  ],
+  "evidence": {
+    "bytes": 2025532,
+    "sha256": "91799037578672217b9568604a3c6a9e07c33d2006563d0396bcd37dae82c96b",
+    "members_verified": 21
+  },
   "limitations": [
-    "No FR24 cloud improvement result yet",
-    "Stock decoder differs in demodulation, transport and sample-clock handling; test is not an algorithm-only controlled comparison",
-    "Failed startup attempts excluded from measurement, preserved privately",
-    "Frozen RAM buffers depend on receiver power remaining on; no forced flush was requested"
+    "Trial ended after35h on a feeder stream timeout; not a complete48h condition.",
+    "Native FR24/dump1090 demodulation and transport differ from readsb, so this is not a pure DSP on/off comparison.",
+    "Daily and matched-hour comparisons are observational; traffic/weather/weekend and receiver protocol differ.",
+    "Local message/CPR counters are not cloud credit or a packet-delivery denominator.",
+    "Chart UTC label start/end convention is unresolved; conservative analysis excludes first transition-adjacent label.",
+    "Minute health checks cannot exclude sub-minute connection loss; journal has15 stream timeouts and5 disconnections.",
+    "November8 23:00 and all November9 labels are not native exposure. November9 is partial.",
+    "Earlier60h readsb-stock trial aborted on October31 and is not complete."
   ]
 }

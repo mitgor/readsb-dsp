@@ -1,0 +1,16 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Native FR24 test</title><main style="max-width:1000px;margin:3em auto;padding:20px;font:18px/1.6 system-ui"><pre style="white-space:pre-wrap"># Native FR24 receiver test — active
+
+The latest official stable ARM64 FR24 package was verified as1.0.57-1. The receiver now runs in FR24 DVB-T mode with its official-selected dump1090-mutability decoder. Hardware gain is confirmed38.60dB, matching the previous fixed38.6dB setting. Device0, PPM0, receiver location and450nm local range limit are preserved.
+
+The48-hour measurement runs **7 November13:00 to9 November13:00Europe/Berlin** (12:00UTC). Automatic restoration returns the original readsb/combined DSP setup. An independent safety timer runs ten minutes later; a health monitor can restore earlier if the stock setup fails. Review is scheduled for9 November13:20Berlin.
+
+FR24 is connected and receiving stock packets directly from its decoder. Readsb is stopped. DSP/raw-RF capture are paused in frozen processes so existing RAM buffers are retained; no new training RF is collected during this test. The5GB RF cap and saved archives are preserved. Relay/other feeder stock forwarding and the existing map JSON endpoint continue.
+
+**No conclusion about hits/positions improvement yet.** Compare complete FR24 cloud hours against prior matching-hour traffic, accounting for cadence/filtering and decoder/transport differences. The earlier planned60-hour readsb-stock test actually aborted on31October and must not be treated as complete.
+
+The successful active attempt isv4. Earlier startup/argument/stale-log failures were rolled back and excluded from measurement; sources, exact configs and attempt logs are privately preserved. The tuner gain and exclusive stock USB ownership were checked after successful activation. Six local tests pass, including restore ordering, preserved config/gain and the stale-log regression.
+
+Private rollback command on the Pi:
+
+sudo python3 /var/lib/adsb-fr24-native-20261107-v4/trial.py --restore
+</pre></main>

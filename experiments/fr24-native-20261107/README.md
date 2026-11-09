@@ -1,6 +1,16 @@
 # Official FR24 DVB-T comparison — 7 November 2026
 
-Current active attempt: **v4**. The official ARM64 stable apt repository was
+**Closed review (9 November): v4 ended early after35.008 measurement hours,
+on8 November23:00UTC, when an FR24 stream timeout triggered automatic
+restoration. Original config paths, receiver, feeders and thawed capture/DSP
+processes are verified restored. This is not a completed48-hour trial.**
+
+See `validation/fr24-native-20261107/review-report.md`, `review-summary.json`
+and `hourly-comparison.csv`; reproduce with `review-20261109/analyze.py` using
+the checksum-backed private incident evidence. The earlier activation
+description follows as historical context.
+
+Successful attempt: **v4**. The official ARM64 stable apt repository was
 refreshed successfully and offered FR24 1.0.57-1, already installed. FR24's normal
 DVB-T launcher selects installed dump1090-mutability 1.15; no newer alternative
 was substituted for the official stock baseline.

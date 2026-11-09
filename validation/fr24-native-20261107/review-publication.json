@@ -1,0 +1,32 @@
+{
+  "report.html": {
+    "bytes": 6523,
+    "sha256": "fe55c8fb23128bfdd54ebd5c9a7992e7b1e5349e60dcb805692d4e99be196f48",
+    "http_verified": true
+  },
+  "review-report.md": {
+    "bytes": 5550,
+    "sha256": "b3eaf56b1bb6cd511ed581dc925bae8af9993fcbefdf0f88968522f964b6532d",
+    "http_verified": true
+  },
+  "review-summary.json": {
+    "bytes": 9215,
+    "sha256": "54e91b1cedada0a1d9ee0788486ff1f9feaf893ee901e4c3d631f05465b05f95",
+    "http_verified": true
+  },
+  "cloud-hourly.json": {
+    "bytes": 4990,
+    "sha256": "30cebdee57b1e3a0246da6d7d4fc5fd37927151ff9f2f0c0a2fc1aa84e5ad67c",
+    "http_verified": true
+  },
+  "hourly-comparison.json": {
+    "bytes": 64643,
+    "sha256": "9a9a90129d93e6f946ff1d518b65a389682dd9dc069435d406e60300693ce047",
+    "http_verified": true
+  },
+  "hourly-comparison.csv": {
+    "bytes": 9026,
+    "sha256": "78058fc144499267d3ebbd4deed7fbeef74dd3354debd56d7c0088679dc82b81",
+    "http_verified": true
+  }
+}

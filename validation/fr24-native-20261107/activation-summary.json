@@ -1,0 +1,31 @@
+{
+  "active_attempt": "v4",
+  "fr24_version": "1.0.57-1",
+  "stock_decoder_version": "1.15~20180310.4a16df3+dfsg-8.1",
+  "verified_current_official_stable": true,
+  "gain_db": 38.6,
+  "gain_hardware_report": "Gain reported by device:38.60dB",
+  "measurement_start_unix": 1794052800,
+  "deadline_unix": 1794225600,
+  "paused_process_ids_preserved": {
+    "adsb-rescue-shadow": true,
+    "adsb-far-capture": true
+  },
+  "paused_in_ram": [
+    "DSP shadow and worker cgroup",
+    "Far RF collection"
+  ],
+  "raw_rf_capture_during_native_test": false,
+  "rf_disk_cap_unchanged_bytes": 5000000000,
+  "fr24_mode": "dvbt",
+  "dsp_extras_to_fr24": false,
+  "automatic_restore": true,
+  "independent_safety_delay_seconds": 600,
+  "review_scheduled": "2026-11-09T13:20:00+01:00",
+  "limitations": [
+    "No FR24 cloud improvement result yet",
+    "Stock decoder differs in demodulation, transport and sample-clock handling; test is not an algorithm-only controlled comparison",
+    "Failed startup attempts excluded from measurement, preserved privately",
+    "Frozen RAM buffers depend on receiver power remaining on; no forced flush was requested"
+  ]
+}
