@@ -1,0 +1,37 @@
+# Incremental Stream1090 live activation
+
+10 November 2026, Europe/Berlin. The optimized incremental path is active on the
+Pi. It consumes the existing copied IQ and DSP energy completions. The original
+full-window path and executable fallback remain available. The independent guard
+is active with zero bad checks at the recorded verification.
+
+The final isolated Pi gate retained all 79 energy/Stream1090 extras
+and matched all 210 transmissions in the complete recorded
+reference, with disabled-config fallback and incomplete-window retirement tested.
+The first live attempt reverted automatically when a partially completed startup
+window pinned the early queue. The corrected path retires old early contexts
+without preventing complete grouped processing or its executable fallback.
+
+During the successful 90-second observation, protected readsb,
+FR24, relay, ADS-B Exchange and recorder PIDs stayed unchanged. The coordinator
+restarted to load the new source. Primary sample-loss/drop counters were unchanged.
+The copied RF tap reported 5,614,848 gap samples (2.34 RF seconds) across
+handover and observation, so the recorder handover was not gapless. The 5 GB
+capture cap and existing archives were preserved.
+
+At the end of observation the new branch had processed 100 RF
+seconds and 2089 shared energy blocks without a decoder
+error. It published 240 validated early candidates
+(140 energy, 100 Stream1090). These are
+outbox counts; the relay continues its independent checks and deduplication.
+Across the observation the relay forwarded 645 DSP frames
+and 323,218 stock bytes. FR24 was connected and sending.
+
+The existing ordered relay still has a three-second holdback. The earlier test
+socket timing is not a measurement of FR24 delivery after this activation. No
+other DSP switches, models, gain, route, relay or feeder configuration changed.
+
+Manual rollback: `sudo /usr/local/sbin/adsb-stream1090-lowlatency-mode rollback --reason manual`.
+The original coordinator and private evidence are checksum-backed. The guard
+can disable the branch and restore the original coordinator without restarting
+healthy feeders or the recorder.

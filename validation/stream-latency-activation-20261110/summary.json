@@ -1,0 +1,32 @@
+{
+  "active": true,
+  "backend": "incremental_native",
+  "observed_seconds": 90,
+  "completed_native_RF_seconds": 100,
+  "shared_energy_blocks": 2089,
+  "early_outbox_frames": 240,
+  "early_energy": 140,
+  "early_stream1090": 100,
+  "retired_incomplete_early_windows": 1,
+  "decoder_error": null,
+  "protected_PIDs_unchanged": true,
+  "primary_samples_lost_or_dropped_changed": false,
+  "FR24_connected": true,
+  "recorder_cap_bytes": 5000000000,
+  "guard_backend": "incremental_native",
+  "guard_bad_checks": 0,
+  "relay_holdback_seconds": 3,
+  "relay_deltas": {
+    "stock_bytes_relayed": 323218,
+    "dsp_frames_relayed": 645
+  },
+  "tap_gap_samples_delta": 5614848,
+  "tap_gap_seconds": 2.33952,
+  "preflight": {
+    "retained": 79,
+    "recorded_union": 210,
+    "retirement": true,
+    "executable_fallback": true
+  },
+  "first_attempt": "rolled back after a partial startup window pinned the early queue; bounded retirement corrected it"
+}

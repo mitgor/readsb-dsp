@@ -1,0 +1,8 @@
+[Unit]
+Description=Check incremental Stream1090 and restore executable fallback if unhealthy
+After=adsb-rescue-shadow.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/adsb-stream1090-lowlatency-mode guard
+TimeoutStartSec=110

@@ -1,0 +1,11 @@
+[Unit]
+Description=Check incremental Stream1090 health periodically
+
+[Timer]
+OnBootSec=45s
+OnUnitActiveSec=20s
+AccuracySec=2s
+Unit=adsb-stream1090-lowlatency-guard.service
+
+[Install]
+WantedBy=timers.target
