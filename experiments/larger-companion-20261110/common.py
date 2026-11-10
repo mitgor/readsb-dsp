@@ -1,0 +1,8 @@
+"""Frozen local experiment paths; never opens a receiver connection."""
+import sys,json,hashlib,os
+from pathlib import Path
+ROOT=Path(os.environ["ADSB_NEURAL_DATA_ROOT"]).resolve()
+OUT=ROOT/'results/larger-companion-20261110';WORK=ROOT/'data/transfer/retrain-20261110';RUNTIME=Path(os.environ.get('ADSB_BENCHMARK_RUNTIME',str(ROOT/'data/transfer/larger-companion-20261110/runtime')));RAW=ROOT/'data/raw/retrain-recent-20261029'
+sys.path[:0]=[str(RUNTIME/'src'),str(ROOT/'reference')]
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def write(p,v):Path(p).parent.mkdir(parents=True,exist_ok=True);Path(p).write_text(json.dumps(v,indent=2,default=lambda x:x.item() if hasattr(x,"item") else str(x))+'\n')

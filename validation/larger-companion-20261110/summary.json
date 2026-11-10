@@ -1,0 +1,181 @@
+{
+  "date": "2026-11-10",
+  "production": "original three models plus November 10 DSP-trained tiny companion, original-first",
+  "larger_models_deployed": false,
+  "mac_pi_parity": true,
+  "rf_seconds": 25.01318041666664,
+  "far_stock_aircraft": 6,
+  "production_extras": 260,
+  "raw_full_pipeline_additions": 0,
+  "dsp_full_pipeline_additions": 0,
+  "baseline_losses": 0,
+  "pi_baseline_cpu_s_per_rf_s": 0.7311748681032899,
+  "pi_with_candidate_cpu_s_per_rf_s": 0.7828459254606652,
+  "pi_candidate_inference_cpu_s_per_rf_s": 0.04580779376766364,
+  "peak_process_rss_kib": 209328.0,
+  "distance_bins": {
+    "50-100": {
+      "stock": 734,
+      "production_extras": 93,
+      "previous_best_extras": 93
+    },
+    "0-50": {
+      "stock": 618,
+      "production_extras": 38,
+      "previous_best_extras": 38
+    },
+    "unknown": {
+      "stock": 101,
+      "production_extras": 31,
+      "previous_best_extras": 31
+    },
+    "100-150": {
+      "stock": 279,
+      "production_extras": 93,
+      "previous_best_extras": 93
+    },
+    "150-180": {
+      "stock": 15,
+      "production_extras": 3,
+      "previous_best_extras": 3
+    },
+    "200-250": {
+      "stock": 1,
+      "production_extras": 1,
+      "previous_best_extras": 1
+    },
+    "180-200": {
+      "stock": 5,
+      "production_extras": 1,
+      "previous_best_extras": 1
+    }
+  },
+  "window_results": {
+    "raw": {
+      "train": {
+        "windows": 9341,
+        "candidate_exact": 6142,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 7330,
+        "combined_exact": 7344,
+        "additions": 14,
+        "losses": 0,
+        "new_windows": 503,
+        "new_additions": 2,
+        "qualified_far180_windows": 503,
+        "qualified_far180_additions": 2,
+        "bit_errors": 7843
+      },
+      "validation": {
+        "windows": 1793,
+        "candidate_exact": 1188,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 1408,
+        "combined_exact": 1411,
+        "additions": 3,
+        "losses": 0,
+        "new_windows": 197,
+        "new_additions": 1,
+        "qualified_far180_windows": 197,
+        "qualified_far180_additions": 1,
+        "bit_errors": 1470
+      },
+      "test": {
+        "windows": 854,
+        "candidate_exact": 508,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 647,
+        "combined_exact": 647,
+        "additions": 0,
+        "losses": 0,
+        "new_windows": 224,
+        "new_additions": 0,
+        "qualified_far180_windows": 224,
+        "qualified_far180_additions": 0,
+        "bit_errors": 825
+      }
+    },
+    "dsp": {
+      "train": {
+        "windows": 9341,
+        "candidate_exact": 6882,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 7330,
+        "combined_exact": 7401,
+        "additions": 71,
+        "losses": 0,
+        "new_windows": 503,
+        "new_additions": 6,
+        "qualified_far180_windows": 503,
+        "qualified_far180_additions": 6,
+        "bit_errors": 5400
+      },
+      "validation": {
+        "windows": 1793,
+        "candidate_exact": 1302,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 1408,
+        "combined_exact": 1417,
+        "additions": 9,
+        "losses": 0,
+        "new_windows": 197,
+        "new_additions": 0,
+        "qualified_far180_windows": 197,
+        "qualified_far180_additions": 0,
+        "bit_errors": 1040
+      },
+      "test": {
+        "windows": 854,
+        "candidate_exact": 607,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 647,
+        "combined_exact": 660,
+        "additions": 13,
+        "losses": 0,
+        "new_windows": 224,
+        "new_additions": 3,
+        "qualified_far180_windows": 224,
+        "qualified_far180_additions": 3,
+        "bit_errors": 529
+      }
+    }
+  },
+  "controls": {
+    "overlap": {
+      "raw": {
+        "windows": 4096,
+        "primary": 929,
+        "secondary_valid": 1,
+        "unaccounted_valid": 0
+      },
+      "dsp": {
+        "windows": 4096,
+        "primary": 1020,
+        "secondary_valid": 1,
+        "unaccounted_valid": 0
+      }
+    },
+    "clean": {
+      "raw": {
+        "windows": 4096,
+        "exact": 2782,
+        "wrong_crc_valid": 0
+      },
+      "dsp": {
+        "windows": 4096,
+        "exact": 2845,
+        "wrong_crc_valid": 0
+      }
+    },
+    "noise": {
+      "raw": {
+        "windows": 20000,
+        "valid": 0
+      },
+      "dsp": {
+        "windows": 20000,
+        "valid": 0
+      }
+    }
+  }
+}
