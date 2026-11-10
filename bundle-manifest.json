@@ -1,7 +1,7 @@
 {
-  "project": "deadsb dsp",
+  "project": "readsb-dsp",
   "repository": "https://github.com/mitgor/readsb-dsp",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "readsb_source": "readsb/",
   "runtime_source": "src/rescue/",
   "controller_source": "src/deadsb/",

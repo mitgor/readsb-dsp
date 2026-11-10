@@ -77,12 +77,12 @@ class Handler(BaseHTTPRequestHandler):
  def reply(self,n,data):
   b=json.dumps(data).encode();self.send_response(n);self.send_header('Content-Type','application/json');self.send_header('Cache-Control','no-store');self.send_header('Content-Length',str(len(b)));self.end_headers();self.wfile.write(b)
  def do_GET(self):
-  if self.path!='/neural-rescue/api/settings':self.reply(404,{'error':'Unknown endpoint'});return
+  if self.path not in ('/readsb-dsp/api/settings','/neural-rescue/api/settings'):self.reply(404,{'error':'Unknown endpoint'});return
   try:self.reply(200,self.server.controls.read())
   except Exception as e:self.reply(500,{'error':str(e)})
  def do_POST(self):
   origin=urlsplit(self.headers.get('Origin',''));host=self.headers.get('Host','')
-  if self.path!='/neural-rescue/api/settings' or origin.scheme not in ('http','https') or origin.netloc!=host or self.headers.get('Content-Type','').split(';')[0]!='application/json':self.reply(403,{'error':'Same-origin JSON requests only'});return
+  if self.path not in ('/readsb-dsp/api/settings','/neural-rescue/api/settings') or origin.scheme not in ('http','https') or origin.netloc!=host or self.headers.get('Content-Type','').split(';')[0]!='application/json':self.reply(403,{'error':'Same-origin JSON requests only'});return
   try:
    n=int(self.headers.get('Content-Length','0'))
    if not 0<n<=8192:raise ValueError('Invalid request size')

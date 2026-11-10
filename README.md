@@ -1,4 +1,4 @@
-# deadsb dsp · readsb-dsp
+# readsb-dsp
 
 An integrated, experimental ADS-B receiver distribution: **readsb + energy/DSP +
 neural rescue + dashboard + offline benchmarks**, with adaptive rescue CPU
@@ -6,7 +6,7 @@ budgeting. This is an independent GPL-3.0-or-later project, not an endorsed
 upstream readsb release.
 
 The repository is **[mitgor/readsb-dsp](https://github.com/mitgor/readsb-dsp)**.
-The project/product name is **deadsb dsp**. The original DSP-only patch package,
+The project/product name is **readsb-dsp**; `deadsb` remains a CLI compatibility alias. The original DSP-only patch package,
 release history and reproducible preparation helper are retained; see
 [the legacy guide](docs/LEGACY_PACKAGE.md).
 
@@ -17,8 +17,8 @@ release history and reproducible preparation helper are retained; see
 | Complete pinned readsb fork | `readsb/` | Primary decoder, optional native DSP-only rescue and nonblocking I/Q tap |
 | Native shared frontend and workers | `src/rescue/` | Energy, timing, weak-bit repair, matched/coherent filtering, optional neural cascade |
 | CPU governor | `src/deadsb/governor.py` | Total system utilization feedback; reduce optional work under load |
-| Loopback dashboard | `deadsb dashboard` | CPU target, admission profile, per-method reception/CPU and distance statistics |
-| Offline benchmark | `deadsb benchmark` | Reproducible UC8 replay, packet digest and CPU cost, no network output |
+| Loopback dashboard | `readsb-dsp dashboard` | CPU target, admission profile, per-method reception/CPU and distance statistics |
+| Offline benchmark | `readsb-dsp benchmark` | Reproducible UC8 replay, packet digest and CPU cost, no network output |
 | Native stock/DSP controls | `readsb/tests/dsp-rescue/` | Stock preservation, boundaries, noise and sanitizer checks |
 
 Readsb is based on 3.16.18 / upstream commit `9460652`, plus our prepared native
@@ -118,7 +118,7 @@ on Raspberry Pi 5**. This is a kernel comparison, not a whole-pipeline saving.
 See the [benchmark and live deployment](validation/coherent-sort-20261029/report.md).
 
 The validated Rust coherent backend is available with
-`deadsb build --native-only --coherent-backend rust`. It replaces the ordinary
+`readsb-dsp build --native-only --coherent-backend rust`. It replaces the ordinary
 and pair-lag window kernels while retaining the C peak-selector ABI. The working
 receiver uses Rust with a persistent health guard and automatic restoration of
 the previous C libraries. See the [Rust live deployment and rollback guide](validation/rust-live-20261029/report.md).
@@ -143,6 +143,21 @@ claim of doubled maximum range. The 200–250 and 250+ nm rows contain no packet
 not establish independent packet truth, a false-positive rate, a representative
 long-term gain, or the performance of methods added after it was taken.
 
+## Install the complete receiver bundle
+
+See **[Installation, activation and rollback](docs/INSTALL.md)** for Debian 12+ /
+64-bit Raspberry Pi OS: one installer builds the pinned readsb, native DSP,
+models, relay, CPU governor and dashboard and installs inactive systemd units.
+You supply receiver coordinates and gain. Existing SDR owners/feeders are never
+stopped or reconfigured automatically. The canonical web prefix is
+**`/readsb-dsp/`**; `/neural-rescue/` remains a compatibility URL on migrated receivers.
+
+The installable source bundle is distinct from the evolving private test receiver:
+it uses the shipped coordinator/ordered relay, not the newer asynchronous relay
+and Stream1090 deployment assembled by dated experiments. Experimental backends
+are not silently promoted by installing this release. See the component matrix
+in the installation guide before comparing performance.
+
 ## Build locally
 
 Python 3.11+, a C compiler, make, zstd, zlib and ncurses development headers are
@@ -153,8 +168,8 @@ git clone https://github.com/mitgor/readsb-dsp.git
 cd readsb-dsp
 python3 -m venv .venv
 .venv/bin/pip install -e .
-.venv/bin/deadsb build                 # native libraries + file-only readsb
-# .venv/bin/deadsb build --rtlsdr      # helper cleans only its own decoder build first
+.venv/bin/readsb-dsp build                 # native libraries + file-only readsb
+# .venv/bin/readsb-dsp build --rtlsdr      # helper cleans only its own decoder build first
 PYTHONPATH=src .venv/bin/python -m unittest discover -s tests -v
 make -C readsb test dsp-rescue-test dsp-rescue-test-sanitize
 ```
@@ -201,7 +216,7 @@ receivers; its cooperative microsecond budget is documented separately in
 [the native guide](docs/NATIVE_DSP_RESCUE.md).
 
 The tap is inactive unless the readsb process is explicitly started with
-`ADSB_RESCUE_SOCKET=/run/deadsb/iq.sock`. Readsb remains the sole SDR owner. Rescue
+`ADSB_RESCUE_SOCKET=/run/readsb-dsp/iq.sock`. Readsb remains the sole SDR owner. Rescue
 input and output use separate sockets; no candidate output is automatically sent
 to a feeder. A manual deployment profile is in [the integration guide](docs/DEADSB.md).
 It deliberately requires the operator's receiver location and established output
@@ -210,12 +225,12 @@ Exchange; unverified research branches stay quarantined.
 
 ```sh
 # After setting up a dedicated runtime and supplying your own receiver location:
-deadsb shadow --root "$PWD" --runtime /run/deadsb --archive /var/lib/deadsb \
+readsb-dsp shadow --root "$PWD" --runtime /run/readsb-dsp --archive /var/lib/readsb-dsp \
   --lat YOUR_LAT --lon YOUR_LON --config config/methods.json \
   --worker-config config/workers.json --cpu-budget-config config/cpu-budget.json \
   --no-logging
 # Separate terminal; binds only 127.0.0.1, no receiver/service control:
-deadsb dashboard --runtime /run/deadsb --budget-config config/cpu-budget.json
+readsb-dsp dashboard --runtime /run/readsb-dsp --budget-config config/cpu-budget.json
 ```
 
 The new dashboard is `http://127.0.0.1:8912/`. It distinguishes configured methods
@@ -227,10 +242,10 @@ This interface changes only budget settings; method configuration is explicit in
 ## Benchmark without touching the receiver
 
 ```sh
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 deadsb benchmark \
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 readsb-dsp benchmark \
   --iq /path/to/recording.uc8 --output /tmp/deadsb-full.json --profile 0
 # A separate, fresh output for an explicitly reduced policy:
-deadsb benchmark --iq /path/to/recording.uc8 --output /tmp/deadsb-cheap.json --profile 2
+readsb-dsp benchmark --iq /path/to/recording.uc8 --output /tmp/deadsb-cheap.json --profile 2
 ```
 
 UC8 input must be 2.4 MS/s and start at the native resampler's phase-zero origin.

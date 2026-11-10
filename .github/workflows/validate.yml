@@ -46,7 +46,12 @@ jobs:
           sudo apt-get install -y build-essential pkg-config libncurses-dev zlib1g-dev libzstd-dev
           python -m pip install -e .
       - name: Build integrated native frontend and readsb
-        run: deadsb build
+        run: readsb-dsp build
+      - name: Installer and CLI smoke checks
+        run: |
+          readsb-dsp --version
+          deadsb --version
+          python tools/install.py --lat 52 --lon 13 --gain 38.6 --render-only /tmp/readsb-dsp-units
       - name: Coherent typed-sort regression and sanitizers
         run: |
           cc -O3 -std=c11 -Isrc/rescue experiments/coherent-sort/check_sort.c -lm -o /tmp/coherent-sort-check

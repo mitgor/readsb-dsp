@@ -3,11 +3,11 @@ import argparse,subprocess,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 def main():
- p=argparse.ArgumentParser(prog='deadsb',description='deadsb dsp / readsb-dsp')
- p.add_argument('--version',action='version',version='deadsb dsp 0.2.0')
+ p=argparse.ArgumentParser(prog='readsb-dsp',description='readsb-dsp receiver bundle')
+ p.add_argument('--version',action='version',version='readsb-dsp 0.3.0')
  sub=p.add_subparsers(dest='command',required=True)
  b=sub.add_parser('build');b.add_argument('--native-only',action='store_true');b.add_argument('--rtlsdr',action='store_true');b.add_argument('--jobs',type=int,default=2);b.add_argument('--coherent-backend',choices=('c','rust'),default='c');b.add_argument('--methods-backend',choices=('c','rust'),default='c')
- d=sub.add_parser('dashboard');d.add_argument('--port',type=int,default=8912);d.add_argument('--runtime',type=Path,default=Path('/run/deadsb'));d.add_argument('--budget-config',type=Path,default=ROOT/'config/cpu-budget.json')
+ d=sub.add_parser('dashboard');d.add_argument('--port',type=int,default=8912);d.add_argument('--runtime',type=Path,default=Path('/run/readsb-dsp'));d.add_argument('--budget-config',type=Path,default=ROOT/'config/cpu-budget.json')
  r=sub.add_parser('benchmark');r.add_argument('--iq',type=Path,required=True);r.add_argument('--output',type=Path,required=True);r.add_argument('--profile',type=int,choices=range(5),default=0)
  sub.add_parser('shadow',help='Pass arguments to the stock-first rescue coordinator')
  a,extra=p.parse_known_args()
