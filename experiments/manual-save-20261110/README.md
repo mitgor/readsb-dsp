@@ -1,0 +1,1 @@
+User-requested manual RF RAM save and verified offload. Training threshold met at 506 TRAIN / 198 VALIDATION windows; models not fitted or deployed by this task. Use the checksum-backed private results/learning-latest.json pointer for the next daily run. Dated script paths are frozen; do not rerun in place. See validation/manual-save-20261110/report.md.

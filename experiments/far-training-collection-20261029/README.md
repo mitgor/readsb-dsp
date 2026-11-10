@@ -35,6 +35,16 @@ Snippets overlapping retained continuous evaluation RF are skipped. Quotas survi
 a clean collector restart; minute bookkeeping stays bounded. New v3 tar archives
 include training.uc8/training.jsonl alongside existing capture/ledger files.
 
+## Latest learning state
+
+Daily and explicitly requested manual saves can advance the ledger independently.
+Before qualification or fitting, consult `results/learning-latest.json` in the
+private data workspace when present, verify the referenced ledger/readiness
+SHA-256 values, and preserve the prior ledger chain. A manual save can supersede
+an earlier same-day report; do not infer the current count from the date alone.
+Regular daily runs still must not force saves or restart collectors. Manual saves
+require the user's explicit instruction, as in the 10 November follow-up.
+
 ## Independent qualification on Mac
 
 Captured stock frames may have been corrected by the stock decoder. Therefore

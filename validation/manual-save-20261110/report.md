@@ -1,0 +1,22 @@
+# Manual RAM save and distant-label readiness — 10 November 2026
+
+**The training threshold is now met: 506 qualified TRAIN windows and 198 VALIDATION windows beyond 180 nm.** This supersedes the earlier 493/195 readiness count. No model has been trained or deployed by this manual collection task.
+
+| Pending since completed November 4 training | Windows | Aircraft | UTC hours |
+|---|---:|---:|---:|
+| Train | 506 | 248 | 78 |
+| Validation | 198 | 97 | 61 |
+
+## Saved and transferred
+
+At the user's explicit request, the collector completed its open journals and saved its RAM through its existing clean shutdown path, then restarted. This took 7.7 seconds and created a 70,860,800-byte RF archive. Readsb, DSP and both feeder PIDs stayed unchanged. Capture quotas, gain, method/model/source/config hashes, SDR loss counters, the 5,000,000,000-byte RF cap and original periodic save deadline were preserved.
+
+Transferred the saved RF archive and one already-saved CRC research archive: **80,555,456 bytes (80.6 MB)** total. Byte/SHA-256 checks and durable Mac backups/manifests completed before exact remote identity/mtime/checksum/open-writer rechecks and deletion. The new TAR was initially skipped by the stable-age guard and copied only after that guard passed. Existing data and active buffers were preserved.
+
+The TAR contains 53 original stock-assisted snippets. Independent no-correction same-transmission decoding qualified 18; 35 remain unconfirmed and quarantined. New split additions: 13 TRAIN, three VALIDATION and two fixed TEST windows. Original IQ/Beast/payload/sample-clock checks and causal NIC/NACp/age/non-MLAT/TIS-B gates remain intact. Historical payload/IQ/RF exclusions and fixed ICAO splits passed.
+
+Reserved 438 new continuous RF intervals as evaluation-only before qualification. Verified and quarantined 1,341 CRC/IQ research records; these do not provide supervised labels. Cumulative fixed TEST coverage is 225 windows, including the two new ones; previous test use is retained in the ledger and is not fresh prospective evidence.
+
+## Resumption
+
+The new private ledger is results/daily-20261110-manual-save/learning-ledger.json. Resolve results/learning-latest.json and verify its SHA-256 before the next daily learning step. All 506/198 windows remain pending consumption; the last completed training remains daily-20261104. Training should use dated outputs, preserve production companions, and compare against the full current pipeline. The current baseline includes pulse, sequence, acquisition and observed Mac-helper activity; the November 4 baseline is insufficient. Nothing here changes decoding, forwarding, models or settings.

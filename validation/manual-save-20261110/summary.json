@@ -1,0 +1,80 @@
+{
+  "date_berlin": "2026-11-10",
+  "action": "user_requested_manual_rf_ram_save_and_verified_transfer",
+  "verified_deleted_archives": 2,
+  "verified_deleted_bytes": 80555456,
+  "rf_saved_archive_bytes": 70860800,
+  "collector_stop_save_start_wall_seconds": 7.6810643672943115,
+  "qualification": {
+    "offered": 53,
+    "qualified": 18,
+    "qualified_180_200": 18,
+    "uncorrected_rf_not_confirmed": 35
+  },
+  "new_unique_counts": {
+    "qualified_new": 18,
+    "new_unique_train": 13,
+    "new_unique_validation": 3,
+    "new_unique_test": 2
+  },
+  "coverage": {
+    "train": {
+      "windows": 506,
+      "aircraft": 248,
+      "utc_hours": 78,
+      "bands": {
+        "200-250": 50,
+        "180-200": 456
+      }
+    },
+    "validation": {
+      "windows": 198,
+      "aircraft": 97,
+      "utc_hours": 61,
+      "bands": {
+        "200-250": 26,
+        "180-200": 170,
+        "250+": 2
+      }
+    },
+    "test": {
+      "windows": 225,
+      "aircraft": 91,
+      "utc_hours": 83,
+      "bands": {
+        "180-200": 208,
+        "200-250": 17
+      }
+    }
+  },
+  "training_trigger": true,
+  "training_pending": true,
+  "model_trained_or_deployed": false,
+  "last_completed_training": "daily-20261104",
+  "reserved_continuous_segments": 438,
+  "quarantined_crc_iq_windows": 1341,
+  "protected_checks": {
+    "methods": true,
+    "workers": true,
+    "model_sha256": true,
+    "source_hashes": true,
+    "configs": true,
+    "samples": true,
+    "gain_db": true,
+    "trial": true,
+    "logging_enabled": true,
+    "protected_pids": true,
+    "collector_pid_only_changed_for_manual_save": true,
+    "save_schedule_preserved": true,
+    "cap_preserved": true
+  },
+  "rf_cap_bytes": 5000000000,
+  "latest_ledger_relative_path": "results/daily-20261110-manual-save/learning-ledger.json",
+  "latest_ledger_sha256": "ae114212257c9be8fad6d0ae01065317b8d74fdb402468c08850aeffd61340fa",
+  "limitations": [
+    "Qualified-label threshold is met; actual model fitting/preparation and full-current-pipeline validation are still pending.",
+    "Future baseline must include current pulse/sequence/acquisition and any active Mac helper contribution.",
+    "Fixed test RF remains evaluation-only; previously evaluated fixed tests are not fresh prospective evidence.",
+    "Original stock-derived range is quality gated, not independent ground truth."
+  ]
+}
