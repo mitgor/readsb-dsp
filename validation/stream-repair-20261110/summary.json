@@ -1,0 +1,374 @@
+{
+  "date_berlin": "2026-11-10",
+  "hardware": "Raspberry Pi 5 Model B Rev 1.0",
+  "completed_pi_passes": 1,
+  "working_pipeline_changed": false,
+  "families": {
+    "long": {
+      "cases": 119,
+      "core_samples": 285600000,
+      "core_seconds": 119.0,
+      "range_quality": "estimated_stock_distance_no_NIC_NACp",
+      "counts": {
+        "raw": {
+          "native": 14953,
+          "executable": 14953,
+          "both": 14953,
+          "native_only": 0,
+          "executable_only": 0
+        },
+        "guarded_beyond_stock": {
+          "native": 968,
+          "executable": 968,
+          "both": 968,
+          "native_only": 0,
+          "executable_only": 0
+        },
+        "beyond_recorded_actual": {
+          "native": 61,
+          "executable": 61,
+          "both": 61,
+          "native_only": 0,
+          "executable_only": 0
+        }
+      },
+      "distance_bins": {
+        "raw": {
+          "50-100": {
+            "native": 6168,
+            "executable": 6168,
+            "both": 6168
+          },
+          "0-50": {
+            "native": 6195,
+            "executable": 6195,
+            "both": 6195
+          },
+          "100-150": {
+            "native": 2166,
+            "executable": 2166,
+            "both": 2166
+          },
+          "180-200": {
+            "native": 20,
+            "executable": 20,
+            "both": 20
+          },
+          "unknown": {
+            "native": 261,
+            "executable": 261,
+            "both": 261
+          },
+          "150-180": {
+            "native": 143,
+            "executable": 143,
+            "both": 143
+          }
+        },
+        "guarded_beyond_stock": {
+          "50-100": {
+            "native": 380,
+            "executable": 380,
+            "both": 380
+          },
+          "100-150": {
+            "native": 287,
+            "executable": 287,
+            "both": 287
+          },
+          "unknown": {
+            "native": 38,
+            "executable": 38,
+            "both": 38
+          },
+          "0-50": {
+            "native": 238,
+            "executable": 238,
+            "both": 238
+          },
+          "150-180": {
+            "native": 22,
+            "executable": 22,
+            "both": 22
+          },
+          "180-200": {
+            "native": 3,
+            "executable": 3,
+            "both": 3
+          }
+        },
+        "beyond_recorded_actual": {
+          "100-150": {
+            "native": 25,
+            "executable": 25,
+            "both": 25
+          },
+          "50-100": {
+            "native": 29,
+            "executable": 29,
+            "both": 29
+          },
+          "0-50": {
+            "native": 5,
+            "executable": 5,
+            "both": 5
+          },
+          "150-180": {
+            "native": 1,
+            "executable": 1,
+            "both": 1
+          },
+          "unknown": {
+            "native": 1,
+            "executable": 1,
+            "both": 1
+          }
+        }
+      },
+      "cpu": {
+        "native": {
+          "median_cpu_s_per_rf_s": 0.10825668112605037,
+          "minimum": 0.10825668112605037,
+          "maximum": 0.10825668112605037,
+          "per_pass": [
+            0.10825668112605037
+          ]
+        },
+        "executable": {
+          "median_cpu_s_per_rf_s": 0.1433408141092437,
+          "minimum": 0.1433408141092437,
+          "maximum": 0.1433408141092437,
+          "per_pass": [
+            0.1433408141092437
+          ]
+        }
+      },
+      "cpu_reduction_percent": 24.476024641840542
+    },
+    "recent": {
+      "cases": 383,
+      "core_samples": 58193233,
+      "core_seconds": 24.247180416666666,
+      "range_quality": "causal_stock_NIC_NACp_5_age15",
+      "counts": {
+        "raw": {
+          "native": 268,
+          "executable": 268,
+          "both": 268,
+          "native_only": 0,
+          "executable_only": 0
+        },
+        "guarded_beyond_stock": {
+          "native": 11,
+          "executable": 11,
+          "both": 11,
+          "native_only": 0,
+          "executable_only": 0
+        },
+        "beyond_recorded_actual": {
+          "native": 6,
+          "executable": 6,
+          "both": 6,
+          "native_only": 0,
+          "executable_only": 0
+        }
+      },
+      "distance_bins": {
+        "raw": {
+          "50-100": {
+            "native": 106,
+            "executable": 106,
+            "both": 106
+          },
+          "100-150": {
+            "native": 53,
+            "executable": 53,
+            "both": 53
+          },
+          "0-50": {
+            "native": 91,
+            "executable": 91,
+            "both": 91
+          },
+          "unknown": {
+            "native": 18,
+            "executable": 18,
+            "both": 18
+          }
+        },
+        "guarded_beyond_stock": {
+          "100-150": {
+            "native": 5,
+            "executable": 5,
+            "both": 5
+          },
+          "unknown": {
+            "native": 3,
+            "executable": 3,
+            "both": 3
+          },
+          "50-100": {
+            "native": 2,
+            "executable": 2,
+            "both": 2
+          },
+          "0-50": {
+            "native": 1,
+            "executable": 1,
+            "both": 1
+          }
+        },
+        "beyond_recorded_actual": {
+          "100-150": {
+            "native": 4,
+            "executable": 4,
+            "both": 4
+          },
+          "unknown": {
+            "native": 2,
+            "executable": 2,
+            "both": 2
+          }
+        }
+      },
+      "cpu": {
+        "native": {
+          "median_cpu_s_per_rf_s": 0.12260708750104897,
+          "minimum": 0.12260708750104897,
+          "maximum": 0.12260708750104897,
+          "per_pass": [
+            0.12260708750104897
+          ]
+        },
+        "executable": {
+          "median_cpu_s_per_rf_s": 0.20063650727224736,
+          "minimum": 0.20063650727224736,
+          "maximum": 0.20063650727224736,
+          "per_pass": [
+            0.20063650727224736
+          ]
+        }
+      },
+      "cpu_reduction_percent": 38.890938061097145
+    }
+  },
+  "protected_checks": {
+    "pids": true,
+    "methods": true,
+    "workers": true,
+    "model_sha256": true,
+    "source_hashes": true,
+    "configs": true,
+    "samples": true,
+    "gain_db": true,
+    "trial": true,
+    "logging_enabled": true,
+    "rf_cap_5GB": true,
+    "fr24_stable_connected": true
+  },
+  "synthetic_controls": {
+    "single_untrusted": {
+      "native": 0,
+      "executable": 0,
+      "packet_and_timestamp_exact": true,
+      "known_payload_only": true
+    },
+    "single_trusted": {
+      "native": 3,
+      "executable": 3,
+      "packet_and_timestamp_exact": true,
+      "known_payload_only": true
+    },
+    "adjacent_untrusted": {
+      "native": 0,
+      "executable": 0,
+      "packet_and_timestamp_exact": true,
+      "known_payload_only": true
+    },
+    "adjacent_trusted": {
+      "native": 3,
+      "executable": 3,
+      "packet_and_timestamp_exact": true,
+      "known_payload_only": true
+    },
+    "three_burst_untrusted": {
+      "native": 0,
+      "executable": 0,
+      "packet_and_timestamp_exact": true,
+      "known_payload_only": true
+    },
+    "three_burst_trusted": {
+      "native": 3,
+      "executable": 3,
+      "packet_and_timestamp_exact": true,
+      "known_payload_only": true
+    },
+    "df19_untrusted": {
+      "native": 0,
+      "executable": 0,
+      "packet_and_timestamp_exact": true,
+      "known_payload_only": true
+    },
+    "df19_trusted": {
+      "native": 3,
+      "executable": 3,
+      "packet_and_timestamp_exact": true,
+      "known_payload_only": true
+    },
+    "api": {
+      "overflow_rejects_all_output": true,
+      "invalid_arguments_rejected": true,
+      "call_state_isolation": true
+    }
+  },
+  "noise_clean_controls": {
+    "clean": {
+      "native_raw_df17": 2,
+      "executable_raw_df17": 2,
+      "known_clean_payload_only": true,
+      "noise_has_no_stock_identity": false,
+      "accepted_noise_with_empty_identity": null
+    },
+    "noise": {
+      "native_raw_df17": 0,
+      "executable_raw_df17": 0,
+      "known_clean_payload_only": false,
+      "noise_has_no_stock_identity": true,
+      "accepted_noise_with_empty_identity": 0
+    }
+  },
+  "exact_native_executable_packet_timestamp_parity": true,
+  "exact_pi_repeat_parity": null,
+  "repeat_variance_estimated": false,
+  "floating_point_environment_unchanged_on_load": true,
+  "mac_pair_exact": true,
+  "library_sha256": "aa1c7afaa35716a916373d5af388bd4872eaab5d809cc7c850c2e4b20db3911e",
+  "executable_sha256": "2b80c33e6e4142c359297139b6443aa55ec0b33e3ab87af8fed68509e58ac766",
+  "recent_full_pipeline_attribution": {
+    "recent_only": true,
+    "native_marginal_beyond_stock_and_other_dsp": 2,
+    "executable_marginal_beyond_stock_and_other_dsp": 2,
+    "gained_if_replace": 0,
+    "lost_if_replace": 0,
+    "native_additional_on_current": 0,
+    "distance_bins": {
+      "50-100": {
+        "native_marginal": 1,
+        "executable_marginal": 1
+      },
+      "100-150": {
+        "native_marginal": 1,
+        "executable_marginal": 1
+      }
+    },
+    "scope": "Same recent RF and frozen current other-DSP replay, stock guards, actual unified and annotation masks. Short clips are a supplementary comparison, not representative of one-second live executable startup/trust behavior."
+  },
+  "limits": [
+    "Historical regression replay, not prospective range validation",
+    "Long distances estimated; recent positions quality-gated",
+    "C++ in-process extension using pinned upstream core, not a C rewrite",
+    "Not yet bound into live readsb deadline/admission path",
+    "RF file reads and full receiver CPU excluded",
+    "Memory controller unavailable; requested MemoryMax is not verified enforcement"
+  ]
+}

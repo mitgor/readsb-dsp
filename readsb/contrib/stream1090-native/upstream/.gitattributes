@@ -1,0 +1,2 @@
+# Preserve pinned third-party bytes and whitespace for SHA-256 provenance.
+*.hpp -text -whitespace

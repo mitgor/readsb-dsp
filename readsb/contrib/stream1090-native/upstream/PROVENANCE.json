@@ -1,0 +1,28 @@
+{
+  "repository": "https://github.com/mgrone/stream1090",
+  "commit": "2189bdaca1d62d5e88600b21a281ccc5c18012f2",
+  "files": {
+    "AVRWriter.hpp": "875235ee511a3aac8a28c277dc346a7e200a943ef2aa03837cd1003b3a494996",
+    "BitUtils.hpp": "6fa2dcac9e1431999f7d6747fed3dc73396ad5555f6c71519033b5cdc13b18be",
+    "Bits128.hpp": "213bccbc525749be278afe8bce3929cb7038eef4470b11689266c90b3f1f88e7",
+    "BlockRing.hpp": "0e0c91fd434f3ed47f375caba06c5f96dbdf565e7aa747d19da2e652f7c42e1a",
+    "CRC.hpp": "6990df8778dee158bc995f75c774da74e0c8ef1e3d383ac80b98b05a683ac8f2",
+    "CRCErrorTable.hpp": "ff235293d7b178dbdabf7fee304e96c17519cee975dfd5e127650d0b664e5e34",
+    "DemodCore.hpp": "b0e225b45ef1819130f2ff319feb1895cd96d265a2639437a3573f313fde5298",
+    "ErasureRepair.hpp": "ca4b9886ab8d1cc3375740790365e122025338f11e6d29911f6b25f9d18b3134",
+    "Global.hpp": "a1575d9a217f07221940443b939bd0a3142fb6f8249f47550a29868f24a57993",
+    "ICAOCache.hpp": "3832e9a469946565d923442ceb5dfa79e1508e1ed160d806266797b9141b9aa8",
+    "InputReaderBase.hpp": "f5a5459d4503835b2f9f186ecc7da24af120a908cc11d01eef95dac950270df0",
+    "Logger.hpp": "7eac71890e271fe5670e0bf4906f5396eac7c5ae2bb1131d51804436b9e56631",
+    "MessageHandler.hpp": "1254ed0410fa13b6a755ed2baa32f7712febe82a3eb859dfe21c71d74ef323dc",
+    "ModeS.hpp": "7f0926e16bf4ab9c453a4229c981726865ead3aacc817701d4457c85e70cb8be",
+    "ModeS_BitFields.hpp": "e76d2fe5a31cd23fad11d5001de983bce1275996c64206b731d81099030a2057",
+    "Plausibility.hpp": "ae56158bfba4d70421691e37623a5d3e72b63172215437243f74dc499a8508e8",
+    "RawInputFormat.hpp": "a992acddc00cd4f6821be675d91cc1b99b4970ab41bc60e8bd08a35f1de95081",
+    "SampleStream.hpp": "0bcdb1efaf52098d2c70f25b60f42b3a22e6749f3d492e4e4be7f8c6a6164e2b",
+    "Sampler.hpp": "f01e0c1751e39b9a2c04721b3424c30e8694f5c254af14a8d370eef310d17606",
+    "SamplerFunc.hpp": "813e9f8885f2e97249eea7ed4f5e61a53ebee6613f38f7a92b4638f165b87f74",
+    "ShiftRegisters.hpp": "4ec79b8fdc494ada5beb61b9598949f3e5d62982025aefd483f8cc151422c02a",
+    "Stats.hpp": "3b0b5ecf79f3dc0fc3c064f08dc7563848e1d85ac7fb32766891f01d2dfb9130"
+  }
+}

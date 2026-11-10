@@ -78,4 +78,26 @@ intervention. This tests the search kernel with common external guards, not
 whole-readsb admission or live deadlines. See the full [comparison report](../validation/stream-phase-pi-20261110/report.md)
 for controls, distance tables, CPU accounting and limitations.
 
+## Repair/trust extension — 10 November 2026
+
+The optional research library in
+[`readsb/contrib/stream1090-native`](../readsb/contrib/stream1090-native/README.md)
+adds an in-process C++20 path with a C ABI. It reuses the deployed upstream
+core's repair tables, weak-bit erasure solver, DF11-assisted trust, separated
+sightings, TTL and phase suppression. It leaves the smaller clean-only C
+implementation above unchanged and is not linked into the working receiver.
+
+On the same 119 historical RF seconds it retained all 968 executable guarded
+stock extras and every tested timestamp, with zero losses. CPU was 0.1083
+versus 0.1433 CPU-s per RF-s including common guards (24.5% lower method CPU).
+The final safe-link build has one complete Pi pass; Mac/Pi packet and timestamp
+digests match exactly. Three retained 180–200 nm extras have estimated distances,
+not qualified prospective range evidence. The recent full-pipeline supplement
+had zero gains and zero losses relative to the current executable branch.
+
+The [full report](../validation/stream-repair-20261110/report.md) records the
+RF-coordinate harness correction, library-load floating-point safety check,
+synthetic trust/repair tests and remaining live integration/deadline gates.
+The working pipeline and capture limits remain unchanged.
+
 SPDX-License-Identifier: GPL-3.0-or-later.
