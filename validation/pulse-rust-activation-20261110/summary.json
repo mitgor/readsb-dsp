@@ -1,0 +1,39 @@
+{
+  "state": "active",
+  "backend": "rust-1.99.1/pulse-discriminant",
+  "observation_seconds": 304.0778379640542,
+  "live_workers": {
+    "2755567": "/home/pi/adsb-neural-rescue/src/rescue/_pulse_discriminant.so",
+    "2755570": "/home/pi/adsb-neural-rescue/src/rescue/_pulse_discriminant.so"
+  },
+  "files": [
+    {
+      "path": "/home/pi/adsb-neural-rescue/src/rescue/_pulse_discriminant.so",
+      "before_sha256": "0850232f7c9447757f15929973ce3ccb6afc5b755d97ae1e9159307186ea24a2",
+      "after_sha256": "8a45e51338a0871e96baad3248c408f164c3659f3c6dc2cd9ababd43c81fcc3c"
+    }
+  ],
+  "protected_PIDs_unchanged": true,
+  "only_DSP_coordinator_restarted": true,
+  "configuration_gain_switches_unchanged": true,
+  "SDR_loss_unchanged": true,
+  "Stream_Rust_unchanged": true,
+  "cap_bytes": 5000000000,
+  "gain": 38.6,
+  "stock_bytes": 768927,
+  "DSP_extras": 1567,
+  "pulse_extras": 22,
+  "aligned_RF_seconds": 280,
+  "Stream_RF_seconds": 297,
+  "processing_proxy_s": [
+    0.9708226593211293,
+    2.306287523591891
+  ],
+  "automatic_rollback": true,
+  "receipt": {
+    "bytes": 1085440,
+    "sha256": "42b535c1c2abb936729972ac67ade89839dc1483819d6c2ae4b39afa5d8615ef",
+    "members": 20,
+    "verified": true
+  }
+}
