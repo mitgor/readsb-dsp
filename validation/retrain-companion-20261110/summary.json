@@ -1,0 +1,433 @@
+{
+  "date_berlin": "2026-11-10",
+  "status": "retraining_and_mac_pi_validation_completed_candidate_offline",
+  "last_completed_training": "retrain-20261110",
+  "training_new_qualified_prepared": {
+    "train": {
+      "windows": 503,
+      "aircraft": 247,
+      "utc_hours": 78,
+      "bands": {
+        "200-250": 50,
+        "180-200": 453
+      }
+    },
+    "validation": {
+      "windows": 197,
+      "aircraft": 97,
+      "utc_hours": 61,
+      "bands": {
+        "200-250": 26,
+        "180-200": 169,
+        "250+": 2
+      }
+    },
+    "test": {
+      "windows": 224,
+      "aircraft": 91,
+      "utc_hours": 82,
+      "bands": {
+        "180-200": 207,
+        "200-250": 17
+      }
+    }
+  },
+  "candidate": {
+    "variant": "dsp",
+    "model": "models/candidates/retrain-20261110/dsp/tiny-rf-v1.onnx",
+    "sha256": "85bb0a3560120e5476d5080b1e829c3badc2da68ea925f7b55da75afbc455906",
+    "frozen_unix": 1794302795.417543,
+    "criteria": "Validation only: zero wrong CRC, qualified far additions, total additions, bit errors. Test and chronological RF not used.",
+    "validation": {
+      "raw": {
+        "windows": 1793,
+        "candidate_exact": 1199,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 1401,
+        "combined_exact": 1408,
+        "additions": 7,
+        "losses": 0,
+        "new_windows": 197,
+        "new_additions": 0,
+        "qualified_far180_windows": 197,
+        "qualified_far180_additions": 0,
+        "bit_errors": 1391
+      },
+      "dsp": {
+        "windows": 1793,
+        "candidate_exact": 1303,
+        "candidate_wrong_crc": 0,
+        "baseline_exact": 1401,
+        "combined_exact": 1412,
+        "additions": 11,
+        "losses": 0,
+        "new_windows": 197,
+        "new_additions": 0,
+        "qualified_far180_windows": 197,
+        "qualified_far180_additions": 0,
+        "bit_errors": 1074
+      }
+    },
+    "reservation_sha256": "06b9a2cbdc985ef401219de786f656334b0a5d0dc4f16bcb242fb0c050df4437",
+    "live_changes": false
+  },
+  "variants": {
+    "raw": {
+      "selected_step": 1000,
+      "validation_additions_after_previous_best": 7,
+      "test_additions_after_previous_best": 4,
+      "new_distant_test_window_additions": 0,
+      "export_bit_differences": 0
+    },
+    "dsp": {
+      "selected_step": 200,
+      "validation_additions_after_previous_best": 11,
+      "test_additions_after_previous_best": 3,
+      "new_distant_test_window_additions": 2,
+      "export_bit_differences": 0
+    }
+  },
+  "packet_window_comparison": {
+    "validation": {
+      "windows": 1793,
+      "new_qualified_far_windows": 197,
+      "fresh_qualified_far_windows": 197,
+      "methods": {
+        "current_original": {
+          "exact_packets": 1161,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.014118999999999993
+        },
+        "current_production": {
+          "exact_packets": 1392,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.02227200000000007
+        },
+        "current_plus_previous_best": {
+          "exact_packets": 1401,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.023756
+        },
+        "previous_trial_companion": {
+          "exact_packets": 1409,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.026418000000000053
+        },
+        "new_raw_companion": {
+          "exact_packets": 1408,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.026020000000000043
+        },
+        "new_dsp_companion": {
+          "exact_packets": 1412,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.026036999999999977
+        },
+        "new_alone": {
+          "exact_packets": 1303,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.014278000000000013
+        },
+        "current_plus_new": {
+          "exact_packets": 1408,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.02298
+        },
+        "retain_previous_trial_plus_new": {
+          "exact_packets": 1412,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.02859900000000004
+        }
+      },
+      "new_vs_current_original": {
+        "additions": 228,
+        "losses": 86,
+        "qualified_far_additions": 36,
+        "qualified_far_losses": 19,
+        "fresh_qualified_far_additions": 36,
+        "fresh_qualified_far_losses": 19
+      },
+      "append_new_to_current": {
+        "additions": 16,
+        "losses": 0,
+        "qualified_far_additions": 1,
+        "qualified_far_losses": 0,
+        "fresh_qualified_far_additions": 1,
+        "fresh_qualified_far_losses": 0
+      },
+      "new_beyond_previous_best": {
+        "additions": 11,
+        "losses": 0,
+        "qualified_far_additions": 0,
+        "qualified_far_losses": 0,
+        "fresh_qualified_far_additions": 0,
+        "fresh_qualified_far_losses": 0
+      },
+      "new_vs_previous_trial": {
+        "additions": 3,
+        "losses": 0,
+        "qualified_far_additions": 0,
+        "qualified_far_losses": 0,
+        "fresh_qualified_far_additions": 0,
+        "fresh_qualified_far_losses": 0
+      },
+      "append_after_previous_trial": {
+        "additions": 3,
+        "losses": 0,
+        "qualified_far_additions": 0,
+        "qualified_far_losses": 0,
+        "fresh_qualified_far_additions": 0,
+        "fresh_qualified_far_losses": 0
+      },
+      "scope": "Supplied packet-window reconstruction, not additional field receptions. Fresh excludes earlier candidate test evaluation; all checkpoints chosen on validation only."
+    },
+    "test": {
+      "windows": 854,
+      "new_qualified_far_windows": 224,
+      "fresh_qualified_far_windows": 115,
+      "methods": {
+        "current_original": {
+          "exact_packets": 518,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.005798999999999999
+        },
+        "current_production": {
+          "exact_packets": 643,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.010220000000000007
+        },
+        "current_plus_previous_best": {
+          "exact_packets": 647,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.011523999999999979
+        },
+        "previous_trial_companion": {
+          "exact_packets": 650,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.012747999999999982
+        },
+        "new_raw_companion": {
+          "exact_packets": 651,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.012635000000000063
+        },
+        "new_dsp_companion": {
+          "exact_packets": 650,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.012857000000000007
+        },
+        "new_alone": {
+          "exact_packets": 587,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.005901999999999963
+        },
+        "current_plus_new": {
+          "exact_packets": 647,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.011375999999999942
+        },
+        "retain_previous_trial_plus_new": {
+          "exact_packets": 650,
+          "wrong_crc_valid": 0,
+          "cpu_seconds": 0.014364999999999961
+        }
+      },
+      "new_vs_current_original": {
+        "additions": 121,
+        "losses": 52,
+        "qualified_far_additions": 37,
+        "qualified_far_losses": 22,
+        "fresh_qualified_far_additions": 23,
+        "fresh_qualified_far_losses": 10
+      },
+      "append_new_to_current": {
+        "additions": 4,
+        "losses": 0,
+        "qualified_far_additions": 2,
+        "qualified_far_losses": 0,
+        "fresh_qualified_far_additions": 0,
+        "fresh_qualified_far_losses": 0
+      },
+      "new_beyond_previous_best": {
+        "additions": 3,
+        "losses": 0,
+        "qualified_far_additions": 2,
+        "qualified_far_losses": 0,
+        "fresh_qualified_far_additions": 0,
+        "fresh_qualified_far_losses": 0
+      },
+      "new_vs_previous_trial": {
+        "additions": 0,
+        "losses": 0,
+        "qualified_far_additions": 0,
+        "qualified_far_losses": 0,
+        "fresh_qualified_far_additions": 0,
+        "fresh_qualified_far_losses": 0
+      },
+      "append_after_previous_trial": {
+        "additions": 0,
+        "losses": 0,
+        "qualified_far_additions": 0,
+        "qualified_far_losses": 0,
+        "fresh_qualified_far_additions": 0,
+        "fresh_qualified_far_losses": 0
+      },
+      "scope": "Supplied packet-window reconstruction, not additional field receptions. Fresh excludes earlier candidate test evaluation; all checkpoints chosen on validation only."
+    }
+  },
+  "full_rf": {
+    "rf_seconds": 25.013180416666668,
+    "effective_rf_seconds": 24.247180416666666,
+    "rf_samples": 60031633,
+    "cases": 383,
+    "current_guarded_extras_beyond_stock": 259,
+    "new_companion_additions_beyond_current": 1,
+    "new_companion_additions_beyond_current_plus_previous_best": 1,
+    "additional_beyond180nm": 0,
+    "additional_position_messages": 0,
+    "additional_type31_status_messages": 1,
+    "distance_bin": "100-150",
+    "previous_trial_companion_additions": 1,
+    "same_packet_as_previous_trial": true,
+    "baseline_packet_losses": 0,
+    "distance_bins": {
+      "50-100": {
+        "stock": 734,
+        "production_extras": 93,
+        "previous_best_extras": 93
+      },
+      "0-50": {
+        "stock": 618,
+        "production_extras": 38,
+        "previous_best_extras": 38
+      },
+      "unknown": {
+        "stock": 101,
+        "production_extras": 31,
+        "previous_best_extras": 31
+      },
+      "100-150": {
+        "stock": 279,
+        "production_extras": 92,
+        "previous_best_extras": 92,
+        "candidate_beyond_production": 1,
+        "candidate_beyond_previous_best": 1
+      },
+      "150-180": {
+        "stock": 15,
+        "production_extras": 3,
+        "previous_best_extras": 3
+      },
+      "200-250": {
+        "stock": 1,
+        "production_extras": 1,
+        "previous_best_extras": 1
+      },
+      "180-200": {
+        "stock": 5,
+        "production_extras": 1,
+        "previous_best_extras": 1
+      }
+    },
+    "far_stock_aircraft": 6,
+    "stream_alignment_anchors": 265,
+    "stream_alignment_mad_ticks": 1.0,
+    "additional_candidate_payload_or_aircraft_overlap_with_training_validation": false
+  },
+  "pi_cpu": {
+    "production_cpu_s_per_rf_s": 0.7082234172107229,
+    "production_plus_companion_cpu_s_per_rf_s": 0.73892037838118,
+    "incremental_inference_cpu_s_per_rf_s": 0.028796744316454296,
+    "incremental_inference_percent_one_core_at_realtime": 2.8796744316454297,
+    "incremental_inference_percent_four_core_capacity_at_realtime": 0.7199186079113574,
+    "range_cpu_s_per_rf_s": [
+      0.02737129367778361,
+      0.029912959389262427
+    ],
+    "peak_rss_mib": 203.78125,
+    "scope": "Three isolated Pi 5 serial replays at nice19/core3/CPUQuota35%; CPU seconds per recorded RF second. Not live utilization or electrical power; transport omitted, repeated frontend/Stream startup included. Requested MemoryMax1G unavailable in this kernel; RSS observed."
+  },
+  "pi_health_samples_passed": 144,
+  "mac_pi_packet_timestamp_parity": true,
+  "controls": {
+    "overlap": {
+      "raw": {
+        "windows": 4096,
+        "primary": 953,
+        "secondary_valid": 1,
+        "unaccounted_valid": 0
+      },
+      "dsp": {
+        "windows": 4096,
+        "primary": 1007,
+        "secondary_valid": 1,
+        "unaccounted_valid": 0
+      }
+    },
+    "clean": {
+      "raw": {
+        "windows": 4096,
+        "exact": 2807,
+        "wrong_crc_valid": 0
+      },
+      "dsp": {
+        "windows": 4096,
+        "exact": 2848,
+        "wrong_crc_valid": 0
+      }
+    },
+    "noise": {
+      "raw": {
+        "windows": 20000,
+        "valid": 0
+      },
+      "dsp": {
+        "windows": 20000,
+        "valid": 0
+      }
+    }
+  },
+  "protected_checks": {
+    "pids": true,
+    "methods": true,
+    "workers": true,
+    "model_sha256": true,
+    "source_hashes": true,
+    "configs": true,
+    "samples": true,
+    "gain_db": true,
+    "trial": true,
+    "logging_enabled": true
+  },
+  "live_methods_at_freeze": {
+    "energy": true,
+    "crc": true,
+    "timing": true,
+    "soft": true,
+    "matched": true,
+    "coherent": true,
+    "header": false,
+    "sic": false,
+    "neural": true,
+    "pulse": false,
+    "stream1090": true,
+    "sequence": false,
+    "acquisition": false
+  },
+  "models_deployed": false,
+  "working_pipeline_changed": false,
+  "rf_cap_bytes": 5000000000,
+  "learning_new_train_validation_remaining": {
+    "train": 0,
+    "validation": 0
+  },
+  "recommendation": "Keep current live cascade. Frozen new companion is an optional offline artifact; no demonstrated distant-field gain or improvement over the November 4 companion on this RF.",
+  "limitations": [
+    "Packet-window reconstruction gains are not additional field receptions.",
+    "Two distant fixed-test window gains occur in previously evaluated tests; zero gains on 115 not-previously-evaluated distant test windows.",
+    "RF was reserved before fitting but captured before checkpoint freeze; not post-freeze prospective evidence.",
+    "Only six quality-screened distant stock aircraft in 25 RF seconds; insufficient range evidence.",
+    "Accepted-production annotations remain best-effort; full stock/unified journals and frozen replay are masked conservatively, not a certified complete internal-acceptance ledger.",
+    "New RF outputs remain quarantined, never training labels or FR24 input."
+  ]
+}

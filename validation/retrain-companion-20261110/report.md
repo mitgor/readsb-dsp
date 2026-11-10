@@ -1,0 +1,43 @@
+# Companion retraining and validation — 10 November 2026
+
+**Retrained and validated on Mac and the Pi 5; production remains unchanged.** Appending the new companion to the current neural cascade recovers four additional supplied test packet windows with zero losses. On recorded RF it produces one additional guarded aircraft-status message at 100–150 nm, zero additional positions, and zero additions beyond 180 nm. The frozen November 4 companion recovers that same message, so no new field advantage over that earlier companion has been established. Keep the current live cascade.
+
+## Training and independent labels
+
+Used 503 newly qualified TRAIN windows from 247 aircraft across 78 UTC hours, 197 VALIDATION windows from 97 aircraft across 61 hours, and 224 fixed TEST windows. Frozen preamble alignment excluded three training, one validation and one test window from the 506/198/225 qualified ledger. Historical replay is retained (9,341 total training, 1,793 validation and 854 test windows). ICAO, payload, original/transformed IQ and overlapping RF split checks pass. Continuous/evaluation RF is globally reserved and never supplies supervised labels. All new labels require the same-transmission stock Beast/frame/sample-clock and independent no-correction decoder confirmation, with causal position quality gates.
+
+Separate raw and DSP-augmented trials ran 1,000 steps with the same seed and production N×2×480 feature contract. Augmentation uses training-only synthetic replay, noise/timing and preamble-derived matched views. No unverified DSP/CRC/neural prediction or blind cancellation supplies a label. Validation selected the DSP checkpoint at step 200; raw selected step 1,000. Neither checkpoint selection nor training used test/RF outcomes. Weights are saved under models/candidates/retrain-20261110 and remain offline.
+
+## Packet-window results
+
+| Neural bundle | Validation exact / 1,793 | Test exact / 854 |
+|---|---:|---:|
+| Current production cascade | 1,392 | 643 |
+| Current + new companion | 1,408 | 647 |
+| Current + previous offline best | 1,401 | 647 |
+| Previous best + November 4 companion | 1,409 | 650 |
+| Previous best + retrained companion | 1,412 | 650 |
+
+Current + new adds 16 validation and four test windows, losing zero current valid windows. Against the prior-best cascade, raw adds seven validation/four test windows; DSP adds 11/three. Two DSP test-window additions are distant, but both belong to older fixed tests: **zero additions on the 115 not-previously-evaluated distant test windows**. The validation improvement is three windows over the November 4 trial; its test set is unchanged in recovered packets. These are reconstructions of supplied windows, not additional aircraft receptions. The new standalone model loses some original valid decodes; use only original-first additive pairing, never a wholesale replacement on this evidence.
+
+## Full pipeline RF replay
+
+Compared stock, the frozen full current enabled replay, actual unified relay output, and conservative production annotations across 25.01318 RF seconds (383 closed/aligned groups; 24.24718 seconds after edge trims). Ten saved archives were prepared; incomplete bursts and four unverified-alignment groups are excluded. Stream1090 calibration retains its 100-anchor minimum and passes with 265 anchors, offset −1,629 ticks and MAD one tick; no guard was bypassed. Exact compact-reference multiplicities and causal-address queries match full originals.
+
+The baseline has 259 guarded DSP extras beyond stock. The new companion has **one** additional guarded candidate, an airborne operational-status frame (ADS-B type code 31) at 100–150 nm. It is not a position report, and it is the identical packet recovered by the older November 4 companion. Candidate payload and aircraft are absent from this run's training/validation labels. All three Pi repetitions exactly match Mac payload/time/distance digests and lose zero current or prior-best raw packets. No additional packet beyond 180 nm is established; the RF covers only six quality-screened distant stock aircraft.
+
+Current switches were inspected again: energy, timing, soft, matched, coherent/pair retry, original-first three-model neural cascade and Stream1090 are enabled; pulse, sequence/acquisition, header and SIC are off at this run's freeze. Broad-CRC compute is included, but its packets stay quarantined. This differs from an earlier same-day observation and was not changed by this task. The optional Mac helper is an RF-copy research mirror in the inspected source; recorded actual unified output is masked as well. Internal accepted-production annotations remain best-effort rather than a certified complete ledger. The result is therefore a guarded quarantined replay candidate, not a verified training label or FR24 injection.
+
+## Pi CPU, controls and health
+
+Three isolated Pi 5 runs used copied actual native libraries/models, saved RF, core 3, nice 19, 35% of one-core quota and a finite timeout. No SDR, mirror consumer or feeder connection was opened. Median current serial decoder CPU is 0.708 CPU-s/RF-s; current plus companion is 0.739. Additional companion inference costs **0.0288 CPU-s per RF second** (2.88% of one core, 0.72% of four-core capacity at real time in this corpus; range 0.0274–0.0299). These are algorithm CPU measurements, not live utilization or electrical power; repeated frontend and Stream startup are included, live transport is omitted. Peak benchmark RSS was 203.8 MiB; requested MemoryMax is unavailable in the target kernel, so RSS was observed rather than claiming enforced memory isolation.
+
+Both candidates have zero CRC-valid outputs on 20,000 independent pure-noise controls, zero wrong CRC-valid outputs on 4,096 clean controls, and zero unexplained outputs in 4,096 synthetic overlap controls. Each overlap trial decodes one known valid secondary packet. PyTorch/ONNX export has zero bit or packet differences. Initial diagnostic helper path/import assumptions and exact-float duration aggregation were corrected and preserved; packet/timestamp parity remained exact, and final duration is audited as 60,031,633 original RF samples.
+
+All 144 protected target health samples pass. Receiver/feeder/collector PIDs, method/model/library/source/config hashes, gain, SDR loss/drop counters and 5 GB cap match before/after. No services, routes or switches changed and no capture flush was forced. Only 539 owned temporary files were removed after checksum-verified durable Mac input/results backups; persistent collection archives were untouched.
+
+## Saved state and next use
+
+Training consumption is recorded exactly: 503 new training and 197 validation examples consumed; four rejected train/validation examples quarantined. Fixed test evaluation history is preserved. The checksum-backed results/learning-latest.json pointer advances to this completed fit so daily runs cannot retrain these unchanged examples. The frozen production and prior validated companions remain intact. More untouched post-freeze distant RF is needed before claiming a range improvement; all RF in this report predates checkpoint freeze. Candidate output remains quarantined.
+
+Private weights, original RF, manifests, label/split audit, models/source hashes, controls, Mac/Pi outputs, health, backups and cleanup receipts are retained in results/retrain-20261110 and data/transfer/retrain-20261110. Only aggregate reports and reproducible scripts are published.
