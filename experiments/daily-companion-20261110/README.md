@@ -1,0 +1,1 @@
+Dated daily immutable offload, HTTP transport recovery, same-transmission label qualification and incremental ledger. Frozen output paths: do not rerun in place. Training deferred at 493 TRAIN windows (seven short) and 195 VALIDATION windows. No production changes. See validation/daily-20261110/report.md.
