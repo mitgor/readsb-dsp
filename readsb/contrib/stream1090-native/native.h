@@ -19,6 +19,12 @@ struct stream1090_native_event { int64_t ticks; uint8_t message[14]; };
 int stream1090_native_decode(const uint8_t *iq, uint32_t samples,
     int64_t first_sample, struct stream1090_native_event *events,
     uint32_t capacity, uint32_t *count);
+/* Bounded variant: wall deadline checked between ~3.4 ms input blocks.
+ * timeout_us=0 disables it. -4 rejects ALL output after deadline expiry. */
+int stream1090_native_decode_timeout_us(const uint8_t *iq, uint32_t samples,
+    int64_t first_sample, struct stream1090_native_event *events,
+    uint32_t capacity, uint32_t *count, uint32_t timeout_us);
+uint32_t stream1090_native_event_size(void);
 #ifdef __cplusplus
 }
 #endif

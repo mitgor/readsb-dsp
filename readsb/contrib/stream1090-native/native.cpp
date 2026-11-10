@@ -9,6 +9,7 @@
 #include <cstring>
 #include <limits>
 #include <memory>
+#include <chrono>
 #include "upstream/Global.hpp"
 #include "upstream/RawInputFormat.hpp"
 #include "upstream/SampleStream.hpp"
@@ -17,10 +18,12 @@ using NativeSampler = Sampler_2_4_to_8_0_Mhz;
 struct EmptyPipeline { static constexpr bool isEmpty = true; };
 class MemoryReader : public InputReaderBase<IQ_UINT8_RTL_SDR, NativeSampler::InputBufferSize, EmptyPipeline> {
     const uint8_t *data; size_t remaining; bool ended = false;
+    int64_t deadline; bool expired = false;
+    static int64_t nowUs() { return std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::steady_clock::now().time_since_epoch()).count(); }
     uint8_t tail[2*NativeSampler::InputBufferSize];
 public:
-    MemoryReader(EmptyPipeline &pipeline, const uint8_t *p, size_t n)
-      : InputReaderBase(pipeline), data(p), remaining(n) {}
+    MemoryReader(EmptyPipeline &pipeline, const uint8_t *p, size_t n, uint32_t timeout)
+      : InputReaderBase(pipeline), data(p), remaining(n), deadline(timeout ? nowUs()+timeout : 0) {}
     void readMagnitude(int32_t *out) {
         constexpr size_t block = sizeof(tail);
         if (remaining >= block) { this->processBlock(data, out); data += block; remaining -= block; }
@@ -29,7 +32,12 @@ public:
             remaining=0;ended=true;this->processBlock(tail,out);
         }
     }
-    bool eof() const { return ended; }
+    bool eof() {
+        if (ended) return true;
+        if (deadline && nowUs() >= deadline) { expired=true;return true; }
+        return false;
+    }
+    bool timedOut() const {return expired;}
 };
 struct BufferedHandler {
     stream1090_native_event *events; uint32_t capacity, count=0; int64_t first;
@@ -46,16 +54,23 @@ struct BufferedHandler {
         for (int i=0;i<8;++i)e.message[i+6]=uint8_t(lo>>(56-8*i));
     }
 };
-extern "C" int stream1090_native_decode(const uint8_t *iq,uint32_t samples,int64_t first,
-    stream1090_native_event *events,uint32_t capacity,uint32_t *count) {
+extern "C" int stream1090_native_decode_timeout_us(const uint8_t *iq,uint32_t samples,int64_t first,
+    stream1090_native_event *events,uint32_t capacity,uint32_t *count,uint32_t timeout_us) {
     if (count) *count=0;
     if (!iq || !events || !count || !capacity || !samples || first<0 || first>(INT64_MAX-int64_t(samples)*5-100000)/5) return -1;
     try {
-        EmptyPipeline pipeline;MemoryReader input(pipeline,iq,size_t(samples)*2);
+        EmptyPipeline pipeline;MemoryReader input(pipeline,iq,size_t(samples)*2,timeout_us);
         auto stream=std::make_unique<SampleStream<NativeSampler>>();
         BufferedHandler handler{events,capacity,0,first};
         stream->read(input,handler);
+        if(input.timedOut())return -4;
         if(handler.overflow)return -2;
         *count=handler.count;return 0;
     } catch (...) { return -3; }
 }
+
+extern "C" int stream1090_native_decode(const uint8_t *iq,uint32_t samples,int64_t first,
+    stream1090_native_event *events,uint32_t capacity,uint32_t *count) {
+    return stream1090_native_decode_timeout_us(iq,samples,first,events,capacity,count,0);
+}
+extern "C" uint32_t stream1090_native_event_size() {return sizeof(stream1090_native_event);}

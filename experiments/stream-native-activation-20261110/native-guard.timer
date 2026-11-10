@@ -1,0 +1,9 @@
+[Unit]
+Description=Independent native Stream1090 automatic rollback checks
+[Timer]
+OnBootSec=45s
+OnUnitInactiveSec=10s
+AccuracySec=1s
+Unit=adsb-stream1090-native-guard.service
+[Install]
+WantedBy=timers.target

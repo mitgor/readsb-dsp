@@ -100,4 +100,20 @@ RF-coordinate harness correction, library-load floating-point safety check,
 synthetic trust/repair tests and remaining live integration/deadline gates.
 The working pipeline and capture limits remain unchanged.
 
+## Production activation — 10 November 2026
+
+The extended library is now the active Stream1090 backend in the live DSP
+coordinator, through `src/rescue/stream1090_method.py`. The clean-only C option
+inside readsb remains unchanged. A bounded native deadline and same-window
+executable fallback preserve the existing admission/calibration rules. The
+independent native guard persists rollback and is enabled at boot.
+
+Complete adapter parity passed on 119 Mac and 34 Pi windows; the initial
+120-second live observation completed 128 native windows without decoder errors
+or fallback. Only the coordinator restarted; protected receiver/feeder/recorder
+PIDs were unchanged. The RF tap recorded approximately 3.55 seconds of gaps
+across preflight/handover while primary SDR counters stayed unchanged.
+See [activation report](../validation/stream-native-activation-20261110/report.md)
+for manual rollback, safeguards and evidence limits.
+
 SPDX-License-Identifier: GPL-3.0-or-later.

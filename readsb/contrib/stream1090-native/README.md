@@ -1,4 +1,4 @@
-# Native Stream1090 repair/trust extension (offline research)
+# Native Stream1090 repair/trust extension
 
 This in-process C++20 library adds the full pinned Stream1090 demodulation core
 behind a C ABI, complementing the smaller `../../dsp_stream_phase.c` clean-CRC
@@ -37,3 +37,13 @@ rewrite of the upstream core.
 
 See the [paired saved-RF benchmark](../../../validation/stream-repair-20261110/report.md)
 for distance, CPU and integration limitations.
+
+## Explicit production adapter
+
+`src/rescue/stream1090_method.py` can load this library through its bounded
+C ABI. Native errors fail over to the unchanged executable and downstream
+validation. The deployment is explicit, guarded and independent of the normal
+readsb build; default absence of backend configuration selects the executable.
+See [activation and rollback](../../../experiments/stream-native-activation-20261110/README.md).
+The original finite-window ABI remains available for replay; the timed ABI
+checks its wall deadline between input blocks and rejects all output on expiry.

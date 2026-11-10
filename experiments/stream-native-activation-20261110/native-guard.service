@@ -1,0 +1,12 @@
+[Unit]
+Description=Guard extended native Stream1090 and restore executable on failure
+After=network.target
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/adsb-stream1090-native-mode guard
+Nice=19
+CPUQuota=10%
+MemoryMax=96M
+TimeoutStartSec=150
+StandardOutput=null
+StandardError=journal

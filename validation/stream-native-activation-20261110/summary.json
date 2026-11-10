@@ -1,0 +1,33 @@
+{
+  "date_berlin": "2026-11-10",
+  "state": "active",
+  "backend": "native",
+  "library_sha256": "70d715dabe1ea2c6623002c9b47d4cb94f1b8a25197ba3f0d203b7b872e86103",
+  "mac_adapter_windows": 119,
+  "pi_adapter_windows": 34,
+  "exact_adapter_rows_and_alignment": true,
+  "fallback_and_deadline_controls_passed": true,
+  "rollback_filesystem_and_guard_controls_passed": true,
+  "observation_seconds": 120,
+  "native_windows": 128,
+  "native_fallbacks": 0,
+  "decoder_errors": 0,
+  "protected_pids_unchanged": true,
+  "only_coordinator_restarted": true,
+  "model_method_worker_gain_routing_unchanged": true,
+  "native_library_mapping_verified": true,
+  "guard_timer_enabled_and_active": true,
+  "observed_stream1090_relay_counter": [
+    49488,
+    49841
+  ],
+  "capture_cap_bytes": 5000000000,
+  "capture_error": null,
+  "primary_sdr_loss_counters_unchanged": true,
+  "recorder_tap_gap_samples_during_preflight_activation_interval": 8512720,
+  "recorder_tap_gap_rf_seconds": 3.5469666666666666,
+  "evidence_sha256": "fdeb1072f5e34071ab0612fd969c9a6fd2fdca8d5b3b0b8343c95f79345c64cd",
+  "final_native_windows": 860,
+  "guard_heartbeat_storage": "RAM",
+  "guard_quiet_aircraft_upload_aware": true
+}
