@@ -13,7 +13,7 @@ def main():
  a,extra=p.parse_known_args()
  if not (ROOT/'readsb/Makefile').exists() or not (ROOT/'models').is_dir():
   p.error('Use a source checkout with pip install -e .; standalone wheels do not contain the full readsb/model tree')
- if a.command=='shadow':return subprocess.call([sys.executable,'-m','rescue.shadow',*extra])
+ if a.command=='shadow':return subprocess.call([sys.executable,'-m','rescue.async_shadow',*extra])
  if extra:p.error('Unrecognized arguments: '+' '.join(extra))
  if a.command=='build':
   return subprocess.call([sys.executable,str(ROOT/'tools/build_bundle.py'),*(['--native-only'] if a.native_only else []),*(['--rtlsdr'] if a.rtlsdr else []),'--jobs',str(a.jobs),'--coherent-backend',a.coherent_backend,'--methods-backend',a.methods_backend])

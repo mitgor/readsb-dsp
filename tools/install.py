@@ -12,8 +12,8 @@ def units(lat, lon, gain):
     py = '/opt/readsb-dsp/.venv/bin/python'
     commands = {
       'receiver': f'/opt/readsb-dsp/readsb/readsb --device-type rtlsdr --device 0 --gain {gain} --lat {lat} --lon {lon} --net --net-bo-port 30005 --write-json /run/readsb-dsp',
-      'decoder': f'{py} -m rescue.shadow --root /opt/readsb-dsp --runtime /run/readsb-dsp --archive /var/lib/readsb-dsp --lat {lat} --lon {lon} --config /etc/readsb-dsp/methods.json --worker-config /etc/readsb-dsp/workers.json --cpu-budget-config /etc/readsb-dsp/cpu-budget.json --no-logging',
-      'relay': f'{py} -m rescue.feed --runtime /run/readsb-dsp --config /etc/readsb-dsp/methods.json --port 31005',
+      'decoder': f'{py} -m rescue.async_shadow --root /opt/readsb-dsp --runtime /run/readsb-dsp --readsb-json /run/readsb-dsp --archive /var/lib/readsb-dsp --lat {lat} --lon {lon} --config /etc/readsb-dsp/methods.json --worker-config /etc/readsb-dsp/workers.json --cpu-budget-config /etc/readsb-dsp/cpu-budget.json --no-logging',
+      'relay': f'{py} -m rescue.async_feed --runtime /run/readsb-dsp --config /etc/readsb-dsp/methods.json --worker-config /etc/readsb-dsp/workers.json --port 31005',
       'dashboard': f'{py} -m deadsb.cli dashboard --runtime /run/readsb-dsp --budget-config /etc/readsb-dsp/cpu-budget.json',
     }
     result = {}
@@ -37,11 +37,11 @@ def main():
     if sys.platform!='linux' or os.geteuid()!=0:p.error('Run with sudo on Debian/Raspberry Pi OS, or use --render-only')
     if PREFIX.exists() or Path('/etc/readsb-dsp').exists() or any((Path('/etc/systemd/system')/n).exists() for n in rendered):
         p.error('Existing installation found. Refusing to overwrite it; use a reviewed migration.')
-    subprocess.run(['git','diff','--exit-code','HEAD'],cwd=ROOT,check=True,stdout=subprocess.DEVNULL)
+    subprocess.run(['git','-c',f'safe.directory={ROOT}','diff','--exit-code','HEAD'],cwd=ROOT,check=True,stdout=subprocess.DEVNULL)
     # Export only versioned source, never private RF, build products or credentials.
     PREFIX.mkdir()
     try:
-        names=subprocess.check_output(['git','ls-files','-z'],cwd=ROOT).decode().split('\0')
+        names=subprocess.check_output(['git','-c',f'safe.directory={ROOT}','ls-files','-z'],cwd=ROOT).decode().split('\0')
         for name in filter(None,names):
             if Path(name).parts[0] not in {'packaging','src','readsb','models','config','tools','docs','dashboard','pyproject.toml','README.md','LICENSE','COPYING','bundle-manifest.json'}:continue
             source=ROOT/name; dest=PREFIX/name

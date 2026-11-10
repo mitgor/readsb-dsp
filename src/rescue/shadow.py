@@ -27,7 +27,8 @@ def valid_df17(payload):
         if value&(1<<bit):value^=0x1fff409<<(bit-24)
     return value==0
 class LiveInput:
-    def __init__(self,sockpath,origin,dispatch_ms=100,indexed_stock_history=False):
+    def __init__(self,sockpath,origin,dispatch_ms=100,indexed_stock_history=False,readsb_json=Path("/run/readsb")):
+        self.readsb_json=Path(readsb_json)
         self.path=Path(sockpath);self.origin=origin;self.stop=threading.Event();self.queue=queue.Queue(2000//dispatch_ms);self.dispatch_ms=dispatch_ms
         self.capture=CaptureClient();self.count=Counter();self.frames=StockHistory() if indexed_stock_history else deque(maxlen=100000);self.positions=defaultdict(lambda:deque(maxlen=40));self.lock=threading.Lock();self.health={};self.threads=[]
         self.path.parent.mkdir(parents=True,exist_ok=True)
@@ -81,7 +82,7 @@ class LiveInput:
     def context(self):
         while not self.stop.is_set():
             try:
-                aircraft=json.loads(Path('/run/readsb/aircraft.json').read_text());stats=json.loads(Path('/run/readsb/stats.json').read_text());now=aircraft['now']
+                aircraft=json.loads((self.readsb_json/'aircraft.json').read_text());stats=json.loads((self.readsb_json/'stats.json').read_text());now=aircraft['now']
                 with self.lock:
                     self.health={'aircraft_unix':now,'gain_db':stats.get('gain_db'),'local':stats.get('total',{}).get('local',{})}
                     for a in aircraft['aircraft']:
@@ -193,8 +194,8 @@ def evaluate_crc_research(frames,candidates,accepted,alignment):
         decisions['guarded']+=1
     return extras,dict(decisions)
 
-def main():
-    p=argparse.ArgumentParser();p.add_argument('--cpu-budget-config',type=Path,help='Opt-in total CPU governor; rescue-only admission, never stock throttling');p.add_argument('--no-logging',action='store_true',help='Disable experimental archives and IQ/training collection; retain live statistics and feeding');p.add_argument('--crc-verification',action='store_true',help='Collect bounded, research-only Broad CRC RF evidence in a separate 12-hour archive');p.add_argument('--indexed-stock-history',action='store_true',help='Experimental coordinator index; default off');p.add_argument('--neural-spool',type=Path);p.add_argument('--dispatch-ms',type=int,choices=(50,100),default=100);p.add_argument('--config',type=Path);p.add_argument('--worker-config',type=Path);p.add_argument('--root',type=Path,required=True);p.add_argument('--broad-crc-shadow',action='store_true',help='Quarantine CRC repairs; never count as accepted extras');p.add_argument('--runtime',type=Path,default=Path('/run/adsb-rescue'));p.add_argument('--archive',type=Path,default=Path('/var/lib/adsb-rescue'));p.add_argument('--lat',type=float,required=True);p.add_argument('--lon',type=float,required=True);a=p.parse_args()
+def main(asynchronous=False):
+    p=argparse.ArgumentParser();p.add_argument('--readsb-json',type=Path,default=Path('/run/readsb'));p.add_argument('--cpu-budget-config',type=Path,help='Opt-in total CPU governor; rescue-only admission, never stock throttling');p.add_argument('--no-logging',action='store_true',help='Disable experimental archives and IQ/training collection; retain live statistics and feeding');p.add_argument('--crc-verification',action='store_true',help='Collect bounded, research-only Broad CRC RF evidence in a separate 12-hour archive');p.add_argument('--indexed-stock-history',action='store_true',help='Experimental coordinator index; default off');p.add_argument('--neural-spool',type=Path);p.add_argument('--dispatch-ms',type=int,choices=(50,100),default=100);p.add_argument('--config',type=Path);p.add_argument('--worker-config',type=Path);p.add_argument('--root',type=Path,required=True);p.add_argument('--broad-crc-shadow',action='store_true',help='Quarantine CRC repairs; never count as accepted extras');p.add_argument('--runtime',type=Path,default=Path('/run/adsb-rescue'));p.add_argument('--archive',type=Path,default=Path('/var/lib/adsb-rescue'));p.add_argument('--lat',type=float,required=True);p.add_argument('--lon',type=float,required=True);a=p.parse_args()
     a.runtime.mkdir(parents=True,exist_ok=True);model=a.root/'models/tiny-fp32.onnx'
     from deadsb.governor import Governor,Config,read_cpu
     governor=Governor(Config.from_dict(json.loads(a.cpu_budget_config.read_text()))) if a.cpu_budget_config else None
@@ -205,19 +206,33 @@ def main():
     from .workers import plan
     selection=plan(a.worker_config)
     coherent_settings={k:selection['config']['coherent_'+k] for k in ('threshold','budget')}
-    pool=make_streaming_pool(model,methods,a.runtime,selection,dispatch_ms=a.dispatch_ms)
+    if asynchronous:
+        from .async_completion import CompletionPool
+        from .streaming import StreamingPool
+        from .ring_transport import RingStreamingPool
+        # Both transports retain the same future contract and governor job policy.
+        base=RingStreamingPool if selection.get('config',{}).get('shared_transport')=='ring' else StreamingPool
+        class Tapped(CompletionPool,base):pass
+        pool=Tapped(model,methods,a.runtime,selection,dispatch_ms=a.dispatch_ms)
+    else:
+        pool=make_streaming_pool(model,methods,a.runtime,selection,dispatch_ms=a.dispatch_ms)
     from .neural_spool import Spool
     spool=Spool(a.neural_spool) if a.neural_spool else None
-    live=LiveInput(a.runtime/'iq.sock',(a.lat,a.lon),dispatch_ms=a.dispatch_ms,indexed_stock_history=a.indexed_stock_history);archive=Archive(a.archive,lock_memory=True,enabled=not a.no_logging);stats=DistanceStats();metrics=MethodMetrics();counts=Counter();crc_recent=deque(maxlen=512);started=time.time();last_status=0;last_sample_minute=None;quota=Counter();timing=deque(maxlen=600);alignment={};last_epoch=None
+    live=LiveInput(a.runtime/'iq.sock',(a.lat,a.lon),dispatch_ms=a.dispatch_ms,indexed_stock_history=a.indexed_stock_history,readsb_json=a.readsb_json);archive=Archive(a.archive,lock_memory=True,enabled=not a.no_logging);stats=DistanceStats();metrics=MethodMetrics();counts=Counter();crc_recent=deque(maxlen=512);started=time.time();last_status=0;last_sample_minute=None;quota=Counter();timing=deque(maxlen=600);alignment={};last_epoch=None
     from .training_collection import DatasetCollector
     training_collector=DatasetCollector(archive)
     crc_verifier=CrcVerifier(a.archive/'crc-verification') if methods['crc'] and a.crc_verification else None
     stop=threading.Event()
     for sig in (signal.SIGTERM,signal.SIGINT):signal.signal(sig,lambda *_:stop.set())
+    engine=None
+    if asynchronous:
+        from .async_engine import Engine
+        cfg=selection['config']
+        engine=Engine(live,a.runtime/'feed-outbox',{**methods,'sequence':cfg['sequence_acquisition'] and cfg['sequence_enabled'],'acquisition':cfg['sequence_acquisition'] and cfg['acquisition_enabled']})
     live.start();modelsha=hashlib.sha256(model.read_bytes()).hexdigest()
     def status():
         _,health=live.snapshot()
-        return {'cpu_budget':governor.report() if governor else {'enabled':False},'method_metrics':metrics.report(stats.report()['total']),'capture_transport':dict(live.capture.count),'method_switches':{**methods,'sequence':selection['config']['sequence_acquisition'] and selection['config']['sequence_enabled'],'acquisition':selection['config']['sequence_acquisition'] and selection['config']['acquisition_enabled']},'logging_enabled':not a.no_logging,'indexed_stock_history':a.indexed_stock_history,'mode':'feeding_validated_dsp' if (a.runtime/'feed-routing.json').exists() else 'dsp_candidate_collection','pipeline_methods':methods,'coherent_settings':coherent_settings,'forwarding_enabled':(a.runtime/'feed-routing.json').exists(),'workers':pool.report(),'neural_mirror':dict(spool.count) if spool else None,'broad_crc_mode':'quarantine_only' if a.broad_crc_shadow else 'off','crc_research_recent':list(crc_recent),'crc_verification':crc_verifier.report() if crc_verifier else None,'crc_research_policy':'Aligned, CRC-valid, prior-stock ICAO, no stock/accepted duplicate or conflict; research only, never routed to FR24','started_unix':started,'updated_unix':time.time(),'model_sha256':modelsha,'position_provenance':'stock-only prior position, age <=15 seconds; unknown kept separate','counts':dict(counts),'input':dict(live.count),'distance':stats.report(),'archive':archive.report(),'training_collection':{**training_collector.report(),'enabled':not a.no_logging},'alignment':alignment,'health':health,'mean_processing_s':sum(timing)/len(timing) if timing else None,'max_recent_processing_s':max(timing,default=None),'threads_alive':all(t.is_alive() for t in live.threads)}
+        return {'async_output':engine.report() if engine else {'enabled':False},'cpu_budget':governor.report() if governor else {'enabled':False},'method_metrics':metrics.report(stats.report()['total']),'capture_transport':dict(live.capture.count),'method_switches':{**methods,'sequence':selection['config']['sequence_acquisition'] and selection['config']['sequence_enabled'],'acquisition':selection['config']['sequence_acquisition'] and selection['config']['acquisition_enabled']},'logging_enabled':not a.no_logging,'indexed_stock_history':a.indexed_stock_history,'mode':'feeding_validated_dsp' if (a.runtime/'feed-routing.json').exists() else 'dsp_candidate_collection','pipeline_methods':methods,'coherent_settings':coherent_settings,'forwarding_enabled':(a.runtime/'feed-routing.json').exists(),'workers':pool.report(),'neural_mirror':dict(spool.count) if spool else None,'broad_crc_mode':'quarantine_only' if a.broad_crc_shadow else 'off','crc_research_recent':list(crc_recent),'crc_verification':crc_verifier.report() if crc_verifier else None,'crc_research_policy':'Aligned, CRC-valid, prior-stock ICAO, no stock/accepted duplicate or conflict; research only, never routed to FR24','started_unix':started,'updated_unix':time.time(),'model_sha256':modelsha,'position_provenance':'stock-only prior position, age <=15 seconds; unknown kept separate','counts':dict(counts),'input':dict(live.count),'distance':stats.report(),'archive':archive.report(),'training_collection':{**training_collector.report(),'enabled':not a.no_logging},'alignment':alignment,'health':health,'mean_processing_s':sum(timing)/len(timing) if timing else None,'max_recent_processing_s':max(timing,default=None),'threads_alive':all(t.is_alive() for t in live.threads)}
     try:
         while not stop.is_set():
             if governor and time.monotonic()-budget_sampled>=1:
@@ -245,9 +260,13 @@ def main():
                             references=[{**f,'seconds':(f['ticks']-first*5)/12e6} for f in frames]
                         if governor and budget_rf!=(epoch,first):
                             budget_rf=(epoch,first);pool.job_policy=governor.policy()
+                        if engine:engine.begin(item)
                         pool.submit(item,references)
                         if spool:spool.publish(item)
             result=pool.pop()
+            if engine:
+                for batch,rows,detail in pool.take_completed():engine.offer(batch,rows,detail)
+                engine.tick()
             if result:
                 item,events,work=result
                 metrics.record(work)
@@ -274,7 +293,7 @@ def main():
                 # Optional relay consumes only already-validated, aligned cheap DSP
                 # extras. Bounded RAM outbox never blocks the receiver or workers.
                 outbox=a.runtime/'feed-outbox'
-                if outbox.is_dir():
+                if engine is None and outbox.is_dir():
                     files=sorted(outbox.glob('*.json'))
                     for old in files[:-15]:old.unlink(missing_ok=True)
                     tmp=outbox/'batch.tmp'

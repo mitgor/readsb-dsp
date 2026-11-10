@@ -56,6 +56,10 @@ the shared socket directory. Configuration changes to methods/workers require a
 **decoder** restart; CPU-budget updates are read dynamically. Never enable
 readsb's separate `--dsp-rescue` mode simultaneously with these workers.
 
+The default coordinator (`rescue.async_shadow`) publishes worker completions
+independently to `rescue.async_feed`. [Transport policy and rollback](ASYNC_OUTPUT.md)
+describe the five-second transmission cache and preserved acceptance checks.
+
 Stock Beast: `127.0.0.1:30005`. Guarded combined Beast: `127.0.0.1:31005`.
 After verifying stock reception and healthy decoder/relay status, explicitly
 configure your existing FR24 or ADS-B Exchange feeder to consume the combined
@@ -86,8 +90,8 @@ reports and private evidence retain their original names.
 | Energy, timing, soft, matched, coherent, frozen neural cascade | Included |
 | Pulse/sequence/acquisition | Included opt-in; shipped method defaults retained |
 | CPU admission governor and budget dashboard | Included |
-| Guarded stock + extras relay | Included, shipped ordered 3-second version |
-| New asynchronous relay / standalone Stream1090 / latest Rust overlays | Dated experiments; not promoted into this installer |
+| Guarded asynchronous stock + extras relay | Included by default; no intentional stock holdback |
+| Standalone Stream1090 / latest Rust deployment overlays | Dated experiments; not promoted into this installer |
 | Research capture, far-range map, private historical reports | Not enabled or bundled with private data |
 | RF recording / neural retraining | Not enabled by installation |
 

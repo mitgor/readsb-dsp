@@ -152,11 +152,14 @@ You supply receiver coordinates and gain. Existing SDR owners/feeders are never
 stopped or reconfigured automatically. The canonical web prefix is
 **`/readsb-dsp/`**; `/neural-rescue/` remains a compatibility URL on migrated receivers.
 
-The installable source bundle is distinct from the evolving private test receiver:
-it uses the shipped coordinator/ordered relay, not the newer asynchronous relay
-and Stream1090 deployment assembled by dated experiments. Experimental backends
-are not silently promoted by installing this release. See the component matrix
-in the installation guide before comparing performance.
+The default workflow uses the asynchronous coordinator and guarded relay: stock
+forwards immediately, completed DSP producers publish independently, and a shared
+five-second transmission cache suppresses duplicates within 120 microseconds.
+This preserves later repeats of the same payload. CRC, causal stock identity,
+conflict and sample-clock alignment checks still apply; broad CRC stays quarantined.
+The CPU governor remains active. See [asynchronous output](docs/ASYNC_OUTPUT.md).
+Standalone Stream1090 and receiver-specific Rust deployment overlays remain
+separate experiments; installing this bundle does not silently enable them.
 
 ## Build locally
 
