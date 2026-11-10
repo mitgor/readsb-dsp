@@ -47,3 +47,18 @@ readsb build; default absence of backend configuration selects the executable.
 See [activation and rollback](../../../experiments/stream-native-activation-20261110/README.md).
 The original finite-window ABI remains available for replay; the timed ABI
 checks its wall deadline between input blocks and rejects all output on expiry.
+
+## Experimental incremental API (not deployed)
+
+`incremental.h` exposes a separate create/feed/finish/destroy interface. State
+is retained across 20–50 ms chunks within the current logical window, then reset
+at the same boundary as the batch version. Partial native input blocks are
+carried between calls; only finish performs the original terminal padding.
+`make incremental` builds this separate library without changing the default
+batch build or the working configuration. Callers must reset on RF epoch
+changes and retain all causal guard/admission rules.
+
+The [Pi experiment](../../../validation/stream-incremental-20261110/report.md)
+found exact packet/time/order retention and much earlier decoder output, with
+additional paced CPU cost. Its latency excludes current whole-window admission
+and feeder delivery. It does not establish an end-to-end latency improvement.

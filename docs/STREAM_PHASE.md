@@ -116,4 +116,17 @@ across preflight/handover while primary SDR counters stayed unchanged.
 See [activation report](../validation/stream-native-activation-20261110/report.md)
 for manual rollback, safeguards and evidence limits.
 
+## Incremental experiment — 10 November 2026
+
+A separate optional `incremental.h` context processes 20/50 ms chunks without
+restarting demodulation/trust on each chunk. The current logical window and
+terminal padding remain identical to the working batch backend. The Pi replay
+preserved all tested packet bytes, timestamps and order across 502 windows.
+
+On eight paced RF seconds, 20 ms publication latency was 14.6 ms median and
+24.2 ms p95, with approximately 12.1% more Stream1090 CPU than batching in that
+paced sample. These are decoder-availability measurements; stock/coordinator
+admission and feeder delivery are excluded. The working backend remains batch.
+See [full results](../validation/stream-incremental-20261110/report.md).
+
 SPDX-License-Identifier: GPL-3.0-or-later.

@@ -1,0 +1,112 @@
+{
+  "date_berlin": "2026-11-10",
+  "hardware": "Raspberry Pi 5 Model B Rev 1.0",
+  "state": "isolated_prototype_not_deployed",
+  "working_pipeline_changed": false,
+  "exact_packet_timestamp_and_order_retention": true,
+  "mac_pi_core_digests_exact": true,
+  "long_rf_seconds": 119.0,
+  "recent_rf_seconds": 24.247180416666666,
+  "total_windows": 502,
+  "long_stock_extras_retained_per_mode": 968,
+  "recent_stock_extras_retained_per_mode": 11,
+  "raw_core_packet_records_per_mode": 15221,
+  "added_transmissions": 0,
+  "lost_transmissions": 0,
+  "paced_rf_windows": 8,
+  "paced_core_packet_count": 960,
+  "decoder_latency_ms": {
+    "batch": {
+      "packets": 960,
+      "p50_ms": 609.9919006548623,
+      "p95_ms": 1047.2684585219374,
+      "p99_ms": 1126.2371506548623,
+      "max_ms": 1228.1112466250906,
+      "mean_ms": 626.1212346758299
+    },
+    "20ms": {
+      "packets": 960,
+      "p50_ms": 14.621549205844575,
+      "p95_ms": 24.185881445397904,
+      "p99_ms": 27.793479231600916,
+      "max_ms": 49.81856520306071,
+      "mean_ms": 14.742608677934784
+    },
+    "50ms": {
+      "packets": 960,
+      "p50_ms": 34.24968930575745,
+      "p95_ms": 57.25063128175334,
+      "p99_ms": 71.58826236950355,
+      "max_ms": 95.99830132924514,
+      "mean_ms": 34.57369617639475
+    }
+  },
+  "cpu": {
+    "batch": {
+      "throughput_cpu_s_per_rf_s": 0.10590571589915963,
+      "paced_cpu_s_per_rf_s": 0.10568479912499917
+    },
+    "20ms": {
+      "throughput_cpu_s_per_rf_s": 0.10975148568067211,
+      "paced_cpu_s_per_rf_s": 0.11846725562500016
+    },
+    "50ms": {
+      "throughput_cpu_s_per_rf_s": 0.10909751452100819,
+      "paced_cpu_s_per_rf_s": 0.11694831000000061
+    }
+  },
+  "controls": {
+    "boundary_clean": {
+      "packets": 3,
+      "all_split_packet_timestamps_order_exact": true,
+      "known_payload_only": true
+    },
+    "trusted_repair": {
+      "packets": 3,
+      "all_split_packet_timestamps_order_exact": true,
+      "known_payload_only": true
+    },
+    "untrusted_repair": {
+      "packets": 0,
+      "all_split_packet_timestamps_order_exact": true,
+      "known_payload_only": true
+    },
+    "noise": {
+      "packets": 0,
+      "all_split_packet_timestamps_order_exact": true,
+      "known_payload_only": true
+    },
+    "api": {
+      "gap_overlap_rejected": true,
+      "incomplete_finish_rejected": true,
+      "overflow_rejects_partial_output": true,
+      "deadline_rejects_partial_output": true,
+      "closed_context_rejected": true,
+      "contexts_isolated": true,
+      "input_bounds_rejected": true
+    }
+  },
+  "protected_checks": {
+    "pids": true,
+    "methods": true,
+    "workers": true,
+    "model_sha256": true,
+    "source_hashes": true,
+    "configs": true,
+    "samples": true,
+    "gain_db": true,
+    "trial": true,
+    "logging_enabled": true,
+    "rf_cap_5GB": true
+  },
+  "rf_copy_gap_seconds_during_setup_test": 0.2938266666666667,
+  "limits": [
+    "Decoder availability only; not current coordinator/feeder latency",
+    "Single target throughput pass and eight paced one-second windows",
+    "Historical RF, not prospective validation",
+    "Long distances estimated; recent distances stock-quality-gated",
+    "Early guard/clock/dedup/relay release not implemented or validated",
+    "Deadline/overflow/gap errors poison the context and require quarantine of that logical window",
+    "Memory-controller enforcement unavailable on this Pi; MemoryMax only requested"
+  ]
+}
