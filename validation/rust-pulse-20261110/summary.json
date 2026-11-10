@@ -1,0 +1,41 @@
+{
+  "parity_passed": true,
+  "safe_to_activate": true,
+  "windows": 3840,
+  "numeric_and_error_controls": 58,
+  "bank_controls": 6,
+  "packet_window_outputs": 250,
+  "packet_signature_sha256": "ab90446c976dd6008f670f6710a7b2d483c80d460cf56de6d1103d8fbf0a5ec8",
+  "median_cpu_s": {
+    "c": 0.010414395899999995,
+    "rust": 0.010994012140000002,
+    "actual": 0.010371156199999999
+  },
+  "median_CPU_change_vs_C_percent": 5.353319782168087,
+  "median_CPU_change_vs_actual_C_percent": 6.0056557628551,
+  "libraries": {
+    "c": "0850232f7c9447757f15929973ce3ccb6afc5b755d97ae1e9159307186ea24a2",
+    "rust": "8a45e51338a0871e96baad3248c408f164c3659f3c6dc2cd9ababd43c81fcc3c",
+    "actual": "0850232f7c9447757f15929973ce3ccb6afc5b755d97ae1e9159307186ea24a2"
+  },
+  "full_RF_seconds": 24,
+  "full_native_extras": 369,
+  "all_raw_guarded_events_alignment_decisions_exact": true,
+  "no_lost_or_added_packets": true,
+  "full_worker_CPU_per_RF_second": {
+    "C": 0.5542368985416669,
+    "Rust": 0.5555571482916661
+  },
+  "max_test_RSS_MiB": 981.078125,
+  "protected_unchanged": true,
+  "model_sha256": "bd9abaa59413fda4506ffb8c66f86418a7c33bc16b6c6d0521e42e904931b4fe",
+  "scope": "Historical regression corpus, full current pipeline including Rust sequence/coherent/acquisition and enabled neural methods. Broad CRC remains quarantined. One sequential full-worker pass is not a precise CPU/energy comparison. User requested Rust activation if parity/stability pass; no CPU-saving claim is a gate.",
+  "receipt": {
+    "bytes": 875335680,
+    "sha256": "e50e921a5fa4bdc9c3f180a3c58c8bb5f88f89953d83ba402dfff06abaaf2636",
+    "members": 469,
+    "verified": true,
+    "durable": true
+  },
+  "hardware": "Pi5 / Cortex-A76; no Pi4 cost claim."
+}
