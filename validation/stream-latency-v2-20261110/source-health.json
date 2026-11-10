@@ -1,0 +1,9 @@
+{
+  "pids": true,
+  "configs": true,
+  "methods": true,
+  "workers": true,
+  "samples": true,
+  "gain_db": true,
+  "source_hashes": true
+}

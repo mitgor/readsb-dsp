@@ -1,0 +1,12 @@
+{
+  "raw_native_exact_mac_pi_all_trials": true,
+  "raw_energy_exact_mac_pi_all_trials": true,
+  "stock_wire_bytes_order_preserved": true,
+  "Pi_aligned_tick_delta_counts": {
+    "0": 148,
+    "-1": 10
+  },
+  "retained_all_79_each_trial": true,
+  "upstream_energy_counted_once": true,
+  "full_pipeline_changed": false
+}

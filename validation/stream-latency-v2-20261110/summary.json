@@ -1,0 +1,1318 @@
+{
+  "mac": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "rf_seconds_per_condition": 8,
+    "results": [
+      {
+        "mode": "legacy",
+        "metrics": {
+          "energy": {
+            "emitted": 32,
+            "early": 32,
+            "fallback": 0,
+            "latency": {
+              "n": 32,
+              "p50_ms": 58.247291037202054,
+              "p95_ms": 78.36650004589573,
+              "p99_ms": 87.09012468141353,
+              "max_ms": 160.55716582521805,
+              "under250": 32,
+              "under250_with_50ms_clock_sensitivity": 32
+            },
+            "deferred_reference": 32,
+            "reference_retained_any_method": 32,
+            "not_in_recorded_other_DSP": 0,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "stream1090": {
+            "emitted": 47,
+            "early": 46,
+            "fallback": 1,
+            "latency": {
+              "n": 47,
+              "p50_ms": 51.26429104328167,
+              "p95_ms": 84.98637464673297,
+              "p99_ms": 192.67487505039594,
+              "max_ms": 973.6285824805598,
+              "under250": 46,
+              "under250_with_50ms_clock_sensitivity": 46
+            },
+            "deferred_reference": 47,
+            "reference_retained_any_method": 47,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "all": {
+            "emitted": 79,
+            "early": 78,
+            "fallback": 1,
+            "latency": {
+              "n": 79,
+              "p50_ms": 51.816790998101325,
+              "p95_ms": 87.09012468141353,
+              "p99_ms": 192.67487505039594,
+              "max_ms": 973.6285824805598,
+              "under250": 78,
+              "under250_with_50ms_clock_sensitivity": 78
+            },
+            "deferred_reference": 79,
+            "reference_retained_any_method": 79,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          }
+        },
+        "raw_batch_parity": true,
+        "worker_cpu_s": {
+          "admission_main": 0.333254861000002,
+          "stock_index": 0.012577370999998339,
+          "native": 0.8482169119999996,
+          "energy": 0.7509456700000006
+        },
+        "total_process_cpu_s": 2.21338,
+        "cpu_s_per_RF_s": 0.2766725,
+        "wall_s": 8.02993141580373,
+        "consumer_cpu_s_per_RF_s": 0.18280429124999992,
+        "shared_energy": null,
+        "stock_delivery_delay": {
+          "n": 1074,
+          "p50_ms": 1.0155332274734974,
+          "p95_ms": 3.972278442233801,
+          "p99_ms": 8.162179496139288,
+          "max_ms": 12.96319393441081,
+          "under250": 1074,
+          "under250_with_50ms_clock_sensitivity": 1074
+        },
+        "stock_records": 6630,
+        "stock_byte_sha256": "2bb229fac9a9d33393726c320407508950646039133eac7ce2cb102fac8012b9",
+        "stock_bytes_preserved": true,
+        "bridge_counts": {
+          "clock_ready": 8,
+          "early_alignment_not_ready": 9,
+          "duplicate_120us": 44355,
+          "added_energy": 1516,
+          "added_stream1090": 46,
+          "final_duplicate_120us": 933,
+          "final_added_energy": 32,
+          "final_added_stream1090": 47,
+          "finalized_windows": 8
+        },
+        "relay_counts": {
+          "emitted_early": 78,
+          "emitted_final": 1
+        },
+        "dedup": {
+          "ttl_expired": 6058,
+          "capacity_evictions": 0,
+          "epoch_resets": 1,
+          "wrong_epoch": 0,
+          "unvalidated": 0,
+          "stale": 0,
+          "duplicates": 78,
+          "late_stock_after_extra_race": 0,
+          "stock_duplicate_preserved": 0,
+          "stock_emitted": 6630,
+          "stream1090_emitted": 47,
+          "energy_emitted": 32
+        },
+        "maximum_backlog": {
+          "native": 2,
+          "energy": 2
+        },
+        "energy_digest": "5c25858aa1fcb10208c0b106a38870b677099068d5603b7b12686cbe839fdc57",
+        "native_digest": "0164e78121eb1a368c92db8bbdf6daf868d666c61790ba6ce41e51cc5cfa5bfa",
+        "trial": 1
+      },
+      {
+        "mode": "optimized",
+        "metrics": {
+          "energy": {
+            "emitted": 32,
+            "early": 32,
+            "fallback": 0,
+            "latency": {
+              "n": 32,
+              "p50_ms": 56.155666786819936,
+              "p95_ms": 72.4191249607209,
+              "p99_ms": 72.88920897969619,
+              "max_ms": 161.42679200455555,
+              "under250": 32,
+              "under250_with_50ms_clock_sensitivity": 32
+            },
+            "deferred_reference": 32,
+            "reference_retained_any_method": 32,
+            "not_in_recorded_other_DSP": 0,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "stream1090": {
+            "emitted": 47,
+            "early": 47,
+            "fallback": 0,
+            "latency": {
+              "n": 47,
+              "p50_ms": 49.283458805422065,
+              "p95_ms": 83.93329221951973,
+              "p99_ms": 193.51312497219465,
+              "max_ms": 220.95654164553682,
+              "under250": 47,
+              "under250_with_50ms_clock_sensitivity": 46
+            },
+            "deferred_reference": 47,
+            "reference_retained_any_method": 47,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "all": {
+            "emitted": 79,
+            "early": 79,
+            "fallback": 0,
+            "latency": {
+              "n": 79,
+              "p50_ms": 52.73283399528267,
+              "p95_ms": 83.93329221951973,
+              "p99_ms": 193.51312497219465,
+              "max_ms": 220.95654164553682,
+              "under250": 79,
+              "under250_with_50ms_clock_sensitivity": 78
+            },
+            "deferred_reference": 79,
+            "reference_retained_any_method": 79,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          }
+        },
+        "raw_batch_parity": true,
+        "worker_cpu_s": {
+          "stock_index": 0.057021472000002404,
+          "admission_main": 0.17394126499999585,
+          "native": 0.8749001249999999,
+          "energy": 0.7901743800000003
+        },
+        "total_process_cpu_s": 2.1668100000000003,
+        "cpu_s_per_RF_s": 0.27085125000000004,
+        "wall_s": 8.043695666827261,
+        "consumer_cpu_s_per_RF_s": 0.1720794525,
+        "shared_energy": {
+          "unique_upstream_jobs": 168,
+          "upstream_cpu_s_counted_once": 0.7901743800000002,
+          "adapter_cpu_s": 0.021720621999999468,
+          "duplicate_energy_decodes_by_adapter": 0,
+          "scope": "Upstream energy cost counted once, plus measured adapter work; downstream decoder/admission CPU must be added separately. No live sharing or total-system saving is claimed.",
+          "upstream_cpu_s_per_RF_s": 0.09877179750000002,
+          "adapter_cpu_s_per_RF_s": 0.0027150777499999335
+        },
+        "stock_delivery_delay": {
+          "n": 1074,
+          "p50_ms": 1.3227728195488453,
+          "p95_ms": 4.571534227579832,
+          "p99_ms": 6.188382860273123,
+          "max_ms": 7.543822284787893,
+          "under250": 1074,
+          "under250_with_50ms_clock_sensitivity": 1074
+        },
+        "stock_records": 6630,
+        "stock_byte_sha256": "2bb229fac9a9d33393726c320407508950646039133eac7ce2cb102fac8012b9",
+        "stock_bytes_preserved": true,
+        "bridge_counts": {
+          "producer_completions_native": 408,
+          "dirty_window_visits": 825,
+          "producer_completions_energy": 168,
+          "clock_evaluations": 120,
+          "clock_ready": 8,
+          "admission_calls": 433,
+          "early_alignment_not_ready": 46,
+          "empty_slices": 21,
+          "duplicate_120us": 42334,
+          "resolved_slices": 379,
+          "added_stream1090": 47,
+          "publication_attempts_early": 79,
+          "added_energy": 1450,
+          "final_duplicate_120us": 933,
+          "final_added_energy": 32,
+          "final_added_stream1090": 47,
+          "publication_attempts_final": 79,
+          "finalized_windows": 8
+        },
+        "relay_counts": {
+          "emitted_early": 79
+        },
+        "dedup": {
+          "ttl_expired": 6058,
+          "capacity_evictions": 0,
+          "epoch_resets": 1,
+          "wrong_epoch": 0,
+          "unvalidated": 0,
+          "stale": 0,
+          "duplicates": 79,
+          "late_stock_after_extra_race": 0,
+          "stock_duplicate_preserved": 0,
+          "stock_emitted": 6630,
+          "stream1090_emitted": 47,
+          "energy_emitted": 32
+        },
+        "maximum_backlog": {
+          "native": 2,
+          "energy": 2
+        },
+        "energy_digest": "5c25858aa1fcb10208c0b106a38870b677099068d5603b7b12686cbe839fdc57",
+        "native_digest": "0164e78121eb1a368c92db8bbdf6daf868d666c61790ba6ce41e51cc5cfa5bfa",
+        "trial": 1
+      },
+      {
+        "mode": "optimized",
+        "metrics": {
+          "energy": {
+            "emitted": 32,
+            "early": 32,
+            "fallback": 0,
+            "latency": {
+              "n": 32,
+              "p50_ms": 55.64724966770412,
+              "p95_ms": 73.40133267250692,
+              "p99_ms": 76.52679104337112,
+              "max_ms": 166.210040999055,
+              "under250": 32,
+              "under250_with_50ms_clock_sensitivity": 32
+            },
+            "deferred_reference": 32,
+            "reference_retained_any_method": 32,
+            "not_in_recorded_other_DSP": 0,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "stream1090": {
+            "emitted": 47,
+            "early": 47,
+            "fallback": 0,
+            "latency": {
+              "n": 47,
+              "p50_ms": 48.992540631652034,
+              "p95_ms": 79.48054133758919,
+              "p99_ms": 198.23008289149425,
+              "max_ms": 224.42104159967104,
+              "under250": 47,
+              "under250_with_50ms_clock_sensitivity": 46
+            },
+            "deferred_reference": 47,
+            "reference_retained_any_method": 47,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "all": {
+            "emitted": 79,
+            "early": 79,
+            "fallback": 0,
+            "latency": {
+              "n": 79,
+              "p50_ms": 51.335832673529815,
+              "p95_ms": 79.48054133758919,
+              "p99_ms": 198.23008289149425,
+              "max_ms": 224.42104159967104,
+              "under250": 79,
+              "under250_with_50ms_clock_sensitivity": 78
+            },
+            "deferred_reference": 79,
+            "reference_retained_any_method": 79,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          }
+        },
+        "raw_batch_parity": true,
+        "worker_cpu_s": {
+          "stock_index": 0.05907470700000017,
+          "admission_main": 0.19018399699999877,
+          "native": 0.863493068,
+          "energy": 0.7764489520000003
+        },
+        "total_process_cpu_s": 2.1090680000000006,
+        "cpu_s_per_RF_s": 0.2636335000000001,
+        "wall_s": 8.041755457874388,
+        "consumer_cpu_s_per_RF_s": 0.16657738100000002,
+        "shared_energy": {
+          "unique_upstream_jobs": 168,
+          "upstream_cpu_s_counted_once": 0.7764489520000003,
+          "adapter_cpu_s": 0.02231327600000288,
+          "duplicate_energy_decodes_by_adapter": 0,
+          "scope": "Upstream energy cost counted once, plus measured adapter work; downstream decoder/admission CPU must be added separately. No live sharing or total-system saving is claimed.",
+          "upstream_cpu_s_per_RF_s": 0.09705611900000004,
+          "adapter_cpu_s_per_RF_s": 0.00278915950000036
+        },
+        "stock_delivery_delay": {
+          "n": 1074,
+          "p50_ms": 1.1286679655313492,
+          "p95_ms": 4.187907557934523,
+          "p99_ms": 5.857402924448252,
+          "max_ms": 9.671790525317192,
+          "under250": 1074,
+          "under250_with_50ms_clock_sensitivity": 1074
+        },
+        "stock_records": 6630,
+        "stock_byte_sha256": "2bb229fac9a9d33393726c320407508950646039133eac7ce2cb102fac8012b9",
+        "stock_bytes_preserved": true,
+        "bridge_counts": {
+          "producer_completions_native": 408,
+          "dirty_window_visits": 832,
+          "producer_completions_energy": 168,
+          "clock_evaluations": 120,
+          "clock_ready": 8,
+          "admission_calls": 441,
+          "early_alignment_not_ready": 54,
+          "empty_slices": 21,
+          "duplicate_120us": 42342,
+          "added_energy": 1460,
+          "resolved_slices": 379,
+          "added_stream1090": 47,
+          "publication_attempts_early": 79,
+          "final_duplicate_120us": 933,
+          "final_added_energy": 32,
+          "final_added_stream1090": 47,
+          "publication_attempts_final": 79,
+          "finalized_windows": 8
+        },
+        "relay_counts": {
+          "emitted_early": 79
+        },
+        "dedup": {
+          "ttl_expired": 6058,
+          "capacity_evictions": 0,
+          "epoch_resets": 1,
+          "wrong_epoch": 0,
+          "unvalidated": 0,
+          "stale": 0,
+          "duplicates": 79,
+          "late_stock_after_extra_race": 0,
+          "stock_duplicate_preserved": 0,
+          "stock_emitted": 6630,
+          "stream1090_emitted": 47,
+          "energy_emitted": 32
+        },
+        "maximum_backlog": {
+          "native": 2,
+          "energy": 2
+        },
+        "energy_digest": "5c25858aa1fcb10208c0b106a38870b677099068d5603b7b12686cbe839fdc57",
+        "native_digest": "0164e78121eb1a368c92db8bbdf6daf868d666c61790ba6ce41e51cc5cfa5bfa",
+        "trial": 2
+      },
+      {
+        "mode": "legacy",
+        "metrics": {
+          "energy": {
+            "emitted": 32,
+            "early": 32,
+            "fallback": 0,
+            "latency": {
+              "n": 32,
+              "p50_ms": 55.53324975219365,
+              "p95_ms": 76.47733302396543,
+              "p99_ms": 91.20633285471813,
+              "max_ms": 160.11124997347602,
+              "under250": 32,
+              "under250_with_50ms_clock_sensitivity": 32
+            },
+            "deferred_reference": 32,
+            "reference_retained_any_method": 32,
+            "not_in_recorded_other_DSP": 0,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "stream1090": {
+            "emitted": 47,
+            "early": 46,
+            "fallback": 1,
+            "latency": {
+              "n": 47,
+              "p50_ms": 49.6770412917833,
+              "p95_ms": 79.85854142189996,
+              "p99_ms": 191.7117496725025,
+              "max_ms": 979.2077076166968,
+              "under250": 46,
+              "under250_with_50ms_clock_sensitivity": 46
+            },
+            "deferred_reference": 47,
+            "reference_retained_any_method": 47,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "all": {
+            "emitted": 79,
+            "early": 78,
+            "fallback": 1,
+            "latency": {
+              "n": 79,
+              "p50_ms": 51.562957918346086,
+              "p95_ms": 91.20633285471813,
+              "p99_ms": 191.7117496725025,
+              "max_ms": 979.2077076166968,
+              "under250": 78,
+              "under250_with_50ms_clock_sensitivity": 78
+            },
+            "deferred_reference": 79,
+            "reference_retained_any_method": 79,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          }
+        },
+        "raw_batch_parity": true,
+        "worker_cpu_s": {
+          "admission_main": 0.32395938600000296,
+          "stock_index": 0.011927637999999519,
+          "native": 0.832528845,
+          "energy": 0.7281039570000003
+        },
+        "total_process_cpu_s": 2.1478710000000003,
+        "cpu_s_per_RF_s": 0.26848387500000004,
+        "wall_s": 8.01357025001198,
+        "consumer_cpu_s_per_RF_s": 0.177470880375,
+        "shared_energy": null,
+        "stock_delivery_delay": {
+          "n": 1069,
+          "p50_ms": 0.9840540587902069,
+          "p95_ms": 2.8679901733994484,
+          "p99_ms": 5.394231528043747,
+          "max_ms": 6.560587789863348,
+          "under250": 1069,
+          "under250_with_50ms_clock_sensitivity": 1069
+        },
+        "stock_records": 6630,
+        "stock_byte_sha256": "2bb229fac9a9d33393726c320407508950646039133eac7ce2cb102fac8012b9",
+        "stock_bytes_preserved": true,
+        "bridge_counts": {
+          "clock_ready": 8,
+          "early_alignment_not_ready": 9,
+          "duplicate_120us": 44355,
+          "added_energy": 1516,
+          "added_stream1090": 46,
+          "final_duplicate_120us": 933,
+          "final_added_energy": 32,
+          "final_added_stream1090": 47,
+          "finalized_windows": 8
+        },
+        "relay_counts": {
+          "emitted_early": 78,
+          "emitted_final": 1
+        },
+        "dedup": {
+          "ttl_expired": 6058,
+          "capacity_evictions": 0,
+          "epoch_resets": 1,
+          "wrong_epoch": 0,
+          "unvalidated": 0,
+          "stale": 0,
+          "duplicates": 78,
+          "late_stock_after_extra_race": 0,
+          "stock_duplicate_preserved": 0,
+          "stock_emitted": 6630,
+          "stream1090_emitted": 47,
+          "energy_emitted": 32
+        },
+        "maximum_backlog": {
+          "native": 2,
+          "energy": 2
+        },
+        "energy_digest": "5c25858aa1fcb10208c0b106a38870b677099068d5603b7b12686cbe839fdc57",
+        "native_digest": "0164e78121eb1a368c92db8bbdf6daf868d666c61790ba6ce41e51cc5cfa5bfa",
+        "trial": 2
+      }
+    ],
+    "comparisons": [
+      {
+        "trial": 1,
+        "baseline_extras": 79,
+        "retained": 79,
+        "lost": 0,
+        "optimized_extra": 0
+      },
+      {
+        "trial": 2,
+        "baseline_extras": 79,
+        "retained": 79,
+        "lost": 0,
+        "optimized_extra": 0
+      }
+    ],
+    "working_pipeline_changed": false,
+    "scope": "Historical causal real RF, shared energy publisher counted once, event-driven native admission, pending cold-start retries, anonymous local socket sink. Complete other-DSP journals are reference masks only; not live feeder/antenna latency.",
+    "clock_limit": "Estimated RF origin, missing original 20ms tap arrival times; +50ms sensitivity is not a proven error bound.",
+    "peak_RSS_KiB": 241968.0,
+    "hashes": {
+      "batch": "378354481200be73e651a4cf684a02c46e5a9d0de2562e69f2fc036812912494",
+      "incremental": "5a736cddf60b38e3e0052acaccc978e596fc6d36c8debbbae70a3560022cc33d",
+      "dedup": "524a48a64b2106fccee847639e29515d01183c94559e31001f0a0377527d95d8",
+      "admission": "7fbe0f2b62cfe4dd7fc31fbdb2706465c6bcf466db5316fd74dfa007f0975bb1"
+    }
+  },
+  "pi": {
+    "platform": "Linux-6.12.109+rpt-rpi-2712-aarch64-with-glibc2.36",
+    "rf_seconds_per_condition": 8,
+    "results": [
+      {
+        "mode": "legacy",
+        "metrics": {
+          "energy": {
+            "emitted": 32,
+            "early": 32,
+            "fallback": 0,
+            "latency": {
+              "n": 32,
+              "p50_ms": 957.3084629841002,
+              "p95_ms": 1547.1532489371898,
+              "p99_ms": 1560.6545529382379,
+              "max_ms": 1591.6869520955981,
+              "under250": 5,
+              "under250_with_50ms_clock_sensitivity": 1
+            },
+            "deferred_reference": 32,
+            "reference_retained_any_method": 32,
+            "not_in_recorded_other_DSP": 0,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "stream1090": {
+            "emitted": 47,
+            "early": 46,
+            "fallback": 1,
+            "latency": {
+              "n": 47,
+              "p50_ms": 848.2858796160468,
+              "p95_ms": 1542.971612953723,
+              "p99_ms": 1574.0655959448518,
+              "max_ms": 1589.0051209570615,
+              "under250": 7,
+              "under250_with_50ms_clock_sensitivity": 3
+            },
+            "deferred_reference": 47,
+            "reference_retained_any_method": 47,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "all": {
+            "emitted": 79,
+            "early": 78,
+            "fallback": 1,
+            "latency": {
+              "n": 79,
+              "p50_ms": 957.3084629841002,
+              "p95_ms": 1558.404824751074,
+              "p99_ms": 1589.0051209570615,
+              "max_ms": 1591.6869520955981,
+              "under250": 12,
+              "under250_with_50ms_clock_sensitivity": 4
+            },
+            "deferred_reference": 79,
+            "reference_retained_any_method": 79,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          }
+        },
+        "raw_batch_parity": true,
+        "worker_cpu_s": {
+          "admission_main": 0.5976604890000023,
+          "stock_index": 0.014102721999995627,
+          "native": 0.9278154440000003,
+          "energy": 1.3719208260000004
+        },
+        "total_process_cpu_s": 3.091258991,
+        "cpu_s_per_RF_s": 0.386407373875,
+        "wall_s": 9.234943815041333,
+        "consumer_cpu_s_per_RF_s": 0.21491727062499996,
+        "shared_energy": null,
+        "stock_delivery_delay": {
+          "n": 1212,
+          "p50_ms": 18.99432041682303,
+          "p95_ms": 65.65218581818044,
+          "p99_ms": 70.34215843304992,
+          "max_ms": 72.66934029757977,
+          "under250": 1212,
+          "under250_with_50ms_clock_sensitivity": 1212
+        },
+        "stock_records": 6630,
+        "stock_byte_sha256": "2bb229fac9a9d33393726c320407508950646039133eac7ce2cb102fac8012b9",
+        "stock_bytes_preserved": true,
+        "bridge_counts": {
+          "clock_ready": 8,
+          "early_alignment_not_ready": 9,
+          "duplicate_120us": 44355,
+          "added_energy": 1516,
+          "added_stream1090": 46,
+          "final_duplicate_120us": 933,
+          "final_added_energy": 32,
+          "final_added_stream1090": 47,
+          "finalized_windows": 8
+        },
+        "relay_counts": {
+          "emitted_early": 78,
+          "emitted_final": 1
+        },
+        "dedup": {
+          "ttl_expired": 6058,
+          "capacity_evictions": 0,
+          "epoch_resets": 1,
+          "wrong_epoch": 0,
+          "unvalidated": 0,
+          "stale": 0,
+          "duplicates": 78,
+          "late_stock_after_extra_race": 0,
+          "stock_duplicate_preserved": 0,
+          "stock_emitted": 6630,
+          "stream1090_emitted": 47,
+          "energy_emitted": 32
+        },
+        "maximum_backlog": {
+          "native": 20,
+          "energy": 32
+        },
+        "energy_digest": "5c25858aa1fcb10208c0b106a38870b677099068d5603b7b12686cbe839fdc57",
+        "native_digest": "0164e78121eb1a368c92db8bbdf6daf868d666c61790ba6ce41e51cc5cfa5bfa",
+        "trial": 1
+      },
+      {
+        "mode": "optimized",
+        "metrics": {
+          "energy": {
+            "emitted": 32,
+            "early": 32,
+            "fallback": 0,
+            "latency": {
+              "n": 32,
+              "p50_ms": 188.8496950900853,
+              "p95_ms": 443.36335502690093,
+              "p99_ms": 447.48654896934335,
+              "max_ms": 491.44837904635085,
+              "under250": 19,
+              "under250_with_50ms_clock_sensitivity": 16
+            },
+            "deferred_reference": 32,
+            "reference_retained_any_method": 32,
+            "not_in_recorded_other_DSP": 0,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "stream1090": {
+            "emitted": 47,
+            "early": 47,
+            "fallback": 0,
+            "latency": {
+              "n": 47,
+              "p50_ms": 186.89821003603947,
+              "p95_ms": 488.46405993476515,
+              "p99_ms": 533.3742409673334,
+              "max_ms": 537.5153229450289,
+              "under250": 33,
+              "under250_with_50ms_clock_sensitivity": 29
+            },
+            "deferred_reference": 47,
+            "reference_retained_any_method": 47,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "all": {
+            "emitted": 79,
+            "early": 79,
+            "fallback": 0,
+            "latency": {
+              "n": 79,
+              "p50_ms": 188.52219274806492,
+              "p95_ms": 488.46405993476515,
+              "p99_ms": 533.3742409673334,
+              "max_ms": 537.5153229450289,
+              "under250": 52,
+              "under250_with_50ms_clock_sensitivity": 45
+            },
+            "deferred_reference": 79,
+            "reference_retained_any_method": 79,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          }
+        },
+        "raw_batch_parity": true,
+        "worker_cpu_s": {
+          "stock_index": 0.06761001400000088,
+          "admission_main": 0.2943910219999988,
+          "native": 0.9201156379999994,
+          "energy": 1.272730077999999
+        },
+        "total_process_cpu_s": 2.7823320519999992,
+        "cpu_s_per_RF_s": 0.3477915064999999,
+        "wall_s": 8.402151317102835,
+        "consumer_cpu_s_per_RF_s": 0.18870024675000002,
+        "shared_energy": {
+          "unique_upstream_jobs": 168,
+          "upstream_cpu_s_counted_once": 1.272730077999999,
+          "adapter_cpu_s": 0.02613433999999959,
+          "duplicate_energy_decodes_by_adapter": 0,
+          "scope": "Upstream energy cost counted once, plus measured adapter work; downstream decoder/admission CPU must be added separately. No live sharing or total-system saving is claimed.",
+          "upstream_cpu_s_per_RF_s": 0.15909125974999988,
+          "adapter_cpu_s_per_RF_s": 0.0032667924999999487
+        },
+        "stock_delivery_delay": {
+          "n": 1106,
+          "p50_ms": 19.351026276126504,
+          "p95_ms": 64.01249091140926,
+          "p99_ms": 68.37624288164079,
+          "max_ms": 77.17645750381052,
+          "under250": 1106,
+          "under250_with_50ms_clock_sensitivity": 1106
+        },
+        "stock_records": 6630,
+        "stock_byte_sha256": "2bb229fac9a9d33393726c320407508950646039133eac7ce2cb102fac8012b9",
+        "stock_bytes_preserved": true,
+        "bridge_counts": {
+          "producer_completions_native": 408,
+          "dirty_window_visits": 616,
+          "producer_completions_energy": 168,
+          "clock_evaluations": 57,
+          "clock_ready": 8,
+          "admission_calls": 425,
+          "early_alignment_not_ready": 38,
+          "empty_slices": 21,
+          "duplicate_120us": 42313,
+          "resolved_slices": 379,
+          "added_stream1090": 47,
+          "publication_attempts_early": 79,
+          "added_energy": 1451,
+          "final_duplicate_120us": 933,
+          "final_added_energy": 32,
+          "final_added_stream1090": 47,
+          "publication_attempts_final": 79,
+          "finalized_windows": 8
+        },
+        "relay_counts": {
+          "emitted_early": 79
+        },
+        "dedup": {
+          "ttl_expired": 6058,
+          "capacity_evictions": 0,
+          "epoch_resets": 1,
+          "wrong_epoch": 0,
+          "unvalidated": 0,
+          "stale": 0,
+          "duplicates": 79,
+          "late_stock_after_extra_race": 0,
+          "stock_duplicate_preserved": 0,
+          "stock_emitted": 6630,
+          "stream1090_emitted": 47,
+          "energy_emitted": 32
+        },
+        "maximum_backlog": {
+          "native": 10,
+          "energy": 10
+        },
+        "energy_digest": "5c25858aa1fcb10208c0b106a38870b677099068d5603b7b12686cbe839fdc57",
+        "native_digest": "0164e78121eb1a368c92db8bbdf6daf868d666c61790ba6ce41e51cc5cfa5bfa",
+        "trial": 1
+      },
+      {
+        "mode": "optimized",
+        "metrics": {
+          "energy": {
+            "emitted": 32,
+            "early": 32,
+            "fallback": 0,
+            "latency": {
+              "n": 32,
+              "p50_ms": 127.94426297597595,
+              "p95_ms": 258.1696869072916,
+              "p99_ms": 259.0589879228471,
+              "max_ms": 269.40644188393657,
+              "under250": 29,
+              "under250_with_50ms_clock_sensitivity": 23
+            },
+            "deferred_reference": 32,
+            "reference_retained_any_method": 32,
+            "not_in_recorded_other_DSP": 0,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "stream1090": {
+            "emitted": 47,
+            "early": 47,
+            "fallback": 0,
+            "latency": {
+              "n": 47,
+              "p50_ms": 151.3323759195062,
+              "p95_ms": 246.50984650636687,
+              "p99_ms": 249.58068694634773,
+              "max_ms": 256.8972108765539,
+              "under250": 46,
+              "under250_with_50ms_clock_sensitivity": 36
+            },
+            "deferred_reference": 47,
+            "reference_retained_any_method": 47,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "all": {
+            "emitted": 79,
+            "early": 79,
+            "fallback": 0,
+            "latency": {
+              "n": 79,
+              "p50_ms": 151.3323759195062,
+              "p95_ms": 249.58068694634773,
+              "p99_ms": 259.0589879228471,
+              "max_ms": 269.40644188393657,
+              "under250": 75,
+              "under250_with_50ms_clock_sensitivity": 59
+            },
+            "deferred_reference": 79,
+            "reference_retained_any_method": 79,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          }
+        },
+        "raw_batch_parity": true,
+        "worker_cpu_s": {
+          "stock_index": 0.06490966800001008,
+          "admission_main": 0.2818642449999995,
+          "native": 0.9176786279999997,
+          "energy": 1.2697469420000003
+        },
+        "total_process_cpu_s": 2.7284315909999997,
+        "cpu_s_per_RF_s": 0.34105394887499996,
+        "wall_s": 8.121333944844082,
+        "consumer_cpu_s_per_RF_s": 0.18233558112499992,
+        "shared_energy": {
+          "unique_upstream_jobs": 168,
+          "upstream_cpu_s_counted_once": 1.2697469420000003,
+          "adapter_cpu_s": 0.02878023700000032,
+          "duplicate_energy_decodes_by_adapter": 0,
+          "scope": "Upstream energy cost counted once, plus measured adapter work; downstream decoder/admission CPU must be added separately. No live sharing or total-system saving is claimed.",
+          "upstream_cpu_s_per_RF_s": 0.15871836775000003,
+          "adapter_cpu_s_per_RF_s": 0.00359752962500004
+        },
+        "stock_delivery_delay": {
+          "n": 1085,
+          "p50_ms": 9.077484020963311,
+          "p95_ms": 62.77761934325099,
+          "p99_ms": 69.72641195170581,
+          "max_ms": 75.52205468527973,
+          "under250": 1085,
+          "under250_with_50ms_clock_sensitivity": 1085
+        },
+        "stock_records": 6630,
+        "stock_byte_sha256": "2bb229fac9a9d33393726c320407508950646039133eac7ce2cb102fac8012b9",
+        "stock_bytes_preserved": true,
+        "bridge_counts": {
+          "producer_completions_native": 408,
+          "dirty_window_visits": 621,
+          "producer_completions_energy": 168,
+          "clock_evaluations": 63,
+          "clock_ready": 8,
+          "admission_calls": 433,
+          "early_alignment_not_ready": 46,
+          "empty_slices": 21,
+          "duplicate_120us": 42346,
+          "added_energy": 1465,
+          "resolved_slices": 379,
+          "added_stream1090": 47,
+          "publication_attempts_early": 79,
+          "final_duplicate_120us": 933,
+          "final_added_energy": 32,
+          "final_added_stream1090": 47,
+          "publication_attempts_final": 79,
+          "finalized_windows": 8
+        },
+        "relay_counts": {
+          "emitted_early": 79
+        },
+        "dedup": {
+          "ttl_expired": 6058,
+          "capacity_evictions": 0,
+          "epoch_resets": 1,
+          "wrong_epoch": 0,
+          "unvalidated": 0,
+          "stale": 0,
+          "duplicates": 79,
+          "late_stock_after_extra_race": 0,
+          "stock_duplicate_preserved": 0,
+          "stock_emitted": 6630,
+          "stream1090_emitted": 47,
+          "energy_emitted": 32
+        },
+        "maximum_backlog": {
+          "native": 6,
+          "energy": 5
+        },
+        "energy_digest": "5c25858aa1fcb10208c0b106a38870b677099068d5603b7b12686cbe839fdc57",
+        "native_digest": "0164e78121eb1a368c92db8bbdf6daf868d666c61790ba6ce41e51cc5cfa5bfa",
+        "trial": 2
+      },
+      {
+        "mode": "legacy",
+        "metrics": {
+          "energy": {
+            "emitted": 32,
+            "early": 32,
+            "fallback": 0,
+            "latency": {
+              "n": 32,
+              "p50_ms": 596.6582251015903,
+              "p95_ms": 974.9123010612726,
+              "p99_ms": 985.2446611763987,
+              "max_ms": 1006.0761340626927,
+              "under250": 10,
+              "under250_with_50ms_clock_sensitivity": 9
+            },
+            "deferred_reference": 32,
+            "reference_retained_any_method": 32,
+            "not_in_recorded_other_DSP": 0,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "stream1090": {
+            "emitted": 47,
+            "early": 46,
+            "fallback": 1,
+            "latency": {
+              "n": 47,
+              "p50_ms": 530.056889776493,
+              "p95_ms": 904.0471787362643,
+              "p99_ms": 938.828370821307,
+              "max_ms": 1041.9518677994708,
+              "under250": 12,
+              "under250_with_50ms_clock_sensitivity": 9
+            },
+            "deferred_reference": 47,
+            "reference_retained_any_method": 47,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "all": {
+            "emitted": 79,
+            "early": 78,
+            "fallback": 1,
+            "latency": {
+              "n": 79,
+              "p50_ms": 570.6863727635545,
+              "p95_ms": 953.8311340661049,
+              "p99_ms": 1006.0761340626927,
+              "max_ms": 1041.9518677994708,
+              "under250": 22,
+              "under250_with_50ms_clock_sensitivity": 18
+            },
+            "deferred_reference": 79,
+            "reference_retained_any_method": 79,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          }
+        },
+        "raw_batch_parity": true,
+        "worker_cpu_s": {
+          "stock_index": 0.01126186800000184,
+          "admission_main": 0.5079354489999988,
+          "native": 0.9205697800000003,
+          "energy": 1.2871854519999988
+        },
+        "total_process_cpu_s": 2.8920398510000016,
+        "cpu_s_per_RF_s": 0.3615049813750002,
+        "wall_s": 8.66869994904846,
+        "consumer_cpu_s_per_RF_s": 0.20060679987500035,
+        "shared_energy": null,
+        "stock_delivery_delay": {
+          "n": 1142,
+          "p50_ms": 23.731732973828912,
+          "p95_ms": 65.04806480370462,
+          "p99_ms": 70.69593947380781,
+          "max_ms": 82.93985086493194,
+          "under250": 1142,
+          "under250_with_50ms_clock_sensitivity": 1142
+        },
+        "stock_records": 6630,
+        "stock_byte_sha256": "2bb229fac9a9d33393726c320407508950646039133eac7ce2cb102fac8012b9",
+        "stock_bytes_preserved": true,
+        "bridge_counts": {
+          "clock_ready": 8,
+          "early_alignment_not_ready": 9,
+          "duplicate_120us": 44355,
+          "added_energy": 1516,
+          "added_stream1090": 46,
+          "final_duplicate_120us": 933,
+          "final_added_energy": 32,
+          "final_added_stream1090": 47,
+          "finalized_windows": 8
+        },
+        "relay_counts": {
+          "emitted_early": 78,
+          "emitted_final": 1
+        },
+        "dedup": {
+          "ttl_expired": 6058,
+          "capacity_evictions": 0,
+          "epoch_resets": 1,
+          "wrong_epoch": 0,
+          "unvalidated": 0,
+          "stale": 0,
+          "duplicates": 78,
+          "late_stock_after_extra_race": 0,
+          "stock_duplicate_preserved": 0,
+          "stock_emitted": 6630,
+          "stream1090_emitted": 47,
+          "energy_emitted": 32
+        },
+        "maximum_backlog": {
+          "native": 11,
+          "energy": 19
+        },
+        "energy_digest": "5c25858aa1fcb10208c0b106a38870b677099068d5603b7b12686cbe839fdc57",
+        "native_digest": "0164e78121eb1a368c92db8bbdf6daf868d666c61790ba6ce41e51cc5cfa5bfa",
+        "trial": 2
+      }
+    ],
+    "comparisons": [
+      {
+        "trial": 1,
+        "baseline_extras": 79,
+        "retained": 79,
+        "lost": 0,
+        "optimized_extra": 0
+      },
+      {
+        "trial": 2,
+        "baseline_extras": 79,
+        "retained": 79,
+        "lost": 0,
+        "optimized_extra": 0
+      }
+    ],
+    "working_pipeline_changed": false,
+    "scope": "Historical causal real RF, shared energy publisher counted once, event-driven native admission, pending cold-start retries, anonymous local socket sink. Complete other-DSP journals are reference masks only; not live feeder/antenna latency.",
+    "clock_limit": "Estimated RF origin, missing original 20ms tap arrival times; +50ms sensitivity is not a proven error bound.",
+    "peak_RSS_KiB": 216400.0,
+    "hashes": {
+      "batch": "70d715dabe1ea2c6623002c9b47d4cb94f1b8a25197ba3f0d203b7b872e86103",
+      "incremental": "4c9b11db3a0334d6f3a67b5875fcc687ca4e0c08139bb1c1792726c817d7170e",
+      "dedup": "96891c6428153dcfdc365e0ca73cd908d467664562e44ce45a14021d51a3479f",
+      "admission": "5680e606c4f124101ca7b98beee9e3f82062d9bcd11b38924937ef73b73a02d0"
+    }
+  },
+  "parity": {
+    "raw_native_exact_mac_pi_all_trials": true,
+    "raw_energy_exact_mac_pi_all_trials": true,
+    "stock_wire_bytes_order_preserved": true,
+    "Pi_aligned_tick_delta_counts": {
+      "0": 148,
+      "-1": 10
+    },
+    "retained_all_79_each_trial": true,
+    "upstream_energy_counted_once": true,
+    "full_pipeline_changed": false
+  },
+  "distance": {
+    "distance_bins": {
+      "legacy-trial-1": {
+        "0\u201350": {
+          "energy": 3,
+          "all": 7,
+          "early": 7,
+          "stream1090": 4,
+          "beyond_recorded_other_DSP": 3
+        },
+        "50\u2013100": {
+          "energy": 10,
+          "all": 37,
+          "early": 37,
+          "stream1090": 27,
+          "beyond_recorded_other_DSP": 11
+        },
+        "100\u2013150": {
+          "energy": 14,
+          "all": 22,
+          "early": 22,
+          "stream1090": 8,
+          "beyond_recorded_other_DSP": 5
+        },
+        "150\u2013180": {
+          "energy": 2,
+          "all": 6,
+          "early": 6,
+          "stream1090": 4,
+          "beyond_recorded_other_DSP": 1
+        },
+        "180\u2013200": {
+          "stream1090": 1,
+          "all": 1,
+          "early": 1
+        },
+        "200\u2013250": {},
+        "250+": {},
+        "unknown": {
+          "energy": 3,
+          "all": 6,
+          "early": 5,
+          "stream1090": 3,
+          "beyond_recorded_other_DSP": 2,
+          "fallback": 1
+        }
+      },
+      "optimized-trial-1": {
+        "0\u201350": {
+          "energy": 3,
+          "all": 7,
+          "early": 7,
+          "stream1090": 4,
+          "beyond_recorded_other_DSP": 3
+        },
+        "50\u2013100": {
+          "energy": 10,
+          "all": 37,
+          "early": 37,
+          "stream1090": 27,
+          "beyond_recorded_other_DSP": 11
+        },
+        "100\u2013150": {
+          "energy": 14,
+          "all": 22,
+          "early": 22,
+          "stream1090": 8,
+          "beyond_recorded_other_DSP": 5
+        },
+        "150\u2013180": {
+          "energy": 2,
+          "all": 6,
+          "early": 6,
+          "stream1090": 4,
+          "beyond_recorded_other_DSP": 1
+        },
+        "180\u2013200": {
+          "stream1090": 1,
+          "all": 1,
+          "early": 1
+        },
+        "200\u2013250": {},
+        "250+": {},
+        "unknown": {
+          "stream1090": 3,
+          "all": 6,
+          "early": 6,
+          "beyond_recorded_other_DSP": 2,
+          "energy": 3
+        }
+      },
+      "optimized-trial-2": {
+        "0\u201350": {
+          "energy": 3,
+          "all": 7,
+          "early": 7,
+          "stream1090": 4,
+          "beyond_recorded_other_DSP": 3
+        },
+        "50\u2013100": {
+          "energy": 10,
+          "all": 37,
+          "early": 37,
+          "stream1090": 27,
+          "beyond_recorded_other_DSP": 11
+        },
+        "100\u2013150": {
+          "energy": 14,
+          "all": 22,
+          "early": 22,
+          "stream1090": 8,
+          "beyond_recorded_other_DSP": 5
+        },
+        "150\u2013180": {
+          "energy": 2,
+          "all": 6,
+          "early": 6,
+          "stream1090": 4,
+          "beyond_recorded_other_DSP": 1
+        },
+        "180\u2013200": {
+          "stream1090": 1,
+          "all": 1,
+          "early": 1
+        },
+        "200\u2013250": {},
+        "250+": {},
+        "unknown": {
+          "stream1090": 3,
+          "all": 6,
+          "early": 6,
+          "beyond_recorded_other_DSP": 2,
+          "energy": 3
+        }
+      },
+      "legacy-trial-2": {
+        "0\u201350": {
+          "energy": 3,
+          "all": 7,
+          "early": 7,
+          "stream1090": 4,
+          "beyond_recorded_other_DSP": 3
+        },
+        "50\u2013100": {
+          "energy": 10,
+          "all": 37,
+          "early": 37,
+          "stream1090": 27,
+          "beyond_recorded_other_DSP": 11
+        },
+        "100\u2013150": {
+          "energy": 14,
+          "all": 22,
+          "early": 22,
+          "stream1090": 8,
+          "beyond_recorded_other_DSP": 5
+        },
+        "150\u2013180": {
+          "energy": 2,
+          "all": 6,
+          "early": 6,
+          "stream1090": 4,
+          "beyond_recorded_other_DSP": 1
+        },
+        "180\u2013200": {
+          "stream1090": 1,
+          "all": 1,
+          "early": 1
+        },
+        "200\u2013250": {},
+        "250+": {},
+        "unknown": {
+          "energy": 3,
+          "all": 6,
+          "early": 5,
+          "stream1090": 3,
+          "beyond_recorded_other_DSP": 2,
+          "fallback": 1
+        }
+      }
+    },
+    "range_source": "Causal recorded stock positions only; NIC/NACp>=5, age<=15s, no MLAT/TIS-B. Unknown remains unknown; not independent ground truth or training labels.",
+    "recorded_full_producer_events": 210,
+    "recorded_other_DSP_events": 188,
+    "recorded_relay_frames": 7950,
+    "comparison_limit": "Full recorded pipeline/relay masks have no per-method completion times. These are post-hoc coverage comparisons, not timed all-method replay.",
+    "distant_coverage_sufficient": false
+  },
+  "Pi_average_CPU_s_per_RF_s": {
+    "legacy": 0.3739561776250001,
+    "optimized": 0.34442272768749993
+  },
+  "Pi_CPU_change_percent": -7.897569743349997,
+  "protected_unchanged": true,
+  "production_actions": [],
+  "hardware": "Raspberry Pi 5 Model B Rev 1.0",
+  "memory_enforcement": false,
+  "live_native_backend": "pre-existing executable fallback unchanged",
+  "fresh_RF": false,
+  "scope": "isolated historical engineering regression, not production feeder latency or full live pipeline replay"
+}
