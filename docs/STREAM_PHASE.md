@@ -57,4 +57,25 @@ not expected to match. A native-only packet is a candidate, not proof that the
 upstream decoder was wrong, and the missing upstream packets must not be
 claimed as recovered by this subset.
 
+## Pi comparison — 10 November 2026
+
+A saved-RF comparison on Raspberry Pi 5 measured 0.0956 native versus 0.1387
+executable CPU seconds per RF second including common guards (31.1% less
+method CPU). On 119 historical one-second windows, guarded additions beyond
+stock were 214 versus 968. Historical distances are estimates: beyond 180 nm
+the counts were zero versus three. The native subset is therefore not a
+recovery-equivalent replacement for the executable.
+
+On a separate 24.25-second recent short-clip corpus, native contributed two
+additional guarded candidates beyond the current combined pipeline, both
+below 150 nm; there were no distant additions. A simulated replacement gained
+eight but lost one current-replay packet. No native outputs were deployed.
+
+Mac/Pi per-implementation packet/timestamp parity was exact. One complete Pi
+pass finished; a second was stopped by the FR24 status safety guard. Production
+PIDs/settings were unchanged and the feeder subsequently connected without
+intervention. This tests the search kernel with common external guards, not
+whole-readsb admission or live deadlines. See the full [comparison report](../validation/stream-phase-pi-20261110/report.md)
+for controls, distance tables, CPU accounting and limitations.
+
 SPDX-License-Identifier: GPL-3.0-or-later.

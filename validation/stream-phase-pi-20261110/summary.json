@@ -1,0 +1,387 @@
+{
+  "date_berlin": "2026-11-10",
+  "hardware": "Raspberry Pi 5 Model B Rev 1.0",
+  "complete_passes": 1,
+  "planned_passes": 3,
+  "families": {
+    "long": {
+      "cases": 119,
+      "core_samples": 285600000,
+      "core_seconds": 119.0,
+      "range_quality": "estimated_stock_distance_no_NIC_NACp",
+      "counts": {
+        "raw": {
+          "native": 16004,
+          "executable": 14953,
+          "both": 12845,
+          "native_only": 3159,
+          "executable_only": 2108
+        },
+        "guarded_beyond_stock": {
+          "native": 214,
+          "executable": 968,
+          "both": 152,
+          "native_only": 62,
+          "executable_only": 816
+        },
+        "beyond_recorded_actual": {
+          "native": 35,
+          "executable": 61,
+          "both": 11,
+          "native_only": 24,
+          "executable_only": 50
+        }
+      },
+      "distance_bins": {
+        "raw": {
+          "unknown": {
+            "native": 242,
+            "executable": 261,
+            "both": 166,
+            "native_only": 76,
+            "executable_only": 95
+          },
+          "50-100": {
+            "native": 6552,
+            "executable": 6168,
+            "both": 5332,
+            "native_only": 1220,
+            "executable_only": 836
+          },
+          "0-50": {
+            "native": 6951,
+            "executable": 6195,
+            "both": 5712,
+            "native_only": 1239,
+            "executable_only": 483
+          },
+          "100-150": {
+            "native": 2102,
+            "executable": 2166,
+            "both": 1537,
+            "native_only": 565,
+            "executable_only": 629
+          },
+          "180-200": {
+            "native": 10,
+            "executable": 20,
+            "both": 8,
+            "native_only": 2,
+            "executable_only": 12
+          },
+          "150-180": {
+            "native": 147,
+            "executable": 143,
+            "both": 90,
+            "native_only": 57,
+            "executable_only": 53
+          }
+        },
+        "guarded_beyond_stock": {
+          "50-100": {
+            "native": 86,
+            "executable": 380,
+            "both": 66,
+            "native_only": 20,
+            "executable_only": 314
+          },
+          "100-150": {
+            "native": 56,
+            "executable": 287,
+            "both": 31,
+            "native_only": 25,
+            "executable_only": 256
+          },
+          "0-50": {
+            "native": 67,
+            "executable": 238,
+            "both": 52,
+            "native_only": 15,
+            "executable_only": 186
+          },
+          "unknown": {
+            "native": 3,
+            "executable": 38,
+            "both": 2,
+            "native_only": 1,
+            "executable_only": 36
+          },
+          "150-180": {
+            "native": 2,
+            "executable": 22,
+            "both": 1,
+            "native_only": 1,
+            "executable_only": 21
+          },
+          "180-200": {
+            "executable": 3,
+            "executable_only": 3
+          }
+        },
+        "beyond_recorded_actual": {
+          "100-150": {
+            "native": 10,
+            "executable": 25,
+            "both": 3,
+            "native_only": 7,
+            "executable_only": 22
+          },
+          "50-100": {
+            "native": 15,
+            "executable": 29,
+            "both": 6,
+            "native_only": 9,
+            "executable_only": 23
+          },
+          "0-50": {
+            "native": 9,
+            "executable": 5,
+            "both": 1,
+            "native_only": 8,
+            "executable_only": 4
+          },
+          "150-180": {
+            "native": 1,
+            "executable": 1,
+            "both": 1
+          },
+          "unknown": {
+            "executable": 1,
+            "executable_only": 1
+          }
+        }
+      },
+      "cpu": {
+        "native": {
+          "kernel_cpu_s": 11.161798875999997,
+          "child_cpu_s": 0.0,
+          "parent_cpu_s": 11.296012778000009,
+          "decode_cpu_s": 11.296012778000009,
+          "guard_cpu_s": 0.08532561099999825,
+          "decode_cpu_s_per_rf_s": 0.0949244771260505,
+          "decode_plus_guard_cpu_s_per_rf_s": 0.09564149906722695
+        },
+        "executable": {
+          "kernel_cpu_s": 0,
+          "child_cpu_s": 14.094793000000001,
+          "parent_cpu_s": 2.291102413999991,
+          "decode_cpu_s": 16.385895413999997,
+          "guard_cpu_s": 0.12263464899999832,
+          "decode_cpu_s_per_rf_s": 0.13769660011764703,
+          "decode_plus_guard_cpu_s_per_rf_s": 0.1387271433865546
+        }
+      }
+    },
+    "recent": {
+      "cases": 383,
+      "core_samples": 58193233,
+      "core_seconds": 24.247180416666666,
+      "range_quality": "causal_stock_NIC_NACp_5_age15",
+      "counts": {
+        "raw": {
+          "native": 1540,
+          "executable": 268,
+          "both": 248,
+          "native_only": 1292,
+          "executable_only": 20
+        },
+        "guarded_beyond_stock": {
+          "native": 19,
+          "executable": 11,
+          "both": 2,
+          "native_only": 17,
+          "executable_only": 9
+        },
+        "beyond_recorded_actual": {
+          "native": 2,
+          "executable": 6,
+          "both": 0,
+          "native_only": 2,
+          "executable_only": 6
+        }
+      },
+      "distance_bins": {
+        "raw": {
+          "50-100": {
+            "native": 644,
+            "executable": 106,
+            "both": 99,
+            "native_only": 545,
+            "executable_only": 7
+          },
+          "0-50": {
+            "native": 593,
+            "executable": 91,
+            "both": 90,
+            "native_only": 503,
+            "executable_only": 1
+          },
+          "unknown": {
+            "native": 81,
+            "executable": 18,
+            "both": 15,
+            "native_only": 66,
+            "executable_only": 3
+          },
+          "100-150": {
+            "native": 214,
+            "executable": 53,
+            "both": 44,
+            "native_only": 170,
+            "executable_only": 9
+          },
+          "150-180": {
+            "native": 7,
+            "native_only": 7
+          },
+          "200-250": {
+            "native": 1,
+            "native_only": 1
+          }
+        },
+        "guarded_beyond_stock": {
+          "100-150": {
+            "native": 5,
+            "executable": 5,
+            "native_only": 5,
+            "executable_only": 5
+          },
+          "50-100": {
+            "native": 9,
+            "executable": 2,
+            "both": 1,
+            "native_only": 8,
+            "executable_only": 1
+          },
+          "0-50": {
+            "native": 5,
+            "executable": 1,
+            "both": 1,
+            "native_only": 4
+          },
+          "unknown": {
+            "executable": 3,
+            "executable_only": 3
+          }
+        },
+        "beyond_recorded_actual": {
+          "100-150": {
+            "native": 1,
+            "executable": 4,
+            "native_only": 1,
+            "executable_only": 4
+          },
+          "50-100": {
+            "native": 1,
+            "native_only": 1
+          },
+          "unknown": {
+            "executable": 2,
+            "executable_only": 2
+          }
+        }
+      },
+      "cpu": {
+        "native": {
+          "kernel_cpu_s": 2.3710519670000014,
+          "child_cpu_s": 0.0,
+          "parent_cpu_s": 2.400672716999976,
+          "decode_cpu_s": 2.400672716999976,
+          "guard_cpu_s": 0.037483815000005194,
+          "decode_cpu_s_per_rf_s": 0.09900832491640295,
+          "decode_plus_guard_cpu_s_per_rf_s": 0.10055422899085113
+        },
+        "executable": {
+          "kernel_cpu_s": 0,
+          "child_cpu_s": 4.0555900000000005,
+          "parent_cpu_s": 0.5397787600000186,
+          "decode_cpu_s": 4.595368760000019,
+          "guard_cpu_s": 0.05656364800000446,
+          "decode_cpu_s_per_rf_s": 0.18952177865766706,
+          "decode_plus_guard_cpu_s_per_rf_s": 0.19185457146194398
+        }
+      }
+    }
+  },
+  "parity": {
+    "mac_pi_per_implementation_packet_timestamp_digests_exact": true,
+    "distance_bins_exact": true,
+    "calibration_exact": true,
+    "complete_target_passes": 1,
+    "planned_target_passes": 3,
+    "repeat_stop": "FR24-state safety guard during second pass; partial repeat excluded; no causal attribution"
+  },
+  "current_recent_attribution": {
+    "recent_only": true,
+    "native_marginal_beyond_stock_and_other_dsp": 9,
+    "executable_marginal_beyond_stock_and_other_dsp": 2,
+    "gained_if_replace": 8,
+    "lost_if_replace": 1,
+    "native_additional_on_current": 2,
+    "distance_bins": {
+      "50-100": {
+        "native_marginal": 6,
+        "executable_marginal": 1,
+        "native_gained_if_replace": 5,
+        "native_additional_on_current": 1
+      },
+      "100-150": {
+        "native_marginal": 2,
+        "executable_marginal": 1,
+        "native_gained_if_replace": 2,
+        "executable_lost_if_replace": 1,
+        "native_additional_on_current": 1
+      },
+      "0-50": {
+        "native_marginal": 1,
+        "native_gained_if_replace": 1
+      }
+    },
+    "scope": "Same recent RF and frozen current other-DSP replay, stock guards, actual unified and annotation masks. Short clips are a supplementary comparison, not representative of one-second live executable startup/trust behavior."
+  },
+  "controls": {
+    "clean": {
+      "native_raw_df17": 3,
+      "executable_raw_df17": 2,
+      "known_clean_payload_only": true,
+      "noise_has_no_stock_identity": false,
+      "accepted_noise_with_empty_identity": null
+    },
+    "noise": {
+      "native_raw_df17": 0,
+      "executable_raw_df17": 0,
+      "known_clean_payload_only": false,
+      "noise_has_no_stock_identity": true,
+      "accepted_noise_with_empty_identity": 0
+    }
+  },
+  "method_cpu_reduction_percent": 31.057832856308565,
+  "protected_checks": {
+    "pids": true,
+    "methods": true,
+    "workers": true,
+    "model_sha256": true,
+    "source_hashes": true,
+    "configs": true,
+    "samples": true,
+    "gain_db": true,
+    "trial": true,
+    "logging_enabled": true
+  },
+  "cleanup": {
+    "owned_tmpfs_files_removed": 74,
+    "owned_directory_removed": true,
+    "persistent_archives_deleted": 0,
+    "failed_owned_unit_cleared_after_evidence_backup": true,
+    "production_services_changed": []
+  },
+  "library_sha256": "1ddbb4168f919f2b024b331c7de2c1f411c8f452a396576d514eeee1f28fdeaf",
+  "executable_sha256": "2b80c33e6e4142c359297139b6443aa55ec0b33e3ab87af8fed68509e58ac766",
+  "limits": [
+    "Historical regression RF, not prospective validation",
+    "Long distances estimated; recent distances quality-gated",
+    "Common external guards; not whole readsb live admission/deadline integration",
+    "Second pass aborted on FR24 status guard; partial results excluded; causality unknown",
+    "Single complete pass, no repeat dispersion estimate"
+  ]
+}

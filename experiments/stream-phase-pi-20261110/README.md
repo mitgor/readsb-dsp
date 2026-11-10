@@ -1,0 +1,7 @@
+# Stream1090 native/executable Pi benchmark — 2026-11-10
+
+Frozen historical comparison; production unchanged. See ../../validation/stream-phase-pi-20261110/report.md.
+
+`prepare.py` freezes uniform one-second RF windows and recent qualified clips from the established private workspace. It verifies framed CRCs and original hashes, excludes only an incomplete EOF frame, and writes evaluation reservations. `benchmark.py` accepts explicit `--root`, `--binary`, `--native`, `--output`, `--repeat` arguments and refuses to overwrite output. `phase_wrap.c` buffers native callbacks for measurement. Build with `cc -O3 -std=gnu11 -ffp-contract=off -fPIC -shared phase_wrap.c dsp_stream_phase.c -lm -o libphase.so`, using frozen canonical sources. `controls.py`, `other_dsp.py`, `attribution.py` and `protected_pi.py` preserve the exact run harness. Dated private preparation paths deliberately prevent accidental reuse as a new experiment; adapt explicit dated destinations before any new run. The original private protocol, inputs, actual production executable, source snapshots and accepted references are checksum-backed in the private workspace. Never use these evaluation RF intervals as training labels.
+
+Run target work only in an isolated owned tmpfs with existing protected-health checks and finite resource limits. Do not deploy the native subset based on this result. A second repeat failed its FR24 safety check; only pass one is reported. No new replay is needed to regenerate the aggregate report.
