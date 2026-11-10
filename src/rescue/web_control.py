@@ -77,6 +77,12 @@ class Handler(BaseHTTPRequestHandler):
  def reply(self,n,data):
   b=json.dumps(data).encode();self.send_response(n);self.send_header('Content-Type','application/json');self.send_header('Cache-Control','no-store');self.send_header('Content-Length',str(len(b)));self.end_headers();self.wfile.write(b)
  def do_GET(self):
+  if self.path in ('/readsb-dsp/api/dashboard-status','/neural-rescue/api/dashboard-status'):
+   try:
+    from .dashboard_status import compact_status
+    self.reply(200,compact_status(json.loads(self.server.controls.status.read_text())))
+   except (OSError,ValueError):self.reply(503,{'error':'Receiver statistics unavailable'})
+   return
   if self.path not in ('/readsb-dsp/api/settings','/neural-rescue/api/settings'):self.reply(404,{'error':'Unknown endpoint'});return
   try:self.reply(200,self.server.controls.read())
   except Exception as e:self.reply(500,{'error':str(e)})

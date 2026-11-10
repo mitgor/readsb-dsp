@@ -65,6 +65,8 @@ jobs:
           OPENBLAS_NUM_THREADS: '1'
           OMP_NUM_THREADS: '1'
         run: python -m unittest discover -s tests -v
+      - name: Dashboard isolated request regression
+        run: node tests/dashboard_loading.cjs
       - name: Stock and native guards
         run: make -C readsb test dsp-rescue-test dsp-rescue-test-sanitize
       - name: Fresh inactive receiver installation
