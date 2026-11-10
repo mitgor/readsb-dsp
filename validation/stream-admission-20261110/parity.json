@@ -1,0 +1,8 @@
+{
+  "raw_native_exact_mac_pi": true,
+  "raw_energy_exact_mac_pi": true,
+  "Pi_aligned_tick_deltas": {
+    "0": 79
+  },
+  "transmission_match_tolerance_ticks": 1440
+}

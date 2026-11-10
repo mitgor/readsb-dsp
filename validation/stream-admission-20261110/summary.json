@@ -1,0 +1,619 @@
+{
+  "mac": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "rf_seconds": 8,
+    "results": [
+      {
+        "mode": "batch",
+        "metrics": {
+          "energy": {
+            "emitted": 32,
+            "early": 0,
+            "fallback": 32,
+            "latency": {
+              "n": 32,
+              "p50_ms": 588.910124717355,
+              "p95_ms": 901.372374986619,
+              "p99_ms": 914.9477500988246,
+              "max_ms": 963.7021670019627,
+              "under250": 9,
+              "under250_with_50ms_clock_sensitivity": 7
+            },
+            "deferred_reference": 32,
+            "reference_retained_any_method": 32,
+            "not_in_recorded_other_DSP": 0,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "stream1090": {
+            "emitted": 47,
+            "early": 0,
+            "fallback": 47,
+            "latency": {
+              "n": 47,
+              "p50_ms": 399.9959998202622,
+              "p95_ms": 873.1519580568677,
+              "p99_ms": 996.4886668842139,
+              "max_ms": 1017.2851668216388,
+              "under250": 16,
+              "under250_with_50ms_clock_sensitivity": 12
+            },
+            "deferred_reference": 47,
+            "reference_retained_any_method": 47,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "all": {
+            "emitted": 79,
+            "early": 0,
+            "fallback": 79,
+            "latency": {
+              "n": 79,
+              "p50_ms": 476.9037915960652,
+              "p95_ms": 914.9477500988246,
+              "p99_ms": 996.4886668842139,
+              "max_ms": 1017.2851668216388,
+              "under250": 25,
+              "under250_with_50ms_clock_sensitivity": 19
+            },
+            "deferred_reference": 79,
+            "reference_retained_any_method": 79,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          }
+        },
+        "raw_batch_parity": true,
+        "worker_cpu_s": {
+          "admission_main": 0.03853748999999651,
+          "energy": 0.3271299620000001,
+          "native": 0.39768591600000003
+        },
+        "total_process_cpu_s": 0.8470860000000001,
+        "cpu_s_per_RF_s": 0.10588575000000001,
+        "wall_s": 8.05872462503612,
+        "stock_delivery_delay": {
+          "n": 1079,
+          "p50_ms": 0.6371471099555492,
+          "p95_ms": 1.359325833618641,
+          "p99_ms": 2.9220497235655785,
+          "max_ms": 4.972595255821943,
+          "under250": 1079,
+          "under250_with_50ms_clock_sensitivity": 1079
+        },
+        "stock_records": 6630,
+        "stock_byte_sha256": "2bb229fac9a9d33393726c320407508950646039133eac7ce2cb102fac8012b9",
+        "stock_bytes_preserved": true,
+        "bridge_counts": {
+          "clock_ready": 8,
+          "final_duplicate_120us": 933,
+          "final_added_energy": 32,
+          "final_added_stream1090": 47,
+          "finalized_windows": 8
+        },
+        "relay_counts": {
+          "emitted_final": 79
+        },
+        "dedup": {
+          "ttl_expired": 6058,
+          "capacity_evictions": 0,
+          "epoch_resets": 1,
+          "wrong_epoch": 0,
+          "unvalidated": 0,
+          "stale": 0,
+          "duplicates": 0,
+          "late_stock_after_extra_race": 0,
+          "stock_duplicate_preserved": 0,
+          "stock_emitted": 6630,
+          "stream1090_emitted": 47,
+          "energy_emitted": 32
+        },
+        "maximum_backlog": {
+          "energy": 2,
+          "native": 1
+        },
+        "energy_digest": "5c25858aa1fcb10208c0b106a38870b677099068d5603b7b12686cbe839fdc57",
+        "native_digest": "0164e78121eb1a368c92db8bbdf6daf868d666c61790ba6ce41e51cc5cfa5bfa"
+      },
+      {
+        "mode": "20ms",
+        "metrics": {
+          "energy": {
+            "emitted": 32,
+            "early": 32,
+            "fallback": 0,
+            "latency": {
+              "n": 32,
+              "p50_ms": 55.7522501172425,
+              "p95_ms": 77.64920797178165,
+              "p99_ms": 78.04104110953247,
+              "max_ms": 164.54420805856594,
+              "under250": 32,
+              "under250_with_50ms_clock_sensitivity": 32
+            },
+            "deferred_reference": 32,
+            "reference_retained_any_method": 32,
+            "not_in_recorded_other_DSP": 0,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "stream1090": {
+            "emitted": 47,
+            "early": 46,
+            "fallback": 1,
+            "latency": {
+              "n": 47,
+              "p50_ms": 49.11958299013974,
+              "p95_ms": 86.56345824863543,
+              "p99_ms": 195.8523330051305,
+              "max_ms": 975.4259167716007,
+              "under250": 46,
+              "under250_with_50ms_clock_sensitivity": 46
+            },
+            "deferred_reference": 47,
+            "reference_retained_any_method": 47,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "all": {
+            "emitted": 79,
+            "early": 78,
+            "fallback": 1,
+            "latency": {
+              "n": 79,
+              "p50_ms": 52.09241628244499,
+              "p95_ms": 86.56345824863543,
+              "p99_ms": 195.8523330051305,
+              "max_ms": 975.4259167716007,
+              "under250": 78,
+              "under250_with_50ms_clock_sensitivity": 78
+            },
+            "deferred_reference": 79,
+            "reference_retained_any_method": 79,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          }
+        },
+        "raw_batch_parity": true,
+        "worker_cpu_s": {
+          "admission_main": 0.3326015729999967,
+          "native": 0.8487519489999997,
+          "energy": 0.7371850799999994
+        },
+        "total_process_cpu_s": 2.204154,
+        "cpu_s_per_RF_s": 0.27551925,
+        "wall_s": 8.015555125195533,
+        "stock_delivery_delay": {
+          "n": 1069,
+          "p50_ms": 0.9223287925124168,
+          "p95_ms": 3.7942426279187202,
+          "p99_ms": 15.883253421634436,
+          "max_ms": 22.281235549598932,
+          "under250": 1069,
+          "under250_with_50ms_clock_sensitivity": 1069
+        },
+        "stock_records": 6630,
+        "stock_byte_sha256": "2bb229fac9a9d33393726c320407508950646039133eac7ce2cb102fac8012b9",
+        "stock_bytes_preserved": true,
+        "bridge_counts": {
+          "clock_ready": 8,
+          "early_alignment_not_ready": 9,
+          "duplicate_120us": 44355,
+          "added_energy": 1516,
+          "added_stream1090": 46,
+          "final_duplicate_120us": 933,
+          "final_added_energy": 32,
+          "final_added_stream1090": 47,
+          "finalized_windows": 8
+        },
+        "relay_counts": {
+          "emitted_early": 78,
+          "emitted_final": 1
+        },
+        "dedup": {
+          "ttl_expired": 6058,
+          "capacity_evictions": 0,
+          "epoch_resets": 1,
+          "wrong_epoch": 0,
+          "unvalidated": 0,
+          "stale": 0,
+          "duplicates": 78,
+          "late_stock_after_extra_race": 0,
+          "stock_duplicate_preserved": 0,
+          "stock_emitted": 6630,
+          "stream1090_emitted": 47,
+          "energy_emitted": 32
+        },
+        "maximum_backlog": {
+          "native": 2,
+          "energy": 2
+        },
+        "energy_digest": "5c25858aa1fcb10208c0b106a38870b677099068d5603b7b12686cbe839fdc57",
+        "native_digest": "0164e78121eb1a368c92db8bbdf6daf868d666c61790ba6ce41e51cc5cfa5bfa"
+      }
+    ],
+    "comparison": {
+      "batch_extras": 79,
+      "retained": 79,
+      "lost": 0,
+      "incremental_not_in_batch": 0
+    },
+    "working_pipeline_changed": false,
+    "scope": "Causal historical 8-second energy+Stream1090 replay to an anonymous RAM-only socket sink; other DSP represented only by recorded references. No live feeder or antenna latency claim.",
+    "clock_limit": "Recorded case wall origin is estimated; original 20ms RF arrival times absent. +50ms sensitivity reported, not a guaranteed physical error bound.",
+    "peak_RSS_KiB": 237520.0,
+    "hashes": {
+      "batch": "378354481200be73e651a4cf684a02c46e5a9d0de2562e69f2fc036812912494",
+      "incremental": "5a736cddf60b38e3e0052acaccc978e596fc6d36c8debbbae70a3560022cc33d",
+      "dedup": "524a48a64b2106fccee847639e29515d01183c94559e31001f0a0377527d95d8"
+    }
+  },
+  "pi": {
+    "platform": "Linux-6.12.109+rpt-rpi-2712-aarch64-with-glibc2.36",
+    "rf_seconds": 8,
+    "results": [
+      {
+        "mode": "batch",
+        "metrics": {
+          "energy": {
+            "emitted": 32,
+            "early": 0,
+            "fallback": 32,
+            "latency": {
+              "n": 32,
+              "p50_ms": 1204.815128948897,
+              "p95_ms": 1454.2961789536628,
+              "p99_ms": 1536.8594159007223,
+              "max_ms": 1720.4588880664112,
+              "under250": 0,
+              "under250_with_50ms_clock_sensitivity": 0
+            },
+            "deferred_reference": 32,
+            "reference_retained_any_method": 32,
+            "not_in_recorded_other_DSP": 0,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "stream1090": {
+            "emitted": 47,
+            "early": 0,
+            "fallback": 47,
+            "latency": {
+              "n": 47,
+              "p50_ms": 1034.9519599922594,
+              "p95_ms": 1581.9806405820052,
+              "p99_ms": 1684.8396236415904,
+              "max_ms": 1753.6169099859746,
+              "under250": 0,
+              "under250_with_50ms_clock_sensitivity": 0
+            },
+            "deferred_reference": 47,
+            "reference_retained_any_method": 47,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "all": {
+            "emitted": 79,
+            "early": 0,
+            "fallback": 79,
+            "latency": {
+              "n": 79,
+              "p50_ms": 1078.9213798926626,
+              "p95_ms": 1581.9806405820052,
+              "p99_ms": 1720.4588880664112,
+              "max_ms": 1753.6169099859746,
+              "under250": 0,
+              "under250_with_50ms_clock_sensitivity": 0
+            },
+            "deferred_reference": 79,
+            "reference_retained_any_method": 79,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          }
+        },
+        "raw_batch_parity": true,
+        "worker_cpu_s": {
+          "admission_main": 0.24770543600000017,
+          "energy": 1.3718755840000014,
+          "native": 0.8795806979999999
+        },
+        "total_process_cpu_s": 2.6928756700000003,
+        "cpu_s_per_RF_s": 0.33660945875000003,
+        "wall_s": 8.40718622202985,
+        "stock_delivery_delay": {
+          "n": 1106,
+          "p50_ms": 7.165189599618316,
+          "p95_ms": 60.96675852313638,
+          "p99_ms": 66.0087508149445,
+          "max_ms": 73.59335757791996,
+          "under250": 1106,
+          "under250_with_50ms_clock_sensitivity": 1106
+        },
+        "stock_records": 6630,
+        "stock_byte_sha256": "2bb229fac9a9d33393726c320407508950646039133eac7ce2cb102fac8012b9",
+        "stock_bytes_preserved": true,
+        "bridge_counts": {
+          "clock_ready": 8,
+          "final_duplicate_120us": 933,
+          "final_added_energy": 32,
+          "final_added_stream1090": 47,
+          "finalized_windows": 8
+        },
+        "relay_counts": {
+          "emitted_final": 79
+        },
+        "dedup": {
+          "ttl_expired": 6058,
+          "capacity_evictions": 0,
+          "epoch_resets": 1,
+          "wrong_epoch": 0,
+          "unvalidated": 0,
+          "stale": 0,
+          "duplicates": 0,
+          "late_stock_after_extra_race": 0,
+          "stock_duplicate_preserved": 0,
+          "stock_emitted": 6630,
+          "stream1090_emitted": 47,
+          "energy_emitted": 32
+        },
+        "maximum_backlog": {
+          "energy": 5,
+          "native": 1
+        },
+        "energy_digest": "5c25858aa1fcb10208c0b106a38870b677099068d5603b7b12686cbe839fdc57",
+        "native_digest": "0164e78121eb1a368c92db8bbdf6daf868d666c61790ba6ce41e51cc5cfa5bfa"
+      },
+      {
+        "mode": "20ms",
+        "metrics": {
+          "energy": {
+            "emitted": 32,
+            "early": 32,
+            "fallback": 0,
+            "latency": {
+              "n": 32,
+              "p50_ms": 721.9702728792878,
+              "p95_ms": 1093.0751989876183,
+              "p99_ms": 1096.915633955792,
+              "max_ms": 1171.0633168756663,
+              "under250": 9,
+              "under250_with_50ms_clock_sensitivity": 7
+            },
+            "deferred_reference": 32,
+            "reference_retained_any_method": 32,
+            "not_in_recorded_other_DSP": 0,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "stream1090": {
+            "emitted": 47,
+            "early": 46,
+            "fallback": 1,
+            "latency": {
+              "n": 47,
+              "p50_ms": 740.7108125299015,
+              "p95_ms": 1060.5245109977873,
+              "p99_ms": 1095.9876019723272,
+              "max_ms": 1136.2697515251289,
+              "under250": 10,
+              "under250_with_50ms_clock_sensitivity": 9
+            },
+            "deferred_reference": 47,
+            "reference_retained_any_method": 47,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          },
+          "all": {
+            "emitted": 79,
+            "early": 78,
+            "fallback": 1,
+            "latency": {
+              "n": 79,
+              "p50_ms": 732.2892718790026,
+              "p95_ms": 1093.0751989876183,
+              "p99_ms": 1136.2697515251289,
+              "max_ms": 1171.0633168756663,
+              "under250": 19,
+              "under250_with_50ms_clock_sensitivity": 16
+            },
+            "deferred_reference": 79,
+            "reference_retained_any_method": 79,
+            "not_in_recorded_other_DSP": 22,
+            "not_in_recorded_full_pipeline": 0,
+            "not_in_recorded_relay": 0
+          }
+        },
+        "raw_batch_parity": true,
+        "worker_cpu_s": {
+          "admission_main": 0.5486978319999976,
+          "native": 0.9321318150000004,
+          "energy": 1.2973769409999998
+        },
+        "total_process_cpu_s": 2.9633672660000006,
+        "cpu_s_per_RF_s": 0.37042090825000007,
+        "wall_s": 8.807495517889038,
+        "stock_delivery_delay": {
+          "n": 1153,
+          "p50_ms": 21.473273867741227,
+          "p95_ms": 65.73655549436808,
+          "p99_ms": 72.73133867420256,
+          "max_ms": 74.84720088541508,
+          "under250": 1153,
+          "under250_with_50ms_clock_sensitivity": 1153
+        },
+        "stock_records": 6630,
+        "stock_byte_sha256": "2bb229fac9a9d33393726c320407508950646039133eac7ce2cb102fac8012b9",
+        "stock_bytes_preserved": true,
+        "bridge_counts": {
+          "clock_ready": 8,
+          "early_alignment_not_ready": 9,
+          "duplicate_120us": 44355,
+          "added_energy": 1516,
+          "added_stream1090": 46,
+          "final_duplicate_120us": 933,
+          "final_added_energy": 32,
+          "final_added_stream1090": 47,
+          "finalized_windows": 8
+        },
+        "relay_counts": {
+          "emitted_early": 78,
+          "emitted_final": 1
+        },
+        "dedup": {
+          "ttl_expired": 6058,
+          "capacity_evictions": 0,
+          "epoch_resets": 1,
+          "wrong_epoch": 0,
+          "unvalidated": 0,
+          "stale": 0,
+          "duplicates": 78,
+          "late_stock_after_extra_race": 0,
+          "stock_duplicate_preserved": 0,
+          "stock_emitted": 6630,
+          "stream1090_emitted": 47,
+          "energy_emitted": 32
+        },
+        "maximum_backlog": {
+          "native": 11,
+          "energy": 22
+        },
+        "energy_digest": "5c25858aa1fcb10208c0b106a38870b677099068d5603b7b12686cbe839fdc57",
+        "native_digest": "0164e78121eb1a368c92db8bbdf6daf868d666c61790ba6ce41e51cc5cfa5bfa"
+      }
+    ],
+    "comparison": {
+      "batch_extras": 79,
+      "retained": 79,
+      "lost": 0,
+      "incremental_not_in_batch": 0
+    },
+    "working_pipeline_changed": false,
+    "scope": "Causal historical 8-second energy+Stream1090 replay to an anonymous RAM-only socket sink; other DSP represented only by recorded references. No live feeder or antenna latency claim.",
+    "clock_limit": "Recorded case wall origin is estimated; original 20ms RF arrival times absent. +50ms sensitivity reported, not a guaranteed physical error bound.",
+    "peak_RSS_KiB": 216928.0,
+    "hashes": {
+      "batch": "70d715dabe1ea2c6623002c9b47d4cb94f1b8a25197ba3f0d203b7b872e86103",
+      "incremental": "4c9b11db3a0334d6f3a67b5875fcc687ca4e0c08139bb1c1792726c817d7170e",
+      "dedup": "96891c6428153dcfdc365e0ca73cd908d467664562e44ce45a14021d51a3479f"
+    }
+  },
+  "attribution": {
+    "distance_bins": {
+      "batch": {
+        "0\u201350": {
+          "energy": 3,
+          "all": 7,
+          "fallback": 7,
+          "stream1090": 4,
+          "beyond_recorded_other_DSP": 3
+        },
+        "50\u2013100": {
+          "energy": 10,
+          "all": 37,
+          "fallback": 37,
+          "stream1090": 27,
+          "beyond_recorded_other_DSP": 11
+        },
+        "100\u2013150": {
+          "energy": 14,
+          "all": 22,
+          "fallback": 22,
+          "stream1090": 8,
+          "beyond_recorded_other_DSP": 5
+        },
+        "150\u2013180": {
+          "energy": 2,
+          "all": 6,
+          "fallback": 6,
+          "stream1090": 4,
+          "beyond_recorded_other_DSP": 1
+        },
+        "180\u2013200": {
+          "stream1090": 1,
+          "all": 1,
+          "fallback": 1
+        },
+        "200\u2013250": {},
+        "250+": {},
+        "unknown": {
+          "energy": 3,
+          "all": 6,
+          "fallback": 6,
+          "stream1090": 3,
+          "beyond_recorded_other_DSP": 2
+        }
+      },
+      "20ms": {
+        "0\u201350": {
+          "energy": 3,
+          "all": 7,
+          "early": 7,
+          "stream1090": 4,
+          "beyond_recorded_other_DSP": 3
+        },
+        "50\u2013100": {
+          "energy": 10,
+          "all": 37,
+          "early": 37,
+          "stream1090": 27,
+          "beyond_recorded_other_DSP": 11
+        },
+        "100\u2013150": {
+          "energy": 14,
+          "all": 22,
+          "early": 22,
+          "stream1090": 8,
+          "beyond_recorded_other_DSP": 5
+        },
+        "150\u2013180": {
+          "energy": 2,
+          "all": 6,
+          "early": 6,
+          "stream1090": 4,
+          "beyond_recorded_other_DSP": 1
+        },
+        "180\u2013200": {
+          "stream1090": 1,
+          "all": 1,
+          "early": 1
+        },
+        "200\u2013250": {},
+        "250+": {},
+        "unknown": {
+          "energy": 3,
+          "all": 6,
+          "early": 5,
+          "stream1090": 3,
+          "beyond_recorded_other_DSP": 2,
+          "fallback": 1
+        }
+      }
+    },
+    "range_source": "Causal recorded stock positions only; NIC/NACp>=5, age<=15s, no MLAT/TIS-B. Unknown remains unknown; not independent ground truth or training labels.",
+    "recorded_full_producer_events": 210,
+    "recorded_other_DSP_events": 188,
+    "recorded_relay_frames": 7950,
+    "comparison_limit": "Full recorded pipeline/relay masks have no per-method completion times. These are post-hoc coverage comparisons, not timed all-method replay.",
+    "distant_coverage_sufficient": false
+  },
+  "cross_platform_parity": {
+    "raw_native_exact_mac_pi": true,
+    "raw_energy_exact_mac_pi": true,
+    "Pi_aligned_tick_deltas": {
+      "0": 79
+    },
+    "transmission_match_tolerance_ticks": 1440
+  },
+  "protected_health_unchanged": true,
+  "hardware": "Raspberry Pi 5 Model B Rev 1.0",
+  "production_actions": [],
+  "memory_limit_enforced": false,
+  "live_backend": "executable: pre-existing guard rollback at 2026-11-10 16:37:15 UTC",
+  "deployment_recommended": false
+}

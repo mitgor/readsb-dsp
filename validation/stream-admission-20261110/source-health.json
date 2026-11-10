@@ -1,0 +1,14 @@
+{
+  "unchanged": {
+    "pids": true,
+    "configs": true,
+    "methods": true,
+    "workers": true,
+    "samples": true,
+    "gain_db": true,
+    "source_hashes": true
+  },
+  "working_pipeline_changed": false,
+  "cap_bytes": 5000000000,
+  "native_backend": "executable: pre-existing guard fallback"
+}
