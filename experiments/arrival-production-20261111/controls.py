@@ -10,9 +10,10 @@ def main():
   def save(p,v):Path(p).write_text(json.dumps(v))
   def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
   code=Path(__file__).with_name('mode.py').read_text()
-  fake=dict(read=read,save=save,sha=sha,atomic=lambda p,b,rec:Path(p).write_bytes(b))
+  fake=dict(read=read,save=save,sha=sha,atomic=lambda p,b,rec:Path(p).write_bytes(b),STATE=root/'native-state',capture=lambda:None)
   scope={'__name__':'arrival_controls'}
   with patch('runpy.run_path',return_value=fake):exec(compile(code,'mode.py','exec'),scope)
+  save(root/'native-state',dict(state='rolled_back'))
   calls=[];scope.update(ROOT=root,STATE=root/'state',CFG=root/'cfg',RUN=root/'run',ctl=lambda *args:calls.append(args),update_native_pid=lambda:None)
   p=root/'feed.py';p.write_text('candidate');st=dict(state='active',installed={'feed.py':sha(p)},original_feed_sha256=sha(backup/'feed.py'),backup=str(backup),boot='test')
   save(root/'state',st);scope['rollback']('test');assert p.read_text()=='original' and not read(root/'cfg')['enabled'] and calls==[('restart','adsb-rescue-feed')]
@@ -23,5 +24,8 @@ def main():
   with patch.object(Path,'read_text',read_text):
    scope['guard']();assert read(root/'state')['bad_checks']==1 and read(root/'state')['state']=='active'
    scope['guard']();assert read(root/'state')['state']=='rolled_back'
- print('Arrival rollback, source-conflict and two-strike controls passed')
+  import time
+  save(root/'state',st);save(root/'native-state',dict(state='activating',deadline=time.time()+60));scope['ready']=lambda:dict(stock_connected=True)
+  scope['guard']();assert read(root/'state')['state']=='active' and read(root/'run')['state']=='waiting_for_authorized_native_startup'
+ print('Arrival rollback, source-conflict, two-strike and bounded startup controls passed')
 if __name__=='__main__':main()

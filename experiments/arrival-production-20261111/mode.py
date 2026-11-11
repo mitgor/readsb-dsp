@@ -45,6 +45,12 @@ def guard():
   return
  if st['state']!='active':return
  try:
+  native=read(G['STATE'])
+  if native['state']=='activating' and time.time()<native['deadline']:
+   relay=ready();G['capture']()
+   save(RUN,dict(state='waiting_for_authorized_native_startup',updated_unix=time.time(),native_deadline=native['deadline'],stock_connected=relay['stock_connected']))
+   return
+
   # Reboot alone changes service identities. Require the same config/components,
   # then establish new process baselines after normal services have become ready.
   boot=Path('/proc/sys/kernel/random/boot_id').read_text().strip()

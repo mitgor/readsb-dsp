@@ -83,9 +83,11 @@ def activate(stage,observe):
   cfg=dict(enabled=True,cpus=[2,3],**{n:dict(path=str(ROOT/'latency_core'/(n+'.so')),sha256=manifest['bin/'+n+'.so']) for n in LIBS});save(CFG,cfg);MARKER.unlink(missing_ok=True);st['config_sha256']=sha(CFG);save(STATE,st);switched=time.time();restart()
   until=time.time()+90
   while time.time()<until:
-   s=snapshot();low=read(STATUS).get('lowlatency',{})
+   try:s=snapshot()
+   except (KeyError,TypeError):time.sleep(2);continue
+   low=read(STATUS).get('lowlatency',{})
    if MARKER.exists():raise RuntimeError('Incremental readiness error: '+read(MARKER)['error'])
-   if s['started_unix']>=switched and low.get('enabled') and low['counts'].get('native_seconds',0)>=5 and low['counts'].get('shared_energy_blocks',0)>=80:break
+   if s['started_unix']>=switched and s['mean_latency_s'] is not None and low.get('enabled') and low['counts'].get('native_seconds',0)>=5 and low['counts'].get('shared_energy_blocks',0)>=80:break
    time.sleep(2)
   else:raise RuntimeError('Incremental readiness deadline expired')
   st.update(state='active',shadow_pid=s['shadow_pid'],activated_unix=time.time(),bad_checks=0);save(STATE,st);initial=check(st,s);obs_start=s;samples=[];until=time.time()+observe

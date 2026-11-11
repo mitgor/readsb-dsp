@@ -53,3 +53,27 @@ Manual incremental rollback:
     sudo /usr/local/sbin/adsb-stream1090-lowlatency-mode rollback --reason manual
 
 No raw RF, sharing key or receiver configuration should be committed.
+
+## Activation findings and fixes
+
+The initial production reactivation reproduced a43s-old DSP report while the
+relay report was0.3s old. Both guards reverted. This establishes a stale DSP
+status, not by itself a native decoder deadlock. The coordinator wrote status
+only at the bottom of its processing loop, below multiple early-continue paths
+(unaligned/stale/no-context windows). The patch now places that same checkpoint
+at the loop head. A control executes repeated continue paths and proves they
+still publish status. Inference/admission calculations and guard thresholds are
+unchanged. A one-shot14s Python stack dump is armed at each status checkpoint
+into /run/adsb-rescue/coordinator-stall.log, giving RAM-only evidence if reporting
+or the coordinator stalls again.
+
+Earlier checkpoint publication also exposes expected incomplete startup health
+fields. Native activation waits for a complete gain/latency snapshot within its
+existing readiness deadline. The arrival guard recognizes only that bounded,
+explicit native activation state while still checking relay readiness and
+capture health. It resumes its full health checks automatically afterward.
+No general runtime failure or timeout receives this startup exception.
+
+The two-hour isolated soak was not completed; it is not a deployment proof.
+A corrected packet-parity gate and a six-minute real production observation are
+used for this activation, followed by permanent watchdogs and anomaly monitoring.

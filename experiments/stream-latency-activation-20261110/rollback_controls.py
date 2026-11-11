@@ -23,5 +23,15 @@ def main():
   setup();scope['rollback']('test');assert live.read_bytes()==b'original' and not read(r/'config')['enabled'] and read(r/'state')['state']=='rolled_back' and not calls
   setup();live.write_bytes(b'concurrent edit');scope['rollback']('test');assert live.read_bytes()==b'concurrent edit' and read(r/'state')['state']=='rollback_conflict'
   setup();scope['check']=lambda *_:(_ for _ in ()).throw(RuntimeError('test fault'));scope['guard']();assert read(r/'state')['state']=='active' and read(r/'state')['bad_checks']==1;scope['guard']();assert read(r/'state')['state']=='rolled_back' and live.read_bytes()==b'original' and not calls
- print('Three rollback controls passed')
+ # Exercise actual checkpoint relocation: continue must not starve liveness.
+ import runpy
+ move=runpy.run_path(str(Path(__file__).with_name('patch.py')))['status_checkpoint']
+ block="            if True:\n                writes.append('status')\n"
+ source="def run(stop,writes):\n    try:\n        while not stop.is_set():\n            # A bounded worker loop\n            continue\n"+block+"    finally:pass\n"
+ class Stop:
+  def __init__(self):self.n=0
+  def is_set(self):self.n+=1;return self.n>2
+ old={};exec(source,old);writes=[];old['run'](Stop(),writes);assert not writes
+ changed={};exec(move(source,block),changed);changed['run'](Stop(),writes);assert writes==['status','status']
+ print('Three rollback and continue-safe status checkpoint controls passed')
 if __name__=='__main__':main()
