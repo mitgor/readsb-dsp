@@ -94,3 +94,41 @@ accepted outputs, audits and decisions against both pre-reset and rebuilt-refere
 indexes exactly; it took~0.0064CPU seconds. This is index/reset parity, not1000new
 RF intervals. The earlier stalled attempt and RAM stack trace are preserved
 privately. Final live activation must pass its own guarded observation.
+
+## Default profile and explicit three-second fallback switch
+
+The managed receiver's default profile is arrival-order relay plus incremental
+native Stream1090. Both selections persist in their existing configuration files:
+`/etc/default/adsb-relay-arrival.json` (`enabled=true`) and
+`/etc/default/adsb-stream1090-lowlatency.json` (`enabled=true`). Independent guards
+may revert a failed component; they never automatically reactivate after a fault.
+
+The statistics page provides **Use ordered 3-second relay** and **Apply relay
+mode**. Off selects arrival-order output; on selects the existing ordered relay.
+The fixed loopback API is `/readsb-dsp/api/relay` (compatibility URL
+`/neural-rescue/api/relay`). A same-origin JSON POST contains the current revision
+and `mode=arrival_order|ordered_3s`. Stale revisions, unknown modes and overlapping
+settings operations are rejected. Selection uses fixed root-owned oneshot units,
+not arbitrary commands from the web process. The control service retains its
+existing sandbox and no new networking or authentication is introduced.
+
+`select.py` is installed as `/usr/local/sbin/adsb-relay-select`; its units are
+`adsb-relay-arrival-select.service` and `adsb-relay-ordered-select.service`.
+The owned permanent release is `/var/lib/adsb-arrival-relay/release`, containing
+checksum-pinned relay modules and manifest, so switching back to asynchronous
+mode does not depend on research tmpfs files. The operator commands are:
+
+    sudo /usr/local/sbin/adsb-relay-select ordered_3s
+    sudo /usr/local/sbin/adsb-relay-select arrival_order
+
+Only the combined relay reconnects. Native Stream1090 remains enabled; primary
+readsb, FR24, ADSBx, models, gain, collection and caps are preserved. The helper
+updates the native watchdog's expected relay PID through the existing reviewed
+activation/rollback flow. The dashboard distinguishes selected and actual relay
+mode and displays the actual native backend. Normal forwarding stays on31005.
+
+Transport monitoring errors receive at most three fresh snapshots with bounded
+backoff; health assertions and persistent faults still trigger rollback. Native
+calls retain100ms thread CPU plus1s wall safety, with diagnostic CPU/wall timing.
+The five-method early-publication prototype remains experimental and is not
+selected by this profile or switch.

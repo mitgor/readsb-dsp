@@ -15,7 +15,7 @@ from .latency_core.shared_energy import SharedEnergyFeed,EnergyAccounting,comple
 from .latency_core.final_cache import RustCache
 from .stock_history import StockHistory
 from .streaming import CORE,TOTAL
-from .stream1090_shadow import compare
+from .stream1090_compare import compare
 
 CONFIG=Path('/etc/default/adsb-stream1090-lowlatency.json')
 class Accounting(EnergyAccounting):
@@ -29,14 +29,16 @@ class Accounting(EnergyAccounting):
  def summary(self,*_):return dict(unique_upstream_jobs=self.jobs,reported_energy_CPU_s=self.cpu,adapter_cpu_s=self.adapter_cpu_s,duplicate_energy_decodes=0)
 
 class TimedDecoder(Decoder):
+ def invoke(self,operation,ctx,raw=None,first=None):
+  n=ctypes.c_uint32();wall=time.monotonic();cpu=time.thread_time()
+  if raw is None:rc=self.inc.stream1090_incremental_finish(ctx,self.buf,len(self.buf),ctypes.byref(n),100000)
+  else:rc=self.inc.stream1090_incremental_feed(ctx,raw,len(raw)//2,first,self.buf,len(self.buf),ctypes.byref(n),100000)
+  if rc:raise RuntimeError('Incremental '+operation+' failed: '+str(rc)+' '+json.dumps(dict(wall_s=time.monotonic()-wall,thread_cpu_s=time.thread_time()-cpu,samples=None if raw is None else len(raw)//2)))
+  return self.rows(n.value)
  def feed(self,ctx,raw,first):
-  n=ctypes.c_uint32();rc=self.inc.stream1090_incremental_feed(ctx,raw,len(raw)//2,first,self.buf,len(self.buf),ctypes.byref(n),100000)
-  if rc:raise RuntimeError('Incremental decoder failed: '+str(rc))
-  return self.rows(n.value)
+  return self.invoke('decoder',ctx,raw,first)
  def finish(self,ctx):
-  n=ctypes.c_uint32();rc=self.inc.stream1090_incremental_finish(ctx,self.buf,len(self.buf),ctypes.byref(n),100000)
-  if rc:raise RuntimeError('Incremental finish failed: '+str(rc))
-  return self.rows(n.value)
+  return self.invoke('finish',ctx)
 
 class LowLatency:
  def __init__(self,live,cfg,runtime,config_path=CONFIG):

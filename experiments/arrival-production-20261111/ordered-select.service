@@ -1,0 +1,7 @@
+[Unit]
+Description=Select ordered_3s combined ADS-B relay
+After=adsb-rescue-feed.service
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/adsb-relay-select ordered_3s
+TimeoutStartSec=150

@@ -6,6 +6,7 @@
 #include <chrono>
 #include <cstring>
 #include <memory>
+#include <time.h>
 #include "upstream/Global.hpp"
 #include "upstream/RawInputFormat.hpp"
 #include "upstream/InputReaderBase.hpp"
@@ -13,6 +14,12 @@
 namespace {
 using S=Sampler_2_4_to_8_0_Mhz;
 int64_t nowUs() {return std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();}
+int64_t cpuUs() {timespec t{};if(clock_gettime(CLOCK_THREAD_CPUTIME_ID,&t))throw 1;return int64_t(t.tv_sec)*1000000+t.tv_nsec/1000;}
+struct Budget {
+    int64_t cpu=0,wall=0;
+    explicit Budget(uint32_t us) {if(us){cpu=cpuUs()+us;wall=nowUs()+std::max<int64_t>(1000000,int64_t(us)*10);}}
+    int expired() const {if(cpu && cpuUs()>=cpu)return -4;if(wall && nowUs()>=wall)return -6;return 0;}
+};
 struct Empty {static constexpr bool isEmpty=true;};
 struct Handler {
     stream1090_native_event *out=nullptr;uint32_t cap=0,n=0,total=0;int64_t first;
@@ -36,9 +43,10 @@ struct Context {
     uint8_t tail[2*S::InputBufferSize];
     Context(int64_t f,uint32_t n):first(f),expected(n),frontend(pipeline),handler(f),stream(handler){}
     int reject(int rc) {failed=rc;return rc;}
-    int block(const uint8_t *raw,int64_t deadline) {
-        if(deadline && nowUs()>=deadline)return reject(-4);
+    int block(const uint8_t *raw,const Budget& budget) {
+        if(int rc=budget.expired())return reject(rc);
         stream.processBlock(frontend,raw);
+        if(int rc=budget.expired())return reject(rc);
         if(handler.overflow)return reject(-2);
         return 0;
     }
@@ -55,8 +63,8 @@ extern "C" int stream1090_incremental_feed(void *opaque,const uint8_t *iq,uint32
     if(!c)return -1;
     if(!count || !events || !cap || !iq || !samples)return c->reject(-1);
     if(c->closed || c->failed || first!=c->first+c->received || samples>c->expected-c->received)return c->reject(-5);
-    c->handler.bind(events,cap);const int64_t deadline=timeout?nowUs()+timeout:0;
     try {
+        c->handler.bind(events,cap);const Budget deadline(timeout);
         uint32_t left=samples;
         while(left) {
             if(!c->pending && left>=S::InputBufferSize) {
@@ -78,8 +86,8 @@ extern "C" int stream1090_incremental_finish(void *opaque,stream1090_native_even
     if(count)*count=0;auto *c=static_cast<Context*>(opaque);if(!c)return -1;
     if(!count || !events || !cap)return c->reject(-1);
     if(c->closed || c->failed || c->received!=c->expected)return c->reject(-5);
-    c->handler.bind(events,cap);const int64_t deadline=timeout?nowUs()+timeout:0;
     try {
+        c->handler.bind(events,cap);const Budget deadline(timeout);
         std::memset(c->tail+2*c->pending,0,2*(S::InputBufferSize-c->pending));
         int rc=c->block(c->tail,deadline);if(rc)return rc;
         c->closed=true;*count=c->handler.n;return 0;

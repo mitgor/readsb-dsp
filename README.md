@@ -277,3 +277,14 @@ The [29 October label/training audit](validation/neural-retrain-20261029/report.
 ### Distant training collection
 
 The [180 nm stock-training collector](experiments/far-training-collection-20261029/README.md) reserves time-spread original I/Q snippets independently of continuous RF, with strict stock/position provenance and independent Mac qualification before training. The [activation/offload report](validation/far-training-collection-20261029/report.html) records the unchanged decoder/feeds, 5 GB cap, and checksum-verified transfer/deletion of saved Pi data.
+
+### Managed receiver: default low-latency profile
+
+The working receiver uses the asynchronous arrival-order combined relay and
+incremental native Stream1090, with independent automatic fallback guards.
+The statistics page's **Use ordered 3-second relay** switch restores the previous
+ordered output without changing the decoder or feeder configuration. Turning it
+off returns to arrival-order output. Both selections persist across restarts.
+See [receiver relay controls](experiments/arrival-production-20261111/README.md#default-profile-and-explicit-three-second-fallback-switch)
+for exact controls, rollback behavior and scope. The separate five-method early
+publication experiment is not enabled by this setting.

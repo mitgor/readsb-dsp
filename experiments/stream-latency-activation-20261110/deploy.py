@@ -1,10 +1,21 @@
 #!/usr/bin/env python3
 """Activate only the rescue coordinator; independent rollback leaves feeders up."""
 import argparse,fcntl,json,os,runpy,shutil,subprocess,time
+import http.client,urllib.error
 from pathlib import Path
 G=runpy.run_path('/usr/local/sbin/adsb-stream1090-native-mode')
 ROOT=Path('/home/pi/adsb-neural-rescue/src/rescue');STATE=Path('/var/lib/adsb-stream1090-lowlatency/active.json');CFG=Path('/etc/default/adsb-stream1090-lowlatency.json');RUN=Path('/run/adsb-stream1090-lowlatency-guard.json');STATUS=Path('/run/adsb-rescue/status.json');MARKER=Path('/run/adsb-rescue/lowlatency-error.json')
 read,save,sha,atomic,boot,snapshot,healthy,capacity=(G[k] for k in ('read','save','sha','atomic','boot','snapshot','healthy','capacity'))
+raw_snapshot=snapshot
+def monitoring_snapshot(fetch, pause=time.sleep):
+ """Retry transport failures only; never reuse cached health or retry assertions."""
+ for attempt in range(3):
+  try:return fetch()
+  except (http.client.HTTPException,urllib.error.URLError,TimeoutError,ConnectionError) as exc:
+   if isinstance(exc,urllib.error.HTTPError) and exc.code not in (502,503,504):raise
+   if attempt==2:raise
+   pause((.2,.5)[attempt])
+def snapshot():return monitoring_snapshot(raw_snapshot)
 CORE=['__init__.py','bindings.py','cold_start.py','completion_bridge.py','final_cache.py','native_admission.py','shared_energy.py']
 LIBS=['batch','incremental','admission','dedup']
 

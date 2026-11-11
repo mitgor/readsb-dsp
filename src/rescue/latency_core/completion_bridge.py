@@ -9,7 +9,7 @@ from collections import Counter, OrderedDict, deque
 
 from rescue.shadow import evaluate as production_evaluate
 from rescue.stock_history import StockSnapshot
-from rescue.stream1090_shadow import compare, valid_df17
+from rescue.stream1090_compare import compare, valid_df17
 
 
 class EvidenceRetry:

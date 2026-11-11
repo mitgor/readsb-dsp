@@ -13,7 +13,9 @@ extern "C" {
  * Caller must destroy/reset the context on any receiver epoch change.
  * No concurrent calls on one context. Bound: at most 4,802,400 input samples.
  * Return codes: -1 invalid input, -2 output overflow, -3 exception,
- * -4 per-call deadline, -5 gap/order/length/closed/previous-failure.
+ * -4 per-call thread CPU budget, -5 gap/order/length/closed/previous-failure,
+ * -6 per-call wall safety deadline. timeout_us is a thread CPU budget;
+ * wall safety is max(1 second, 10*timeout_us). Zero disables both for tests.
  * Failure poisons the context; output count is zero on failure. */
 void *stream1090_incremental_create(int64_t first_sample,uint32_t expected_samples);
 int stream1090_incremental_feed(void *context,const uint8_t *iq,uint32_t samples,

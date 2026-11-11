@@ -4,11 +4,12 @@ from http.server import BaseHTTPRequestHandler,ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlsplit
 from .pipeline import settings,DEFAULTS
+from .relay_control import RelayControls
 from .far_capture import config as capture_config
 METHODS=tuple(DEFAULTS)+('sequence','acquisition')
 class Controls:
  def __init__(self,base=Path('/etc/default'),restart=None,status=Path('/run/adsb-rescue/status.json')):
-  self.paths=[base/'adsb-rescue.json',base/'adsb-rescue-workers.json',base/'adsb-far-capture.json'];self.restart=restart or self.system_restart;self.status=status;self.lock=threading.Lock();self.operation=dict(state='idle')
+  self.paths=[base/'adsb-rescue.json',base/'adsb-rescue-workers.json',base/'adsb-far-capture.json'];self.restart=restart or self.system_restart;self.status=status;self.lock=threading.Lock();self.operation=dict(state='idle');self.relay=RelayControls(base=base,runtime=status.parent)
  def system_restart(self):
   began=time.time();subprocess.run(['systemctl','restart','adsb-rescue-shadow.service'],check=True,timeout=60)
   subprocess.run(['systemctl','is-active','--quiet','adsb-rescue-shadow.service'],check=True,timeout=5)
@@ -35,7 +36,7 @@ class Controls:
   tmp=path.with_suffix('.web-tmp');tmp.write_bytes(data);os.chmod(tmp,0o644);os.replace(tmp,path)
  def apply(self,data):
   with self.lock:
-   if self.operation['state']=='applying':raise ValueError('An update is already in progress')
+   if self.operation['state']=='applying' or self.relay.operation['state']=='applying':raise ValueError('An update is already in progress')
    if set(data)!= {'revision','methods','capture'} or data['revision']!=self.revision():raise ValueError('Settings changed; reload before applying')
    m=data['methods'];c=data['capture']
    if not isinstance(m,dict) or set(m)!=set(METHODS) or any(type(v) is not bool for v in m.values()) or not m['energy']:raise ValueError('Invalid methods; energy is required')
@@ -77,6 +78,10 @@ class Handler(BaseHTTPRequestHandler):
  def reply(self,n,data):
   b=json.dumps(data).encode();self.send_response(n);self.send_header('Content-Type','application/json');self.send_header('Cache-Control','no-store');self.send_header('Content-Length',str(len(b)));self.end_headers();self.wfile.write(b)
  def do_GET(self):
+  if self.path in ('/readsb-dsp/api/relay','/neural-rescue/api/relay'):
+   try:self.reply(200,self.server.controls.relay.read())
+   except Exception as e:self.reply(503,{'error':str(e)})
+   return
   if self.path in ('/readsb-dsp/api/dashboard-status','/neural-rescue/api/dashboard-status'):
    try:
     from .dashboard_status import compact_status
@@ -88,11 +93,20 @@ class Handler(BaseHTTPRequestHandler):
   except Exception as e:self.reply(500,{'error':str(e)})
  def do_POST(self):
   origin=urlsplit(self.headers.get('Origin',''));host=self.headers.get('Host','')
-  if self.path not in ('/readsb-dsp/api/settings','/neural-rescue/api/settings') or origin.scheme not in ('http','https') or origin.netloc!=host or self.headers.get('Content-Type','').split(';')[0]!='application/json':self.reply(403,{'error':'Same-origin JSON requests only'});return
+  if self.path not in ('/readsb-dsp/api/settings','/neural-rescue/api/settings','/readsb-dsp/api/relay','/neural-rescue/api/relay') or origin.scheme not in ('http','https') or origin.netloc!=host or self.headers.get('Content-Type','').split(';')[0]!='application/json':self.reply(403,{'error':'Same-origin JSON requests only'});return
   try:
    n=int(self.headers.get('Content-Length','0'))
    if not 0<n<=8192:raise ValueError('Invalid request size')
-   self.reply(200,self.server.controls.apply(json.loads(self.rfile.read(n))))
+   data=json.loads(self.rfile.read(n))
+   with self.server.controls.lock:
+    if self.path.endswith('/relay'):
+     if self.server.controls.operation['state']=='applying':raise ValueError('Decoder settings are applying; wait before switching relay')
+     result=self.server.controls.relay.apply(data)
+    else:
+     if self.server.controls.relay.operation['state']=='applying':raise ValueError('Relay mode is changing; wait before applying decoder settings')
+     result=None
+   if not self.path.endswith('/relay'):result=self.server.controls.apply(data)
+   self.reply(200,result)
   except (ValueError,TypeError,KeyError) as e:self.reply(409,{'error':str(e)})
   except Exception as e:self.reply(500,{'error':str(e)})
  def log_message(self,*args):pass
