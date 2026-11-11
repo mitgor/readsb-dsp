@@ -1,0 +1,8 @@
+[Unit]
+Description=Monitor production arrival-order relay
+[Timer]
+OnBootSec=120
+OnUnitActiveSec=20
+Unit=adsb-arrival-relay-guard.service
+[Install]
+WantedBy=timers.target

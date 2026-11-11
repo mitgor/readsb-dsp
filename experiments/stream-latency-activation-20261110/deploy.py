@@ -33,6 +33,14 @@ def rollback(reason):
  if dead:restart()
  st.update(state='rolled_back',reason=reason,rolled_back_unix=time.time(),coordinator_restarted=dead);save(STATE,st);save(RUN,dict(backend='executable',reason=reason,updated_unix=time.time()))
 
+def diagnostics(snapshot, error):
+ result=dict(unix=time.time(),error=repr(error))
+ try:
+  result.update(dsp_status_age_s=time.time()-snapshot['updated_unix'],relay_status_age_s=time.time()-snapshot['feed_updated_unix'])
+  result['native']=read(STATUS).get('lowlatency',{})
+ except Exception as exc:result['diagnostic_error']=repr(exc)
+ return result
+
 def guard():
  if not STATE.exists():return
  st=read(STATE)
@@ -51,7 +59,7 @@ def guard():
   if st.get('bad_checks'):st['bad_checks']=0;save(STATE,st)
   save(RUN,dict(backend='incremental_native',boot=st['boot'],native_seconds=c,updated_unix=time.time(),bad_checks=0))
  except Exception as exc:
-  st['bad_checks']=st.get('bad_checks',0)+1;st['guard_error']=repr(exc);save(STATE,st)
+  st['bad_checks']=st.get('bad_checks',0)+1;st['guard_error']=repr(exc);st['guard_diagnostics']=diagnostics(locals().get('s',{}),exc);save(STATE,st)
   if st['bad_checks']>=2:rollback('Guard: '+repr(exc))
 
 def activate(stage,observe):

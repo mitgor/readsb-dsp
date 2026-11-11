@@ -11,8 +11,8 @@ from functools import lru_cache
 from .wire import BeastParser
 MOD=1<<48
 CORRECTION=2398
-ALLOWED={'energy','timing','soft','matched','coherent','sequence','acquisition','header','sic','neural','pulse'}
-OPTIONAL={'header','sic','neural','pulse'}
+ALLOWED={'energy','timing','soft','matched','coherent','sequence','acquisition','header','sic','neural','pulse','stream1090'}
+OPTIONAL={'header','sic','neural','pulse','stream1090'}
 @lru_cache(maxsize=20000)
 def valid(payload):
     if not isinstance(payload,str) or len(payload)!=28:return False
@@ -127,6 +127,10 @@ class Relay:
         return {'current_connection_stock_bytes_relayed':self.count['stock_bytes_relayed']-self.connection_stock_base,'pid':os.getpid(),'started_unix':self.started_unix,'upstream_connected_since_unix':self.connected_since,'upstream_error':self.upstream_error,'last_stock_age_s':None if not self.last_stock else time.monotonic()-self.last_stock,'updated_unix':time.time(),'mode':'stock_plus_validated_dsp','holdback_s':self.holdback,'stock_connected':self.connected,'clients':len(self.clients),'buffer_bytes':self.bytes,'counts':dict(self.count),'allowed_sources':sorted(ALLOWED-OPTIONAL|{s for s in OPTIONAL if enabled[s]}),'optional_sources_available':sorted(OPTIONAL),'fr24_routed':Path('/run/adsb-rescue/feed-routing.json').exists(),'neural_enabled':enabled['neural'],'broad_crc_forwarded':False}
 
 async def run(a):
+    arrival_config = Path('/etc/default/adsb-relay-arrival.json')
+    if arrival_config.exists() and json.loads(arrival_config.read_text()).get('enabled'):
+        from .arrival_feed import run as arrival_run
+        return await arrival_run(a)
     relay=Relay(a.holdback,a.config);outbox=a.runtime/'feed-outbox';outbox.mkdir(exist_ok=True)
     async def client(reader,writer):
         relay.clients.add(writer)

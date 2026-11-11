@@ -57,7 +57,7 @@ def main():
    recorded=[r for b in d['base'] for r in b['extra']];assert all(match(r,recorded) for r in emitted)
    # Combined membership: early rows plus unchanged grouped other-method rows.
    union=emitted+[r for r in recorded if not match(r,emitted)];assert len(union)==len(recorded)==210 and all(match(r,union) for r in recorded)
-   report=low.report();old=cc[-1]['first']+CORE;assert old in low.windows and not low.bridge.windows[old]['finalized'];assert low.begin(old+5*CORE) and low.count['retired_incomplete_early_windows']>=1 and not low.begin(old) and low.stream_rows(old,epoch)[0] is None
+   report=low.report();old=cc[-1]['first']+CORE;low.tick();assert low.begin(old);assert old in low.windows and not low.bridge.windows[old]['finalized'];assert low.begin(old+5*CORE) and low.count['retired_incomplete_early_windows']>=1 and not low.begin(old) and low.stream_rows(old,epoch)[0] is None
    config.write_text('{"enabled":false}');low.last_cfg=0.;low.tick();assert low.failed and low.stream_rows(first,epoch)[0] is None
   finally:low.close()
  # A fast completion cannot disappear during ordered pool consumption.
