@@ -48,11 +48,14 @@ def guard():
   # Reboot alone changes service identities. Require the same config/components,
   # then establish new process baselines after normal services have become ready.
   boot=Path('/proc/sys/kernel/random/boot_id').read_text().strip()
-  if boot!=st['boot']:
+  rebooted=boot!=st['boot']
+  if rebooted:
    current=G['snapshot']();G['healthy'](current,current)
    assert current['config_sha256']==st['before']['config_sha256'],'Configuration changed on boot'
    st.update(before=current,boot=boot)
-  snap,status=check(st);st['bad_checks']=0;save(STATE,st)
+  snap,status=check(st)
+  if st.get('bad_checks',0) or rebooted:
+   st['bad_checks']=0;save(STATE,st)
   save(RUN,dict(state='active',updated_unix=time.time(),holdback_s=0,stock_bytes=status['counts'].get('stock_bytes_relayed',0),extras=status['counts'].get('dsp_frames_relayed',0),dsp_status_age_s=time.time()-snap['updated_unix'],relay_status_age_s=time.time()-snap['feed_updated_unix']))
  except Exception as exc:
   st['bad_checks']=st.get('bad_checks',0)+1;st['error']=repr(exc);save(STATE,st)
