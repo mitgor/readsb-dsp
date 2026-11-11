@@ -92,11 +92,15 @@ class LowLatency:
   finally:
    if ctx:self.decoder.close(ctx)
  def reset(self,epoch):
-  previous=tuple(self.history.frames) if self.epoch==epoch else ();same=self.epoch==epoch
-  self.epoch=epoch;self.history=StockHistory();self.admission.reset(epoch)
-  if not same:self.cache.lib.ec_reset(self.cache.h,epoch);self.cache.epoch=epoch
-  for frame in previous:self.history.append(frame)
-  self.admission.append_stocks(previous)
+  same=self.epoch==epoch
+  self.epoch=epoch
+  # An IQ gap resets RF windows, not the receiver's already-arrived stock truth.
+  # Rebuilding these same indexes on every gap can pin the coordinator for tens
+  # of seconds. Keep their bounded contents and exact causal admission state.
+  if not same:
+   self.history=StockHistory();self.admission.reset(epoch)
+   self.cache.lib.ec_reset(self.cache.h,epoch);self.cache.epoch=epoch
+  else:self.count['same_epoch_stock_rebuilds_avoided']+=1
   self.bridge=Bridge(epoch,self.emit,admission=self.admission,retry=ColdStartRetry());self.shared=SharedEnergyFeed(epoch,self.bridge.offer,accounting=self.accounting);self.windows.clear();self.energy_pending.clear();self.expired_before=-1;self.count['epochs']+=1
  def begin(self,first):
   if first<=self.expired_before:return False

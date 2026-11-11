@@ -77,3 +77,20 @@ No general runtime failure or timeout receives this startup exception.
 The two-hour isolated soak was not completed; it is not a deployment proof.
 A corrected packet-parity gate and a six-minute real production observation are
 used for this activation, followed by permanent watchdogs and anomaly monitoring.
+
+The next instrumented run did expose a genuine coordinator hot path: its main
+thread was replaying stock rows through StockHistory.append from
+LowLatency.reset, while the native decoder thread was waiting on its IQ queue.
+Same-receiver IQ discontinuities rebuilt stock history and the Rust admission
+index even though both already held that receiver's arrived stock evidence.
+The reset now preserves those bounded indexes for the same receiver epoch,
+while still resetting RF windows and decoder trust/context. A new receiver epoch
+still clears stock, native admission and transmission-cache state. No bounds,
+CRC, causal-address or duplicate guards are relaxed.
+
+Controls cover100repeated gaps over10000stock rows and new-epoch clearing. A Pi
+control ran1000same-epoch resets against6630real stock rows and compared native
+accepted outputs, audits and decisions against both pre-reset and rebuilt-reference
+indexes exactly; it took~0.0064CPU seconds. This is index/reset parity, not1000new
+RF intervals. The earlier stalled attempt and RAM stack trace are preserved
+privately. Final live activation must pass its own guarded observation.
