@@ -1,10 +1,30 @@
 import json,tempfile,time,unittest
 from pathlib import Path
-from unittest.mock import Mock
+from unittest.mock import Mock,patch
 from concurrent.futures import Future
 from collections import Counter,deque
 from rescue.workers import topology,plan,cpu_list,WorkerPool,block_ranges,merge_events
 class WorkerTests(unittest.TestCase):
+    def test_initializer_preserves_inherited_affinity_when_unpinned(self):
+        from rescue import workers
+        from rescue.pipeline import settings
+        for cpu in (None,0,3):
+            with self.subTest(cpu=cpu),tempfile.TemporaryDirectory() as tmp:
+                assignment=Mock();assignment.get.return_value=cpu
+                with patch.object(workers.os,'sched_setaffinity',create=True) as pin,patch('rescue.runtime.RescueDecoder') as decoder,patch.multiple(workers,_DECODER=None,_RUNTIME=None,_ROLE='dsp'):
+                    workers.initialize('unused',settings(),tmp,assignment)
+                    decoder.assert_called_once()
+                    if cpu is None:pin.assert_not_called()
+                    else:pin.assert_called_once_with(0,{cpu})
+
+    def test_initializer_does_not_silently_ignore_failed_explicit_affinity(self):
+        from rescue import workers
+        from rescue.pipeline import settings
+        assignment=Mock();assignment.get.return_value=3
+        with tempfile.TemporaryDirectory() as tmp,patch.object(workers.os,'sched_setaffinity',create=True,side_effect=OSError('invalid CPU')),patch('rescue.runtime.RescueDecoder') as decoder:
+            with self.assertRaises(OSError):workers.initialize('unused',settings(),tmp,assignment)
+            decoder.assert_not_called()
+
     def mock_pool(self,count):
         tmp=tempfile.TemporaryDirectory();self.addCleanup(tmp.cleanup)
         pool=object.__new__(WorkerPool);pool.selection={'workers':count};pool.pending=deque();pool.completed=Counter();pool.cpu_seconds=Counter();pool.affinities={};pool.jobs=0;pool.recent_overlap=deque(maxlen=120);pool.executor=Mock();pool.runtime=Path(tmp.name);pool.job_paths=set()

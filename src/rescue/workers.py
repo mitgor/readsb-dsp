@@ -96,7 +96,7 @@ def initialize(model,methods,runtime,cpu_assignments,companion=None,role="dsp",c
     _ROLE=role
     # Spawn avoids forking the live input threads or inherited receiver sockets.
     cpu=cpu_assignments.get(timeout=30)
-    if hasattr(os,'sched_setaffinity'):os.sched_setaffinity(0,{cpu})
+    if cpu is not None and hasattr(os,'sched_setaffinity'):os.sched_setaffinity(0,{cpu})
     os.environ['OPENBLAS_NUM_THREADS']='1';os.environ['OMP_NUM_THREADS']='1'
     from .runtime import RescueDecoder
     options=dict(coherent=methods.get('coherent',False),frontend='native',broad_crc=methods['crc'],neural=methods['neural'],methods=[k for k in ('timing','soft','matched','header','sic') if methods[k]])
